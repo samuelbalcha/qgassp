@@ -7,8 +7,14 @@ import { HeaderComponent } from './components/header/header.component';
 import { SideNavComponent } from './components/sidenav/sidenav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MaterialModule } from './material.module';
+import { LocationSelectorComponent } from './components/location-selector/location-selector.component';
 
-const shared = [HeaderComponent, SideNavComponent, FooterComponent];
+const shared = [
+  HeaderComponent,
+  SideNavComponent,
+  FooterComponent,
+  LocationSelectorComponent,
+];
 
 @NgModule({
   imports: [

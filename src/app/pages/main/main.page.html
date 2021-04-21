@@ -5,16 +5,31 @@
 <mat-horizontal-stepper [linear]="isLinear">
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Step 1</ng-template>
+      <ng-template matStepLabel>Location</ng-template>
+      <h2>Location details</h2>
+      <location-selector></location-selector>
+
+      <h4>Choose dataset:</h4>
+      <div>
+        <mat-radio-group>
+          <mat-radio-button value="1">Default dataset</mat-radio-button>
+          <mat-radio-button value="2"
+            >Location specific dataset</mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
+
+      <br />
+
       <button mat-button mat-raised-button color="primary" matStepperNext>
-        Solve
+        Next
       </button>
     </form>
   </mat-step>
 
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Step 2</ng-template>
+      <ng-template matStepLabel>Areas & Land use type</ng-template>
       <mat-form-field>
         <input
           matInput
@@ -33,7 +48,7 @@
   </mat-step>
 
   <mat-step>
-    <ng-template matStepLabel icon>Done</ng-template>
+    <ng-template matStepLabel icon>Result</ng-template>
     You are now done.
     <button mat-button mat-raised-button color="primary">Done</button>
   </mat-step>
