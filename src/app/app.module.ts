@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //import { AuthButtonComponent } from './auth-button/auth-button.component';
 import { SharedModule } from './shared/shared.module';
-import { MaterialModule } from './shared/material.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +14,6 @@ import { MaterialModule } from './shared/material.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule,
     SharedModule,
   ],
   providers: [],
