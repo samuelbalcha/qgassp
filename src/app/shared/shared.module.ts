@@ -8,12 +8,16 @@ import { SideNavComponent } from './components/sidenav/sidenav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MaterialModule } from './material.module';
 import { LocationSelectorComponent } from './components/location-selector/location-selector.component';
+import { LandUseComponent } from './components/land-use/land-use.component';
+import { EmissionFactorsComponent } from './components/emission-factors-table/emission-factors.component';
 
 const shared = [
   HeaderComponent,
   SideNavComponent,
   FooterComponent,
   LocationSelectorComponent,
+  LandUseComponent,
+  EmissionFactorsComponent,
 ];
 
 @NgModule({

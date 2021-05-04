@@ -1,17 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import CountryRegionData from 'country-region-data/data.json';
 import * as _ from 'lodash';
-
-interface IRegion {
-  name: string;
-  shortCode: string;
-}
-
-interface ICountry {
-  countryName: string;
-  countryShortCode: string;
-  regions: IRegion[];
-}
+import { ICountry } from '../../../../types/ICountry';
 
 @Component({
   selector: 'location-selector',

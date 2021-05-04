@@ -30,14 +30,8 @@
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Areas & Land use type</ng-template>
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="Any input"
-          formControlName="secondCtrl"
-          required
-        />
-      </mat-form-field>
+
+      <land-use></land-use>
       <button mat-button mat-raised-button color="primary" matStepperNext>
         Next
       </button>
