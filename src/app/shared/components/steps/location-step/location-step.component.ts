@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import CountryRegionData from 'country-region-data/data.json';
 import * as _ from 'lodash';
-import { ICountry } from '../../../../types/ICountry';
+import { ICountry } from '../../../../../types/ICountry';
 
 @Component({
-  selector: 'location-selector',
-  templateUrl: './location-selector.component.html',
-  styleUrls: ['./location-selector.component.scss'],
+  selector: 'location-step',
+  templateUrl: './location-step.component.html',
+  styleUrls: ['./../steps.scss'],
 })
-export class LocationSelectorComponent implements OnInit {
+export class LocationStepComponent implements OnInit {
   public countries = CountryRegionData as ICountry[];
   public country: any;
   public selectedCountry = '';

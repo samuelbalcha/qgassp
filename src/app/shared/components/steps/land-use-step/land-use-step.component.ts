@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
-import { LandTypes } from '../../../../enums/LandTypes';
+import { LandTypes } from '../../../../../enums/LandTypes';
 
 @Component({
-  selector: 'land-use',
-  templateUrl: './land-use.component.html',
-  styleUrls: ['./land-use.component.scss'],
+  selector: 'land-use-step',
+  templateUrl: './land-use-step.component.html',
+  styleUrls: ['./../steps.scss'],
 })
-export class LandUseComponent implements OnInit {
+export class LandUseStepComponent implements OnInit {
   public landTypes = Object.values(LandTypes);
 
   public fromLandType: any;

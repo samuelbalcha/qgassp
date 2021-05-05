@@ -3,42 +3,26 @@
 -->
 
 <mat-horizontal-stepper [linear]="isLinear">
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Location</ng-template>
-      <h2>Location details</h2>
-      <location-selector></location-selector>
+  <mat-step>
+    <ng-template matStepLabel>Location</ng-template>
+    <location-step></location-step>
 
-      <h4>Choose dataset:</h4>
-      <div>
-        <mat-radio-group>
-          <mat-radio-button value="1">Default dataset</mat-radio-button>
-          <mat-radio-button value="2"
-            >Location specific dataset</mat-radio-button
-          >
-        </mat-radio-group>
-      </div>
-
-      <br />
-
-      <button mat-button mat-raised-button color="primary" matStepperNext>
-        Next
-      </button>
-    </form>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
   </mat-step>
 
   <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Areas & Land use type</ng-template>
+    <ng-template matStepLabel>Areas & Land use type</ng-template>
 
-      <land-use></land-use>
-      <button mat-button mat-raised-button color="primary" matStepperNext>
-        Next
-      </button>
-      <button mat-button mat-raised-button color="" matStepperPrevious>
-        Back
-      </button>
-    </form>
+    <land-use-step></land-use-step>
+
+    <button mat-button mat-raised-button color="primary" matStepperNext>
+      Next
+    </button>
+    <button mat-button mat-raised-button color="" matStepperPrevious>
+      Back
+    </button>
   </mat-step>
 
   <mat-step>

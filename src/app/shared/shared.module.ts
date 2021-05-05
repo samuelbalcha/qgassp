@@ -7,17 +7,19 @@ import { HeaderComponent } from './components/header/header.component';
 import { SideNavComponent } from './components/sidenav/sidenav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MaterialModule } from './material.module';
-import { LocationSelectorComponent } from './components/location-selector/location-selector.component';
-import { LandUseComponent } from './components/land-use/land-use.component';
 import { EmissionFactorsComponent } from './components/emission-factors-table/emission-factors.component';
+import { ResultsStepComponent } from './components/steps/results-step/results-step.component';
+import { LocationStepComponent } from './components/steps/location-step/location-step.component';
+import { LandUseStepComponent } from './components/steps/land-use-step/land-use-step.component';
 
 const shared = [
   HeaderComponent,
   SideNavComponent,
   FooterComponent,
-  LocationSelectorComponent,
-  LandUseComponent,
   EmissionFactorsComponent,
+  LocationStepComponent,
+  LandUseStepComponent,
+  ResultsStepComponent,
 ];
 
 @NgModule({
