@@ -8,9 +8,10 @@ import { SideNavComponent } from './components/sidenav/sidenav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MaterialModule } from './material.module';
 import { EmissionFactorsComponent } from './components/emission-factors-table/emission-factors.component';
-import { ResultsStepComponent } from './components/steps/results-step/results-step.component';
+import { ResultStepComponent } from './components/steps/result-step/result-step.component';
 import { LocationStepComponent } from './components/steps/location-step/location-step.component';
 import { LandUseStepComponent } from './components/steps/land-use-step/land-use-step.component';
+import { LandUseChangeComponent } from './components/land-use-change/land-use-change.component';
 
 const shared = [
   HeaderComponent,
@@ -19,7 +20,8 @@ const shared = [
   EmissionFactorsComponent,
   LocationStepComponent,
   LandUseStepComponent,
-  ResultsStepComponent,
+  ResultStepComponent,
+  LandUseChangeComponent,
 ];
 
 @NgModule({

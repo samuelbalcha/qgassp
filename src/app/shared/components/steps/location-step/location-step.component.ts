@@ -33,7 +33,7 @@ export class LocationStepComponent implements OnInit {
     this.region = _.find(this.country.regions, {
       name: this.selectedRegion,
     });
-    console.log('region', this.region);
+
     if (this.selectedCountry === 'Finland' && this.selectedRegion === 'Lappi') {
       this.isDataFound = true;
     }

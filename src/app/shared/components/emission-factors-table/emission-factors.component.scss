@@ -1,3 +1,5 @@
+@import '../../../../mixins.scss';
+
 mat-label {
   display: block;
   margin-bottom: 10px;
@@ -21,6 +23,39 @@ th.mat-header-cell {
 
 .table-container {
   height: 190px;
-  overflow: auto;
-  width: 70%;
 }
+
+@include mat-table-columns(
+  (
+    Transformation: (
+      width: 200px,
+    ),
+    Organic-soil: (
+      width: 80px,
+    ),
+    Mineral-soil: (
+      width: 80px,
+    ),
+    Total: (
+      width: 80px,
+    ),
+    Aboveground: (
+      width: 80px,
+    ),
+    Belowground: (
+      width: 80px,
+    ),
+    Deadwood: (
+      width: 80px,
+    ),
+    Litter: (
+      width: 80px,
+    ),
+    Mineral: (
+      width: 80px,
+    ),
+    Organic: (
+      width: 80px,
+    ),
+  )
+);

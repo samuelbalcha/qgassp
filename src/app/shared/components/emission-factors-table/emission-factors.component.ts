@@ -27,7 +27,7 @@ export class EmissionFactorsComponent implements OnInit {
   ];
 
   displayedColumns: string[] = [
-    '-',
+    'Transformation',
     'Aboveground',
     'Belowground',
     'Deadwood',
