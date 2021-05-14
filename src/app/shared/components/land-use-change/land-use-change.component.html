@@ -1,0 +1,31 @@
+<div class="flex-container">
+  <div class="flex-item space-between">
+    <h4>From</h4>
+    <mat-form-field appearance="fill">
+      <mat-select
+        [(ngModel)]="fromSelectedLandType"
+        name="fromlandType"
+        (selectionChange)="onFromLandTypeSelected($event)"
+      >
+        <mat-option *ngFor="let landType of landTypes" [value]="landType">
+          {{ landType }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="flex-item">
+    <h4>To</h4>
+    <mat-form-field appearance="fill">
+      <mat-select
+        [(ngModel)]="toSelectedLandType"
+        name="tolandType"
+        (selectionChange)="onToLandTypeSelected($event)"
+      >
+        <mat-option *ngFor="let landType of landTypes" [value]="landType">
+          {{ landType }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

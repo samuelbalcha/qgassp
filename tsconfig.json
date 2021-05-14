@@ -1,0 +1,35 @@
+{
+	"compilerOptions": {
+		"outDir": "dist",
+		"rootDir": ".",
+		"sourceMap": true,
+		"strict": true,
+		"esModuleInterop": true,
+		"resolveJsonModule": true,
+		"declaration": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"noEmitOnError": true,
+		"newLine": "lf",
+		"allowSyntheticDefaultImports": true,
+		"noUnusedLocals": true,
+		"experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "commonjs",
+    "lib": [
+      "es2018",
+      "dom"
+    ]
+	},
+	"angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  },
+	"include": ["src/**/*", "server/**/*"],
+	"exclude": ["node_modules", "src/**/*.test.ts"]
+}

@@ -1,0 +1,100 @@
+import { sign, verify } from 'jsonwebtoken';
+
+import config from '../config';
+import { IToken } from './IAuthData';
+import { IInternalUser } from './IInternalUser';
+
+const tokenRegex = /^Bearer (.+)$/;
+
+const verifyToken = async (token: string): Promise<IToken> => {
+	try {
+		return verify(token, config.JWT_SECRET) as IToken;
+	} catch (err) {
+		switch (err.name) {
+			case 'TokenExpiredError':
+				throw new Error('Invalid token');
+			default:
+				throw new Error('Invalid token');
+		}
+	}
+};
+
+const getUser = async (userId: string): Promise<IInternalUser> => {
+	if (!userId) {
+		throw new Error('userId.required');
+	}
+
+	const dbUser = await User.findOne({
+		_id: userId,
+	})
+		.select('name organization role cr_number')
+		.lean();
+
+	if (!dbUser) {
+		throw new Error('user.notFound');
+	}
+
+	const userString = JSON.stringify(dbUser);
+
+	return JSON.parse(userString);
+};
+
+const setUser = async (
+	user: IInternalUser,
+	authHeader: string
+): Promise<any> => {
+	if (!authHeader) {
+		return;
+	}
+
+	const match = tokenRegex.exec(authHeader);
+	if (!match || match.length !== 2) {
+		throw new Error('Invalid token');
+	}
+
+	const token = match[1];
+
+	const decoded = await verifyToken(token);
+
+	if (!decoded.userId) {
+		throw new Error('Invalid token');
+	}
+
+	try {
+		user = await getUser(decoded.userId);
+	} catch (err) {
+		if (err.key !== 'dbUser:notFound') {
+			throw err;
+		}
+	}
+
+	if (!user) {
+		throw new Error('Invalid token');
+	}
+};
+
+const signToken = async (userId: string, role: string): Promise<IToken> => {
+	if (!userId) {
+		throw new Error('userId.required');
+	}
+
+	const payload: IToken = {
+		userId: userId,
+		role: role,
+	};
+
+	const expiry = {
+		expiresIn: '30d',
+	};
+
+	const token = await new Promise((resolve, reject) => {
+		sign(payload, config.JWT_SECRET, expiry, (err, signedToken) => {
+			if (err) {
+				return reject(err);
+			}
+			resolve(signedToken);
+		});
+	});
+
+	return token;
+};

@@ -1,0 +1,29 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.flex-item {
+  width: auto;
+}
+
+.space-between {
+  margin-right: 16px;
+}
+
+.table-container {
+  overflow: auto;
+}
+
+.text-align-center {
+  text-align: center;
+}

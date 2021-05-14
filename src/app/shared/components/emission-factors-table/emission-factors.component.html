@@ -1,0 +1,73 @@
+<table
+  mat-table
+  [dataSource]="dataSource"
+  class="table-container mat-elevation-z8"
+>
+  <!-- Emission factors Column -->
+  <ng-container matColumnDef="Transformation">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">{{ element.transformation }}</td>
+  </ng-container>
+
+  <!-- Aboveground Column -->
+  <ng-container matColumnDef="Aboveground">
+    <th mat-header-cell *matHeaderCellDef>Aboveground</th>
+    <td mat-cell *matCellDef="let element">{{ element.aboveGround }}</td>
+  </ng-container>
+
+  <!-- Belowground -->
+  <ng-container matColumnDef="Belowground">
+    <th mat-header-cell *matHeaderCellDef>Belowground</th>
+    <td mat-cell *matCellDef="let element">{{ element.belowGround }}</td>
+  </ng-container>
+
+  <!-- Deadwood  -->
+  <ng-container matColumnDef="Deadwood">
+    <th mat-header-cell *matHeaderCellDef>Deadwood</th>
+    <td mat-cell *matCellDef="let element">{{ element.deadWood }}</td>
+  </ng-container>
+
+  <!-- Litter Column -->
+  <ng-container matColumnDef="Litter">
+    <th mat-header-cell *matHeaderCellDef>Litter</th>
+    <td mat-cell *matCellDef="let element">{{ element.litter }}</td>
+  </ng-container>
+
+  <!-- Mineral Column -->
+  <ng-container matColumnDef="Mineral">
+    <th mat-header-cell *matHeaderCellDef>Mineral</th>
+    <td mat-cell *matCellDef="let element">{{ element.mineral }}</td>
+  </ng-container>
+
+  <!-- Organic Column -->
+  <ng-container matColumnDef="Organic">
+    <th mat-header-cell *matHeaderCellDef>Organic</th>
+    <td mat-cell *matCellDef="let element">{{ element.organic }}</td>
+  </ng-container>
+
+  <!-- Main headers -->
+  <ng-container matColumnDef="Emission factors* t C/ha yr">
+    <th mat-header-cell *matHeaderCellDef [attr.colspan]="1">
+      Emission factors* t C/ha yr
+    </th>
+  </ng-container>
+  <ng-container matColumnDef="Biomass">
+    <th mat-header-cell *matHeaderCellDef [attr.colspan]="2">Biomass</th>
+  </ng-container>
+
+  <ng-container matColumnDef="Dead organic matter">
+    <th mat-header-cell *matHeaderCellDef [attr.colspan]="2">
+      Dead organic matter
+    </th>
+  </ng-container>
+
+  <ng-container matColumnDef="Soil">
+    <th mat-header-cell *matHeaderCellDef [attr.colspan]="2">Soil</th>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="mainColumns"></tr>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<br />
