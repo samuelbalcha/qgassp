@@ -7,8 +7,10 @@ import config from './config';
 import router from './routes';
 import logRequestStart from './request.log';
 
+const connectionString = process.env.MONGODB_URL || config.MONGODB_URL;
+
 mongoose.connect(
-	config.MONGODB_URL,
+	connectionString,
 	{
 		useNewUrlParser: true,
 		useCreateIndex: true,
@@ -45,5 +47,5 @@ app.use('/api', router);
 const port = process.env.PORT || 3005;
 
 app.listen(port, () => {
-	console.log('Co2 analyzer connected at port 3005');
+	console.log(`Co2 analyzer connected at port ${port}`);
 });
