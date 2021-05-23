@@ -14,27 +14,27 @@ import { LandUseStepComponent } from './components/steps/land-use-step/land-use-
 import { LandUseChangeComponent } from './components/land-use-change/land-use-change.component';
 
 const shared = [
-  HeaderComponent,
-  SideNavComponent,
-  FooterComponent,
-  EmissionFactorsComponent,
-  LocationStepComponent,
-  LandUseStepComponent,
-  ResultStepComponent,
-  LandUseChangeComponent,
+	HeaderComponent,
+	SideNavComponent,
+	FooterComponent,
+	EmissionFactorsComponent,
+	LocationStepComponent,
+	LandUseStepComponent,
+	ResultStepComponent,
+	LandUseChangeComponent,
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MaterialModule,
-  ],
-  declarations: [...shared],
-  exports: [...shared, FormsModule, ReactiveFormsModule, MaterialModule],
-  providers: [],
-  schemas: [],
+	imports: [
+		CommonModule,
+		RouterModule,
+		FormsModule,
+		ReactiveFormsModule,
+		MaterialModule,
+	],
+	declarations: [...shared],
+	exports: [...shared, FormsModule, ReactiveFormsModule, MaterialModule],
+	providers: [],
+	schemas: [],
 })
 export class SharedModule {}

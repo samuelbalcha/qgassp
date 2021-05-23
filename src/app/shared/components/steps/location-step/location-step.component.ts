@@ -1,41 +1,44 @@
 import { Component, OnInit } from '@angular/core';
 import CountryRegionData from 'country-region-data/data.json';
-import * as _ from 'lodash';
-import { ICountry } from '../../../../../types/ICountry';
+import _ from 'lodash';
+import { ICountry, IRegion } from '../../../../../types/ICountry';
 
 @Component({
-  selector: 'location-step',
-  templateUrl: './location-step.component.html',
-  styleUrls: ['./../steps.scss'],
+	selector: 'location-step',
+	templateUrl: './location-step.component.html',
+	styleUrls: ['./../steps.scss'],
 })
-export class LocationStepComponent implements OnInit {
-  public countries = CountryRegionData as ICountry[];
-  public country: any;
-  public selectedCountry = '';
-  public selectedRegion = '';
-  public region: any;
+export class LocationStepComponent {
+	public countries: ICountry[];
+	public country: ICountry | undefined;
+	public selectedCountry = '';
+	public selectedRegion = '';
+	public region: IRegion | undefined;
 
-  public isDataFound = false;
+	public isDataFound = false;
 
-  constructor() {}
+	constructor() {
+		this.countries = CountryRegionData as ICountry[];
+	}
 
-  ngOnInit() {}
+	onCountrySelected(): void {
+		this.country = _.find(this.countries, {
+			countryName: this.selectedCountry,
+		});
 
-  onCountrySelected(_event: any) {
-    this.country = _.find(this.countries, {
-      countryName: this.selectedCountry,
-    });
+		this.isDataFound = false;
+	}
 
-    this.isDataFound = false;
-  }
+	onRegionSelected(): void {
+		this.region = _.find(this.country?.regions, {
+			name: this.selectedRegion,
+		});
 
-  onRegionSelected(_event: any) {
-    this.region = _.find(this.country.regions, {
-      name: this.selectedRegion,
-    });
-
-    if (this.selectedCountry === 'Finland' && this.selectedRegion === 'Lappi') {
-      this.isDataFound = true;
-    }
-  }
+		if (
+			this.selectedCountry === 'Finland' &&
+			this.selectedRegion === 'Lappi'
+		) {
+			this.isDataFound = true;
+		}
+	}
 }
