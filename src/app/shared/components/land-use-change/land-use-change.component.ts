@@ -1,28 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Component } from '@angular/core';
 import { LandTypes } from '../../../../enums/LandTypes';
 
 @Component({
-  selector: 'location-use-change',
-  templateUrl: './land-use-change.component.html',
-  styleUrls: ['./land-use-change.component.scss'],
+	selector: 'location-use-change',
+	templateUrl: './land-use-change.component.html',
+	styleUrls: ['./land-use-change.component.scss'],
 })
-export class LandUseChangeComponent implements OnInit {
-  public landTypes = Object.values(LandTypes);
+export class LandUseChangeComponent {
+	public landTypes: LandTypes[];
 
-  public fromLandType: any;
-  public fromSelectedLandType = '';
-  public toLandType: any;
-  public toSelectedLandType = '';
+	public fromLandType = '';
+	public fromSelectedLandType = '';
+	public toLandType = '';
+	public toSelectedLandType = '';
 
-  constructor() {}
+	constructor() {
+		this.landTypes = Object.values(LandTypes);
+	}
 
-  ngOnInit() {}
+	onFromLandTypeSelected(): void {
+		this.fromLandType = this.fromSelectedLandType;
+	}
 
-  onFromLandTypeSelected(_event: any) {
-    this.fromLandType = this.fromSelectedLandType;
-  }
-
-  onToLandTypeSelected(_event: any) {
-    this.toLandType = this.toSelectedLandType;
-  }
+	onToLandTypeSelected(): void {
+		this.toLandType = this.toSelectedLandType;
+	}
 }
