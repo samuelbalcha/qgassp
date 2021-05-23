@@ -4,9 +4,9 @@ import { CONFIG } from './config';
 import { AppModule } from './app/app.module';
 
 if (CONFIG.isProduction) {
-  enableProdMode();
+	enableProdMode();
 }
 
 platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch((err) => console.error(err));
+	.bootstrapModule(AppModule)
+	.catch((err) => console.error(err));
