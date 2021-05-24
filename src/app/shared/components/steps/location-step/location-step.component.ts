@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import CountryRegionData from 'country-region-data/data.json';
 import _ from 'lodash';
 import { ICountry, IRegion } from '../../../../../types/ICountry';
