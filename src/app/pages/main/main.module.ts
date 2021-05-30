@@ -6,15 +6,15 @@ import { SharedModule } from '../../shared/shared.module';
 import { MainPageComponent } from './main.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: MainPageComponent,
-  },
+	{
+		path: '',
+		component: MainPageComponent,
+	},
 ];
 
 @NgModule({
-  declarations: [MainPageComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+	declarations: [MainPageComponent],
+	imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
+	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class MainPageModule {}

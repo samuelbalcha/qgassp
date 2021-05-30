@@ -2,14 +2,14 @@ module.exports = {
 	preset: 'ts-jest',
 	testEnvironment: 'node',
 	setupFiles: ['./jest.setup.ts'],
-	collectCoverageFrom: ['src/**/*.ts', '!**/node_modules/**'],
+	collectCoverageFrom: ['server/**/*.ts', '!**/node_modules/**'],
 	coverageThreshold: {
-		'src/**/*.ts': {
+		'server/**/*.ts': {
 			statements: 30,
 			branches: 30,
 			functions: 30,
 			lines: 30,
 		},
 	},
-	modulePathIgnorePatterns: ['dist/'],
+	modulePathIgnorePatterns: ['server/config/', 'src/', 'dist/'],
 };

@@ -1,22 +1,23 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/interface-name-prefix */
 import { Router } from 'express';
+import { setUser } from './auth';
+import { IInternalUser } from './auth/IInternalUser';
+import meRouter from './api/me';
 
 //import { setUser } from './auth';
-//import meRouter from './api/me';
+//
 //import userRouter from './api/user';
-/*
+
 declare module 'express' {
 	export interface Request {
-		user?: any;
+		user?: IInternalUser;
 	}
 }
-*/
-const router = Router();
 
-// Set user to req.user for all API calls
-/*
+const router = Router();
 router.use(setUser);
 
 router.use('/me', meRouter);
-router.use('/user', userRouter);
-*/
+
 export default router;
