@@ -30,6 +30,6 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
-	"include": ["src/**/*", "server/**/*"],
+	"include": ["src/**/*", "server/**/*", "commons/**/*"],
 	"exclude": ["node_modules", "src/**/*.test.ts"]
 }

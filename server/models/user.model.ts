@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Schema, model } from 'mongoose';
-import { UserRoles } from '../enums/userRoles';
+import { UserRoles } from '../../commons/enums/userRoles';
 import { encryptPassword, createSalt, isValidPassword } from '../util';
 
 export const UserSchema = new Schema({

@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { ProjectTypes } from '../enums/projectTypes';
+import { ProjectTypes } from '../../commons/enums/projectTypes';
 
 export const ProjectSchema = new Schema({
 	projectType: {

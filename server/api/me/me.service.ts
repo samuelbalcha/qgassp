@@ -6,13 +6,9 @@ import { signToken } from '../../auth';
 import { encryptPassword } from '../../util';
 import { IAuthData } from '../../auth/IAuthData';
 import { IInternalUser, IUpdatePassword } from '../../auth/IInternalUser';
+import { ILoggedInUser } from './../../../commons/types/ILoggedInUser';
 
 const userSelect = 'name email role';
-
-interface ILoggedInUser {
-	user: any;
-	token: string;
-}
 
 const login = async (data: IAuthData): Promise<ILoggedInUser> => {
 	if (!data) {

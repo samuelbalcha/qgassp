@@ -1,0 +1,28 @@
+.auth {
+	width: 100%;
+	max-width: 330px;
+	margin: 0 auto;
+	text-align: center;
+
+	.form-control {
+		box-sizing: border-box;
+		height: auto;
+		padding: 10px;
+	}
+
+	input[type='email'] {
+		margin-bottom: -1px;
+	}
+
+	input[type='password'] {
+		margin-bottom: 10px;
+	}
+}
+.login {
+	margin: 0;
+	position: absolute;
+	top: 10%;
+}
+.login-screen {
+	min-height: 100%;
+}

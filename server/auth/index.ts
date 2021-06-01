@@ -4,7 +4,7 @@ import _ from 'lodash';
 import { sign, verify } from 'jsonwebtoken';
 import { User } from '../models/user.model';
 import config from '../config';
-import { UserRoles } from '../enums/userRoles';
+import { UserRoles } from '../../commons/enums/userRoles';
 import { IInternalUser } from './IInternalUser';
 import { IToken } from './IAuthData';
 
