@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 import { User } from '../../../models/user.model';
 import { generateSlug } from '../../../util';
-import { UserRoles } from '../../../enums/userRoles';
+import { UserRoles } from '../../../../commons/enums/userRoles';
 
 export type type = 'user';
 export const model = User;
