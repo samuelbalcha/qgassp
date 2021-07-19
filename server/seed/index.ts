@@ -8,9 +8,11 @@ import config from '../config';
 import { RefClass } from './ref';
 
 import * as user from './data/user';
+import * as project from './data/project';
 
 const collections: any = {
 	user,
+	project,
 };
 
 export async function create(obj: any) {

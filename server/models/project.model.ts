@@ -20,6 +20,10 @@ export const ProjectSchema = new Schema({
 		required: true,
 		default: Date.now,
 	},
+	createdBy: {
+		type: Schema.Types.ObjectId,
+		ref: 'User',
+	},
 	dataSet: {
 		default: [],
 		custom: [],

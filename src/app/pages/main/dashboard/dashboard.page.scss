@@ -1,0 +1,11 @@
+.create-project {
+	color: #616161;
+	transition: box-shadow 135ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+	box-shadow: 0 1px 1px 0 rgb(66 66 66 / 8%),
+		0 1px 3px 1px rgb(66 66 66 / 16%);
+	width: 240px;
+	border-radius: 3px;
+	margin: 16px;
+	text-align: center;
+	min-height: 100px;
+}
