@@ -86,3 +86,6 @@ typings/
 # TypeScript output
 dist
 out
+
+# Script
+scripts

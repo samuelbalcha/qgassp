@@ -12,12 +12,13 @@
     "prestart": "if test \"$NODE_ENV\" != \"production\"; then ng build --prod && npm run build; fi",
     "postinstall": "ng build --prod",
     "start": "node dist/server/index.js",
-    "dev": "NODE_ENV=development nodemon",
+    "dev": "NODE_ENV=development ts-node server/index.ts",
     "demo": "NODE_ENV=demo nodemon",
     "seed": "NODE_ENV=development ts-node server/seed/init.ts",
     "test": "jest --runInBand --detectOpenHandles",
     "lint": "eslint \"src/**/*{.js,.ts,.tsx}\"",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "start2": "ng build && ts-node server/index.ts"
   },
   "dependencies": {
     "@angular/animations": "~11.2.9",
