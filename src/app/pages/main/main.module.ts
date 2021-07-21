@@ -23,4 +23,4 @@ const routes: Routes = [
 	imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class MainPageModule {}
+export class MainModule {}
