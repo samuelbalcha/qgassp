@@ -23,7 +23,6 @@ import { FormsModule } from '@angular/forms';
 		AppRoutingModule,
 		BrowserAnimationsModule,
 		FormsModule,
-
 		SharedModule,
 		CoreModule.forRoot(),
 
