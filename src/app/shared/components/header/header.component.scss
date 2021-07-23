@@ -1,6 +1,24 @@
 .header {
   position: fixed;
-  top: 0;
+  top: 12px;
   left: 0;
   right: 0;
+  background-color: white;
+  color: #000E48;
 }
+.logoImg{
+  height: 10rem !important;  
+  width: 14rem !important;
+}
+.bottomLogo {
+  position: fixed;
+  top: 86px;
+  left: 0;
+  right: 0;
+  color: white;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 76%;
+  }
