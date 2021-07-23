@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { NgxLoadingModule } from 'ngx-loading';
 //import { AuthButtonComponent } from './auth-button/auth-button.component';
@@ -14,6 +12,9 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+
 
 @NgModule({
 	declarations: [AppComponent],
@@ -23,7 +24,8 @@ import { FormsModule } from '@angular/forms';
 		AppRoutingModule,
 		BrowserAnimationsModule,
 		FormsModule,
-
+		MatInputModule,
+		MatButtonModule,
 		SharedModule,
 		CoreModule.forRoot(),
 
@@ -41,4 +43,4 @@ import { FormsModule } from '@angular/forms';
 	],
 	bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
