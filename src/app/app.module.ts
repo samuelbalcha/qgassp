@@ -28,7 +28,6 @@ import { MatInputModule } from '@angular/material/input';
 		MatButtonModule,
 		SharedModule,
 		CoreModule.forRoot(),
-
 		ToastrModule.forRoot({ positionClass: 'inline' }),
 		ToastContainerModule,
 		NgxLoadingModule.forRoot({}),
