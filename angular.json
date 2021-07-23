@@ -97,6 +97,9 @@
           "configurations": {
             "production": {
               "browserTarget": "co2-analyzer:build:production"
+            },
+            "development": {
+              "browserTarget": "co2-analyzer:build:development"
             }
           },
           "defaultConfiguration": "development"
