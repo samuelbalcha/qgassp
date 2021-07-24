@@ -14,10 +14,12 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { DatasetComponent } from './pages/main/dataset/dataset.component';
+import { HowitworksComponent } from './pages/main/howitworks/howitworks.component';
 
 
 @NgModule({
-	declarations: [AppComponent],
+	declarations: [AppComponent, DatasetComponent, HowitworksComponent],
 	imports: [
 		BrowserModule,
 		HttpClientModule,
