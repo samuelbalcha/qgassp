@@ -1,3 +1,30 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<!-- <app-header></app-header>
+<br>
+<br>
+<br>
+<br>
+<div class="routedPage">
+    <router-outlet></router-outlet>
+</div> 
+<div class="content mat-elevation-z8">
+    <router-outlet></router-outlet>
+</div>
+<app-footer></app-footer> -->
+
+<mat-drawer-container class="example-container" color="primary">
+    <mat-drawer-content>
+        <mat-toolbar class="header">
+            <img src=".././assets/logo/ESPON-EGTC-logo.jpg" alt="ESPON-EGTC-logo" class="logoImg">
+            <span>ESPON QGASSP TOOL</span>
+            <div class="container bottomLogo">
+                <div>
+                    <a mat-button routerLink="/dataset">DataSet</a>
+                    <a mat-button routerLink="/howitworks">How it works</a>
+                </div>
+            </div>
+        </mat-toolbar>
+        <div class="content mat-elevation-z8">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

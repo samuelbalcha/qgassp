@@ -17,7 +17,7 @@ export class DashboardPageComponent implements OnInit {
 	public loading = false;
 	public notFound = false;
 
-	constructor(private authSvc: AuthService) {}
+	constructor(private authSvc: AuthService) { }
 
 	ngOnInit() {
 		console.log('dashboard');
@@ -25,5 +25,6 @@ export class DashboardPageComponent implements OnInit {
 
 	onCreateProject(projectType: string) {
 		console.log('type', projectType);
+		console.log(this.currentUser);
 	}
 }

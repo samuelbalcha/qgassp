@@ -1,16 +1,48 @@
-<h4>Welcome to the dashboard</h4>
+<a class="title">QGasSP Dashboard</a>
 
+<h2 class="introTitle">Welcome to QGasSP tool!</h2>
+<p class="introText">Lorem Ipsum is simply dummy text of the
+	printing and typesetting industry. 7
+	Lorem Ipsum has been the industry's
+	standard dummy text ever since the 1500s,
+	when an unknown printer took a galley of type and scrambled
+	it to make a type specimen book. It has survived not only
+	five centuries, but also the leap into electronic typesetting,
+	remaining essentially unchanged.
+	It was popularised in the 1960s with the release of
+	Letraset sheets containing Lorem Ipsum passages,
+	and more recently with desktop publishing software
+	like Aldus PageMaker including versions of Lorem Ipsum.
+</p>
+<div>
+	<mat-form-field class="full-width" appearance="fill">
+		<input matInput type="text" placeholder="search by name,country, area, tag or ID">
+		<button matSuffix mat-icon-button aria-label="search">
+			<mat-icon color="primary">search</mat-icon>
+		</button>
+	</mat-form-field>
+</div>
+<br>
+<br>
+<div>
+	<h3 class="pageTitle"><b> All Projects</b> </h3>
+	<hr>
+</div>
+<br>
+<mat-card class="cards">
+	Setup a new project
+	<br>
+	<br>
+	<br>
+	<p>
+		<mat-icon>add</mat-icon>
+	</p>
+</mat-card>
 <div class="flex-container">
-	<div
-		class="flex-item create-project"
-		(click)="onCreateProject('territorial')"
-	>
+	<div class="flex-item create-project" (click)="onCreateProject('territorial')">
 		Territorial
 	</div>
-	<div
-		class="flex-item create-project"
-		(click)="onCreateProject('consultation')"
-	>
+	<div class="flex-item create-project" (click)="onCreateProject('consultation')">
 		Consumption based
 	</div>
 </div>
