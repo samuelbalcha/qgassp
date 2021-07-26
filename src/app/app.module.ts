@@ -30,7 +30,6 @@ import { HowitworksComponent } from './pages/main/howitworks/howitworks.componen
 		MatButtonModule,
 		SharedModule,
 		CoreModule.forRoot(),
-
 		ToastrModule.forRoot({ positionClass: 'inline' }),
 		ToastContainerModule,
 		NgxLoadingModule.forRoot({}),
