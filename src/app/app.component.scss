@@ -47,12 +47,13 @@ router-outlet {
   background-color: #FFD740;
 }
 .content{
-  height: calc(100vh - 98px);
+  // height: calc(100vh - 98px);
   border-radius: 20px;
   margin: 15px;
   margin-left: 28px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
+  margin-bottom: 5rem;
+  // font-size: 2rem;
 }

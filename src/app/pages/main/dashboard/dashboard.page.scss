@@ -11,7 +11,7 @@
 }
 .title{
 	color: #3F51B5;
-	margin: 5px;
+	margin: 35px;
 	font-size: 13px;
 }
 .introTitle{
@@ -20,8 +20,8 @@
 }
 .introText{
 	text-align: center;
-	padding-right: 30rem;
-	padding-left: 30rem;
+	padding-right: 14rem;
+	padding-left: 14rem;
 	font-size: 11px
 }
 .example-form {
@@ -29,21 +29,32 @@
 	max-width: 500px;
 	width: 100%;
   }
-  
+  .dashboardBoady {
+    margin-top: 32px;
+    margin-left: 13px;
+}
   .full-width {
 	width: 25%;
 	float: right;
 	padding-right: 30px;
+	padding-top: 12px;
   }
   .pageTitle{
 	color: #324191;
 	margin-left: 21px;
   }
   .cards{
-	width: 18%;
+	width: 75%;
     background-color: #324191;
     height: 8rem;
     text-align: center;
     color: white;
     font-size: 20px;
+  }
+  .ncards{
+	width: 75%;
+    background-color: #f0f0f0;
+    height: 8rem;
+    color: #324191;
+    font-size: 15px;
   }
