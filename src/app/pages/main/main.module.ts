@@ -6,6 +6,8 @@ import { SharedModule } from '../../shared/shared.module';
 
 import { MainPageComponent } from './main.page';
 import { DashboardPageComponent } from './dashboard/dashboard.page';
+import { DatasetComponent } from './dataset/dataset.component';
+import { HowitworksComponent } from './howitworks/howitworks.component';
 
 const routes: Routes = [
 	{
@@ -16,6 +18,14 @@ const routes: Routes = [
 		path: 'land-use',
 		component: MainPageComponent,
 	},
+	{
+		path: 'dataset',
+		component: DatasetComponent,
+	},
+	{
+		path: 'howitworks',
+		component: HowitworksComponent,
+	},
 ];
 
 @NgModule({
@@ -23,4 +33,4 @@ const routes: Routes = [
 	imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class MainModule {}
+export class MainModule { }
