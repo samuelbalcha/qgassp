@@ -4,6 +4,12 @@ import { Component, OnInit } from '@angular/core';
 import { UserRoles } from '../../../../../commons/enums/userRoles';
 
 import { AuthService } from '../../../core/services/auth.service';
+// import { IProject } from '../../../../../commons/types/IProject';
+
+export interface Project {
+	name: string;
+	location: number;
+}
 
 @Component({
 	selector: 'dashboard-page',
@@ -16,8 +22,18 @@ export class DashboardPageComponent implements OnInit {
 
 	public loading = false;
 	public notFound = false;
-
-	constructor(private authSvc: AuthService) {}
+	projects: Project[] = [
+		{ name: 'new', location: 3, },
+		{ name: 'Project Name', location: 1, },
+		{ name: 'Project Name', location: 1, },
+		{ name: 'Project Name', location: 1 },
+		{ name: 'Project Name', location: 2 },
+		{ name: 'Project Name', location: 2 },
+		{ name: 'Project Name', location: 2 },
+		{ name: 'Project Name', location: 2 },
+		{ name: 'Project Name', location: 2 },
+	];
+	constructor(private authSvc: AuthService) { }
 
 	ngOnInit() {
 		console.log('dashboard');
@@ -25,5 +41,6 @@ export class DashboardPageComponent implements OnInit {
 
 	onCreateProject(projectType: string) {
 		console.log('type', projectType);
+		console.log(this.currentUser);
 	}
 }

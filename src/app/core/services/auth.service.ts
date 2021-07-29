@@ -21,7 +21,6 @@ const DASHBOARD = '/dashboard';
 export class AuthService {
 	private authUrl = `${CONFIG.BASE_URL}/api/me`;
 	public currentUser: IUser | null;
-
 	currentUserChange: EventEmitter<number> = new EventEmitter();
 
 	constructor(
@@ -60,6 +59,7 @@ export class AuthService {
 					switch (data.user.role) {
 						case UserRoles.ADMIN:
 						case UserRoles.RESEARCHER:
+
 							return this.router.navigateByUrl(DASHBOARD);
 						default:
 							return this.router.navigateByUrl(LOGIN_PAGE);
@@ -81,6 +81,7 @@ export class AuthService {
 		this.storage.remove(CONFIG.TOKEN);
 		this.storage.remove(CONFIG.LOCAL_USER);
 		this.currentUser = null;
+
 		this.router.navigateByUrl(LOGIN_PAGE);
 	}
 
