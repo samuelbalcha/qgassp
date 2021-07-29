@@ -19,10 +19,12 @@ export interface Project {
 export class DashboardPageComponent implements OnInit {
 	public currentUser = this.authSvc.getCurrentUser();
 	public userRoles = UserRoles;
-
+	show = 4;
+	i = 0;
 	public loading = false;
 	public notFound = false;
-	projects: Project[] = [
+	public more = false;
+	public projects: Project[] = [
 		{ name: 'new', location: 3, },
 		{ name: 'Project Name', location: 1, },
 		{ name: 'Project Name', location: 1, },

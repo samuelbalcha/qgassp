@@ -24,11 +24,6 @@
 	padding-left: 14rem;
 	font-size: 11px
 }
-.example-form {
-	min-width: 150px;
-	max-width: 500px;
-	width: 100%;
-  }
   .dashboardBoady {
     margin-top: 32px;
     margin-left: 13px;
@@ -57,4 +52,9 @@
     height: 8rem;
     color: #324191;
     font-size: 15px;
+  }
+  .limitButton{
+	margin-left: 50%;
+    color: #324191;
+    background-color:#FAFAFA;
   }

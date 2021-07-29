@@ -37,7 +37,8 @@
 
 	<mat-grid-list cols="4" rowHeight="100px">
 		<!-- <mat-grid-tile *ngFor="let project of projects | limitTo: limit" colspan="1" rowspan="2" -->
-		<mat-grid-tile *ngFor="let project of projects" colspan="1" rowspan="2" style.background="black">
+		<mat-grid-tile *ngFor="let project of projects | slice:0:show let i=index" colspan="1" rowspan="2"
+			style.background="black">
 			<mat-card [ngClass]="{'cards': project.name =='new' ,'ncards': project.name !='new'}">
 				<div *ngIf="project.name =='new'; else notNew">
 					Setup a new Project
@@ -56,8 +57,9 @@
 			</mat-card>
 		</mat-grid-tile>
 	</mat-grid-list>
-	<button ng-show="limit === 4" ng-click="showMore()">+ Show More Artist</button>
-	<button ng-show="limit > 4" ng-click="showLess()">- Show Less</button>
+	<button mat-flat-button class="limitButton" *ngIf="show == 4" (click)="show = projects.length">Show More</button>
+	<button mat-flat-button class="limitButton" *ngIf="show > 4" (click)="show = 4">Show Less</button>
+
 	<div>
 		<h3 class="pageTitle"><b> All Projects</b> </h3>
 		<hr>
