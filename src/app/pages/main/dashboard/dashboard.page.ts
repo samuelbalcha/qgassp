@@ -9,6 +9,8 @@ import { AuthService } from '../../../core/services/auth.service';
 export interface Project {
 	name: string;
 	location: number;
+	status: string;
+	owner: string;
 }
 
 @Component({
@@ -24,20 +26,24 @@ export class DashboardPageComponent implements OnInit {
 	public loading = false;
 	public notFound = false;
 	public more = false;
-	public projects: Project[] = [
-		{ name: 'new', location: 3, },
-		{ name: 'Project Name', location: 1, },
-		{ name: 'Project Name', location: 1, },
-		{ name: 'Project Name', location: 1 },
-		{ name: 'Project Name', location: 2 },
-		{ name: 'Project Name', location: 2 },
-		{ name: 'Project Name', location: 2 },
-		{ name: 'Project Name', location: 2 },
-		{ name: 'Project Name', location: 2 },
+	public Allprojects: Project[] = [
+		{ name: 'new', location: 0, status: 'active', owner: 'thisUser' },
+		{ name: 'Project Name', location: 1, status: 'draft', owner: 'thisUser' },
+		{ name: 'Project Name', location: 1, status: 'active', owner: 'thisUser' },
+		{ name: 'Project Name', location: 1, status: 'active', owner: 'thisUser' },
+		{ name: 'Project Name', location: 2, status: 'active', owner: 'thisUser' },
+		{ name: 'Project Name', location: 2, status: 'active', owner: 'thisUser' },
+		{ name: 'Project Name', location: 2, status: 'active', owner: 'thisUser' },
+		{ name: 'Project Name', location: 2, status: 'active', owner: 'notThisUser' },
+		{ name: 'Project Name', location: 2, status: 'archived', owner: 'notThisUser' },
 	];
+
+	public projects: Project[] = this.Allprojects.filter(o => o.status === 'active' && o.owner === 'thisUser');
+
 	constructor(private authSvc: AuthService) { }
 
 	ngOnInit() {
+
 		console.log('dashboard');
 	}
 

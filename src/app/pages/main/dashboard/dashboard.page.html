@@ -36,7 +36,6 @@
 	<br>
 
 	<mat-grid-list cols="4" rowHeight="100px">
-		<!-- <mat-grid-tile *ngFor="let project of projects | limitTo: limit" colspan="1" rowspan="2" -->
 		<mat-grid-tile *ngFor="let project of projects | slice:0:show let i=index" colspan="1" rowspan="2"
 			style.background="black">
 			<mat-card [ngClass]="{'cards': project.name =='new' ,'ncards': project.name !='new'}">
@@ -65,7 +64,7 @@
 		<hr>
 	</div>
 	<mat-grid-list cols="4" rowHeight="100px">
-		<mat-grid-tile *ngFor="let project of projects" colspan="1" rowspan="2">
+		<mat-grid-tile *ngFor="let project of Allprojects" colspan="1" rowspan="2">
 			<mat-card class="ncards">
 				<mat-icon> location_on</mat-icon>
 				{{project.name}}
