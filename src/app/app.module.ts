@@ -12,23 +12,22 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
 import { DatasetComponent } from './pages/main/dataset/dataset.component';
 import { HowitworksComponent } from './pages/main/howitworks/howitworks.component';
+import { DashboardPageComponent } from './pages/main/dashboard/dashboard.page';
+
 
 
 @NgModule({
-	declarations: [AppComponent, DatasetComponent, HowitworksComponent],
+	declarations: [AppComponent, DatasetComponent, HowitworksComponent, DashboardPageComponent],
 	imports: [
 		BrowserModule,
 		HttpClientModule,
 		AppRoutingModule,
 		BrowserAnimationsModule,
 		FormsModule,
-		MatInputModule,
-		MatButtonModule,
 		SharedModule,
+
 		CoreModule.forRoot(),
 		ToastrModule.forRoot({ positionClass: 'inline' }),
 		ToastContainerModule,

@@ -6,8 +6,6 @@ import cors from 'cors';
 import config from './config';
 import router from './routes';
 import logRequestStart from './request.log';
-import liveReload from 'livereload';
-import connectLiveReload from 'connect-livereload';
 
 const connectionString = process.env.MONGODB_URL || config.MONGODB_URL;
 
@@ -29,13 +27,6 @@ mongoose.connect(
 const app = express();
 const CORS = cors();
 
-const liveReloadServer = liveReload.createServer();
-liveReloadServer.server.once('connection', () => {
-	setTimeout(() => {
-		liveReloadServer.refresh('/');
-	}, 100);
-});
-
 app.use(CORS);
 app.use(
 	urlencoded({
@@ -44,7 +35,6 @@ app.use(
 );
 app.use(bodyParser());
 app.use(logRequestStart);
-app.use(connectLiveReload());
 
 app.use('/api', router);
 
