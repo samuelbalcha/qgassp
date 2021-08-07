@@ -4,6 +4,7 @@
 import { IProject } from '../../../commons/types/IProject';
 import { Project } from '../../models/project.model';
 import { IInternalUser } from '../../auth/IInternalUser';
+import { ProjectStatuses } from '../../../commons/enums/projectStatuses';
 
 const create = async (
 	user: IInternalUser | undefined,
@@ -13,13 +14,13 @@ const create = async (
 		throw new Error('user.required');
 	}
 	if (!data) {
-		throw new Error('data.required');
+		throw new Error('project.required');
 	}
 	if (!data.name) {
-		throw new Error('data.name.required');
+		throw new Error('project.name.required');
 	}
 	if (!data.projectType) {
-		throw new Error('data.projectType.required');
+		throw new Error('project.projectType.required');
 	}
 
 	// do project check based on project type
@@ -27,6 +28,7 @@ const create = async (
 		...data,
 		createdAt: Date.now(),
 		createdBy: user._id,
+		status: ProjectStatuses.ACTIVE,
 	};
 
 	// populate createdBy
