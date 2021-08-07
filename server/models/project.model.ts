@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose';
+import { ProjectStatuses } from '../../commons/enums/projectStatuses';
 import { ProjectTypes } from '../../commons/enums/projectTypes';
 
 export const ProjectSchema = new Schema({
@@ -7,6 +8,16 @@ export const ProjectSchema = new Schema({
 		required: true,
 		enum: [ProjectTypes.TERRITORIAL, ProjectTypes.CONSUMPTION],
 		default: ProjectTypes.TERRITORIAL,
+	},
+	status: {
+		type: String,
+		required: true,
+		enum: [
+			ProjectStatuses.DRAFT,
+			ProjectStatuses.ACTIVE,
+			ProjectStatuses.ARCHIVED,
+		],
+		default: ProjectStatuses.DRAFT,
 	},
 	name: {
 		type: String,
