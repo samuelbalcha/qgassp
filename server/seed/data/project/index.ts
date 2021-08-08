@@ -2,7 +2,6 @@ import _ from 'lodash';
 
 import Ref from './../../ref';
 import { Project } from '../../../models/project.model';
-import { ProjectStatuses } from '../../../../commons/enums/projectStatuses';
 
 export type type = 'project';
 export const model = Project;
@@ -22,7 +21,6 @@ const items = {
 			custom: [],
 		},
 		modules: [],
-		status: ProjectStatuses.ACTIVE,
 	},
 
 	// Consumption
@@ -39,7 +37,6 @@ const items = {
 			custom: [],
 		},
 		modules: [],
-		status: ProjectStatuses.DRAFT,
 	},
 };
 

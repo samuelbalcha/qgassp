@@ -1,0 +1,92 @@
+.setupBoady{
+	padding-left: 40px;
+    padding-top: 40px;
+}
+.float{
+	float: left;
+}
+::ng-deep.mat-form-field-flex { 
+	background-color: white !important;
+	color: black;
+}
+.explanation{
+	padding-left: 20px;
+    padding-right: 36px;
+	text-align: center;
+	width: 270px;
+}
+.title{
+	color: #3F51B5;
+	margin: 35px;
+	font-size: 13px;
+}
+h4{
+	color: #3F51B5;
+}
+h2{
+	margin-top: 7px;
+    margin-bottom: 0px;
+}
+h1{
+	color: #324191;
+	font-weight: 500;
+	margin-bottom: -6px;
+}
+.lableInput{
+	margin-top: 10px;
+    margin-right: -4px;
+    margin-bottom: 15px;
+	margin-left: -4px;
+	font-size: larger;
+	display: flex;
+}
+.setupForm{
+	color: white;
+	background-color: #324191;
+	padding-top: 14px;
+  	padding-bottom: 5rem;
+}
+.boxed{
+	border-left: 1px solid black;
+    top: -43%;
+    bottom: 0;
+    padding-left: 18px;
+}
+.boxeddown{
+	border-left: 1px solid black;
+    top: -43%;
+    bottom: 0;
+	padding-left: 219px;
+	position: absolute;
+}
+.boxedNone{
+	border-left: 0px solid black;
+    top: -43%;
+    bottom: 0;
+	padding-left: 219px;
+	position: absolute;
+}
+.modesLabel{
+	padding-left: 0rem;
+}
+.modelType{
+	padding-left: 4rem;
+}
+.moduleText{
+	width: 30rem;
+    font-size: smaller;
+}
+.useSource{
+	font-size: larger;
+}
+.infoIcon{
+	color: green;
+	padding-left: 11px;
+	padding-top: 11px;
+}
+.setup{
+	background-color: #fff;
+    color: black;
+    margin-left: 48rem;
+    margin-top: 2rem;
+}

@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import { ProjectTypes } from '../../../commons/enums/projectTypes';
-import { ProjectStatuses } from '../../../commons/enums/projectStatuses';
 import { IProject } from '../../../commons/types/IProject';
 import { Project } from '../../models/project.model';
 import { create } from '../../seed';
@@ -16,7 +15,6 @@ const cleanUp = async () => {
 beforeAll(async () => {
 	c = await create({
 		user: ['adminA'],
-		project: ['consumptionA'],
 	});
 });
 
@@ -36,7 +34,6 @@ describe('create', () => {
 				custom: [],
 			},
 			modules: [],
-			status: ProjectStatuses.ACTIVE,
 		};
 
 		const result = await projectService.create(c.user.adminA, data);
@@ -47,23 +44,7 @@ describe('create', () => {
 });
 
 describe('get', () => {
-	it('should return existing project by id', async () => {
-		const consumptionA = await projectService.get(
-			c.user.adminA,
-			c.project.consumptionA._id
-		);
-
-		expect(consumptionA).toHaveProperty('dataSet', {
-			default: [],
-			custom: [],
-		});
-		expect(consumptionA).toHaveProperty('projectType', 'Consumption');
-		expect(consumptionA).toHaveProperty('status', 'Draft');
-		expect(consumptionA).toHaveProperty('modules', []);
-		expect(consumptionA).toHaveProperty('name', 'Project Consumption');
-		expect(consumptionA).toHaveProperty('location', {
-			countryCode: 'FI',
-			region: 'Helsinki',
-		});
+	it('should return existing project by id', () => {
+		
 	});
 });
