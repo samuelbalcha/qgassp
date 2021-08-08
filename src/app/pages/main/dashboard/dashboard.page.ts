@@ -6,7 +6,7 @@ import { UserRoles } from '../../../../../commons/enums/userRoles';
 import { AuthService } from '../../../core/services/auth.service';
 // import { IProject } from '../../../../../commons/types/IProject';
 
-export interface Project {
+export interface IProject {
 	name: string;
 	location: number;
 	status: string;
@@ -26,7 +26,7 @@ export class DashboardPageComponent implements OnInit {
 	public loading = false;
 	public notFound = false;
 	public more = false;
-	public Allprojects: Project[] = [
+	public Allprojects: IProject[] = [
 		{ name: 'new', location: 0, status: 'active', owner: 'thisUser' },
 		{ name: 'Project Name', location: 1, status: 'draft', owner: 'thisUser' },
 		{ name: 'Project Name', location: 1, status: 'active', owner: 'thisUser' },
@@ -38,7 +38,7 @@ export class DashboardPageComponent implements OnInit {
 		{ name: 'Project Name', location: 2, status: 'archived', owner: 'notThisUser' },
 	];
 
-	public projects: Project[] = this.Allprojects.filter(o => o.status === 'active' && o.owner === 'thisUser');
+	public projects: IProject[] = this.Allprojects.filter(o => o.status === 'active' && o.owner === 'thisUser');
 
 	constructor(private authSvc: AuthService) { }
 

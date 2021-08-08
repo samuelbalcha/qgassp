@@ -1,0 +1,54 @@
+<div class="moduleBody">
+    <h4>
+        <a class="headerLink" routerLink="/dashboard">QGasSP Dashboard &nbsp; ></a>
+        <a class="headerLink" routerLink="/setup-project">Setup New Project &nbsp; >
+        </a>"Project name" set up the baseline
+    </h4>
+    <br>
+    <h1 class="projectName">
+        "Project Name"
+    </h1>
+    <h1 style="float:right; margin-right: -8rem;">
+        unpublished
+    </h1>
+    <br>
+    <br>
+    <br>
+    <mat-card style="margin-right: -9rem; background-color:#E4E4E8;">
+        <div style="display:inline-flex">
+            <mat-icon> location_on</mat-icon>
+            <p>{{myProject.location}}</p>
+            <mat-icon style="padding-left: 60px;"> calendar_today</mat-icon>
+            <p>&nbsp;{{myProject.year}}</p>
+            <h6 class="datasource">Data source:&nbsp;</h6>
+            <p>{{myProject.location}}</p>
+            <p style="padding-left: 60px;">Default</p>
+            <a href="" style="padding-left: 60px;">EDIT</a>
+        </div>
+    </mat-card>
+    <br>
+    <br>
+    <p>
+        Select calculation modes
+    </p>
+
+    <div style="display:inline-flex">
+        <mat-checkbox color="primary" [checked]="landuse" (change)="landuse = !landuse">
+            Land use change
+        </mat-checkbox>
+        <mat-checkbox color="primary" style="padding-left: 60px" [checked]="trafic" (change)="trafic = !trafic">Trafic /
+            Infra
+        </mat-checkbox>
+        <mat-checkbox color="primary" style="padding-left: 60px" [checked]="buildings"
+            (change)="buildings = !buildings">Buildings
+        </mat-checkbox>
+        <mat-checkbox color="primary" style="padding-left: 60px" [checked]="consumption"
+            (change)="consumption = !consumption">
+            Consumption based
+        </mat-checkbox>
+    </div>
+    <br>
+    <br>
+    <h2 style="color:#3F51B5">1. Setting the baseline for each selected module</h2>
+
+</div>
