@@ -9,52 +9,56 @@
 	text-align: center;
 	min-height: 100px;
 }
-.title{
-	color: #3F51B5;
+.title {
+	color: #3f51b5;
 	margin: 35px;
 	font-size: 13px;
 }
-.introTitle{
+.introTitle {
 	color: #324191;
 	text-align: center;
 }
-.introText{
+.introText {
 	text-align: center;
 	padding-right: 14rem;
 	padding-left: 14rem;
-	font-size: 11px
+	font-size: 11px;
 }
-  .dashboardBoady {
-    margin-top: 32px;
-    margin-left: 13px;
+.dashboardBoady {
+	margin-top: 32px;
+	margin-left: 13px;
 }
-  .full-width {
+.full-width {
 	width: 25%;
 	float: right;
 	padding-right: 30px;
 	padding-top: 12px;
-  }
-  .pageTitle{
+}
+.pageTitle {
 	color: #324191;
 	margin-left: 21px;
-  }
-  .cards{
+}
+.cards {
 	width: 75%;
-    background-color: #324191;
-    height: 8rem;
-    text-align: center;
-    color: white;
-    font-size: 20px;
-  }
-  .ncards{
+	background-color: #324191;
+	height: 8rem;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+}
+.ncards {
 	width: 75%;
-    background-color: #f0f0f0;
-    height: 8rem;
-    color: #324191;
-    font-size: 15px;
-  }
-  .limitButton{
+	background-color: #f0f0f0;
+	height: 8rem;
+	color: #324191;
+	font-size: 15px;
+}
+.limitButton {
 	margin-left: 50%;
-    color: #324191;
-    background-color:#FAFAFA;
-  }
+	color: #324191;
+	background-color: #fafafa;
+}
+
+.setup-project {
+	cursor: pointer;
+}

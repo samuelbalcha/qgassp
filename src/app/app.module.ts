@@ -12,16 +12,10 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DatasetComponent } from './pages/main/dataset/dataset.component';
-import { HowitworksComponent } from './pages/main/howitworks/howitworks.component';
-import { DashboardPageComponent } from './pages/main/dashboard/dashboard.page';
-import { SetupComponent } from './pages/main//setup/setup.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-
-
 @NgModule({
-	declarations: [AppComponent, DatasetComponent, HowitworksComponent, DashboardPageComponent, SetupComponent],
+	declarations: [AppComponent],
 	imports: [
 		FlexLayoutModule,
 		BrowserModule,
@@ -47,4 +41,4 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 	],
 	bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

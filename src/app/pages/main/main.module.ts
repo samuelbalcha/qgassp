@@ -8,6 +8,9 @@ import { MainPageComponent } from './main.page';
 import { DashboardPageComponent } from './dashboard/dashboard.page';
 import { DatasetComponent } from './dataset/dataset.component';
 import { HowitworksComponent } from './howitworks/howitworks.component';
+import { SetupComponent } from './setup/setup.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialModule } from '../../shared/material.module';
 
 const routes: Routes = [
 	{
@@ -23,14 +26,30 @@ const routes: Routes = [
 		component: DatasetComponent,
 	},
 	{
-		path: 'howitworks',
+		path: 'how-it-works',
 		component: HowitworksComponent,
+	},
+	{
+		path: 'setup-project',
+		component: SetupComponent,
 	},
 ];
 
 @NgModule({
-	declarations: [MainPageComponent],
-	imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
+	declarations: [
+		MainPageComponent,
+		DatasetComponent,
+		HowitworksComponent,
+		DashboardPageComponent,
+		SetupComponent,
+	],
+	imports: [
+		FlexLayoutModule,
+		MaterialModule,
+		CommonModule,
+		RouterModule.forChild(routes),
+		SharedModule,
+	],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class MainModule { }
+export class MainModule {}

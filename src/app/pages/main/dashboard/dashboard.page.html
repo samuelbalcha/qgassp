@@ -2,48 +2,58 @@
 	<a class="title">QGasSP Dashboard</a>
 
 	<h3 class="introTitle">Welcome to QGasSP tool!</h3>
-	<p class="introText">Lorem Ipsum is simply dummy text of the
-		printing and typesetting industry. 7
-		Lorem Ipsum has been the industry's
-		standard dummy text ever since the 1500s,
-		when an unknown printer took a galley of type and scrambled
-		it to make a type specimen book. It has survived not only
-		five centuries, but also the leap into electronic typesetting,
-		remaining essentially unchanged.
-		Lorem Ipsum is simply dummy text of the
-		printing and typesetting industry. 7
-		Lorem Ipsum has been the industry's
-		standard dummy text ever since the 1500s,
-		when an unknown printer took a galley of type and scrambled
-		it to make a type specimen book. It has survived not only
-		five centuries, but also the leap into electronic typesetting,
+	<p class="introText">
+		Lorem Ipsum is simply dummy text of the printing and typesetting
+		industry. 7 Lorem Ipsum has been the industry's standard dummy text ever
+		since the 1500s, when an unknown printer took a galley of type and
+		scrambled it to make a type specimen book. It has survived not only five
+		centuries, but also the leap into electronic typesetting, remaining
+		essentially unchanged. Lorem Ipsum is simply dummy text of the printing
+		and typesetting industry. 7 Lorem Ipsum has been the industry's standard
+		dummy text ever since the 1500s, when an unknown printer took a galley
+		of type and scrambled it to make a type specimen book. It has survived
+		not only five centuries, but also the leap into electronic typesetting,
 		remaining essentially unchanged.
 	</p>
 	<div>
 		<mat-form-field class="full-width" appearance="fill">
-			<input matInput type="text" placeholder="search by name,country, area, tag or ID">
+			<input
+				matInput
+				type="text"
+				placeholder="search by name,country, area, tag or ID"
+			/>
 			<button matSuffix mat-icon-button aria-label="search">
 				<mat-icon color="primary">search</mat-icon>
 			</button>
 		</mat-form-field>
 	</div>
-	<br>
-	<br>
+	<br />
+	<br />
 	<div>
-		<h3 class="pageTitle"><b> Your Projects</b> </h3>
-		<hr>
+		<h3 class="pageTitle"><b> Your Projects</b></h3>
+		<hr />
 	</div>
-	<br>
+	<br />
 
 	<mat-grid-list cols="4" rowHeight="100px">
-		<mat-grid-tile *ngFor="let project of projects | slice:0:show let i=index" colspan="1" rowspan="2"
-			style.background="black">
-			<mat-card [ngClass]="{'cards': project.name =='new' ,'ncards': project.name !='new'}">
-				<div *ngIf="project.name =='new'; else notNew" routerLink="/newProject">
+		<mat-grid-tile
+			*ngFor="let project of projects | slice:0:show let i=index"
+			colspan="1"
+			rowspan="2"
+			style.background="black"
+		>
+			<mat-card
+				[ngClass]="{'cards': project.name =='new' ,'ncards': project.name !='new'}"
+			>
+				<div
+					class="setup-project"
+					*ngIf="project.name =='new'; else notNew"
+					routerLink="/setup-project"
+				>
 					Setup a new Project
-					<br>
-					<br>
-					<br>
+					<br />
+					<br />
+					<br />
 					<p>
 						<mat-icon>add</mat-icon>
 					</p>
@@ -52,23 +62,39 @@
 					<mat-icon> location_on</mat-icon>
 					{{project.name}}
 				</ng-template>
-
 			</mat-card>
 		</mat-grid-tile>
 	</mat-grid-list>
-	<button mat-flat-button class="limitButton" *ngIf="show == 4" (click)="show = projects.length">Show More</button>
-	<button mat-flat-button class="limitButton" *ngIf="show > 4" (click)="show = 4">Show Less</button>
+	<button
+		mat-flat-button
+		class="limitButton"
+		*ngIf="show == 4"
+		(click)="show = projects.length"
+	>
+		Show More
+	</button>
+	<button
+		mat-flat-button
+		class="limitButton"
+		*ngIf="show > 4"
+		(click)="show = 4"
+	>
+		Show Less
+	</button>
 
 	<div>
-		<h3 class="pageTitle"><b> All Projects</b> </h3>
-		<hr>
+		<h3 class="pageTitle"><b> All Projects</b></h3>
+		<hr />
 	</div>
 	<mat-grid-list cols="4" rowHeight="100px">
-		<mat-grid-tile *ngFor="let project of Allprojects" colspan="1" rowspan="2">
+		<mat-grid-tile
+			*ngFor="let project of Allprojects"
+			colspan="1"
+			rowspan="2"
+		>
 			<mat-card class="ncards">
 				<mat-icon> location_on</mat-icon>
 				{{project.name}}
-
 			</mat-card>
 		</mat-grid-tile>
 	</mat-grid-list>

@@ -2,7 +2,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
-import { SetupComponent } from './pages/main/setup/setup.component';
 
 const routes: Routes = [
 	{
@@ -10,12 +9,6 @@ const routes: Routes = [
 		redirectTo: 'dashboard',
 		pathMatch: 'full',
 	},
-	{
-		path: 'newProject',
-		//canActivate: [AuthGuard],
-		component: SetupComponent
-	},
-
 	{
 		path: '',
 		canActivate: [AuthGuard],
@@ -35,4 +28,4 @@ const routes: Routes = [
 	imports: [RouterModule.forRoot(routes)],
 	exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
