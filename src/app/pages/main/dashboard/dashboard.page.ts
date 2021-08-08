@@ -21,8 +21,8 @@ export interface Project {
 export class DashboardPageComponent implements OnInit {
 	public currentUser = this.authSvc.getCurrentUser();
 	public userRoles = UserRoles;
-	show = 4;
-	i = 0;
+	public show = 4;
+	public i = 0;
 	public loading = false;
 	public notFound = false;
 	public more = false;
@@ -47,8 +47,9 @@ export class DashboardPageComponent implements OnInit {
 		console.log('dashboard');
 	}
 
-	onCreateProject(projectType: string) {
-		console.log('type', projectType);
-		console.log(this.currentUser);
-	}
+	// onCreateProject(projectType: string) {
+	// 	console.log('type', projectType);
+	// 	console.log(this.currentUser);
+	// }
+
 }

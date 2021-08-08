@@ -1,5 +1,5 @@
 router-outlet {
-  display: block;
+  display: flex;
   position: absolute;
   margin-top: 64px;
   padding-top: 100px;
@@ -52,7 +52,7 @@ router-outlet {
   margin: 15px;
   margin-left: 28px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start ;
   align-items: center;
   margin-bottom: 5rem;
   // font-size: 2rem;

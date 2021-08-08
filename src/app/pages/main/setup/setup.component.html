@@ -1,0 +1,329 @@
+<div class="setupBoady">
+	<h4>
+		<a class="title" routerLink="/dashboard" style="text-decoration: none;"
+			>QGasSP Dashboard &nbsp; ></a
+		>Setup New Project
+	</h4>
+	<h1>Setup a new project</h1>
+	<br />
+	<p class="">
+		Short guiding / explaining text goes here! Short guiding / explaining
+		text goes here! Short guiding / explaining text goes here!
+	</p>
+	<h2>1. Basic info</h2>
+	<div class="setupForm">
+		<form class="setupForm" [formGroup]="setupForm" (ngSubmit)="onSubmit()">
+			<mat-grid-list cols="3" rowHeight="100px">
+				<mat-grid-tile>
+					<div>
+						<mat-label>
+							<p class="lableInput">1.1 Choose the Country*</p>
+						</mat-label>
+						<mat-form-field appearance="fill">
+							<mat-label>Country</mat-label>
+							<mat-select
+								[(ngModel)]="selectedCountry"
+								name="country"
+								(selectionChange)="onCountrySelected()"
+							>
+								<mat-option
+									*ngFor="let country of countries"
+									[value]="country.countryName"
+								>
+									{{ country.countryName }}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<div>
+						<mat-label>
+							<p class="lableInput">1.2 Choose the Area</p>
+						</mat-label>
+						<mat-form-field appearance="fill">
+							<mat-label>Area</mat-label>
+							<mat-select
+								formControlName="area"
+								[(ngModel)]="selectedRegion"
+								name="region"
+								(selectionChange)="onRegionSelected()"
+							>
+								<mat-option
+									*ngFor="let region of country?.regions"
+									[value]="region.name"
+								>
+									{{ region.name }}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+				</mat-grid-tile>
+
+				<mat-grid-tile>
+					<div class="boxed">
+						<mat-label>
+							<p class="lableInput">1.5 Choose the Year</p>
+						</mat-label>
+						<mat-form-field appearance="fill">
+							<mat-label>Choose a date</mat-label>
+
+							<mat-select
+								formControlName="year"
+								[(ngModel)]="selectedYear"
+								name="year"
+							>
+								<mat-option
+									*ngFor="let year of years"
+									[value]="year.id"
+								>
+									{{ year.value }}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+				</mat-grid-tile>
+			</mat-grid-list>
+			<mat-grid-list cols="3" rowHeight="100px">
+				<mat-grid-tile>
+					<div>
+						<mat-label>
+							<p class="lableInput">1.3 Name The project</p>
+						</mat-label>
+						<mat-form-field appearance="fill">
+							<mat-label>Name</mat-label>
+							<input matInput formControlName="name" />
+						</mat-form-field>
+					</div>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<div>
+						<mat-label>
+							<p class="lableInput">
+								1.4 Project ID (recommended)
+							</p>
+						</mat-label>
+						<mat-form-field appearance="fill">
+							<mat-label>Project ID</mat-label>
+							<input matInput formControlName="id" />
+						</mat-form-field>
+					</div>
+				</mat-grid-tile>
+
+				<mat-grid-tile>
+					<div class="boxeddown"></div>
+				</mat-grid-tile>
+			</mat-grid-list>
+			<br />
+			<div class="modelType">
+				<mat-label>
+					<p class="lableInput">
+						1.6 Choose the calculation modes and data source
+					</p>
+				</mat-label>
+				<p>
+					choose which modules you would like to include. These
+					selections can be edited later.
+				</p>
+				<br />
+				<br />
+				<div class="outerContainer">
+					<div fxLayout="row" fxLayoutGap="300px" class="container">
+						<div fxLayoutAlign="center center">
+							<p>
+								<mat-checkbox
+									[checked]="selectAll"
+									(change)="checkAll($event.checked)"
+									>Select All
+								</mat-checkbox>
+							</p>
+						</div>
+						<div fxLayoutAlign="center center">
+							<button
+								mat-stroked-button
+								style="border:green; background-color: green; color: white; "
+								disabled
+							>
+								There is a location specific dataset available
+								for this location
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br />
+			<br />
+			<div class="modelType">
+				<div class="outerContainer">
+					<div fxLayout="row" fxLayoutGap="300px" class="container">
+						<div>
+							<p class="useSource">
+								Module Type
+							</p>
+						</div>
+						<div fxLayoutAlign="center center">
+							<div
+								fxLayout="column"
+								fxLayoutGap="3px"
+								class="container"
+							>
+								<div fxLayoutAlign="">
+									<mat-label>
+										<p class="useSource">Use data source</p>
+									</mat-label>
+								</div>
+								<div fxLayoutAlign="">
+									<p class="moduleText">
+										The calculations are done defaultly
+										based on country specific default
+										dataset. Unless specific location
+										specific dataset is available and
+										uploaded. (previously or currently) to
+										the database. More about the dataset can
+										be found
+										<a style="color: white;" href="/dataset"
+											>here</a
+										>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br />
+			<div class="modelType">
+				<div fxLayout="row" fxLayoutGap="180px" class="container">
+					<div fxLayout="column" fxLayoutGap="0px" class="container">
+						<mat-label>
+							<p>Teritorial</p>
+						</mat-label>
+						<p>
+							<mat-checkbox
+								[checked]="landuse"
+								(change)="landuse = !landuse"
+							>
+								Land use change
+							</mat-checkbox>
+						</p>
+					</div>
+
+					<div fxLayout="column" fxLayoutGap="0px" class="container">
+						<mat-label>
+							<p></p>
+						</mat-label>
+						<mat-label>
+							<p></p>
+						</mat-label>
+						<div style="padding-left: 90px;">
+							<mat-form-field appearance="fill">
+								<mat-label
+									>Select a location specific
+									dataset</mat-label
+								>
+								<mat-select
+									formControlName="dataset"
+									[disabled]="!landuse"
+								>
+									<mat-option
+										*ngFor="let dataset of dataSets"
+										value="dataset.aID"
+									>
+										{{ dataset.aName }}
+									</mat-option>
+								</mat-select>
+							</mat-form-field>
+							<mat-icon class="infoIcon">info</mat-icon>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br />
+			<br />
+			<div class="modelType">
+				<div fxLayout="row" fxLayoutGap="240px" class="container">
+					<p>
+						<mat-checkbox
+							[checked]="trafic"
+							(change)="trafic = !trafic"
+							>Trafic / Infra
+						</mat-checkbox>
+					</p>
+					<mat-form-field style="padding-left: 60px;">
+						<mat-label>
+							<mat-icon
+								><span>
+									file_upload
+								</span></mat-icon
+							>UPLOAD DATASET
+						</mat-label>
+						<input matInput [disabled]="!trafic" />
+					</mat-form-field>
+				</div>
+			</div>
+			<br />
+			<br />
+			<div class="modelType">
+				<div fxLayout="row" fxLayoutGap="260px" class="container">
+					<p>
+						<mat-checkbox
+							[checked]="buildings"
+							(change)="buildings = !buildings"
+							>Buildings
+						</mat-checkbox>
+					</p>
+					<mat-form-field style="padding-left: 60px;">
+						<mat-label>
+							<mat-icon>
+								<span>
+									file_upload
+								</span></mat-icon
+							>UPLOAD DATASET
+						</mat-label>
+						<input matInput [disabled]="!buildings" />
+					</mat-form-field>
+				</div>
+			</div>
+			<div class="modelType">
+				<div fxLayout="row" fxLayoutGap="60px" class="container">
+					<div fxLayout="column" fxLayoutGap="0px" class="container">
+						<mat-label>
+							<p>Consumptional</p>
+						</mat-label>
+						<p>
+							<mat-checkbox
+								[checked]="consumption"
+								(change)="consumption = !consumption"
+							>
+								Consumption based
+							</mat-checkbox>
+						</p>
+					</div>
+
+					<div fxLayout="column" fxLayoutGap="0px" class="container">
+						<mat-label>
+							<p></p>
+						</mat-label>
+						<mat-label>
+							<p></p>
+						</mat-label>
+						<mat-form-field style="padding-left: 190px;">
+							<mat-label>
+								<mat-icon
+									><span>
+										file_upload
+									</span></mat-icon
+								>UPLOAD DATASET
+							</mat-label>
+							<input matInput [disabled]="!consumption" />
+						</mat-form-field>
+					</div>
+				</div>
+			</div>
+			<button class="setup" mat-button>Setup</button>
+		</form>
+	</div>
+	<br />
+	<br />
+	<br />
+</div>
