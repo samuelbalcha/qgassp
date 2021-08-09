@@ -37,7 +37,7 @@
 
 	<mat-grid-list cols="4" rowHeight="100px">
 		<mat-grid-tile
-			*ngFor="let project of projects | slice:0:show let i=index"
+			*ngFor="let project of myProjects | slice:0:show let i=index"
 			colspan="1"
 			rowspan="2"
 			style.background="black"
@@ -69,7 +69,7 @@
 		mat-flat-button
 		class="limitButton"
 		*ngIf="show == 4"
-		(click)="show = projects.length"
+		(click)="show = myProjects.length"
 	>
 		Show More
 	</button>
@@ -88,7 +88,7 @@
 	</div>
 	<mat-grid-list cols="4" rowHeight="100px">
 		<mat-grid-tile
-			*ngFor="let project of Allprojects"
+			*ngFor="let project of allProjects"
 			colspan="1"
 			rowspan="2"
 		>
@@ -98,12 +98,4 @@
 			</mat-card>
 		</mat-grid-tile>
 	</mat-grid-list>
-	<!-- <div class="flex-container">
-		<div class="flex-item create-project" (click)="onCreateProject('territorial')">
-			Territorial
-		</div>
-		<div class="flex-item create-project" (click)="onCreateProject('consultation')">
-			Consumption based
-		</div>
-	</div> -->
 </div>

@@ -6,6 +6,9 @@ import { Project } from '../../models/project.model';
 import { IInternalUser } from '../../auth/IInternalUser';
 import { ProjectStatuses } from '../../../commons/enums/projectStatuses';
 
+const projectSelect =
+	'name projectType status location createdAt createdBy dataSet modules result';
+
 const create = async (
 	user: IInternalUser | undefined,
 	data: IProject
@@ -31,8 +34,13 @@ const create = async (
 		status: ProjectStatuses.ACTIVE,
 	};
 
-	// populate createdBy
-	return Project.create(query);
+	const project = await Project.create(query);
+	return {
+		...project.toObject(),
+		createdBy: {
+			...user,
+		},
+	};
 };
 
 const get = async (
@@ -50,12 +58,38 @@ const get = async (
 		createdBy: user._id,
 	};
 
-	return Project.findOne(query).lean();
+	return Project.findOne(query)
+		.select(projectSelect)
+		.populate([
+			{
+				path: 'createdBy',
+				select: 'name',
+			},
+		])
+		.lean();
+};
+
+const getAll = async (user: IInternalUser | undefined): Promise<IProject[]> => {
+	if (!user) {
+		throw new Error('user.required');
+	}
+
+	return Project.find()
+		.select(projectSelect)
+		.populate([
+			{
+				path: 'createdBy',
+				select: 'name',
+			},
+		])
+		.sort({ createdAt: -1 })
+		.lean();
 };
 
 const projectService = {
 	create,
 	get,
+	getAll,
 };
 
 export default projectService;
