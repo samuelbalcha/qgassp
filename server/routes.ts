@@ -4,6 +4,7 @@ import { Router } from 'express';
 
 import { IInternalUser } from './auth/IInternalUser';
 import meRouter from './api/me';
+import projectRouter from './api/project';
 import { setUser } from './auth';
 
 declare module 'express' {
@@ -16,5 +17,6 @@ const router = Router();
 router.use(setUser);
 
 router.use('/me', meRouter);
+router.use('/project', projectRouter);
 
 export default router;
