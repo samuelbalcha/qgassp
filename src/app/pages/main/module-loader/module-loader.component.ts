@@ -13,7 +13,7 @@ export class ModuleLoaderComponent implements OnInit {
     name: "test Project",
     location: "Kymenlaakso, Finland",
     year: "2020",
-    owner: "test"
+    owner: "test",
   }
   landuse = false;
   trafic = false;
