@@ -30,9 +30,23 @@ const get = async (
 		.catch((err) => next(err));
 };
 
+const getAll = async (
+	req: Request,
+	res: Response,
+	next: NextFunction
+): Promise<any> => {
+	const user = req.user;
+
+	projectService
+		.getAll(user)
+		.then((data) => res.json(data))
+		.catch((err) => next(err));
+};
+
 const projectController = {
 	create,
 	get,
+	getAll,
 };
 
 export default projectController;

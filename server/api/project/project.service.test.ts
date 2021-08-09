@@ -65,5 +65,13 @@ describe('get', () => {
 			countryCode: 'FI',
 			region: 'Helsinki',
 		});
+		expect(consumptionA.createdBy).toHaveProperty('name', 'John Doe');
+	});
+});
+
+describe('getAll', () => {
+	it('should return all projects', async () => {
+		const projects = await projectService.getAll(c.user.adminA);
+		expect(projects).toHaveProperty('length');
 	});
 });

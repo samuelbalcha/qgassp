@@ -35,7 +35,7 @@ export class AuthService {
 	}
 
 	getCurrentUser() {
-		if (!this.currentUser) {
+		if (!this.currentUser || !this.currentUser._id) {
 			this.currentUser = this.storage.get(CONFIG.LOCAL_USER);
 		}
 
@@ -59,7 +59,6 @@ export class AuthService {
 					switch (data.user.role) {
 						case UserRoles.ADMIN:
 						case UserRoles.RESEARCHER:
-
 							return this.router.navigateByUrl(DASHBOARD);
 						default:
 							return this.router.navigateByUrl(LOGIN_PAGE);
