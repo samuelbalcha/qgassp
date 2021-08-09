@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
-  selector: 'module-loader',
-  templateUrl: './module-loader.component.html',
-  styleUrls: ['./module-loader.component.scss']
+  selector: 'result-and-version',
+  templateUrl: './result-and-version.component.html',
+  styleUrls: ['./result-and-version.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-
-export class ModuleLoaderComponent implements OnInit {
+export class ResultAndVersionComponent implements OnInit {
   public myProject = {
     name: "test Project",
     location: "Kymenlaakso, Finland",
     year: "2020",
     owner: "test",
   }
-  landuse = false;
+  landuse = true;
   trafic = false;
   buildings = false;
   consumption = false;
@@ -25,6 +26,9 @@ export class ModuleLoaderComponent implements OnInit {
     if (newItem.name == 'buildings') { this.buildings = newItem.value; }
     if (newItem.name == 'consumption') { this.consumption = newItem.value; }
   }
-  ngOnInit(): void { }
+  @Input() backgroundColor: ThemePalette
+
+  ngOnInit(): void {
+  }
 
 }

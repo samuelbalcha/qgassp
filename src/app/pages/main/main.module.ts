@@ -11,6 +11,7 @@ import { SetupComponent } from './setup/setup.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '../../shared/material.module';
 import { ModuleLoaderComponent } from './module-loader/module-loader.component';
+import { ResultAndVersionComponent } from './result-and-version/result-and-version.component';
 
 const routes: Routes = [
 	{
@@ -37,6 +38,11 @@ const routes: Routes = [
 		path: 'module-loader',
 		component: ModuleLoaderComponent,
 	},
+	{
+		path: 'result-version',
+		component: ResultAndVersionComponent,
+	},
+
 ];
 
 @NgModule({

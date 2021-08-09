@@ -14,9 +14,11 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ModuleLoaderComponent } from './pages/main/module-loader/module-loader.component';
+import { SelectorsComponent } from './shared/components/selectors/selectors.component';
+import { ResultAndVersionComponent } from './pages/main/result-and-version/result-and-version.component';
 
 @NgModule({
-	declarations: [AppComponent, ModuleLoaderComponent],
+	declarations: [AppComponent, ModuleLoaderComponent, SelectorsComponent, ResultAndVersionComponent],
 	imports: [
 		FlexLayoutModule,
 		BrowserModule,
