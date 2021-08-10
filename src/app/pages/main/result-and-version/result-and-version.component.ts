@@ -1,5 +1,8 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
+import { ChartDataSets } from 'chart.js';
+import { ChartOptions, ChartType } from 'chart.js';
+import { Label } from 'ng2-charts';
 
 @Component({
   selector: 'result-and-version',
@@ -14,7 +17,7 @@ export class ResultAndVersionComponent implements OnInit {
     year: "2020",
     owner: "test",
   }
-  landuse = true;
+  landuse = false;
   trafic = false;
   buildings = false;
   consumption = false;
@@ -28,6 +31,59 @@ export class ResultAndVersionComponent implements OnInit {
   }
   @Input() backgroundColor: ThemePalette
 
+
+  barChartOptions: ChartOptions = {
+    responsive: false,
+    aspectRatio: 1,
+    scales: {
+      xAxes: [{
+        gridLines: {
+          display: false,
+        },
+      }],
+      yAxes: [{
+        gridLines: {
+          display: false
+        }
+      }]
+    }
+
+  };
+  barChartLabels: Label[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'];
+  barChartType: ChartType = 'bar';
+  barChartLegend = true;
+  barChartPlugins = [];
+
+  barChartData: ChartDataSets[] = [
+    {
+      data: [2, -1, -5, -3, 1, 3, 4, 2, 3, 2.5, 2.4, 2, 1, 1.8],
+      label: '1.Version',
+      barThickness: 8,
+      backgroundColor: '#214E9C',
+    },
+    {
+      data: [1, -2, 3, -1, -2, -3, 4, 2, 3, 2.5, 2.4, 2, 1, 1.8],
+      label: '2.Version',
+      barThickness: 8,
+      backgroundColor: '#6BAD2B',
+
+    }
+  ];
+  public displayedColumns = [
+    'col1',
+    'col2',
+  ];
+  tableData = [
+    { col1: 'Aboveground Biomas', col2: 2191 },
+    { col1: 'Belowground Biomas', col2: 634 },
+    { col1: 'Deadwood', col2: 54 },
+    { col1: 'Litter', col2: 825 },
+    { col1: 'Mineral soil', col2: 13 },
+    { col1: 'Organic soin', col2: 156 },
+  ];
+  getTotal() {
+    return this.tableData.map(t => t.col2).reduce((acc, value) => acc + value, 0);
+  }
   ngOnInit(): void {
   }
 

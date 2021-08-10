@@ -82,3 +82,46 @@ h4{
     padding-left: 30px;
     color: #3F51B5;
 }
+.infoTextRight{
+  padding-left: 20rem; 
+  line-height: 7px !important;
+}
+.mat-form-field {
+  width: 43%;
+}
+.deletButton{
+  margin-left: 41rem; color: #D8D8D8;
+}
+.addButton{
+  padding-left: 45rem;
+  color: #3F51B5;
+  font-size: inherit;
+  font-weight: 600;
+}
+mat-expansion-panel{
+  max-width: 50rem;
+}
+.nxtButton{
+  margin-left: 48rem;
+  margin-top: 29px;
+}
+.tableTitle{
+  background-color: #E4E4E8;
+  padding-left: 18px;
+  padding-top: 23px;
+  padding-bottom: 1px;
+}
+.vericaltext{
+  width:1px;
+  padding: 13px;
+  word-wrap: break-word;
+  font-family: monospace; /* this is just for good looks */
+}
+table {
+  width: 24rem;
+  background-color: #E4E4E8 !important;
+}
+
+tr.mat-footer-row {
+  font-weight: bold;
+}
