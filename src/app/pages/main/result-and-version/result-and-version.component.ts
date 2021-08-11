@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { ChartDataSets } from 'chart.js';
 import { ChartOptions, ChartType } from 'chart.js';
@@ -8,7 +8,7 @@ import { Label } from 'ng2-charts';
   selector: 'result-and-version',
   templateUrl: './result-and-version.component.html',
   styleUrls: ['./result-and-version.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  // encapsulation: ViewEncapsulation.None
 })
 export class ResultAndVersionComponent implements OnInit {
   public myProject = {
@@ -73,6 +73,8 @@ export class ResultAndVersionComponent implements OnInit {
     'col1',
     'col2',
   ];
+  public displayedColumns2: ['position', 'name', 'weight', 'symbol'] | undefined;
+
   tableData = [
     { col1: 'Aboveground Biomas', col2: 2191 },
     { col1: 'Belowground Biomas', col2: 634 },
@@ -81,10 +83,21 @@ export class ResultAndVersionComponent implements OnInit {
     { col1: 'Mineral soil', col2: 13 },
     { col1: 'Organic soin', col2: 156 },
   ];
+
+  toFromdata = [
+    { to: 'grassLand', from: 'Settelment' },
+    { to: 'Settelment', from: 'grassLand' },
+    { to: 'grassLand', from: 'grassLand' },
+    { to: 'Settelment', from: 'grassLand' },
+    { to: 'grassLand', from: 'Settelment' },
+    { to: 'Settelment', from: 'Settelment' },
+  ]
   getTotal() {
     return this.tableData.map(t => t.col2).reduce((acc, value) => acc + value, 0);
   }
   ngOnInit(): void {
   }
+
+
 
 }

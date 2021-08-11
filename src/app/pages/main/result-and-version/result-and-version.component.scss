@@ -1,6 +1,8 @@
 .moduleBody{
 	padding-left: 40px;
-    padding-top: 40px;
+  padding-top: 40px;
+   padding-bottom: 160px;
+
 }
 .headerLink{
     text-decoration: none;
@@ -29,10 +31,24 @@ h4{
 [aria-label=blue] {
   background-color: #696EE2;;
 }
+
+.table-container[_ngcontent-nud-c276] {
+  width: 97% !important;
+}
+
 .example-accordion {
     display: block;
     max-width: 57rem;
     padding: 10px;
+}
+.version-accordion {
+  display: block;
+  max-width: 72rem;
+  padding: 10px;
+}
+.version-accordion-item-body {
+  background-color:#E4E4E8;
+  margin: 13px;
 }
 .example-accordion-item-header {
   display: flex;
@@ -118,10 +134,20 @@ mat-expansion-panel{
   font-family: monospace; /* this is just for good looks */
 }
 table {
-  width: 24rem;
+  width: 20rem;
   background-color: #E4E4E8 !important;
 }
 
 tr.mat-footer-row {
   font-weight: bold;
+}
+.mat-grid-tile .mat-figure {
+  align-items: end !important;
+  justify-content: end !important;
+}
+.internalMatGrid{
+  min-width:112%;
+}
+.addVersionButton{
+  margin-left: 60rem;
 }
