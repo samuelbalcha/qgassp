@@ -73,7 +73,6 @@ export class ResultAndVersionComponent implements OnInit {
     'col1',
     'col2',
   ];
-  public displayedColumns2: ['position', 'name', 'weight', 'symbol'] | undefined;
 
   tableData = [
     { col1: 'Aboveground Biomas', col2: 2191 },
