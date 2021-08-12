@@ -1,0 +1,280 @@
+<div class="moduleBody">
+    <h4>
+        <a class="headerLink" routerLink="/dashboard">QGasSP Dashboard &nbsp; ></a>
+        <a class="headerLink" routerLink="/setup-project">Setup New Project &nbsp; ></a>
+        <a class="headerLink" routerLink="/module-loader">"Project name" set up the baseline &nbsp; ></a>
+        Result and version
+    </h4>
+    <br>
+    <selectors [myProject]="myProject" (selectedValue)="getSelected($event)">
+    </selectors>
+    <h2 style="color:#3F51B5">2. Baseline results and plain versions</h2>
+    <mat-tab-group animationDuration="0ms">
+        <mat-tab *ngIf="landuse" label="Landuse" [aria-label]="'green'">
+            <div style="padding:10x">
+                <h2 style="color:#3F51B5">2.1 First version of the plane</h2>
+
+                <cdk-accordion class="example-accordion">
+                    <cdk-accordion-item #accordionItem="cdkAccordionItem" class="example-accordion-item" role="button"
+                        tabindex="0" id="landuse-accordion-body" [attr.aria-expanded]="accordionItem.expanded">
+                        <div class="example-accordion-item-header color-green" role="presentation"
+                            (click)="accordionItem.toggle()">
+                            "THE ORIGINAL PLAN"
+                            <span class="example-accordion-item-description">
+                                <mat-icon style="color: white" *ngIf="accordionItem.expanded">expand_less</mat-icon>
+                                <mat-icon style="color: white" *ngIf="!accordionItem.expanded">expand_more</mat-icon>
+                            </span>
+                        </div>
+                        <div class="example-accordion-item-body" role="region"
+                            [style.display]="accordionItem.expanded ? '' : 'none'" id="landuse-accordion-body">
+                            <h3>Area size and land use change</h3>
+                            <p class="accordion-text">
+                                Insert area of each land-use change, differentiate miniral and organic soils.
+                            </p>
+                            <mat-accordion>
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <div style="display:inline-flex">
+                                            <p style="color:#3F51B5;">1.Land-use change</p>
+                                            <p class="grayLabel">From</p>
+                                            <p style="color:#CECECE;">&nbsp;Forestlands</p>
+                                            <p class="grayLabel">To</p>
+                                            <p style="color:#CECECE;">&nbsp;Settlements</p>
+                                            <p class="grayLabel">Total Area</p>
+                                            <p style="color:#CECECE;">&nbsp;6 ha</p>
+                                        </div>
+                                    </mat-expansion-panel-header>
+                                    <ng-template matExpansionPanelContent></ng-template>
+                                    <div class="panel-content">
+                                        To be Implimented ...
+                                    </div>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                            <br>
+                            <mat-accordion>
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <p style="color:#3F51B5;">2.Land-use change</p>
+                                    </mat-expansion-panel-header>
+                                    <ng-template matExpansionPanelContent></ng-template>
+                                    <div class="panel-content">
+
+                                        <mat-label>2.1 Choose the appropriate land-use change</mat-label>
+                                        <br>
+                                        <location-use-change></location-use-change>
+
+                                        <mat-label>
+                                            2.2 Carbon stock change factor
+                                        </mat-label>
+                                        <br>
+                                        <mat-label>
+                                            2.2.1 Default (country-specific) carbon stock changes (CSC) factors.
+                                        </mat-label>
+                                        <h5>Click to edit and insert location-specific CSC factors</h5>
+                                        <br>
+                                        <div>
+                                            <emission-factors></emission-factors>
+                                        </div>
+                                        <br>
+
+                                        <mat-label>
+                                            2.2.2 Default (country-specific) or location specific remaining carbon stock
+                                            change factors.
+                                        </mat-label>
+                                        <br>
+                                        <div>
+                                            <emission-factors></emission-factors>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <div style="display:inline-flex">
+                                            <p style="width:47%">
+                                                2.2.3 Conversion factor from carbon stock change to CO2
+                                                emmision/removals
+                                                (ratio of the moleular weight)
+                                            </p>
+                                            <p style="color:black; padding-left: 10rem;">-3,667</p>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <div style="display:inline-flex">
+                                            <div style="width: 40%">
+                                                <mat-checkbox color="primary">
+                                                    From default dataset
+                                                </mat-checkbox>
+                                                <mat-checkbox>
+                                                    Inserted location-specific factors
+                                                </mat-checkbox>
+                                            </div>
+                                            <div>
+                                                <h5 style="line-height: 0px;">*The signs for C stock gains (C Uptake)
+                                                    are
+                                                    postive (+) and losses
+                                                    are negative (-) </h5>
+                                                <h5 class="infoTextRight">IE included elsware
+                                                </h5>
+                                                <h5 class="infoTextRight">NA Data not available
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <mat-label>
+                                            2.3 Insert area of this specific land-use change, ha:
+                                        </mat-label>
+                                        <br>
+                                        <br>
+                                        <div style="display:inline-flex">
+                                            <div>
+                                                <mat-label>Total area</mat-label>
+                                                <br>
+                                                <mat-form-field class="example-full-width" appearance="fill">
+                                                    <input matInput>
+                                                </mat-form-field>
+                                            </div>
+                                            <div>
+                                                <mat-label>Organic soil:</mat-label>
+                                                <br>
+                                                <mat-form-field class="example-full-width" appearance="fill">
+                                                    <input matInput>
+                                                </mat-form-field>
+                                            </div>
+                                            <div>
+                                                <mat-label>Mineral soil:</mat-label>
+                                                <br>
+                                                <mat-form-field class="example-full-width" appearance="fill">
+                                                    <input matInput>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <a href="" class="deletButton">DELETE</a>
+
+                                    </div>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                            <h3 role="button" class="addButton">
+                                + ADD NEW
+                            </h3>
+
+                            <button mat-raised-button class="nxtButton" color="primary">Next</button>
+
+                        </div>
+                    </cdk-accordion-item>
+                </cdk-accordion>
+            </div>
+
+
+        </mat-tab>
+        <mat-tab *ngIf="trafic" label="trafic" [aria-label]="'orange'">Trafic / Infra content</mat-tab>
+        <mat-tab *ngIf="buildings" label="buildings" [aria-label]="'brown'">Buildings Content</mat-tab>
+        <mat-tab *ngIf="consumption" label="consumption" [aria-label]="'blue'">Consumption Content</mat-tab>
+    </mat-tab-group>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div style="display: inline-flex">
+        <div>
+            <div class="tableTitle">
+                <p> CO2 emission [t CO2/yr]</p>
+                <h5>
+                    "the original plan"
+                </h5>
+            </div>
+
+            <table mat-table [dataSource]="tableData">
+                <!-- Item Column -->
+                <ng-container matColumnDef="col1">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                    <td mat-cell *matCellDef="let tableData"> {{tableData.col1}} </td>
+                    <td mat-footer-cell *matFooterCellDef> Total </td>
+                </ng-container>
+
+                <!-- Cost Column -->
+                <ng-container matColumnDef="col2">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                    <td mat-cell *matCellDef="let tableData"> {{tableData.col2}} </td>
+                    <td mat-footer-cell *matFooterCellDef> {{getTotal() | currency}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+            </table>
+        </div>
+        <div class="chart-wrapper" style="display: inline-flex; padding-left: 20%;">
+            <p class="vericaltext">
+                Equation/KG CO2 eq
+            </p>
+            <div>
+                <canvas width="550" height="450" baseChart [datasets]="barChartData" [labels]="barChartLabels"
+                    [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
+                    [chartType]="barChartType">
+                </canvas>
+                <h5>YEARS 2021-2050</h5>
+            </div>
+            <br>
+            <br>
+
+        </div>
+    </div>
+    <br>
+    <br>
+    <cdk-accordion class="version-accordion">
+        <cdk-accordion-item #accordionItem="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="0"
+            [attr.aria-expanded]="accordionItem.expanded">
+            <div class="example-accordion-item-header color-green" (click)="accordionItem.toggle()">
+                2.VERSION
+                <span class="example-accordion-item-description">
+                    <mat-icon style="color: white" *ngIf="accordionItem.expanded">expand_less</mat-icon>
+                    <mat-icon style="color: white" *ngIf="!accordionItem.expanded">expand_more</mat-icon>
+                </span>
+            </div>
+            <div class="version-accordion-item-body" role="region"
+                [style.display]="accordionItem.expanded ? '' : 'none'" id="landuse-accordion-body">
+                <div style="background-color: white;">
+                    <div style="display: inline-flex; background-color: white;">
+                        <result-step></result-step>
+
+                        <div>
+                            <div class="tableTitle">
+                                <p> CO2 emission [t CO2/yr]</p>
+                                <h5>
+                                    "the original plan"
+                                </h5>
+                            </div>
+
+                            <table mat-table [dataSource]="tableData" color="primary">
+                                <!-- Item Column -->
+                                <ng-container matColumnDef="col1">
+                                    <th mat-header-cell *matHeaderCellDef> </th>
+                                    <td mat-cell *matCellDef="let tableData"> {{tableData.col1}} </td>
+                                    <td mat-footer-cell *matFooterCellDef> Total </td>
+                                </ng-container>
+
+                                <!-- Cost Column -->
+                                <ng-container matColumnDef="col2">
+                                    <th mat-header-cell *matHeaderCellDef> </th>
+                                    <td mat-cell *matCellDef="let tableData"> {{tableData.col2}} </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotal() | currency}} </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+                            </table>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </cdk-accordion-item>
+    </cdk-accordion>
+
+
+    <button mat-raised-button class="addVersionButton" color="primary">+ADD NEW VERSION</button>
+
+</div>

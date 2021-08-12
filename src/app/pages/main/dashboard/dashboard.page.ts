@@ -19,7 +19,6 @@ export class DashboardPageComponent implements OnInit {
 	public loading = false;
 	public notFound = false;
 	public more = false;
-
 	public allProjects: IProject[] = [];
 	public myProjects: IProject[] = [];
 	currentUser = this.authSvc.getCurrentUser();

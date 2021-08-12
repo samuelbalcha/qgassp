@@ -1,0 +1,153 @@
+.moduleBody{
+	padding-left: 40px;
+  padding-top: 40px;
+   padding-bottom: 160px;
+
+}
+.headerLink{
+    text-decoration: none;
+    font-size: medium;
+    color: #3F51B5;
+	font-size: 16px;
+	font-weight: 500;
+}
+h4{
+	color: #3F51B5;
+}
+.mat-tab-label{
+    color: white;
+}
+
+[aria-label=green] {
+  background-color: #6dab36;;
+}
+
+[aria-label=orange] {
+  background-color: #DB7093;;
+}
+[aria-label=brown] {
+  background-color: #6F2C54;;
+}
+[aria-label=blue] {
+  background-color: #696EE2;;
+}
+
+.table-container[_ngcontent-nud-c276] {
+  width: 97% !important;
+}
+
+.example-accordion {
+    display: block;
+    max-width: 57rem;
+    padding: 10px;
+}
+.version-accordion {
+  display: block;
+  max-width: 72rem;
+  padding: 10px;
+}
+.version-accordion-item-body {
+  background-color:#E4E4E8;
+  margin: 13px;
+}
+.example-accordion-item-header {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  color: white;
+}
+.example-accordion-item {
+  display: block;
+  border: solid 1px #ccc;
+ 
+}
+.example-accordion-item + .example-accordion-item {
+  border-top: none;
+}
+.example-accordion-item-description {
+    font-size: 0.85em;
+}
+.example-accordion-item-header,
+.example-accordion-item-body {
+  padding: 16px;
+}
+.example-accordion-item-body {
+  background-color:#E4E4E8;
+  margin: 13px;
+}
+.example-accordion-item-header:hover {
+  cursor: pointer;
+}
+.example-accordion-item:first-child {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.example-accordion-item:last-child {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.color-green, .color-green:hover{
+  background-color: #6dab36;
+}
+.grayLabel{
+    padding-left: 80px;
+    font-weight: 800;
+    color: #CECECE;
+}
+.panel-content{
+    padding-left: 30px;
+    color: #3F51B5;
+}
+.infoTextRight{
+  padding-left: 20rem; 
+  line-height: 7px !important;
+}
+.mat-form-field {
+  width: 43%;
+}
+.deletButton{
+  margin-left: 41rem; color: #D8D8D8;
+}
+.addButton{
+  padding-left: 45rem;
+  color: #3F51B5;
+  font-size: inherit;
+  font-weight: 600;
+}
+mat-expansion-panel{
+  max-width: 50rem;
+}
+.nxtButton{
+  margin-left: 48rem;
+  margin-top: 29px;
+}
+.tableTitle{
+  background-color: #E4E4E8;
+  padding-left: 18px;
+  padding-top: 23px;
+  padding-bottom: 1px;
+}
+.vericaltext{
+  width:1px;
+  padding: 13px;
+  word-wrap: break-word;
+  font-family: monospace; /* this is just for good looks */
+}
+table {
+  width: 20rem;
+  background-color: #E4E4E8 !important;
+}
+
+tr.mat-footer-row {
+  font-weight: bold;
+}
+.mat-grid-tile .mat-figure {
+  align-items: end !important;
+  justify-content: end !important;
+}
+.internalMatGrid{
+  min-width:112%;
+}
+.addVersionButton{
+  margin-left: 60rem;
+}

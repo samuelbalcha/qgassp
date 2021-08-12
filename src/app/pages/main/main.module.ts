@@ -3,7 +3,6 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
-
 import { MainPageComponent } from './main.page';
 import { DashboardPageComponent } from './dashboard/dashboard.page';
 import { DatasetComponent } from './dataset/dataset.component';
@@ -11,6 +10,8 @@ import { HowitworksComponent } from './howitworks/howitworks.component';
 import { SetupComponent } from './setup/setup.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '../../shared/material.module';
+import { ModuleLoaderComponent } from './module-loader/module-loader.component';
+import { ResultAndVersionComponent } from './result-and-version/result-and-version.component';
 
 const routes: Routes = [
 	{
@@ -33,6 +34,15 @@ const routes: Routes = [
 		path: 'setup-project',
 		component: SetupComponent,
 	},
+	{
+		path: 'module-loader',
+		component: ModuleLoaderComponent,
+	},
+	{
+		path: 'result-version',
+		component: ResultAndVersionComponent,
+	},
+
 ];
 
 @NgModule({
@@ -52,4 +62,4 @@ const routes: Routes = [
 	],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class MainModule {}
+export class MainModule { }

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-
+import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -32,6 +32,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatStepperModule } from '@angular/material/stepper';
 
 const materialModules = [
+	CdkAccordionModule,
 	MatAutocompleteModule,
 	MatButtonModule,
 	MatCardModule,
@@ -68,4 +69,4 @@ const materialModules = [
 	imports: [...materialModules],
 	exports: [...materialModules],
 })
-export class MaterialModule {}
+export class MaterialModule { }

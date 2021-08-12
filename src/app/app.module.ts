@@ -13,19 +13,21 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { ModuleLoaderComponent } from './pages/main/module-loader/module-loader.component';
+import { SelectorsComponent } from './shared/components/selectors/selectors.component';
+import { ResultAndVersionComponent } from './pages/main/result-and-version/result-and-version.component';
+import { ChartsModule } from 'ng2-charts';
 @NgModule({
-	declarations: [AppComponent],
+	declarations: [AppComponent, ModuleLoaderComponent, SelectorsComponent, ResultAndVersionComponent],
 	imports: [
 		FlexLayoutModule,
 		BrowserModule,
 		HttpClientModule,
+		ChartsModule,
 		AppRoutingModule,
 		BrowserAnimationsModule,
-
 		ReactiveFormsModule,
 		SharedModule,
-
 		CoreModule.forRoot(),
 		ToastrModule.forRoot({ positionClass: 'inline' }),
 		ToastContainerModule,
@@ -41,4 +43,4 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 	],
 	bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
