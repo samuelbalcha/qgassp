@@ -26,10 +26,11 @@ export class DashboardPageComponent implements OnInit {
 	constructor(
 		private authSvc: AuthService,
 		private projectService: ProjectService
-	) {}
+	) { }
 
 	ngOnInit() {
 		this.loadProjects();
+		console.log(this.myProjects);
 	}
 
 	loadProjects() {

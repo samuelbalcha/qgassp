@@ -17,11 +17,7 @@
 	</p>
 	<div>
 		<mat-form-field class="full-width" appearance="fill">
-			<input
-				matInput
-				type="text"
-				placeholder="search by name,country, area, tag or ID"
-			/>
+			<input matInput type="text" placeholder="search by name,country, area, tag or ID" />
 			<button matSuffix mat-icon-button aria-label="search">
 				<mat-icon color="primary">search</mat-icon>
 			</button>
@@ -36,20 +32,9 @@
 	<br />
 
 	<mat-grid-list cols="4" rowHeight="100px">
-		<mat-grid-tile
-			*ngFor="let project of myProjects | slice:0:show let i=index"
-			colspan="1"
-			rowspan="2"
-			style.background="black"
-		>
-			<mat-card
-				[ngClass]="{'cards': project.name =='new' ,'ncards': project.name !='new'}"
-			>
-				<div
-					class="setup-project"
-					*ngIf="project.name =='new'; else notNew"
-					routerLink="/setup-project"
-				>
+		<mat-grid-tile colspan="1" rowspan="2" style.background="black">
+			<mat-card class="cards">
+				<div class="setup-project" routerLink="/setup-project">
 					Setup a new Project
 					<br />
 					<br />
@@ -58,27 +43,22 @@
 						<mat-icon>add</mat-icon>
 					</p>
 				</div>
-				<ng-template #notNew>
+			</mat-card>
+		</mat-grid-tile>
+		<mat-grid-tile *ngFor="let project of myProjects | slice:0:show let i=index" colspan="1" rowspan="2"
+			style.background="black">
+			<mat-card class="ncards">
+				<div class="setup-project">
 					<mat-icon> location_on</mat-icon>
 					{{project.name}}
-				</ng-template>
+				</div>
 			</mat-card>
 		</mat-grid-tile>
 	</mat-grid-list>
-	<button
-		mat-flat-button
-		class="limitButton"
-		*ngIf="show == 4"
-		(click)="show = myProjects.length"
-	>
+	<button mat-flat-button class="limitButton" *ngIf="show == 4" (click)="show = myProjects.length">
 		Show More
 	</button>
-	<button
-		mat-flat-button
-		class="limitButton"
-		*ngIf="show > 4"
-		(click)="show = 4"
-	>
+	<button mat-flat-button class="limitButton" *ngIf="show > 4" (click)="show = 4">
 		Show Less
 	</button>
 
@@ -87,11 +67,7 @@
 		<hr />
 	</div>
 	<mat-grid-list cols="4" rowHeight="100px">
-		<mat-grid-tile
-			*ngFor="let project of allProjects"
-			colspan="1"
-			rowspan="2"
-		>
+		<mat-grid-tile *ngFor="let project of allProjects" colspan="1" rowspan="2">
 			<mat-card class="ncards">
 				<mat-icon> location_on</mat-icon>
 				{{project.name}}
