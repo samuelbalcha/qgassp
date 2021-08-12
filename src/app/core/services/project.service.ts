@@ -12,7 +12,7 @@ import { CONFIG } from '../../../config';
 const PROJECT_DETAIL = '/project-detail';
 
 @Injectable()
-export class Projectervice {
+export class ProjectService {
 	private projectUrl = `${CONFIG.BASE_URL}/api/project`;
 
 	constructor(
@@ -23,13 +23,13 @@ export class Projectervice {
 
 	create(project: IProject) {
 		return this.httpClient
-			.post(`${this.projectUrl}`, {
+			.post<IProject>(`${this.projectUrl}`, {
 				project,
 			})
 			.subscribe(
-				(data: any) => {
+				(newProject: any) => {
 					return this.router.navigateByUrl(
-						`${PROJECT_DETAIL}/${data._id}`
+						`${PROJECT_DETAIL}/${newProject._id}`
 					);
 				},
 				(err: Error) => {
@@ -40,5 +40,26 @@ export class Projectervice {
 					console.log('error', err);
 				}
 			);
+	}
+
+	get(id: string) {
+		return this.httpClient
+			.get<IProject>(`${this.projectUrl}/${id}`)
+			.subscribe(
+				(project: any) => {
+					return project;
+				},
+				(err: Error) => {
+					this.toastSvc.error(
+						'Project error',
+						`Could not fetch project: ${err.message}`
+					);
+					console.log('error', err);
+				}
+			);
+	}
+
+	getAll() {
+		return this.httpClient.get<IProject[]>(`${this.projectUrl}`);
 	}
 }
