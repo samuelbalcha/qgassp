@@ -4,18 +4,12 @@
   <span class="material-icons"> room </span>
   <span class="title"> Helsinki, Finland</span>
   <div class="summary">
-    <mat-label
-      >You can change the values from the dropdown or by clicking
-      edit</mat-label
-    >
+    <mat-label>You can change the values from the dropdown or by clicking
+      edit</mat-label>
 
     <h3 class="title">Emission factors*, tC/ha yr</h3>
 
-    <table
-      mat-table
-      [dataSource]="dataSource"
-      class="table-container mat-elevation-z8"
-    >
+    <table mat-table [dataSource]="dataSource" class="table-container mat-elevation-z8">
       <ng-container matColumnDef="From">
         <th mat-header-cell *matHeaderCellDef>From</th>
         <td mat-cell *matCellDef="let element">
@@ -41,21 +35,13 @@
       <ng-container matColumnDef="Organic soil">
         <th mat-header-cell *matHeaderCellDef>Organic</th>
         <td mat-cell *matCellDef="let element">
-          <input
-            class="area-input"
-            type="number"
-            [(ngModel)]="element.area.organic"
-          />
+          <input class="area-input" type="number" [(ngModel)]="element.area.organic" />
         </td>
       </ng-container>
       <ng-container matColumnDef="Mineral soil">
         <th mat-header-cell *matHeaderCellDef>Mineral</th>
         <td mat-cell *matCellDef="let element">
-          <input
-            class="area-input"
-            type="number"
-            [(ngModel)]="element.area.mineral"
-          />
+          <input class="area-input" type="number" [(ngModel)]="element.area.mineral" />
         </td>
       </ng-container>
       <ng-container matColumnDef="Total">
@@ -68,37 +54,49 @@
       <!-- Aboveground Column -->
       <ng-container matColumnDef="Aboveground">
         <th mat-header-cell *matHeaderCellDef>Aboveground</th>
-        <td mat-cell *matCellDef="let element">{{ element.aboveGround }}</td>
+        <td mat-cell *matCellDef="let element">
+          <input class="area-input" type="number" [(ngModel)]="element.aboveGround" />
+        </td>
       </ng-container>
 
       <!-- Belowground -->
       <ng-container matColumnDef="Belowground">
         <th mat-header-cell *matHeaderCellDef>Belowground</th>
-        <td mat-cell *matCellDef="let element">{{ element.belowGround }}</td>
+        <td mat-cell *matCellDef="let element">
+          <input class="area-input" type="number" [(ngModel)]="element.belowGround" />
+        </td>
       </ng-container>
 
       <!-- Deadwood  -->
       <ng-container matColumnDef="Deadwood">
         <th mat-header-cell *matHeaderCellDef>Deadwood</th>
-        <td mat-cell *matCellDef="let element">{{ element.deadWood }}</td>
+        <td mat-cell *matCellDef="let element">
+          <input class="area-input" type="number" [(ngModel)]="element.deadWood" />
+        </td>
       </ng-container>
 
       <!-- Litter Column -->
       <ng-container matColumnDef="Litter">
         <th mat-header-cell *matHeaderCellDef>Litter</th>
-        <td mat-cell *matCellDef="let element">{{ element.litter }}</td>
+        <td mat-cell *matCellDef="let element">
+          <input class="area-input" type="number" [(ngModel)]="element.litter" />
+        </td>
       </ng-container>
 
       <!-- Mineral Column -->
       <ng-container matColumnDef="Mineral">
         <th mat-header-cell *matHeaderCellDef>Mineral</th>
-        <td mat-cell *matCellDef="let element">{{ element.mineral }}</td>
+        <td mat-cell *matCellDef="let element">
+          <input class="area-input" type="number" [(ngModel)]="element.mineral" />
+        </td>
       </ng-container>
 
       <!-- Organic Column -->
       <ng-container matColumnDef="Organic">
         <th mat-header-cell *matHeaderCellDef>Organic</th>
-        <td mat-cell *matCellDef="let element">{{ element.organic }}</td>
+        <td mat-cell *matCellDef="let element">
+          <input class="area-input" type="number" [(ngModel)]="element.organic" />
+        </td>
       </ng-container>
 
       <!-- Main headers -->
@@ -127,11 +125,7 @@
         <th mat-header-cell *matHeaderCellDef [attr.colspan]="2">Soil</th>
       </ng-container>
 
-      <tr
-        class="text-align-center"
-        mat-header-row
-        *matHeaderRowDef="mainColumns"
-      ></tr>
+      <tr class="text-align-center" mat-header-row *matHeaderRowDef="mainColumns"></tr>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>

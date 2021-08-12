@@ -17,8 +17,9 @@ import { ModuleLoaderComponent } from './pages/main/module-loader/module-loader.
 import { SelectorsComponent } from './shared/components/selectors/selectors.component';
 import { ResultAndVersionComponent } from './pages/main/result-and-version/result-and-version.component';
 import { ChartsModule } from 'ng2-charts';
+import { AreaLandUseCangeFormComponent } from './shared/components/area-land-use-cange-form/area-land-use-cange-form.component';
 @NgModule({
-	declarations: [AppComponent, ModuleLoaderComponent, SelectorsComponent, ResultAndVersionComponent],
+	declarations: [AppComponent, ModuleLoaderComponent, SelectorsComponent, ResultAndVersionComponent, AreaLandUseCangeFormComponent],
 	imports: [
 		FlexLayoutModule,
 		BrowserModule,

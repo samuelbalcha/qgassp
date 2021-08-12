@@ -14,6 +14,7 @@ interface Iselected {
 export class SelectorsComponent implements OnInit {
 
   @Input() myProject: any;
+
   @Output() selectedValue = new EventEmitter<Iselected>();
 
   landuse = false;
