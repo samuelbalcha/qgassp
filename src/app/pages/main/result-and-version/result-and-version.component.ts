@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 
 import { ChartType, ChartDataSets } from 'chart.js';
@@ -9,7 +9,9 @@ import { Label } from 'ng2-charts';
 	templateUrl: './result-and-version.component.html',
 	styleUrls: ['./result-and-version.component.scss'],
 })
-export class ResultAndVersionComponent implements OnInit {
+export class ResultAndVersionComponent {
+	@Input() backgroundColor: ThemePalette;
+
 	public myProject = {
 		name: 'test Project',
 		location: 'Kymenlaakso, Finland',
@@ -37,7 +39,6 @@ export class ResultAndVersionComponent implements OnInit {
 			this.consumption = newItem.value;
 		}
 	}
-	@Input() backgroundColor: ThemePalette;
 
 	barChartOptions: any = {
 		responsive: false,
@@ -113,10 +114,10 @@ export class ResultAndVersionComponent implements OnInit {
 		{ to: 'grassLand', from: 'Settelment' },
 		{ to: 'Settelment', from: 'Settelment' },
 	];
+
 	getTotal() {
 		return this.tableData
 			.map((t) => t.col2)
 			.reduce((acc, value) => acc + value, 0);
 	}
-	ngOnInit(): void {}
 }

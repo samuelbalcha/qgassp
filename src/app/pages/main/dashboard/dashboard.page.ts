@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { Component, OnInit } from '@angular/core';
 import _ from 'lodash';
+
 import { UserRoles } from '../../../../../commons/enums/userRoles';
 import { AuthService } from '../../../core/services/auth.service';
 import { ProjectService } from '../../../core/services/project.service';
@@ -26,11 +27,10 @@ export class DashboardPageComponent implements OnInit {
 	constructor(
 		private authSvc: AuthService,
 		private projectService: ProjectService
-	) { }
+	) {}
 
 	ngOnInit() {
 		this.loadProjects();
-		console.log(this.myProjects);
 	}
 
 	loadProjects() {
