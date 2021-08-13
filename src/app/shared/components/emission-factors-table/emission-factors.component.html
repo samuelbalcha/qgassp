@@ -1,8 +1,4 @@
-<table
-  mat-table
-  [dataSource]="dataSource"
-  class="table-container mat-elevation-z8"
->
+<table mat-table [dataSource]="dataSource" class="table-container mat-elevation-z8">
   <!-- Emission factors Column -->
   <ng-container matColumnDef="Transformation">
     <th mat-header-cell *matHeaderCellDef></th>
@@ -12,37 +8,50 @@
   <!-- Aboveground Column -->
   <ng-container matColumnDef="Aboveground">
     <th mat-header-cell *matHeaderCellDef>Aboveground</th>
-    <td mat-cell *matCellDef="let element">{{ element.aboveGround }}</td>
+    <td mat-cell *matCellDef="let element">
+      <input class="area-input" type="number" [(ngModel)]="element.aboveGround" />
+    </td>
   </ng-container>
 
   <!-- Belowground -->
   <ng-container matColumnDef="Belowground">
     <th mat-header-cell *matHeaderCellDef>Belowground</th>
-    <td mat-cell *matCellDef="let element">{{ element.belowGround }}</td>
+    <td mat-cell *matCellDef="let element">
+      <input class="area-input" type="number" [(ngModel)]="element.belowGround" />
+    </td>
   </ng-container>
 
   <!-- Deadwood  -->
   <ng-container matColumnDef="Deadwood">
     <th mat-header-cell *matHeaderCellDef>Deadwood</th>
-    <td mat-cell *matCellDef="let element">{{ element.deadWood }}</td>
+    <td mat-cell *matCellDef="let element">
+      <input class="area-input" type="number" [(ngModel)]="element.deadWood" />
+    </td>
   </ng-container>
 
   <!-- Litter Column -->
   <ng-container matColumnDef="Litter">
     <th mat-header-cell *matHeaderCellDef>Litter</th>
-    <td mat-cell *matCellDef="let element">{{ element.litter }}</td>
+    <td mat-cell *matCellDef="let element">
+      <input class="area-input" type="number" [(ngModel)]="element.litter" />
+    </td>
   </ng-container>
 
   <!-- Mineral Column -->
   <ng-container matColumnDef="Mineral">
     <th mat-header-cell *matHeaderCellDef>Mineral</th>
-    <td mat-cell *matCellDef="let element">{{ element.mineral }}</td>
+    <td mat-cell *matCellDef="let element">
+      <input class="area-input" type="number" [(ngModel)]="element.mineral" />
+
+    </td>
   </ng-container>
 
   <!-- Organic Column -->
   <ng-container matColumnDef="Organic">
     <th mat-header-cell *matHeaderCellDef>Organic</th>
-    <td mat-cell *matCellDef="let element">{{ element.organic }}</td>
+    <td mat-cell *matCellDef="let element">
+      <input class="area-input" type="number" [(ngModel)]="element.organic" />
+    </td>
   </ng-container>
 
   <!-- Main headers -->
