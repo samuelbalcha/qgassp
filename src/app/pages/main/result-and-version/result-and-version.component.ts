@@ -1,14 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 
-import { ChartOptions, ChartType, ChartDataset } from 'chart.js';
+import { ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 
 @Component({
 	selector: 'result-and-version',
 	templateUrl: './result-and-version.component.html',
 	styleUrls: ['./result-and-version.component.scss'],
-	// encapsulation: ViewEncapsulation.None
 })
 export class ResultAndVersionComponent implements OnInit {
 	public myProject = {
@@ -21,6 +20,7 @@ export class ResultAndVersionComponent implements OnInit {
 	trafic = false;
 	buildings = false;
 	consumption = false;
+
 	constructor() {}
 
 	getSelected(newItem: any) {
@@ -39,7 +39,7 @@ export class ResultAndVersionComponent implements OnInit {
 	}
 	@Input() backgroundColor: ThemePalette;
 
-	barChartOptions: ChartOptions = {
+	barChartOptions: any = {
 		responsive: false,
 		aspectRatio: 1,
 		scales: {
@@ -80,7 +80,7 @@ export class ResultAndVersionComponent implements OnInit {
 	barChartLegend = true;
 	barChartPlugins = [];
 
-	barChartData: ChartDataset[] = [
+	barChartData: ChartDataSets[] = [
 		{
 			data: [2, -1, -5, -3, 1, 3, 4, 2, 3, 2.5, 2.4, 2, 1, 1.8],
 			label: '1.Version',
