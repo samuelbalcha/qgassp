@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'dataset',
-  templateUrl: './dataset.component.html',
-  styleUrls: ['./dataset.component.scss']
+	selector: 'dataset',
+	templateUrl: './dataset.component.html',
+	styleUrls: ['./dataset.component.scss'],
 })
 export class DatasetComponent implements OnInit {
+	constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+	ngOnInit(): void {}
 }

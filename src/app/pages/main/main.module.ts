@@ -2,16 +2,21 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ChartsModule } from 'ng2-charts';
+
 import { SharedModule } from '../../shared/shared.module';
+import { MaterialModule } from '../../shared/material.module';
+
 import { MainPageComponent } from './main.page';
 import { DashboardPageComponent } from './dashboard/dashboard.page';
 import { DatasetComponent } from './dataset/dataset.component';
 import { HowitworksComponent } from './howitworks/howitworks.component';
 import { SetupComponent } from './setup/setup.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from '../../shared/material.module';
 import { ModuleLoaderComponent } from './module-loader/module-loader.component';
 import { ResultAndVersionComponent } from './result-and-version/result-and-version.component';
+import { SelectorsComponent } from '../../shared/components/selectors/selectors.component';
+import { AreaLandUseCangeFormComponent } from '../../shared/components/area-land-use-cange-form/area-land-use-cange-form.component';
 
 const routes: Routes = [
 	{
@@ -42,7 +47,6 @@ const routes: Routes = [
 		path: 'result-version',
 		component: ResultAndVersionComponent,
 	},
-
 ];
 
 @NgModule({
@@ -52,14 +56,19 @@ const routes: Routes = [
 		HowitworksComponent,
 		DashboardPageComponent,
 		SetupComponent,
+		ModuleLoaderComponent,
+		SelectorsComponent,
+		ResultAndVersionComponent,
+		AreaLandUseCangeFormComponent,
 	],
 	imports: [
 		FlexLayoutModule,
 		MaterialModule,
+		ChartsModule,
 		CommonModule,
 		RouterModule.forChild(routes),
 		SharedModule,
 	],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class MainModule { }
+export class MainModule {}

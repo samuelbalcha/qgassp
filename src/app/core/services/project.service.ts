@@ -19,7 +19,7 @@ export class ProjectService {
 		private httpClient: HttpClient,
 		private router: Router,
 		private toastSvc: ToastrService
-	) { }
+	) {}
 
 	create(project: IProject) {
 		return this.httpClient

@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { NgxLoadingModule } from 'ngx-loading';
-//import { AuthButtonComponent } from './auth-button/auth-button.component';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { AuthGuard } from './core/guards/auth.guard';
@@ -13,26 +12,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ModuleLoaderComponent } from './pages/main/module-loader/module-loader.component';
-import { SelectorsComponent } from './shared/components/selectors/selectors.component';
-import { ResultAndVersionComponent } from './pages/main/result-and-version/result-and-version.component';
-import { ChartsModule } from 'ng2-charts';
-
-import { AreaLandUseCangeFormComponent } from './shared/components/area-land-use-cange-form/area-land-use-cange-form.component';
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		ModuleLoaderComponent,
-		SelectorsComponent,
-		ResultAndVersionComponent,
-		AreaLandUseCangeFormComponent,
-	],
+	declarations: [AppComponent],
 	imports: [
 		FlexLayoutModule,
 		BrowserModule,
 		HttpClientModule,
-		ChartsModule,
 		AppRoutingModule,
 		BrowserAnimationsModule,
 		ReactiveFormsModule,
