@@ -3,20 +3,39 @@ import { ProjectStatuses } from '../enums/projectStatuses';
 import { ProjectTypes } from '../enums/projectTypes';
 import { IUser } from './IUser';
 
+export interface ICalModules {
+	landuse?: boolean;
+	traffic?: boolean;
+	buildings?: boolean;
+	consumption?: boolean;
+}
+
+export interface IProjectModule {
+	dataSet: {
+		default: [];
+		custom: [];
+	};
+	baseline: {};
+	versions: [];
+}
+
 export interface IProject {
-	projectType: ProjectTypes;
 	name: string;
 	location: {
-		countryCode: string;
+		country: string;
 		region: string;
 	};
-	dataSet: {
-		default: any[];
-		custom: any[];
-	};
-	modules: any[];
 	status: ProjectStatuses;
+	startYear: number;
+	projectType?: ProjectTypes;
+	localId?: string;
 	_id?: string;
 	createdBy?: IUser;
 	createdAt?: string;
+	territorial?: {
+		landuse?: IProjectModule;
+		traffic?: IProjectModule;
+		buildings?: IProjectModule;
+	};
+	consumption?: IProjectModule;
 }

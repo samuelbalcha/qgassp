@@ -7,14 +7,13 @@
 				class="logoImg"
 			/>
 			<span>ESPON QGASSP TOOL</span>
-			<div class="container bottomLogo">
-				<div>
-					<a mat-button routerLink="/dataset">DataSet</a>
-					<a mat-button routerLink="/how-it-works">How it works</a>
-				</div>
-			</div>
+			<div class="container bottomLogo"></div>
 		</mat-toolbar>
-		<div class="content mat-elevation-z8">
+		<div>
+			<div class="blue-bar">
+				<a mat-button routerLink="/dataset">DataSet</a>
+				<a mat-button routerLink="/how-it-works">How it works</a>
+			</div>
 			<router-outlet></router-outlet>
 		</div>
 	</mat-drawer-content>

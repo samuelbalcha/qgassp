@@ -1,11 +1,16 @@
-.projectName{
-    float: left;
-    color: #3F51B5;
-    font-weight: 600;
+.project-name {
+	float: left;
+	color: #3f51b5;
+	font-weight: 400;
 }
-.datasource{
-    padding-left: 60px;
-    font-size: medium;
-    font-weight: 600;
-    color: #3F51B5;
+
+.project-status {
+	text-align: right;
+}
+
+.datasource {
+	padding-left: 60px;
+	font-size: medium;
+	font-weight: 600;
+	color: #3f51b5;
 }

@@ -7,7 +7,7 @@ import { IInternalUser } from '../../auth/IInternalUser';
 import { ProjectStatuses } from '../../../commons/enums/projectStatuses';
 
 const projectSelect =
-	'name projectType status location createdAt createdBy dataSet modules result';
+	'name localId startYear projectType status location createdAt createdBy territorial consumption';
 
 const create = async (
 	user: IInternalUser | undefined,
@@ -22,9 +22,6 @@ const create = async (
 	if (!data.name) {
 		throw new Error('project.name.required');
 	}
-	if (!data.projectType) {
-		throw new Error('project.projectType.required');
-	}
 
 	// do project check based on project type
 	const query: any = {
@@ -35,10 +32,12 @@ const create = async (
 	};
 
 	const project = await Project.create(query);
+
 	return {
-		...project.toObject(),
+		...(project.toObject() as IProject),
 		createdBy: {
-			...user,
+			_id: user._id,
+			name: user.name,
 		},
 	};
 };

@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import { ProjectTypes } from '../../../commons/enums/projectTypes';
 import { ProjectStatuses } from '../../../commons/enums/projectStatuses';
 import { IProject } from '../../../commons/types/IProject';
 import { Project } from '../../models/project.model';
@@ -25,17 +24,22 @@ afterAll(cleanUp);
 describe('create', () => {
 	it('should create a project', async () => {
 		const data: IProject = {
-			projectType: ProjectTypes.TERRITORIAL,
+			startYear: 2022,
 			name: 'My Project',
 			location: {
-				countryCode: 'FI',
+				country: 'Finland',
 				region: 'Helsinki',
 			},
-			dataSet: {
-				default: [],
-				custom: [],
+			territorial: {
+				landuse: {
+					dataSet: {
+						default: [],
+						custom: [],
+					},
+					baseline: {},
+					versions: [],
+				},
 			},
-			modules: [],
 			status: ProjectStatuses.ACTIVE,
 		};
 
@@ -43,6 +47,15 @@ describe('create', () => {
 
 		expect(result).toHaveProperty('_id');
 		expect(result).toHaveProperty('createdBy');
+		expect(result).toHaveProperty('territorial', {
+			landuse: {
+				dataSet: {
+					default: [],
+					custom: [],
+				},
+				versions: [],
+			},
+		});
 	});
 });
 
@@ -53,16 +66,18 @@ describe('get', () => {
 			c.project.consumptionA._id
 		);
 
-		expect(consumptionA).toHaveProperty('dataSet', {
-			default: [],
-			custom: [],
+		expect(consumptionA).toHaveProperty('consumption', {
+			dataSet: {
+				default: [],
+				custom: [],
+			},
+			versions: [],
 		});
 		expect(consumptionA).toHaveProperty('projectType', 'Consumption');
 		expect(consumptionA).toHaveProperty('status', 'Draft');
-		expect(consumptionA).toHaveProperty('modules', []);
 		expect(consumptionA).toHaveProperty('name', 'Project Consumption');
 		expect(consumptionA).toHaveProperty('location', {
-			countryCode: 'FI',
+			country: 'Finland',
 			region: 'Helsinki',
 		});
 		expect(consumptionA.createdBy).toHaveProperty('name', 'John Doe');
