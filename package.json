@@ -12,7 +12,7 @@
     "postinstall": "ng build --prod",
     "start:server": "nodemon server/index.ts",
     "web": "ng build && npm run start:server",
-    "start": "node dist/server/index.js",
+    "start": "npm run web",
     "dev": "cross-env NODE_ENV=development npm run web",
     "demo": "cross-env NODE_ENV=demo nodemon",
     "seed": "cross-env NODE_ENV=development node server/seed/init.ts",
