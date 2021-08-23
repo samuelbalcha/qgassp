@@ -13,15 +13,21 @@ const items = {
 		name: 'Project Territorial',
 		projectType: 'Territorial',
 		createdBy: Ref('user.adminA._id'),
+		startYear: '2022',
 		location: {
-			countryCode: 'FI',
+			country: 'Finland',
 			region: 'Helsinki',
 		},
-		dataSet: {
-			default: [],
-			custom: [],
+		territorial: {
+			landuse: {
+				dataSet: {
+					default: [],
+					custom: [],
+				},
+				baseline: {},
+				versions: [],
+			},
 		},
-		modules: [],
 		status: ProjectStatuses.ACTIVE,
 	},
 
@@ -30,15 +36,19 @@ const items = {
 		name: 'Project Consumption',
 		projectType: 'Consumption',
 		createdBy: Ref('user.adminA._id'),
+		startYear: '2024',
 		location: {
-			countryCode: 'FI',
+			country: 'Finland',
 			region: 'Helsinki',
 		},
-		dataSet: {
-			default: [],
-			custom: [],
+		consumption: {
+			dataSet: {
+				default: [],
+				custom: [],
+			},
+			baseline: {},
+			versions: [],
 		},
-		modules: [],
 		status: ProjectStatuses.DRAFT,
 	},
 };

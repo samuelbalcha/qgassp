@@ -1,46 +1,66 @@
-<h1 class="projectName">
-    "Project Name"
-</h1>
-<h1 style="float:right; margin-right: 9rem;">
-    unpublished
-</h1>
-<br>
-<br>
-<br>
-<mat-card style="margin-right: 7rem; background-color:#E4E4E8;">
-    <div style="display:inline-flex">
-        <mat-icon> location_on</mat-icon>
-        <p>{{myProject.location}}</p>
-        <mat-icon style="padding-left: 60px;"> calendar_today</mat-icon>
-        <p>&nbsp;{{myProject.year}}</p>
-        <h6 class="datasource">Data source:&nbsp;</h6>
-        <p>{{myProject.location}}</p>
-        <p style="padding-left: 60px;">Default</p>
-        <a href="" style="padding-left: 60px;">EDIT</a>
-    </div>
+<div class="flex-container">
+	<h1 class="project-name flex-item">
+		{{ myProject.name }}
+	</h1>
+
+	<h1 class="project-status flex-item">
+		{{ myProject.status === 'Draft' ? 'unpublished' : 'published' }}
+	</h1>
+</div>
+
+<mat-card style="background-color:#E4E4E8;">
+	<div style="display:inline-flex">
+		<mat-icon> location_on</mat-icon>
+		<p>
+			{{ myProject.location.region }} ,
+			{{ myProject.location.countryCode }}
+		</p>
+		<mat-icon style="padding-left: 60px;"> calendar_today</mat-icon>
+		<p>&nbsp;{{ myProject.startYear }}</p>
+		<h6 class="datasource">Data source:&nbsp;</h6>
+		<p style="padding-left: 60px;">Default</p>
+		<a href="/setup-project" style="padding-left: 60px;">EDIT</a>
+	</div>
 </mat-card>
-<br>
-<br>
+
 <p>
-    Select calculation modes
+	Select calculation modes
 </p>
 
 <div style="display:inline-flex">
-    <mat-checkbox color="primary" [checked]="landuse" (change)="selected(!landuse,'landuse')">
-        Land use change
-    </mat-checkbox>
-    <mat-checkbox color="primary" style="padding-left: 60px" [checked]="trafic" (change)="selected(!trafic,'trafic')">
-        Trafic /
-        Infra
-    </mat-checkbox>
-    <mat-checkbox color="primary" style="padding-left: 60px" [checked]="buildings"
-        (change)="selected(!buildings, 'buildings' )">
-        Buildings
-    </mat-checkbox>
-    <mat-checkbox color="primary" style="padding-left: 60px" [checked]="consumption"
-        (change)="selected(!consumption, 'consumption')">
-        Consumption based
-    </mat-checkbox>
+	<mat-checkbox
+		color="primary"
+		[checked]="myProject.territorial.landuse"
+		[(ngModel)]="myProject.territorial.landuse"
+		(change)="selected()"
+	>
+		Land use change
+	</mat-checkbox>
+	<mat-checkbox
+		color="primary"
+		style="padding-left: 60px"
+		[checked]="myProject.territorial.traffic"
+		[(ngModel)]="myProject.territorial.traffic"
+		(change)="selected()"
+	>
+		Trafic / Infra
+	</mat-checkbox>
+	<mat-checkbox
+		color="primary"
+		style="padding-left: 60px"
+		[checked]="myProject.territorial.buildings"
+		[(ngModel)]="myProject.territorial.buildings"
+		(change)="selected()"
+	>
+		Buildings
+	</mat-checkbox>
+	<mat-checkbox
+		color="primary"
+		style="padding-left: 60px"
+		[checked]="myProject.consumption"
+		[(ngModel)]="myProject.consumption"
+		(change)="selected()"
+	>
+		Consumption based
+	</mat-checkbox>
 </div>
-<br>
-<br>

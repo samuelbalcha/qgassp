@@ -1,119 +1,163 @@
 <div class="moduleBody">
-    <h4>
-        <a class="headerLink" routerLink="/dashboard">QGasSP Dashboard &nbsp; ></a>
-        <a class="headerLink" routerLink="/setup-project">Setup New Project &nbsp; >
-        </a>"Project name" set up the baseline
-    </h4>
-    <br>
+	<h4>
+		<a class="headerLink" routerLink="/dashboard">QGasSP Dashboard > </a>
+		<a class="headerLink" routerLink="/setup-project"
+			>Setup New Project >
+		</a>
+		<b> {{ myProject.name }} </b> set up the baseline
+	</h4>
 
-    <selectors [myProject]="myProject" (selectedValue)="getSelected($event)">
-    </selectors>
+	<selectors [myProject]="myProject" (selectedValue)="getSelected($event)">
+	</selectors>
 
-    <h2 style="color:#3F51B5">1. Setting the baseline for each selected module</h2>
+	<h2 style="color:#3F51B5">
+		1. Setting the baseline for each selected module
+	</h2>
 
-    <mat-card style="background-color:#E4E4E8;  max-width: 55rem;">
-        Teritorial
-    </mat-card>
-    <br>
-    <cdk-accordion class="example-accordion" *ngIf="landuse">
-        <cdk-accordion-item #accordionItem="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="0"
-            id="landuse-accordion-body" [attr.aria-expanded]="accordionItem.expanded">
-            <div class="example-accordion-item-header color-green" role="presentation" (click)="accordionItem.toggle()">
-                <mat-icon>done</mat-icon>
-                Land-use Change
-                <span class="example-accordion-item-description">
-                    <mat-icon style="color: black" *ngIf="accordionItem.expanded">expand_less</mat-icon>
-                    <mat-icon style="color: black" *ngIf="!accordionItem.expanded">expand_more</mat-icon>
-                </span>
-            </div>
-            <div class="example-accordion-item-body" role="region"
-                [style.display]="accordionItem.expanded ? '' : 'none'" id="landuse-accordion-body">
-                <p class="accordion-text">
-                    When calculating the land-use change
-                    the baseline is set to zero by default
-                </p>
+	<mat-card
+		style="background-color:#E4E4E8;  max-width: 55rem; text-align: center;"
+		*ngIf="territorialModules.length"
+	>
+		Territorial
+	</mat-card>
 
-                <mat-checkbox style="padding-left: 45rem;" color="primary" [checked]=true>
-                    Marl as ready
-                </mat-checkbox>
-            </div>
-        </cdk-accordion-item>
-    </cdk-accordion>
-    <cdk-accordion class="example-accordion" *ngIf="trafic">
-        <cdk-accordion-item #accordionItem="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="0"
-            id="landuse-accordion-body" [attr.aria-expanded]="accordionItem.expanded">
-            <div class="example-accordion-item-header color-orange" (click)="accordionItem.toggle()">
-                <mat-icon>done</mat-icon>
-                Trafic / Infra
-                <span class="example-accordion-item-description">
-                    <mat-icon style="color: black" *ngIf="accordionItem.expanded">expand_less</mat-icon>
-                    <mat-icon style="color: black" *ngIf="!accordionItem.expanded">expand_more</mat-icon>
-                </span>
-            </div>
-            <div class="example-accordion-item-body" role="region"
-                [style.display]="accordionItem.expanded ? '' : 'none'" id="landuse-accordion-body">
-                <p class="accordion-text">
-                    When calculating the .......
-                </p>
-                <mat-checkbox style="padding-left: 45rem;" color="primary" [checked]=true>
-                    Marl as ready
-                </mat-checkbox>
-            </div>
-        </cdk-accordion-item>
-    </cdk-accordion>
-    <cdk-accordion class="example-accordion" *ngIf="buildings">
-        <cdk-accordion-item #accordionItem="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="0"
-            id="landuse-accordion-body" [attr.aria-expanded]="accordionItem.expanded">
-            <div class="example-accordion-item-header color-brown" (click)="accordionItem.toggle()">
-                <mat-icon>done</mat-icon>
-                Building energy use
-                <span class="example-accordion-item-description">
-                    <mat-icon style="color: white" *ngIf="accordionItem.expanded">expand_less</mat-icon>
-                    <mat-icon style="color: white" *ngIf="!accordionItem.expanded">expand_more</mat-icon>
-                </span>
-            </div>
-            <div class="example-accordion-item-body" role="region"
-                [style.display]="accordionItem.expanded ? '' : 'none'" id="landuse-accordion-body">
-                <p class="accordion-text">
-                    When calculating the ......
-                </p>
-                <mat-checkbox style="padding-left: 45rem;" color="primary" [checked]=true>
-                    Marl as ready
-                </mat-checkbox>
-            </div>
-        </cdk-accordion-item>
-    </cdk-accordion>
+	<cdk-accordion
+		class="module-accordion"
+		*ngFor="let territorialModule of territorialModules"
+	>
+		<cdk-accordion-item
+			#accordionItem="cdkAccordionItem"
+			class="module-accordion-item"
+			role="button"
+			tabindex="0"
+			id="accordion-body"
+			[attr.aria-expanded]="accordionItem.expanded"
+		>
+			<div
+				[ngClass]="territorialModule"
+				class="module-accordion-item-header"
+				role="presentation"
+				(click)="accordionItem.toggle()"
+			>
+				<mat-icon>done</mat-icon>
+				{{ territorialModule }}
+				<span class="module-accordion-item-description">
+					<mat-icon
+						style="color: black"
+						*ngIf="accordionItem.expanded"
+						>expand_less</mat-icon
+					>
+					<mat-icon
+						style="color: black"
+						*ngIf="!accordionItem.expanded"
+						>expand_more</mat-icon
+					>
+				</span>
+			</div>
+			<div
+				class="module-accordion-item-body"
+				role="region"
+				[style.display]="accordionItem.expanded ? '' : 'none'"
+				id="accordion-body"
+			>
+				<div [ngSwitch]="territorialModule">
+					<div *ngSwitchCase="'landuse'">
+						<land-use-change-form></land-use-change-form>
+						<button
+							class="add-button"
+							mat-button
+							(click)="onAddLandUseChange()"
+						>
+							+ ADD NEW
+						</button>
+					</div>
+					<div *ngSwitchDefault class="text-warning">
+						<p class="accordion-text">
+							When calculating the land-use change the baseline is
+							set to zero by default
+						</p>
+					</div>
+				</div>
 
-    <mat-card style="background-color:#E4E4E8;  max-width: 55rem;">
-        Consumptional
-    </mat-card>
-    <br>
+				<!--
+				<mat-checkbox
+					style="padding-left: 45rem;"
+					color="primary"
+					[checked]="true"
+				>
+					Mark as ready
+				</mat-checkbox>
+                -->
 
-    <cdk-accordion class="example-accordion" *ngIf="consumption">
-        <cdk-accordion-item #accordionItem="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="0"
-            id="landuse-accordion-body" [attr.aria-expanded]="accordionItem.expanded">
-            <div class="example-accordion-item-header color-blue" (click)="accordionItem.toggle()">
-                <mat-icon>done</mat-icon>
-                Consumption based
-                <span class="example-accordion-item-description">
-                    <mat-icon style="color: black" *ngIf="accordionItem.expanded">expand_less</mat-icon>
-                    <mat-icon style="color: black" *ngIf="!accordionItem.expanded">expand_more</mat-icon>
-                </span>
-            </div>
-            <div class="example-accordion-item-body" role="region"
-                [style.display]="accordionItem.expanded ? '' : 'none'" id="landuse-accordion-body">
-                <p class="accordion-text">
-                    When calculating the .......
-                </p>
-                <mat-checkbox style="padding-left: 45rem;" color="primary" [checked]=true>
-                    Marl as ready
-                </mat-checkbox>
-            </div>
-        </cdk-accordion-item>
-    </cdk-accordion>
-    <br>
-    <br>
-    <br>
-    <br>
+				<div class="calculate-controls">
+					<button
+						mat-raised-button
+						class="next-button"
+						color="primary"
+						(click)="calculate()"
+					>
+						Next
+					</button>
+				</div>
+			</div>
+		</cdk-accordion-item>
+	</cdk-accordion>
 
+	<mat-card
+		style="background-color:#E4E4E8;  max-width: 55rem; text-align: center;"
+		*ngIf="myProject.consumption"
+	>
+		Consumption
+	</mat-card>
+
+	<cdk-accordion class="module-accordion">
+		<cdk-accordion-item
+			#accordionItem="cdkAccordionItem"
+			class="module-accordion-item"
+			role="button"
+			tabindex="0"
+			id="accordion-body"
+			[attr.aria-expanded]="accordionItem.expanded"
+		>
+			<div
+				class="consumption module-accordion-item-header"
+				role="presentation"
+				(click)="accordionItem.toggle()"
+			>
+				<mat-icon>done</mat-icon>
+				Consumption
+				<span class="module-accordion-item-description">
+					<mat-icon
+						style="color: black"
+						*ngIf="accordionItem.expanded"
+						>expand_less</mat-icon
+					>
+					<mat-icon
+						style="color: black"
+						*ngIf="!accordionItem.expanded"
+						>expand_more</mat-icon
+					>
+				</span>
+			</div>
+			<div
+				class="module-accordion-item-body"
+				role="region"
+				[style.display]="accordionItem.expanded ? '' : 'none'"
+				id="accordion-body"
+			>
+				<p class="accordion-text">
+					When calculating the land-use change the baseline is set to
+					zero by default
+				</p>
+
+				<mat-checkbox
+					style="padding-left: 45rem;"
+					color="primary"
+					[checked]="true"
+				>
+					Mark as ready
+				</mat-checkbox>
+			</div>
+		</cdk-accordion-item>
+	</cdk-accordion>
 </div>

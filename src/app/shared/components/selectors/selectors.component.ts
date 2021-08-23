@@ -1,39 +1,18 @@
-import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { IProject } from '../../../../../commons/types/IProject';
 
-interface Iselected {
-	name: string;
-	value: boolean;
-}
 @Component({
 	selector: 'selectors',
 	templateUrl: './selectors.component.html',
 	styleUrls: ['./selectors.component.scss'],
 })
-export class SelectorsComponent implements OnInit {
+export class SelectorsComponent {
 	@Input() myProject: any;
-	@Output() selectedValue = new EventEmitter<Iselected>();
+	@Output() selectedValue = new EventEmitter<IProject>();
 
-	landuse = false;
-	trafic = false;
-	buildings = false;
-	consumption = false;
-
-	selected(value: boolean, name: string) {
-		if (name == 'landuse') {
-			this.landuse = value;
-		}
-		if (name == 'trafic') {
-			this.trafic = value;
-		}
-		if (name == 'buildings') {
-			this.buildings = value;
-		}
-		if (name == 'consumption') {
-			this.consumption = value;
-		}
-		this.selectedValue.emit({ name: name, value: value });
+	selected() {
+		this.selectedValue.emit(this.myProject);
 	}
-	constructor() {}
 
-	ngOnInit() {}
+	constructor() {}
 }

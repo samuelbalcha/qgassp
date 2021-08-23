@@ -16,7 +16,7 @@ import { SetupComponent } from './setup/setup.component';
 import { ModuleLoaderComponent } from './module-loader/module-loader.component';
 import { ResultAndVersionComponent } from './result-and-version/result-and-version.component';
 import { SelectorsComponent } from '../../shared/components/selectors/selectors.component';
-import { AreaLandUseCangeFormComponent } from '../../shared/components/area-land-use-cange-form/area-land-use-cange-form.component';
+import { LandUseChangeFormComponent } from '../../shared/components/land-use-change-form/land-use-change-form.component';
 
 const routes: Routes = [
 	{
@@ -59,7 +59,7 @@ const routes: Routes = [
 		ModuleLoaderComponent,
 		SelectorsComponent,
 		ResultAndVersionComponent,
-		AreaLandUseCangeFormComponent,
+		LandUseChangeFormComponent,
 	],
 	imports: [
 		FlexLayoutModule,

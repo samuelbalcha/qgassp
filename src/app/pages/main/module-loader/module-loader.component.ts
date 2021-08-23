@@ -1,36 +1,52 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import _ from 'lodash';
+
+import { IProject } from '../../../../../commons/types/IProject';
+import { ProjectService } from '../../../core/services/project.service';
 
 @Component({
 	selector: 'module-loader',
 	templateUrl: './module-loader.component.html',
 	styleUrls: ['./module-loader.component.scss'],
 })
-export class ModuleLoaderComponent {
-	public myProject = {
-		name: 'test Project',
-		location: 'Kymenlaakso, Finland',
-		year: '2020',
-		owner: 'test',
-	};
-	landuse = false;
-	trafic = false;
-	buildings = false;
-	consumption = false;
-	constructor() {}
+export class ModuleLoaderComponent implements OnInit {
+	public myProject: IProject;
+	public territorialModules: string[] = [];
 
-	getSelected(newItem: any) {
-		if (newItem.name == 'landuse') {
-			this.landuse = newItem.value;
+	constructor(
+		private router: Router,
+		private projectService: ProjectService
+	) {
+		const currentProject = this.projectService.getDraftProject();
+		if (!currentProject || !currentProject.name) {
+			this.router.navigateByUrl('dashboard');
 		}
-		if (newItem.name == 'trafic') {
-			this.trafic = newItem.value;
-		}
-		if (newItem.name == 'buildings') {
-			this.buildings = newItem.value;
-		}
-		if (newItem.name == 'consumption') {
-			this.consumption = newItem.value;
-		}
+
+		this.myProject = currentProject as IProject;
+	}
+
+	init() {
+		//	this.selectedModules = _.keys(_.pickBy(this.myProject.modules));
+		this.territorialModules = _.keys(this.myProject.territorial);
+	}
+
+	ngOnInit(): void {
+		this.init();
+	}
+
+	getSelected(project: IProject) {
+		console.log('updated selections', project);
+		//	this.myProject.modules = calModules;
+		this.init();
+	}
+
+	onAddLandUseChange() {
+		console.log('onAddLandUseChange');
+	}
+
+	calculate() {
+		console.log('calculate');
 	}
 }

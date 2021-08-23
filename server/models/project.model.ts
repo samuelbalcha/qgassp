@@ -5,7 +5,6 @@ import { ProjectTypes } from '../../commons/enums/projectTypes';
 export const ProjectSchema = new Schema({
 	projectType: {
 		type: String,
-		required: true,
 		enum: [ProjectTypes.TERRITORIAL, ProjectTypes.CONSUMPTION],
 		default: ProjectTypes.TERRITORIAL,
 	},
@@ -22,8 +21,14 @@ export const ProjectSchema = new Schema({
 	name: {
 		type: String,
 	},
+	startYear: {
+		type: Number,
+	},
+	localId: {
+		type: String,
+	},
 	location: {
-		countryCode: String,
+		country: String,
 		region: String,
 	},
 	createdAt: {
@@ -35,12 +40,8 @@ export const ProjectSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'User',
 	},
-	dataSet: {
-		default: [],
-		custom: [],
-	},
-	modules: [],
-	result: {},
+	territorial: {},
+	consumption: {},
 });
 
 export const Project = model('Project', ProjectSchema);
