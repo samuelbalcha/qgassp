@@ -6,6 +6,7 @@ import cors from 'cors';
 import config from './config';
 import router from './routes';
 import logRequestStart from './request.log';
+import compression from 'compression';
 
 const connectionString = process.env.MONGODB_URL || config.MONGODB_URL;
 
@@ -28,6 +29,7 @@ const app = express();
 const CORS = cors();
 
 app.use(CORS);
+app.use(compression());
 app.use(
 	urlencoded({
 		extended: true,
