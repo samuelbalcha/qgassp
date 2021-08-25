@@ -1,11 +1,21 @@
 <div class="flex-container">
-	<h1 class="project-name flex-item">
-		{{ myProject.name }}
-	</h1>
+	<div class="bread-crumb flex-item space-between">
+		<a class="headerLink" routerLink="/dashboard">Dashboard > </a>
+		<a class="headerLink" routerLink="/setup-project"
+			>Setup New Project >
+		</a>
+		<a class="headerLink" routerLink="/module-loader">
+			<b> {{ myProject.name }} </b> set up the baseline >
+		</a>
 
-	<h1 class="project-status flex-item">
+		<a class="headerLink" routerLink="/result-version"
+			>Result and version >
+		</a>
+	</div>
+
+	<h4 class="project-status flex-item">
 		{{ myProject.status === 'Draft' ? 'unpublished' : 'published' }}
-	</h1>
+	</h4>
 </div>
 
 <mat-card style="background-color:#E4E4E8;">

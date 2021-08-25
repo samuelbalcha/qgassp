@@ -1,12 +1,4 @@
 <div class="moduleBody">
-	<h4>
-		<a class="headerLink" routerLink="/dashboard">QGasSP Dashboard > </a>
-		<a class="headerLink" routerLink="/setup-project"
-			>Setup New Project >
-		</a>
-		<b> {{ myProject.name }} </b> set up the baseline
-	</h4>
-
 	<selectors [myProject]="myProject" (selectedValue)="getSelected($event)">
 	</selectors>
 
