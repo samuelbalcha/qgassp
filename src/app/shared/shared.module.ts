@@ -12,6 +12,7 @@ import { ResultStepComponent } from './components/steps/result-step/result-step.
 import { LocationStepComponent } from './components/steps/location-step/location-step.component';
 import { LandUseStepComponent } from './components/steps/land-use-step/land-use-step.component';
 import { LandUseChangeComponent } from './components/land-use-change/land-use-change.component';
+import { ConsumptionComponent } from './components/consumption/consumption.component';
 
 const shared = [
 	HeaderComponent,
@@ -22,6 +23,7 @@ const shared = [
 	LandUseStepComponent,
 	ResultStepComponent,
 	LandUseChangeComponent,
+	ConsumptionComponent,
 ];
 
 @NgModule({
