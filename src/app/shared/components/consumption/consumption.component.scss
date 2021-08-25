@@ -1,0 +1,67 @@
+:host {
+	display: block;
+	padding-left: 2%;
+	padding-top: 2%;
+	padding-right: 2%;
+}
+
+.step-container {
+	margin: auto;
+}
+
+mat-horizontal-stepper {
+	background-color: transparent !important;
+}
+
+.width-200 {
+	width: 200px;
+}
+
+.space-between {
+	margin-right: 100px;
+}
+
+.btn-group {
+	float: right;
+}
+
+.next-btn {
+	background-color: #1c294e;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+h4 {
+	color: #324191;
+	font-weight: 500;
+	padding-top: 12px;
+	padding-left: 4rem;
+}
+
+mat-horizontal-stepper {
+	background-color: #fafafa;
+	color: #324191;
+}
+
+.previous-btn {
+	background-color: #fbfbfb;
+	color: #1c294e;
+	text-transform: uppercase;
+	margin-right: 20px;
+}
+
+.float {
+	float: left;
+}
+
+.population {
+	padding-left: 11rem;
+}
+
+.lowerTitle {
+	width: 66%;
+}
+
+.numberInput {
+	width: 40%;
+}
