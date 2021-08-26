@@ -39,4 +39,4 @@ const shared = [
 	providers: [],
 	schemas: [],
 })
-export class SharedModule {}
+export class SharedModule { }
