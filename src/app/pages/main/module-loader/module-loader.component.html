@@ -40,11 +40,13 @@
 						</button>
 					</div>
 
-					<div *ngSwitchCase="'traffic'">
-						<land-use-change-form></land-use-change-form>
-						<button class="add-button" mat-button (click)="onAddLandUseChange()">
-							+ ADD NEW
-						</button>
+					<div *ngSwitchCase="'buildings'">
+						<bulding-energy-use></bulding-energy-use>
+						<div class="next-controls">
+							<button mat-raised-button class="next-button" color="primary">
+								Next
+							</button>
+						</div>
 					</div>
 					<div *ngSwitchDefault class="text-warning">
 						<p class="accordion-text">
@@ -64,11 +66,11 @@
 				</mat-checkbox>
                 -->
 
-				<div class="calculate-controls">
+				<!-- <div class="calculate-controls">
 					<button mat-raised-button class="next-button" color="primary" (click)="calculate()">
 						Next
 					</button>
-				</div>
+				</div> -->
 			</div>
 		</cdk-accordion-item>
 	</cdk-accordion>

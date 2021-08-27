@@ -30,6 +30,7 @@ export class ModuleLoaderComponent implements OnInit {
 	init() {
 		//	this.selectedModules = _.keys(_.pickBy(this.myProject.modules));
 		this.territorialModules = _.keys(this.myProject.territorial);
+		console.log(_.keys(this.myProject.territorial));
 	}
 
 	ngOnInit(): void {
