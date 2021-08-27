@@ -1,8 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
+import { Router } from '@angular/router';
 
 import { ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
+import { IProject } from '../../../../../commons/types/IProject';
+import { ProjectService } from '../../../core/services/project.service';
 
 @Component({
 	selector: 'result-and-version',
@@ -12,18 +15,23 @@ import { Label } from 'ng2-charts';
 export class ResultAndVersionComponent {
 	@Input() backgroundColor: ThemePalette;
 
-	public myProject = {
-		name: 'test Project',
-		location: 'Kymenlaakso, Finland',
-		year: '2020',
-		owner: 'test',
-	};
+	public myProject: IProject;
 	landuse = false;
 	trafic = false;
 	buildings = false;
 	consumption = false;
 
-	constructor() {}
+	constructor(
+		private router: Router,
+		private projectService: ProjectService
+	) {
+		const currentProject = this.projectService.getDraftProject();
+		if (!currentProject || !currentProject.name) {
+			this.router.navigateByUrl('dashboard');
+		}
+
+		this.myProject = currentProject as IProject;
+	}
 
 	getSelected(newItem: any) {
 		if (newItem.name == 'landuse') {
