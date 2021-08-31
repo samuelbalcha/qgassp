@@ -1,0 +1,32 @@
+<div class="table-title">
+	<p>CO2 emission [t CO2/yr]</p>
+	<h5 *ngIf="isBaseLine">
+		"the original plan"
+	</h5>
+</div>
+
+<table mat-table [dataSource]="tableData">
+	<!-- Item Column -->
+	<ng-container matColumnDef="col1">
+		<th mat-header-cell *matHeaderCellDef></th>
+		<td mat-cell *matCellDef="let tableData">
+			{{ tableData.col1 }}
+		</td>
+		<td mat-footer-cell *matFooterCellDef>Total</td>
+	</ng-container>
+
+	<!-- Cost Column -->
+	<ng-container matColumnDef="col2">
+		<th mat-header-cell *matHeaderCellDef></th>
+		<td mat-cell *matCellDef="let tableData">
+			{{ tableData.col2 }}
+		</td>
+		<td mat-footer-cell *matFooterCellDef>
+			{{ getTotal() | currency }}
+		</td>
+	</ng-container>
+
+	<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+	<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+	<tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+</table>

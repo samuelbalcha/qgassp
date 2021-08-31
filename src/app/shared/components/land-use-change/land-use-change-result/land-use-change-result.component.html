@@ -1,0 +1,78 @@
+<div class="summary flex-container">
+	<div class="flex-item space-between">
+		<co2-emission-summary
+			[isBaseLine]="true"
+			[tableData]="tableData"
+			[toFromdata]="toFromdata"
+		></co2-emission-summary>
+	</div>
+
+	<div class="flex-item">
+		<div
+			class="chart-wrapper"
+			style="display: inline-flex; padding-left: 20%;"
+		>
+			<p class="verical-text">
+				Equation/KG CO2 eq
+			</p>
+			<div>
+				<canvas
+					width="550"
+					height="450"
+					baseChart
+					[datasets]="barChartData"
+					[labels]="barChartLabels"
+					[options]="barChartOptions"
+					[plugins]="barChartPlugins"
+					[legend]="barChartLegend"
+					[chartType]="barChartType"
+				>
+				</canvas>
+				<h5>YEARS 2021-2050</h5>
+			</div>
+		</div>
+	</div>
+</div>
+<cdk-accordion class="version-accordion">
+	<cdk-accordion-item
+		#accordionItem="cdkAccordionItem"
+		class="module-accordion-item"
+		role="button"
+		tabindex="0"
+		[attr.aria-expanded]="accordionItem.expanded"
+	>
+		<div
+			class="module-accordion-item-header color-green"
+			(click)="accordionItem.toggle()"
+		>
+			2.VERSION
+			<span class="module-accordion-item-description">
+				<mat-icon style="color: white" *ngIf="accordionItem.expanded"
+					>expand_less</mat-icon
+				>
+				<mat-icon style="color: white" *ngIf="!accordionItem.expanded"
+					>expand_more</mat-icon
+				>
+			</span>
+		</div>
+		<div
+			class="version-accordion-item-body"
+			role="region"
+			[style.display]="accordionItem.expanded ? '' : 'none'"
+			id="landuse-accordion-body"
+		>
+			<div class="flex-container">
+				<div class="flex-item carbon-stock-table">
+					<carbon-stock-change></carbon-stock-change>
+				</div>
+
+				<div class="flex-item version-summary">
+					<co2-emission-summary
+						[tableData]="tableData"
+						[toFromdata]="toFromdata"
+					></co2-emission-summary>
+				</div>
+			</div>
+		</div>
+	</cdk-accordion-item>
+</cdk-accordion>

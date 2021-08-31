@@ -414,7 +414,12 @@
 					Prev
 				</button>
 
-				<button mat-button mat-raised-button class="next-btn">
+				<button
+					mat-button
+					mat-raised-button
+					class="next-btn"
+					(click)="createBaseline()"
+				>
 					Create a baseline
 				</button>
 			</div>

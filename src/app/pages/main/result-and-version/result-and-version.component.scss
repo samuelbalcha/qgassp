@@ -1,36 +1,3 @@
-.moduleBody {
-	padding-left: 40px;
-	padding-top: 40px;
-	padding-bottom: 160px;
-}
-.headerLink {
-	text-decoration: none;
-	font-size: medium;
-	color: #3f51b5;
-	font-size: 16px;
-	font-weight: 500;
-}
-h4 {
-	color: #3f51b5;
-}
-.mat-tab-label {
-	color: white;
-}
-
-[aria-label='green'] {
-	background-color: #6dab36;
-}
-
-[aria-label='orange'] {
-	background-color: #db7093;
-}
-[aria-label='brown'] {
-	background-color: #6f2c54;
-}
-[aria-label='blue'] {
-	background-color: #696ee2;
-}
-
 .table-container[_ngcontent-nud-c276] {
 	width: 97% !important;
 }
@@ -118,12 +85,7 @@ mat-expansion-panel {
 	padding-top: 23px;
 	padding-bottom: 1px;
 }
-.vericaltext {
-	width: 1px;
-	padding: 13px;
-	word-wrap: break-word;
-	font-family: monospace; /* this is just for good looks */
-}
+
 table {
 	width: 20rem;
 	background-color: #e4e4e8 !important;
@@ -141,4 +103,17 @@ tr.mat-footer-row {
 }
 .addVersionButton {
 	margin-left: 60rem;
+}
+
+.landuse-result {
+	background-color: #f5f5f5;
+	display: block;
+}
+
+.add-new-version {
+	background-color: #6bac2b;
+	color: #fff;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-transform: uppercase;
 }

@@ -1,0 +1,158 @@
+<mat-accordion>
+	<mat-expansion-panel
+		(opened)="panelOpenState = true"
+		(closed)="panelOpenState = false"
+	>
+		<mat-expansion-panel-header>
+			<div style="display:inline-flex">
+				<p style="color:#3F51B5;">1.Land-use change</p>
+				<p *ngIf="!panelOpenState" class="grayLabel">From</p>
+				<p *ngIf="!panelOpenState" style="color:#CECECE;">
+					&nbsp;Forestlands
+				</p>
+				<p *ngIf="!panelOpenState" class="grayLabel">To</p>
+				<p *ngIf="!panelOpenState" style="color:#CECECE;">
+					&nbsp;Settlements
+				</p>
+				<p *ngIf="!panelOpenState" class="grayLabel">Total Area</p>
+				<p *ngIf="!panelOpenState" style="color:#CECECE;">&nbsp;6 ha</p>
+			</div>
+		</mat-expansion-panel-header>
+		<ng-template matExpansionPanelContent></ng-template>
+		<div class="panel-content">
+			<mat-label>2.1 Choose the appropriate land-use change</mat-label>
+
+			<div class="flex-container">
+				<div class="flex-item space-between">
+					<h4>From</h4>
+					<mat-form-field appearance="fill">
+						<mat-select
+							[(ngModel)]="fromSelectedLandType"
+							name="fromlandType"
+							(selectionChange)="onFromLandTypeSelected()"
+						>
+							<mat-option
+								*ngFor="let landType of landTypes"
+								[value]="landType"
+							>
+								{{ landType }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+
+				<div class="flex-item">
+					<h4>To</h4>
+					<mat-form-field appearance="fill">
+						<mat-select
+							[(ngModel)]="toSelectedLandType"
+							name="tolandType"
+							(selectionChange)="onToLandTypeSelected()"
+						>
+							<mat-option
+								*ngFor="let landType of landTypes"
+								[value]="landType"
+							>
+								{{ landType }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+			</div>
+
+			<mat-label>
+				2.2 Carbon stock change factor
+			</mat-label>
+			<br />
+			<mat-label>
+				2.2.1 Default (country-specific) carbon stock changes (CSC)
+				factors.
+			</mat-label>
+			<h5>Click to edit and insert location-specific CSC factors</h5>
+			<br />
+			<div>
+				<emission-factors></emission-factors>
+			</div>
+			<br />
+
+			<mat-label>
+				2.2.2 Default (country-specific) or location specific remaining
+				carbon stock change factors.
+			</mat-label>
+			<br />
+			<div>
+				<emission-factors></emission-factors>
+			</div>
+			<br />
+			<br />
+			<div style="display:inline-flex">
+				<p style="width:47%">
+					2.2.3 Conversion factor from carbon stock change to CO2
+					emmision/removals (ratio of the moleular weight)
+				</p>
+				<p style="color:black; padding-left: 10rem;">-3,667</p>
+			</div>
+			<br />
+			<br />
+			<div style="display:inline-flex">
+				<div style="width: 40%">
+					<mat-checkbox color="primary">
+						From default dataset
+					</mat-checkbox>
+					<mat-checkbox color="primary">
+						Inserted location-specific factors
+					</mat-checkbox>
+				</div>
+				<div>
+					<h5 style="line-height: 0px;">
+						*The signs for C stock gains (C Uptake) are postive (+)
+						and losses are negative (-)
+					</h5>
+					<h5 class="infoTextRight">IE included elsware</h5>
+					<h5 class="infoTextRight">NA Data not available</h5>
+				</div>
+			</div>
+			<br />
+			<br />
+			<mat-label>
+				2.3 Insert area of this specific land-use change, ha:
+			</mat-label>
+			<br />
+			<br />
+			<div class="flex-container">
+				<div class="flex-item width-200 space-between">
+					<mat-label>Total area</mat-label>
+					<br />
+					<mat-form-field
+						class="example-full-width"
+						appearance="fill"
+					>
+						<input matInput />
+					</mat-form-field>
+				</div>
+				<div class="flex-item width-200 space-between">
+					<mat-label>Organic soil:</mat-label>
+					<br />
+					<mat-form-field
+						class="example-full-width"
+						appearance="fill"
+					>
+						<input matInput />
+					</mat-form-field>
+				</div>
+				<div class="flex-item width-200 space-between">
+					<mat-label>Mineral soil:</mat-label>
+					<br />
+					<mat-form-field
+						class="example-full-width"
+						appearance="fill"
+					>
+						<input matInput />
+					</mat-form-field>
+				</div>
+			</div>
+			<br />
+			<a href="" class="delete-button">DELETE</a>
+		</div>
+	</mat-expansion-panel>
+</mat-accordion>

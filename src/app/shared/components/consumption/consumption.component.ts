@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ProjectService } from '../../../core/services/project.service';
 
 @Component({
 	selector: 'consumption',
@@ -55,9 +57,17 @@ export class ConsumptionComponent {
 		firstCtrl: new FormControl('', Validators.required),
 	});
 
-	constructor() {
+	constructor(
+		private router: Router,
+		private projectService: ProjectService
+	) {
 		this.selectedAreaType = this.areaTypes[0];
 		this.selectedIncomeLevel = this.incomeLevels[0];
 		this.selectedFuelType = this.fuelTypes[0];
+	}
+
+	createBaseline(): void {
+		console.log(this.projectService.project);
+		this.router.navigateByUrl('result-version');
 	}
 }

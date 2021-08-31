@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { Router } from '@angular/router';
+import _ from 'lodash';
 
 import { ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
@@ -16,10 +17,12 @@ export class ResultAndVersionComponent {
 	@Input() backgroundColor: ThemePalette;
 
 	public myProject: IProject;
-	landuse = false;
+	public selectedModules: string[] = [];
+
+	landuse = true;
 	trafic = false;
-	buildings = false;
-	consumption = false;
+	buildings = true;
+	consumption = true;
 
 	constructor(
 		private router: Router,
@@ -27,10 +30,14 @@ export class ResultAndVersionComponent {
 	) {
 		const currentProject = this.projectService.getDraftProject();
 		if (!currentProject || !currentProject.name) {
-			this.router.navigateByUrl('dashboard');
+			this.router.navigateByUrl('setup-project');
 		}
 
 		this.myProject = currentProject as IProject;
+		this.selectedModules = _.keys(this.myProject.territorial);
+		if (this.myProject.consumption) {
+			this.selectedModules.push('consumption');
+		}
 	}
 
 	getSelected(newItem: any) {
