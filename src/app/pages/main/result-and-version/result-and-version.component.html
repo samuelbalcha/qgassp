@@ -1,14 +1,8 @@
 <div class="moduleBody">
 	<h4>
-		<a class="headerLink" routerLink="/dashboard"
-			>QGasSP Dashboard &nbsp; ></a
-		>
-		<a class="headerLink" routerLink="/setup-project"
-			>Setup New Project &nbsp; ></a
-		>
-		<a class="headerLink" routerLink="/module-loader"
-			>"Project name" set up the baseline &nbsp; ></a
-		>
+		<a class="headerLink" routerLink="/dashboard">QGasSP Dashboard &nbsp; ></a>
+		<a class="headerLink" routerLink="/setup-project">Setup New Project &nbsp; ></a>
+		<a class="headerLink" routerLink="/module-loader">"Project name" set up the baseline &nbsp; ></a>
 		Result and version
 	</h4>
 	<br />
@@ -21,41 +15,19 @@
 				<h2 style="color:#3F51B5">2.1 First version of the plane</h2>
 
 				<cdk-accordion class="example-accordion">
-					<cdk-accordion-item
-						#accordionItem="cdkAccordionItem"
-						class="example-accordion-item"
-						role="button"
-						tabindex="0"
-						id="landuse-accordion-body"
-						[attr.aria-expanded]="accordionItem.expanded"
-					>
-						<div
-							class="example-accordion-item-header color-green"
-							role="presentation"
-							(click)="accordionItem.toggle()"
-						>
+					<cdk-accordion-item #accordionItem="cdkAccordionItem" class="example-accordion-item" role="button"
+						tabindex="0" [attr.aria-expanded]="accordionItem.expanded">
+						<div class="example-accordion-item-header color-green" role="presentation"
+							(click)="accordionItem.toggle()">
 							"THE ORIGINAL PLAN"
 							<span class="example-accordion-item-description">
-								<mat-icon
-									style="color: white"
-									*ngIf="accordionItem.expanded"
-									>expand_less</mat-icon
-								>
-								<mat-icon
-									style="color: white"
-									*ngIf="!accordionItem.expanded"
-									>expand_more</mat-icon
-								>
+								<mat-icon style="color: white" *ngIf="accordionItem.expanded">expand_less</mat-icon>
+								<mat-icon style="color: white" *ngIf="!accordionItem.expanded">expand_more</mat-icon>
 							</span>
 						</div>
-						<div
-							class="example-accordion-item-body"
-							role="region"
-							[style.display]="
+						<div class="example-accordion-item-body" role="region" [style.display]="
 								accordionItem.expanded ? '' : 'none'
-							"
-							id="landuse-accordion-body"
-						>
+							">
 							<h3>Area size and land use change</h3>
 							<p class="accordion-text">
 								Insert area of each land-use change,
@@ -66,11 +38,7 @@
 								+ ADD NEW
 							</h3>
 
-							<button
-								mat-raised-button
-								class="nxtButton"
-								color="primary"
-							>
+							<button mat-raised-button class="nxtButton" color="primary">
 								Next
 							</button>
 						</div>
@@ -78,15 +46,9 @@
 				</cdk-accordion>
 			</div>
 		</mat-tab>
-		<mat-tab *ngIf="trafic" label="trafic" [aria-label]="'orange'"
-			>Trafic / Infra content</mat-tab
-		>
-		<mat-tab *ngIf="buildings" label="buildings" [aria-label]="'brown'"
-			>Buildings Content</mat-tab
-		>
-		<mat-tab *ngIf="consumption" label="consumption" [aria-label]="'blue'"
-			>Consumption Content</mat-tab
-		>
+		<mat-tab *ngIf="trafic" label="trafic" [aria-label]="'orange'">Trafic / Infra content</mat-tab>
+		<mat-tab *ngIf="buildings" label="buildings" [aria-label]="'brown'">Buildings Content</mat-tab>
+		<mat-tab *ngIf="consumption" label="consumption" [aria-label]="'blue'">Consumption Content</mat-tab>
 	</mat-tab-group>
 	<br />
 	<br />
@@ -123,32 +85,18 @@
 				</ng-container>
 
 				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-				<tr
-					mat-row
-					*matRowDef="let row; columns: displayedColumns"
-				></tr>
+				<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 				<tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
 			</table>
 		</div>
-		<div
-			class="chart-wrapper"
-			style="display: inline-flex; padding-left: 20%;"
-		>
+		<div class="chart-wrapper" style="display: inline-flex; padding-left: 20%;">
 			<p class="vericaltext">
 				Equation/KG CO2 eq
 			</p>
 			<div>
-				<canvas
-					width="550"
-					height="450"
-					baseChart
-					[datasets]="barChartData"
-					[labels]="barChartLabels"
-					[options]="barChartOptions"
-					[plugins]="barChartPlugins"
-					[legend]="barChartLegend"
-					[chartType]="barChartType"
-				>
+				<canvas width="550" height="450" baseChart [datasets]="barChartData" [labels]="barChartLabels"
+					[options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
+					[chartType]="barChartType">
 				</canvas>
 				<h5>YEARS 2021-2050</h5>
 			</div>
@@ -159,37 +107,17 @@
 	<br />
 	<br />
 	<cdk-accordion class="version-accordion">
-		<cdk-accordion-item
-			#accordionItem="cdkAccordionItem"
-			class="example-accordion-item"
-			role="button"
-			tabindex="0"
-			[attr.aria-expanded]="accordionItem.expanded"
-		>
-			<div
-				class="example-accordion-item-header color-green"
-				(click)="accordionItem.toggle()"
-			>
+		<cdk-accordion-item #accordionItem="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="0"
+			[attr.aria-expanded]="accordionItem.expanded">
+			<div class="example-accordion-item-header color-green" (click)="accordionItem.toggle()">
 				2.VERSION
 				<span class="example-accordion-item-description">
-					<mat-icon
-						style="color: white"
-						*ngIf="accordionItem.expanded"
-						>expand_less</mat-icon
-					>
-					<mat-icon
-						style="color: white"
-						*ngIf="!accordionItem.expanded"
-						>expand_more</mat-icon
-					>
+					<mat-icon style="color: white" *ngIf="accordionItem.expanded">expand_less</mat-icon>
+					<mat-icon style="color: white" *ngIf="!accordionItem.expanded">expand_more</mat-icon>
 				</span>
 			</div>
-			<div
-				class="version-accordion-item-body"
-				role="region"
-				[style.display]="accordionItem.expanded ? '' : 'none'"
-				id="landuse-accordion-body"
-			>
+			<div class="version-accordion-item-body" role="region"
+				[style.display]="accordionItem.expanded ? '' : 'none'">
 				<div style="background-color: white;">
 					<div style="display: inline-flex; background-color: white;">
 						<result-step></result-step>
@@ -202,11 +130,7 @@
 								</h5>
 							</div>
 
-							<table
-								mat-table
-								[dataSource]="tableData"
-								color="primary"
-							>
+							<table mat-table [dataSource]="tableData" color="primary">
 								<!-- Item Column -->
 								<ng-container matColumnDef="col1">
 									<th mat-header-cell *matHeaderCellDef></th>
@@ -229,21 +153,12 @@
 									</td>
 								</ng-container>
 
-								<tr
-									mat-header-row
-									*matHeaderRowDef="displayedColumns"
-								></tr>
-								<tr
-									mat-row
-									*matRowDef="
+								<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+								<tr mat-row *matRowDef="
 										let row;
 										columns: displayedColumns
-									"
-								></tr>
-								<tr
-									mat-footer-row
-									*matFooterRowDef="displayedColumns"
-								></tr>
+									"></tr>
+								<tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
 							</table>
 						</div>
 					</div>

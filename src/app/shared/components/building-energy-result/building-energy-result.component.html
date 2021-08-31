@@ -1,0 +1,180 @@
+<div [ngClass]="{'float': 
+        !ResDemand.expanded || 
+        !resEmmission.expanded  || 
+        !commercialDemand.expanded || 
+        !commercialEmmission.expanded ,
+    'expand': ResDemand.expanded ||
+            resEmmission.expanded  || 
+            commercialDemand.expanded || 
+            commercialEmmission.expanded 
+
+}">
+    <h2>"Baseline Results" </h2>
+    <i>Baseline / Current Situations</i>
+    <br>
+    <br>
+    <div class="flex-container">
+        <div class="flex-item width-200 space-between">
+            <mat-label>
+                <p class="lableInput">
+                    Emmision / Person
+                </p>
+            </mat-label>
+        </div>
+        <div class="flex-item">
+            <mat-label>
+                <p class="lableInput">
+                    4,54 tCO2
+                </p>
+            </mat-label>
+        </div>
+    </div>
+
+    <h2>Residential</h2>
+    <cdk-accordion class="example-accordion">
+        <cdk-accordion-item #ResDemand="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="0"
+            [attr.aria-expanded]="ResDemand.expanded">
+            <div class="example-accordion-item-header" (click)="ResDemand.toggle()">
+                Test
+                <span class="example-accordion-item-description">
+                    Click to {{ ResDemand.expanded ? 'close' : 'open' }}
+                </span>
+            </div>
+            <div class="example-accordion-item-body" role="region" [style.display]="ResDemand.expanded ? '' : 'none'">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                    <ng-container matColumnDef="EnergyUse">
+                        <th mat-header-cell *matHeaderCellDef> Energy Use </th>
+                        <td mat-cell *matCellDef="let element"> {{element.EnergyUse}} </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="Electricity">
+                        <th mat-header-cell *matHeaderCellDef> Electricity </th>
+                        <td mat-cell *matCellDef="let element">
+                            <input class="area-input" type="number" [(ngModel)]="element.Electricity"
+                                value="element.Electricity" />
+                        </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="weight">
+                        <th mat-header-cell *matHeaderCellDef> Weight </th>
+                        <td mat-cell *matCellDef="let element">
+                            <input class="area-input" type="number" [(ngModel)]="element.weight"
+                                value="element.weight" />
+                        </td>
+                    </ng-container>
+
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="Gas">
+                        <th mat-header-cell *matHeaderCellDef> Gas </th>
+                        <td mat-cell *matCellDef="let element">
+                            <input class="area-input" type="number" [(ngModel)]="element.Gas" value="element.Gas" />
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Oil">
+                        <th mat-header-cell *matHeaderCellDef> Oil </th>
+                        <td mat-cell *matCellDef="let element">
+                            <input class="area-input" type="number" [(ngModel)]="element.Oil" value="element.Oil" />
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Coal">
+                        <th mat-header-cell *matHeaderCellDef> Coal </th>
+                        <td mat-cell *matCellDef="let element">
+                            <input class="area-input" type="number" [(ngModel)]="element.Coal" value="element.Coal" />
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Peat">
+                        <th mat-header-cell *matHeaderCellDef> Peat </th>
+                        <td mat-cell *matCellDef="let element">
+                            <input class="area-input" type="number" [(ngModel)]="element.Peat" value="element.Peat" />
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Wood">
+                        <th mat-header-cell *matHeaderCellDef> Wood </th>
+                        <td mat-cell *matCellDef="let element">
+                            <input class="area-input" type="number" [(ngModel)]="element.Wood" value="element.Wood" />
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Renewable">
+                        <th mat-header-cell *matHeaderCellDef> Renewable </th>
+                        <td mat-cell *matCellDef="let element">
+                            <input class="area-input" type="number" [(ngModel)]="element.Renewable"
+                                value="element.Renewable" />
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Heat">
+                        <th mat-header-cell *matHeaderCellDef> Heat </th>
+                        <td mat-cell *matCellDef="let element">
+                            <input class="area-input" type="number" [(ngModel)]="element.Heat" value="element.Heat" />
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+
+        </cdk-accordion-item>
+    </cdk-accordion>
+    <cdk-accordion class="example-accordion">
+        <cdk-accordion-item #resEmmission="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="0"
+            [attr.aria-expanded]="resEmmission.expanded">
+            <div class="example-accordion-item-header" (click)="resEmmission.toggle()">
+                Test
+                <span class="example-accordion-item-description">
+                    Click to {{ resEmmission.expanded ? 'close' : 'open' }}
+                </span>
+            </div>
+            <div class="example-accordion-item-body" role="region"
+                [style.display]="resEmmission.expanded ? '' : 'none'">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis
+                excepturi incidunt ipsum deleniti labore, tempore non nam doloribus blanditiis
+                veritatis illo autem iure aliquid ullam rem tenetur deserunt velit culpa?
+            </div>
+        </cdk-accordion-item>
+    </cdk-accordion>
+    <h2>Commercial</h2>
+
+    <cdk-accordion class="example-accordion">
+        <cdk-accordion-item #commercialDemand="cdkAccordionItem" class="example-accordion-item" role="button"
+            tabindex="0" [attr.aria-expanded]="commercialDemand.expanded">
+            <div class="example-accordion-item-header" (click)="commercialDemand.toggle()">
+                Test
+                <span class="example-accordion-item-description">
+                    Click to {{ commercialDemand.expanded ? 'close' : 'open' }}
+                </span>
+            </div>
+            <div class="example-accordion-item-body" role="region"
+                [style.display]="commercialDemand.expanded ? '' : 'none'">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis
+                excepturi incidunt ipsum deleniti labore, tempore non nam doloribus blanditiis
+                veritatis illo autem iure aliquid ullam rem tenetur deserunt velit culpa?
+            </div>
+        </cdk-accordion-item>
+    </cdk-accordion>
+    <cdk-accordion class="example-accordion">
+        <cdk-accordion-item #commercialEmmission="cdkAccordionItem" class="example-accordion-item" role="button"
+            tabindex="0" [attr.aria-expanded]="commercialEmmission.expanded">
+            <div class="example-accordion-item-header" (click)="commercialEmmission.toggle()">
+                Test
+                <span class="example-accordion-item-description">
+                    Click to {{ commercialEmmission.expanded ? 'close' : 'open' }}
+                </span>
+            </div>
+            <div class="example-accordion-item-body" role="region"
+                [style.display]="commercialEmmission.expanded ? '' : 'none'">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis
+                excepturi incidunt ipsum deleniti labore, tempore non nam doloribus blanditiis
+                veritatis illo autem iure aliquid ullam rem tenetur deserunt velit culpa?
+            </div>
+        </cdk-accordion-item>
+    </cdk-accordion>
+
+</div>
+<div class="float">
+    <h1>Test Text </h1>
+</div>
+<br>

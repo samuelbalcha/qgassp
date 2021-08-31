@@ -1,8 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
-
+import { Router } from '@angular/router';
 import { ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
+import { IProject } from '../../../../../commons/types/IProject';
+import { ProjectService } from '../../../core/services/project.service';
 
 @Component({
 	selector: 'result-and-version',
@@ -11,32 +13,44 @@ import { Label } from 'ng2-charts';
 })
 export class ResultAndVersionComponent {
 	@Input() backgroundColor: ThemePalette;
+	public myProject: IProject;
 
-	public myProject = {
-		name: 'test Project',
-		location: 'Kymenlaakso, Finland',
-		year: '2020',
-		owner: 'test',
-	};
-	landuse = false;
-	trafic = false;
-	buildings = false;
-	consumption = false;
+	// public myProject = {
+	// 	name: 'test Project',
+	// 	location: 'Kymenlaakso, Finland',
+	// 	year: '2020',
+	// 	owner: 'test',
+	// };
+	landuse: boolean | undefined;
+	trafic: boolean | undefined;
+	buildings: boolean | undefined;
+	consumption: boolean | undefined;
 
-	constructor() {}
+	constructor(
+		private router: Router,
+		private projectService: ProjectService
+	) {
+		const currentProject = this.projectService.getDraftProject();
+		if (!currentProject || !currentProject.name) {
+			this.router.navigateByUrl('dashboard');
+		}
+
+		this.myProject = currentProject as IProject;
+		this.getSelected(this.myProject)
+	}
 
 	getSelected(newItem: any) {
-		if (newItem.name == 'landuse') {
-			this.landuse = newItem.value;
+		if (newItem.territorial.hasOwnProperty("landuse")) {
+			this.landuse = true;
 		}
-		if (newItem.name == 'trafic') {
-			this.trafic = newItem.value;
+		if (newItem.territorial.hasOwnProperty("traffic")) {
+			this.trafic = true;
 		}
-		if (newItem.name == 'buildings') {
-			this.buildings = newItem.value;
+		if (newItem.territorial.hasOwnProperty("buildings")) {
+			this.buildings = true;
 		}
-		if (newItem.name == 'consumption') {
-			this.consumption = newItem.value;
+		if (newItem.hasOwnProperty("consumption")) {
+			this.consumption = true;
 		}
 	}
 

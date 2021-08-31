@@ -18,6 +18,7 @@ import { ResultAndVersionComponent } from './result-and-version/result-and-versi
 import { SelectorsComponent } from '../../shared/components/selectors/selectors.component';
 import { LandUseChangeFormComponent } from '../../shared/components/land-use-change-form/land-use-change-form.component';
 import { BuldingEnergyUseComponent } from '../../shared/components/bulding-energy-use/bulding-energy-use.component';
+import { BuildingEnergyResultComponent } from '../../shared/components/building-energy-result/building-energy-result.component';
 
 const routes: Routes = [
 	{
@@ -52,6 +53,10 @@ const routes: Routes = [
 		path: 'buildEnergyTest',
 		component: BuldingEnergyUseComponent,
 	},
+	{
+		path: 'buildEnergyResultTest',
+		component: BuildingEnergyResultComponent,
+	}
 ];
 
 @NgModule({
@@ -65,7 +70,8 @@ const routes: Routes = [
 		SelectorsComponent,
 		ResultAndVersionComponent,
 		LandUseChangeFormComponent,
-		BuldingEnergyUseComponent
+		BuldingEnergyUseComponent,
+		BuildingEnergyResultComponent
 	],
 	imports: [
 		FlexLayoutModule,
