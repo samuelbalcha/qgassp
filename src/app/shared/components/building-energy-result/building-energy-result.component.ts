@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ChartDataSets, ChartType } from 'chart.js';
+import { Label } from 'ng2-charts';
 
 export interface TableElement {
   EnergyUse: string;
@@ -16,26 +18,26 @@ export interface TableElement {
 const ELEMENT_DATA = [
   {
     EnergyUse: 'Appartments', Electricity: 124578933,
-    Gas: 1.0079, Oil: 12546, Coal: 12345, Peat: 1234,
+    Gas: 1, Oil: 2, Coal: 12345, Peat: 1234,
     Wood: 123455,
     Renewable: 1234,
     Heat: 1232344
   },
   {
     EnergyUse: 'Terrace', Electricity: 124578933,
-    Gas: 1.0079, Oil: 12546, Coal: 12345,
+    Gas: 1, Oil: 2, Coal: 12345,
     Peat: 1234, Wood: 123455, Renewable: 1234,
     Heat: 1232344
   },
   {
     EnergyUse: 'Semi-detached', Electricity: 124578933,
-    Gas: 1.0079, Oil: 12546, Coal: 12345, Peat: 1234,
+    Gas: 2, Oil: 2, Coal: 12345, Peat: 1234,
     Wood: 123455, Renewable: 1234, Heat: 1232344
   },
   {
-    EnergyUse: 'Detached', Electricity: 124578933,
-    Gas: 1.0079, Oil: 12546, Coal: 12345, Peat: 1234,
-    Wood: 123455, Renewable: 1234, Heat: 1232344
+    EnergyUse: 'Detached', Electricity: 1,
+    Gas: 1, Oil: 1, Coal: 1, Peat: 1,
+    Wood: 1, Renewable: 1, Heat: 1
   },
 
 ];
@@ -48,8 +50,7 @@ const ELEMENT_DATA = [
 export class BuildingEnergyResultComponent implements OnInit {
 
   displayedColumns: string[] = ['EnergyUse', 'Electricity',
-    'Gas', 'Oil', 'Coal',
-    'Peat', 'Wood', 'Renewable', 'Heat', 'Total'];
+    'Gas', 'Oil', 'Coal', 'Peat', 'Wood', 'Renewable', 'Heat', 'Total'];
 
 
   dataSource = this.constactTableDate();
@@ -64,38 +65,36 @@ export class BuildingEnergyResultComponent implements OnInit {
     return this.dataSource.map(t => t.Gas).reduce((acc, value) => acc + value, 0);
   }
   getTotalOil() {
-    return this.dataSource.map(t => t.Gas).reduce((acc, value) => acc + value, 0);
+    return this.dataSource.map(t => t.Oil).reduce((acc, value) => acc + value, 0);
   }
   getTotalCoal() {
-    return this.dataSource.map(t => t.Gas).reduce((acc, value) => acc + value, 0);
+    return this.dataSource.map(t => t.Coal).reduce((acc, value) => acc + value, 0);
   }
   getTotalPeat() {
-    return this.dataSource.map(t => t.Gas).reduce((acc, value) => acc + value, 0);
+    return this.dataSource.map(t => t.Peat).reduce((acc, value) => acc + value, 0);
   }
   getTotalWood() {
-    return this.dataSource.map(t => t.Gas).reduce((acc, value) => acc + value, 0);
+    return this.dataSource.map(t => t.Wood).reduce((acc, value) => acc + value, 0);
   }
   getTotalHeat() {
-    return this.dataSource.map(t => t.Gas).reduce((acc, value) => acc + value, 0);
+    return this.dataSource.map(t => t.Heat).reduce((acc, value) => acc + value, 0);
   }
-  getTotalTotal(i: any) {
-    console.log(i)
+  getTotalAll() {
     return this.dataSource.map(t => t.Total).reduce((acc, value) => acc + value, 0);
   }
-  gettotalAll() {
+  getTotalTotal(i: any) {
     var sum = 0;
+    sum = sum + this.dataSource[i].Electricity +
+      this.dataSource[i].Gas +
+      this.dataSource[i].Oil +
+      this.dataSource[i].Coal +
+      this.dataSource[i].Peat +
+      this.dataSource[i].Wood +
+      this.dataSource[i].Heat
 
-    sum = sum +
-      this.getTotalElectricity() +
-      this.getTotalGas() +
-      this.getTotalOil() +
-      this.getTotalCoal() +
-      this.getTotalPeat() +
-      this.getTotalWood() +
-      this.getTotalHeat() +
-      this.getTotalGas();
     return sum;
   }
+
   constactTableDate() {
     var tableData = [];
 
@@ -114,8 +113,60 @@ export class BuildingEnergyResultComponent implements OnInit {
 
       tableData.push(obj);
     }
+    console.log(tableData)
     return tableData
   }
+
+  barChartOptions: any = {
+    responsive: false,
+    aspectRatio: 1,
+    scales: {
+      xAxes: [
+        {
+          gridLines: {
+            display: false,
+          },
+        },
+      ],
+      yAxes: [
+        {
+          gridLines: {
+            display: false,
+          },
+        },
+      ],
+    },
+  };
+  barChartLabels: Label[] = [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+  ];
+  barChartType: ChartType = 'bar';
+  barChartLegend = true;
+  barChartPlugins = [];
+
+  barChartData: ChartDataSets[] = [
+    {
+      data: [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000],
+      label: '1.Version',
+      barThickness: 8,
+      backgroundColor: '#214E9C',
+    },
+    {
+      data: [1000, 1200, 1500, 2200, 6000, 1000, 500, 1700, 1000],
+      label: '2.Version',
+      barThickness: 8,
+      backgroundColor: '#6BAD2B',
+    },
+  ];
+
   ngOnInit(): void {
     this.constactTableDate();
   }

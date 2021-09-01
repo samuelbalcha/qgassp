@@ -47,7 +47,9 @@
 			</div>
 		</mat-tab>
 		<mat-tab *ngIf="trafic" label="trafic" [aria-label]="'orange'">Trafic / Infra content</mat-tab>
-		<mat-tab *ngIf="buildings" label="buildings" [aria-label]="'brown'">Buildings Content</mat-tab>
+		<mat-tab *ngIf="buildings" label="buildings" [aria-label]="'brown'">
+			<building-energy-result></building-energy-result>
+		</mat-tab>
 		<mat-tab *ngIf="consumption" label="consumption" [aria-label]="'blue'">Consumption Content</mat-tab>
 	</mat-tab-group>
 	<br />
