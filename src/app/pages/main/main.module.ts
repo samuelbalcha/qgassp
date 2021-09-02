@@ -17,8 +17,9 @@ import { ModuleLoaderComponent } from './module-loader/module-loader.component';
 import { ResultAndVersionComponent } from './result-and-version/result-and-version.component';
 import { SelectorsComponent } from '../../shared/components/selectors/selectors.component';
 import { LandUseChangeFormComponent } from '../../shared/components/land-use-change-form/land-use-change-form.component';
-import { BuldingEnergyUseComponent } from '../../shared/components/bulding-energy-use/bulding-energy-use.component';
-import { BuildingEnergyResultComponent } from '../../shared/components/building-energy-result/building-energy-result.component';
+import { BuldingEnergyUseComponent } from './building/bulding-energy-use/bulding-energy-use.component';
+import { BuildingEnergyResultComponent } from './building/building-energy-result/building-energy-result.component';
+import { BuildingComponent } from './building/building.component';
 
 const routes: Routes = [
 	{
@@ -70,6 +71,7 @@ const routes: Routes = [
 		SelectorsComponent,
 		ResultAndVersionComponent,
 		LandUseChangeFormComponent,
+		BuildingComponent,
 		BuldingEnergyUseComponent,
 		BuildingEnergyResultComponent
 	],
