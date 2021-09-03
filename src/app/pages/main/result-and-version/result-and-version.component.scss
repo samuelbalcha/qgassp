@@ -7,15 +7,17 @@
 	max-width: 57rem;
 	padding: 10px;
 }
+
 .version-accordion {
 	display: block;
 	max-width: 72rem;
 	padding: 10px;
 }
+
 .version-accordion-item-body {
-	background-color: #e4e4e8;
-	margin: 13px;
+	padding: 10px;
 }
+
 .example-accordion-item-header {
 	display: flex;
 	align-content: center;
@@ -116,4 +118,23 @@ tr.mat-footer-row {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	text-transform: uppercase;
+}
+
+.mat-tab-link {
+	color: white;
+	text-transform: capitalize !important;
+}
+
+.landuse {
+	.mat-tab-label,
+	.mat-tab-link {
+		background-color: #6bac2b !important;
+	}
+}
+
+.consumption {
+	.mat-tab-label,
+	.mat-tab-link {
+		background-color: #1c294e !important;
+	}
 }

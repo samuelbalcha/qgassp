@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Component } from '@angular/core';
 import { ChartDataSets, ChartType } from 'chart.js';
@@ -59,7 +60,6 @@ export class LandUseChangeResultComponent {
 
 	public barChartType: ChartType = 'bar';
 	public barChartLegend = true;
-	public barChartPlugins = [];
 
 	public barChartData: ChartDataSets[] = [
 		{
@@ -76,16 +76,17 @@ export class LandUseChangeResultComponent {
 		},
 	];
 
-	public displayedColumns = ['col1', 'col2'];
-
-	tableData = [
+	public tableData = [
 		{ col1: 'Aboveground Biomas', col2: 2191 },
 		{ col1: 'Belowground Biomas', col2: 634 },
 		{ col1: 'Deadwood', col2: 54 },
 		{ col1: 'Litter', col2: 825 },
 		{ col1: 'Mineral soil', col2: 13 },
-		{ col1: 'Organic soin', col2: 156 },
+		{ col1: 'Organic soil', col2: 156 },
 	];
+
+	public tableDataTotal = this.getTotal();
+	public tableTitle = 'CO2 emission [t CO2/yr]';
 
 	toFromdata = [
 		{ to: 'grassLand', from: 'Settelment' },
@@ -106,5 +107,11 @@ export class LandUseChangeResultComponent {
 
 	onToLandTypeSelected(): void {
 		this.toLandType = this.toSelectedLandType;
+	}
+
+	getTotal(): number {
+		return this.tableData
+			.map((t: { col2: any }) => t.col2)
+			.reduce((acc: any, value: any) => acc + value, 0);
 	}
 }

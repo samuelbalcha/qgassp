@@ -12,11 +12,22 @@
 		<mat-tab
 			*ngFor="let selectedModule of selectedModules"
 			label="{{ selectedModule }}"
-			[ngClass]="selectedModule"
 		>
+			<ng-template mat-tab-label>
+				<div [ngClass]="selectedModule">
+					{{ selectedModule }}
+				</div>
+			</ng-template>
+
 			<div class="tab-content" [ngSwitch]="selectedModule">
 				<div *ngSwitchCase="'landuse'" class="landuse-result">
 					<land-use-change-result></land-use-change-result>
+					<button class="add-button add-new-version" mat-button>
+						+ Add another plan version
+					</button>
+				</div>
+				<div *ngSwitchCase="'consumption'" class="consumption-result">
+					<consumption-result></consumption-result>
 					<button class="add-button add-new-version" mat-button>
 						+ Add another plan version
 					</button>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { Router } from '@angular/router';
 import _ from 'lodash';
@@ -12,6 +12,7 @@ import { ProjectService } from '../../../core/services/project.service';
 	selector: 'result-and-version',
 	templateUrl: './result-and-version.component.html',
 	styleUrls: ['./result-and-version.component.scss'],
+	encapsulation: ViewEncapsulation.None,
 })
 export class ResultAndVersionComponent {
 	@Input() backgroundColor: ThemePalette;

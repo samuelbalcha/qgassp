@@ -2,7 +2,8 @@
 	<div class="flex-item space-between">
 		<co2-emission-summary
 			[isBaseLine]="true"
-			[tableTitle]="tableTitle"
+			[showHeader]="true"
+			[tableTitle]="'Baseline results'"
 			[tableData]="tableData"
 			[tableDataTotal]="tableDataTotal"
 		></co2-emission-summary>
@@ -14,7 +15,7 @@
 			style="display: inline-flex; padding-left: 20%;"
 		>
 			<p class="verical-text">
-				Equation/KG CO2 eq
+				EMISSIONS / KG CO2 eq
 			</p>
 			<div>
 				<canvas
@@ -24,6 +25,7 @@
 					[datasets]="barChartData"
 					[labels]="barChartLabels"
 					[options]="barChartOptions"
+					[plugins]="barChartPlugins"
 					[legend]="barChartLegend"
 					[chartType]="barChartType"
 				>
@@ -68,7 +70,8 @@
 
 				<div class="flex-item version-summary">
 					<co2-emission-summary
-						[tableTitle]="tableTitle"
+						[tableTitle]="'Version results'"
+						[showHeader]="true"
 						[tableData]="tableData"
 						[tableDataTotal]="tableDataTotal"
 					></co2-emission-summary>

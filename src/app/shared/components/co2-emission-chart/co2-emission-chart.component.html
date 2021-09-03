@@ -1,0 +1,19 @@
+<div class="chart-wrapper" style="display: inline-flex; padding-left: 20%;">
+	<p class="verical-text">
+		{{ chartTitle }}
+	</p>
+	<div>
+		<canvas
+			width="550"
+			height="450"
+			baseChart
+			[datasets]="chartDataSet"
+			[labels]="barChartLabels"
+			[options]="barChartOptions"
+			[legend]="chartLegend"
+			[chartType]="chartType"
+		>
+		</canvas>
+		<h5>YEARS 2021 - 2050</h5>
+	</div>
+</div>

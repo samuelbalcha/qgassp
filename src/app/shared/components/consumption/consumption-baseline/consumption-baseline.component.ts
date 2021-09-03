@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProjectService } from '../../../core/services/project.service';
+import { ProjectService } from '../../../../core/services/project.service';
 
 @Component({
-	selector: 'consumption',
-	templateUrl: './consumption.component.html',
-	styleUrls: ['./consumption.component.scss'],
+	selector: 'consumption-baseline',
+	templateUrl: './consumption-baseline.component.html',
+	styleUrls: ['./../consumption.component.scss'],
 })
-export class ConsumptionComponent {
+export class ConsumptionBaselineComponent {
 	public isLinear = false;
 
 	public areaTypes = [

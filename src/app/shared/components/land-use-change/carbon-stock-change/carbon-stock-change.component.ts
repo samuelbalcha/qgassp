@@ -72,4 +72,16 @@ export class CarbonStockChangeComponent {
 	public fromSelectedLandType = '';
 	public toLandType = '';
 	public toSelectedLandType = '';
+
+	constructor() {
+		this.landTypes = Object.values(LandTypes);
+	}
+
+	onFromLandTypeSelected(): void {
+		this.fromLandType = this.fromSelectedLandType;
+	}
+
+	onToLandTypeSelected(): void {
+		this.toLandType = this.toSelectedLandType;
+	}
 }
