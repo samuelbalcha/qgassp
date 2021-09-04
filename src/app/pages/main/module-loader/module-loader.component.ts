@@ -21,7 +21,7 @@ export class ModuleLoaderComponent implements OnInit {
 	) {
 		const currentProject = this.projectService.getDraftProject();
 		if (!currentProject || !currentProject.name) {
-			this.router.navigateByUrl('dashboard');
+			this.router.navigateByUrl('setup-project');
 		}
 
 		this.myProject = currentProject as IProject;

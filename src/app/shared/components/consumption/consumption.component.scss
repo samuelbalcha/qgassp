@@ -1,10 +1,9 @@
-:host {
+.baseline {
 	display: block;
 	padding-left: 2%;
 	padding-top: 2%;
 	padding-right: 2%;
 }
-
 .step-container {
 	margin: auto;
 }
@@ -64,4 +63,27 @@ mat-horizontal-stepper {
 
 .numberInput {
 	width: 40%;
+}
+
+.flex-item {
+	margin-bottom: 10px;
+}
+
+.area-population {
+	.flex-item:first-of-type {
+		min-width: 280px !important;
+	}
+}
+
+.transportation-consumption {
+	.flex-item:first-of-type {
+		min-width: 260px !important;
+	}
+}
+
+.consumption-items {
+	min-width: 70%;
+}
+.construction {
+	width: 280px;
 }

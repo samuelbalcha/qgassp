@@ -1,29 +1,45 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
+import { Router } from '@angular/router';
+import _ from 'lodash';
 
 import { ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
+import { IProject } from '../../../../../commons/types/IProject';
+import { ProjectService } from '../../../core/services/project.service';
 
 @Component({
 	selector: 'result-and-version',
 	templateUrl: './result-and-version.component.html',
 	styleUrls: ['./result-and-version.component.scss'],
+	encapsulation: ViewEncapsulation.None,
 })
 export class ResultAndVersionComponent {
 	@Input() backgroundColor: ThemePalette;
 
-	public myProject = {
-		name: 'test Project',
-		location: 'Kymenlaakso, Finland',
-		year: '2020',
-		owner: 'test',
-	};
-	landuse = false;
-	trafic = false;
-	buildings = false;
-	consumption = false;
+	public myProject: IProject;
+	public selectedModules: string[] = [];
 
-	constructor() {}
+	landuse = true;
+	trafic = false;
+	buildings = true;
+	consumption = true;
+
+	constructor(
+		private router: Router,
+		private projectService: ProjectService
+	) {
+		const currentProject = this.projectService.getDraftProject();
+		if (!currentProject || !currentProject.name) {
+			this.router.navigateByUrl('setup-project');
+		}
+
+		this.myProject = currentProject as IProject;
+		this.selectedModules = _.keys(this.myProject.territorial);
+		if (this.myProject.consumption) {
+			this.selectedModules.push('consumption');
+		}
+	}
 
 	getSelected(newItem: any) {
 		if (newItem.name == 'landuse') {

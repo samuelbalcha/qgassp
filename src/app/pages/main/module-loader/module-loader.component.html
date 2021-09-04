@@ -1,4 +1,4 @@
-<div class="moduleBody">
+<div class="module-body">
 	<selectors [myProject]="myProject" (selectedValue)="getSelected($event)">
 	</selectors>
 
@@ -6,10 +6,7 @@
 		1. Setting the baseline for each selected module
 	</h2>
 
-	<mat-card
-		style="background-color:#E4E4E8;  max-width: 55rem; text-align: center;"
-		*ngIf="territorialModules.length"
-	>
+	<mat-card class="module-header" *ngIf="territorialModules.length">
 		Territorial
 	</mat-card>
 
@@ -27,7 +24,7 @@
 		>
 			<div
 				[ngClass]="territorialModule"
-				class="module-accordion-item-header"
+				class="module-accordion-item-header capitalize"
 				role="presentation"
 				(click)="accordionItem.toggle()"
 			>
@@ -54,7 +51,7 @@
 			>
 				<div [ngSwitch]="territorialModule">
 					<div *ngSwitchCase="'landuse'">
-						<land-use-change-form></land-use-change-form>
+						<land-use-change-baseline></land-use-change-baseline>
 						<button
 							class="add-button"
 							mat-button
@@ -95,10 +92,7 @@
 		</cdk-accordion-item>
 	</cdk-accordion>
 
-	<mat-card
-		style="background-color:#E4E4E8;  max-width: 55rem; text-align: center;"
-		*ngIf="myProject.consumption"
-	>
+	<mat-card class="module-header" *ngIf="myProject.consumption">
 		Consumption
 	</mat-card>
 
@@ -137,15 +131,7 @@
 				[style.display]="accordionItem.expanded ? '' : 'none'"
 				id="accordion-body"
 			>
-				<consumption></consumption>
-
-				<mat-checkbox
-					style="padding-left: 45rem;"
-					color="primary"
-					[checked]="true"
-				>
-					Mark as ready
-				</mat-checkbox>
+				<consumption-baseline></consumption-baseline>
 			</div>
 		</cdk-accordion-item>
 	</cdk-accordion>
