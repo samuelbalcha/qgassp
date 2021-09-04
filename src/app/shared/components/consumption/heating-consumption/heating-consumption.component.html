@@ -1,0 +1,93 @@
+<div class="transportation-consumption">
+	<h2>{{ order }}. {{ heatingTypeTitle }}</h2>
+
+	<!-- electricity -->
+	<div class="flex-container">
+		<div class="flex-item">{{ order }}. 1 Electricity, %</div>
+		<div class="flex-item">
+			<mat-form-field appearance="fill" class="numberInput">
+				<input matInput type="number" [(ngModel)]="electricity" />
+			</mat-form-field>
+		</div>
+	</div>
+
+	<!-- heat pumps -->
+	<div class="flex-container">
+		<div class="flex-item">{{ order }}.2 Heat pumps, %</div>
+		<div class="flex-item">
+			<mat-form-field appearance="fill" class="numberInput">
+				<input matInput type="number" [(ngModel)]="heatPumps" />
+			</mat-form-field>
+		</div>
+	</div>
+
+	<!-- oil -->
+	<div class="flex-container">
+		<div class="flex-item">{{ order }}.3 Oil, %</div>
+		<div class="flex-item">
+			<mat-form-field appearance="fill" class="numberInput">
+				<input matInput type="number" [(ngModel)]="oil" />
+			</mat-form-field>
+		</div>
+	</div>
+
+	<!-- Average fuel type -->
+	<div class="flex-container">
+		<div class="flex-item">{{ order }}.4 {{ fuelTypeTitle }}</div>
+		<div class="flex-item">
+			<mat-form-field appearance="fill">
+				<mat-select [(ngModel)]="selectedFuelType" name="fuelType">
+					<mat-option
+						*ngFor="let fuelType of fuelTypes"
+						[value]="fuelType.id"
+					>
+						{{ fuelType.name }}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+	</div>
+
+	<h2>{{ order + 1 }}. Fuel consumption</h2>
+
+	<!-- fuel type consumption total  -->
+	<div class="flex-container">
+		<div class="flex-item">
+			{{ order + 1 }}.1 Fuel consumption in total, metric
+		</div>
+		<div class="flex-item">
+			<mat-form-field appearance="fill" class="numberInput">
+				<input matInput type="number" [(ngModel)]="fuelTypeTotal" />
+			</mat-form-field>
+		</div>
+	</div>
+	<!-- fuel type 1  -->
+	<div class="flex-container">
+		<div class="flex-item">Fuel type 1, metric</div>
+		<div class="flex-item">
+			<mat-form-field appearance="fill" class="numberInput">
+				<input matInput type="number" [(ngModel)]="fuelType1" />
+			</mat-form-field>
+		</div>
+	</div>
+
+	<!-- fuel type 2  -->
+	<div class="flex-container">
+		<div class="flex-item">Fuel type 2, metric</div>
+		<div class="flex-item">
+			<mat-form-field appearance="fill" class="numberInput">
+				<input matInput type="number" [(ngModel)]="fuelType2" />
+			</mat-form-field>
+		</div>
+	</div>
+
+	<!-- fuel type 3  -->
+	<div class="flex-container">
+		<div class="flex-item">Fuel type 3, metric</div>
+		<div class="flex-item">
+			<mat-form-field appearance="fill" class="numberInput">
+				<input matInput type="number" [(ngModel)]="fuelType3" />
+			</mat-form-field>
+		</div>
+	</div>
+</div>

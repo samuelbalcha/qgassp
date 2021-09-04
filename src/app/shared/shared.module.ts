@@ -27,6 +27,9 @@ import { LandUseChangeResultComponent } from './components/land-use-change/land-
 import { LandUseChangeBaselineComponent } from './components/land-use-change/land-use-change-baseline/land-use-change-baseline.component';
 import { CarbonStockChangeComponent } from './components/land-use-change/carbon-stock-change/carbon-stock-change.component';
 
+import { AreaPopulationComponent } from './components/consumption/area-and-population/area-and-population.component';
+import { TransportationConsumptionComponent } from './components/consumption/transportation-consumption/transportation-consumption.component';
+import { HeatingConsumptionComponent } from './components/consumption/heating-consumption/heating-consumption.component';
 import { ConsumptionBaselineComponent } from './components/consumption/consumption-baseline/consumption-baseline.component';
 import { ConsumptionResultComponent } from './components/consumption/consumption-result/consumption-result.component';
 
@@ -44,6 +47,9 @@ const shared = [
 	Co2EmissionChartComponent,
 	CarbonStockChangeComponent,
 	LandUseChangeResultComponent,
+	AreaPopulationComponent,
+	TransportationConsumptionComponent,
+	HeatingConsumptionComponent,
 	ConsumptionBaselineComponent,
 	ConsumptionResultComponent,
 ];

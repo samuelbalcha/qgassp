@@ -44,7 +44,7 @@
 		[attr.aria-expanded]="accordionItem.expanded"
 	>
 		<div
-			class="module-accordion-item-header color-green"
+			class="module-accordion-item-header color-purple"
 			(click)="accordionItem.toggle()"
 		>
 			2.VERSION
@@ -64,8 +64,36 @@
 			id="landuse-accordion-body"
 		>
 			<div class="flex-container">
-				<div class="flex-item carbon-stock-table">
-					<carbon-stock-change></carbon-stock-change>
+				<div class="flex-item consumption-items">
+					<!-- area and population-->
+					<area-and-population></area-and-population>
+					<!-- new construction -->
+					<h2>2. Construction</h2>
+					<div class="flex-container">
+						<div class="flex-item construction">
+							2.1. New planned residential buildings in total
+							gross square meters, m2
+						</div>
+						<div class="flex-item">
+							<mat-form-field
+								appearance="fill"
+								class="numberInput"
+							>
+								<input
+									matInput
+									type="number"
+									[(ngModel)]="totalNewBuildArea"
+								/>
+							</mat-form-field>
+						</div>
+					</div>
+
+					<!-- transportation consumption -->
+					<transportation-consumption
+						[order]="3"
+					></transportation-consumption>
+					<!-- heating consumption -->
+					<heating-consumption [order]="4"></heating-consumption>
 				</div>
 
 				<div class="flex-item version-summary">
