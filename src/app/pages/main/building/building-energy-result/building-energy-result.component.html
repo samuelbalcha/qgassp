@@ -438,9 +438,12 @@
 
 </div>
 <div class="float">
-    <h2>PER CAPITA IMMISION BY SECTOR FOR ****AVARAGE </h2>
-    <canvas width="550" height="450" baseChart [datasets]="barChartData" [labels]="barChartLabels"
-        [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+    <h2>Share of total Residential em by fuel type </h2>
+    <canvas width="550" height="450" baseChart [data]="pieChartData" [labels]="pieChartLabels"
+        [chartType]="pieChartType" [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
     </canvas>
+    <!-- <canvas width="550" height="450" baseChart [datasets]="barChartData" [labels]="barChartLabels"
+        [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+    </canvas> -->
 </div>
 <br>
