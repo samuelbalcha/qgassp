@@ -9,6 +9,8 @@
             commercialEmmission.expanded 
 
 }">
+
+    <!-- <div class="expand"> -->
     <h2>"Baseline Results" </h2>
     <i>Baseline / Current Situations</i>
     <br>
@@ -49,85 +51,106 @@
                 </span>
             </div>
             <div class="example-accordion-item-body" role="region" [style.display]="ResDemand.expanded ? '' : 'none'">
-                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <div class="flex-container">
+                    <div class="flex-item" style="width:74%">
+                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-                    <ng-container matColumnDef="EnergyUse">
-                        <th mat-header-cell *matHeaderCellDef> Energy Use </th>
-                        <td mat-cell *matCellDef="let element"> {{element.EnergyUse}} </td>
-                        <td mat-footer-cell *matFooterCellDef> Total Energy Demand Mwh </td>
-                    </ng-container>
+                            <ng-container matColumnDef="EnergyUse">
+                                <th mat-header-cell *matHeaderCellDef> Energy Use </th>
+                                <td mat-cell *matCellDef="let element"> {{element.EnergyUse}} </td>
+                                <td mat-footer-cell *matFooterCellDef> Total Energy Demand Mwh </td>
+                            </ng-container>
 
-                    <ng-container matColumnDef="Electricity">
-                        <th mat-header-cell *matHeaderCellDef> Electricity </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Electricity"
-                                value="element.Electricity" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalElectricity() }} </td>
-                    </ng-container>
+                            <ng-container matColumnDef="Electricity">
+                                <th mat-header-cell *matHeaderCellDef> Electricity </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Electricity"
+                                        value="element.Electricity" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalElectricity() }} </td>
+                            </ng-container>
 
-                    <ng-container matColumnDef="Gas">
-                        <th mat-header-cell *matHeaderCellDef> Gas </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Gas" value="element.Gas" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalGas() }} </td>
-                    </ng-container>
+                            <ng-container matColumnDef="Gas">
+                                <th mat-header-cell *matHeaderCellDef> Gas </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Gas"
+                                        value="element.Gas" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalGas() }} </td>
+                            </ng-container>
 
-                    <ng-container matColumnDef="Oil">
-                        <th mat-header-cell *matHeaderCellDef> Oil </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Oil" value="element.Oil" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalOil() }} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Coal">
-                        <th mat-header-cell *matHeaderCellDef> Coal </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Coal" value="element.Coal" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalCoal() }} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Peat">
-                        <th mat-header-cell *matHeaderCellDef> Peat </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Peat" value="element.Peat" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalPeat() }} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Wood">
-                        <th mat-header-cell *matHeaderCellDef> Wood </th>
-                        <td mat-cell *matCellDef="let element;">
-                            <input class="area-input" type="number" [(ngModel)]="element.Wood" value="element.Wood" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalWood() }} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Renewable">
-                        <th mat-header-cell *matHeaderCellDef> Renewable </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Renewable"
-                                value="element.Renewable" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> - </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Heat">
-                        <th mat-header-cell *matHeaderCellDef> Heat </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Heat" value="element.Heat" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalHeat() }} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Total">
-                        <th mat-header-cell *matHeaderCellDef> Total </th>
-                        <td mat-cell *matCellDef="let element; let i = index">
-                            {{getTotalTotal(i) }}
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalAll() }} </td>
-                    </ng-container>
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                    <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
-                </table>
+                            <ng-container matColumnDef="Oil">
+                                <th mat-header-cell *matHeaderCellDef> Oil </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Oil"
+                                        value="element.Oil" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalOil() }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Coal">
+                                <th mat-header-cell *matHeaderCellDef> Coal </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Coal"
+                                        value="element.Coal" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalCoal() }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Peat">
+                                <th mat-header-cell *matHeaderCellDef> Peat </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Peat"
+                                        value="element.Peat" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalPeat() }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Wood">
+                                <th mat-header-cell *matHeaderCellDef> Wood </th>
+                                <td mat-cell *matCellDef="let element;">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Wood"
+                                        value="element.Wood" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalWood() }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Renewable">
+                                <th mat-header-cell *matHeaderCellDef> Renewable </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Renewable"
+                                        value="element.Renewable" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> - </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Heat">
+                                <th mat-header-cell *matHeaderCellDef> Heat </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Heat"
+                                        value="element.Heat" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalHeat() }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Total">
+                                <th mat-header-cell *matHeaderCellDef> Total </th>
+                                <td mat-cell *matCellDef="let element; let i = index">
+                                    {{getTotalTotal(i) }}
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalAll() }} </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+                        </table>
+                    </div>
+                    <div class="flex-item">
+                        <div class="">
+                            <h4 style="padding-left: 2rem;">Share of total Residential em by fuel type </h4>
+                            <canvas width="331" height="239" baseChart [data]="pieChartData" [labels]="pieChartLabels"
+                                [chartType]="pieChartType" [options]="pieChartOptions" [plugins]="pieChartPlugins"
+                                [legend]="pieChartLegend">
+                            </canvas>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
 
         </cdk-accordion-item>
@@ -151,85 +174,106 @@
             <div class="example-accordion-item-body" role="region"
                 [style.display]="resEmmission.expanded ? '' : 'none'">
 
-                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <div class="flex-container">
+                    <div class="flex-item" style="width:74%">
+                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-                    <ng-container matColumnDef="EnergyUse">
-                        <th mat-header-cell *matHeaderCellDef> Energy Use </th>
-                        <td mat-cell *matCellDef="let element"> {{element.EnergyUse}} </td>
-                        <td mat-footer-cell *matFooterCellDef> Total Energy Demand Mwh </td>
-                    </ng-container>
+                            <ng-container matColumnDef="EnergyUse">
+                                <th mat-header-cell *matHeaderCellDef> Energy Use </th>
+                                <td mat-cell *matCellDef="let element"> {{element.EnergyUse}} </td>
+                                <td mat-footer-cell *matFooterCellDef> Total Energy Demand Mwh </td>
+                            </ng-container>
 
-                    <ng-container matColumnDef="Electricity">
-                        <th mat-header-cell *matHeaderCellDef> Electricity </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Electricity"
-                                value="element.Electricity" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalElectricity() }} </td>
-                    </ng-container>
+                            <ng-container matColumnDef="Electricity">
+                                <th mat-header-cell *matHeaderCellDef> Electricity </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Electricity"
+                                        value="element.Electricity" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalElectricity() }} </td>
+                            </ng-container>
 
-                    <ng-container matColumnDef="Gas">
-                        <th mat-header-cell *matHeaderCellDef> Gas </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Gas" value="element.Gas" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalGas() }} </td>
-                    </ng-container>
+                            <ng-container matColumnDef="Gas">
+                                <th mat-header-cell *matHeaderCellDef> Gas </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Gas"
+                                        value="element.Gas" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalGas() }} </td>
+                            </ng-container>
 
-                    <ng-container matColumnDef="Oil">
-                        <th mat-header-cell *matHeaderCellDef> Oil </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Oil" value="element.Oil" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalOil() }} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Coal">
-                        <th mat-header-cell *matHeaderCellDef> Coal </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Coal" value="element.Coal" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalCoal() }} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Peat">
-                        <th mat-header-cell *matHeaderCellDef> Peat </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Peat" value="element.Peat" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalPeat() }} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Wood">
-                        <th mat-header-cell *matHeaderCellDef> Wood </th>
-                        <td mat-cell *matCellDef="let element;">
-                            <input class="area-input" type="number" [(ngModel)]="element.Wood" value="element.Wood" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalWood() }} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Renewable">
-                        <th mat-header-cell *matHeaderCellDef> Renewable </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Renewable"
-                                value="element.Renewable" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> - </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Heat">
-                        <th mat-header-cell *matHeaderCellDef> Heat </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Heat" value="element.Heat" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalHeat() }} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Total">
-                        <th mat-header-cell *matHeaderCellDef> Total </th>
-                        <td mat-cell *matCellDef="let element; let i = index">
-                            {{getTotalTotal(i) }}
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalAll() }} </td>
-                    </ng-container>
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                    <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
-                </table>
+                            <ng-container matColumnDef="Oil">
+                                <th mat-header-cell *matHeaderCellDef> Oil </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Oil"
+                                        value="element.Oil" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalOil() }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Coal">
+                                <th mat-header-cell *matHeaderCellDef> Coal </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Coal"
+                                        value="element.Coal" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalCoal() }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Peat">
+                                <th mat-header-cell *matHeaderCellDef> Peat </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Peat"
+                                        value="element.Peat" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalPeat() }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Wood">
+                                <th mat-header-cell *matHeaderCellDef> Wood </th>
+                                <td mat-cell *matCellDef="let element;">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Wood"
+                                        value="element.Wood" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalWood() }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Renewable">
+                                <th mat-header-cell *matHeaderCellDef> Renewable </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Renewable"
+                                        value="element.Renewable" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> - </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Heat">
+                                <th mat-header-cell *matHeaderCellDef> Heat </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Heat"
+                                        value="element.Heat" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalHeat() }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Total">
+                                <th mat-header-cell *matHeaderCellDef> Total </th>
+                                <td mat-cell *matCellDef="let element; let i = index">
+                                    {{getTotalTotal(i) }}
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalAll() }} </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+                        </table>
+                    </div>
+                    <div class="flex-item">
+                        <div class="">
+                            <h4 style="padding-left: 2rem;">Share of total Residential em by fuel type </h4>
+                            <canvas width="331" height="239" baseChart [data]="pieChartData" [labels]="pieChartLabels"
+                                [chartType]="pieChartType" [options]="pieChartOptions" [plugins]="pieChartPlugins"
+                                [legend]="pieChartLegend">
+                            </canvas>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
         </cdk-accordion-item>
     </cdk-accordion>
@@ -253,85 +297,105 @@
             </div>
             <div class="example-accordion-item-body" role="region"
                 [style.display]="commercialDemand.expanded ? '' : 'none'">
-                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <div class="flex-container">
+                    <div class="flex-item" style="width:74%">
+                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-                    <ng-container matColumnDef="EnergyUse">
-                        <th mat-header-cell *matHeaderCellDef> Energy Use </th>
-                        <td mat-cell *matCellDef="let element"> {{element.EnergyUse}} </td>
-                        <td mat-footer-cell *matFooterCellDef> Total Energy Demand Mwh </td>
-                    </ng-container>
+                            <ng-container matColumnDef="EnergyUse">
+                                <th mat-header-cell *matHeaderCellDef> Energy Use </th>
+                                <td mat-cell *matCellDef="let element"> {{element.EnergyUse}} </td>
+                                <td mat-footer-cell *matFooterCellDef> Total Energy Demand Mwh </td>
+                            </ng-container>
 
-                    <ng-container matColumnDef="Electricity">
-                        <th mat-header-cell *matHeaderCellDef> Electricity </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Electricity"
-                                value="element.Electricity" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalElectricity() }} </td>
-                    </ng-container>
+                            <ng-container matColumnDef="Electricity">
+                                <th mat-header-cell *matHeaderCellDef> Electricity </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Electricity"
+                                        value="element.Electricity" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalElectricity() }} </td>
+                            </ng-container>
 
-                    <ng-container matColumnDef="Gas">
-                        <th mat-header-cell *matHeaderCellDef> Gas </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Gas" value="element.Gas" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalGas() }} </td>
-                    </ng-container>
+                            <ng-container matColumnDef="Gas">
+                                <th mat-header-cell *matHeaderCellDef> Gas </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Gas"
+                                        value="element.Gas" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalGas() }} </td>
+                            </ng-container>
 
-                    <ng-container matColumnDef="Oil">
-                        <th mat-header-cell *matHeaderCellDef> Oil </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Oil" value="element.Oil" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalOil() }} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Coal">
-                        <th mat-header-cell *matHeaderCellDef> Coal </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Coal" value="element.Coal" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalCoal() }} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Peat">
-                        <th mat-header-cell *matHeaderCellDef> Peat </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Peat" value="element.Peat" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalPeat() }} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Wood">
-                        <th mat-header-cell *matHeaderCellDef> Wood </th>
-                        <td mat-cell *matCellDef="let element;">
-                            <input class="area-input" type="number" [(ngModel)]="element.Wood" value="element.Wood" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalWood() }} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Renewable">
-                        <th mat-header-cell *matHeaderCellDef> Renewable </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Renewable"
-                                value="element.Renewable" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> - </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Heat">
-                        <th mat-header-cell *matHeaderCellDef> Heat </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Heat" value="element.Heat" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalHeat() }} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Total">
-                        <th mat-header-cell *matHeaderCellDef> Total </th>
-                        <td mat-cell *matCellDef="let element; let i = index">
-                            {{getTotalTotal(i) }}
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalAll() }} </td>
-                    </ng-container>
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                    <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
-                </table>
+                            <ng-container matColumnDef="Oil">
+                                <th mat-header-cell *matHeaderCellDef> Oil </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Oil"
+                                        value="element.Oil" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalOil() }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Coal">
+                                <th mat-header-cell *matHeaderCellDef> Coal </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Coal"
+                                        value="element.Coal" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalCoal() }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Peat">
+                                <th mat-header-cell *matHeaderCellDef> Peat </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Peat"
+                                        value="element.Peat" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalPeat() }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Wood">
+                                <th mat-header-cell *matHeaderCellDef> Wood </th>
+                                <td mat-cell *matCellDef="let element;">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Wood"
+                                        value="element.Wood" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalWood() }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Renewable">
+                                <th mat-header-cell *matHeaderCellDef> Renewable </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Renewable"
+                                        value="element.Renewable" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> - </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Heat">
+                                <th mat-header-cell *matHeaderCellDef> Heat </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Heat"
+                                        value="element.Heat" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalHeat() }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Total">
+                                <th mat-header-cell *matHeaderCellDef> Total </th>
+                                <td mat-cell *matCellDef="let element; let i = index">
+                                    {{getTotalTotal(i) }}
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalAll() }} </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+                        </table>
+                    </div>
+                    <div class="flex-item">
+                        <div>
+                            <h4 style="padding-left: 2rem;">Share of total Residential em by fuel type </h4>
+                            <canvas width="331" height="239" baseChart [data]="pieChartData" [labels]="pieChartLabels"
+                                [chartType]="pieChartType" [options]="pieChartOptions" [plugins]="pieChartPlugins"
+                                [legend]="pieChartLegend">
+                            </canvas>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </cdk-accordion-item>
     </cdk-accordion>
@@ -353,97 +417,129 @@
             </div>
             <div class="example-accordion-item-body" role="region"
                 [style.display]="commercialEmmission.expanded ? '' : 'none'">
-                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-                    <ng-container matColumnDef="EnergyUse">
-                        <th mat-header-cell *matHeaderCellDef> Energy Use </th>
-                        <td mat-cell *matCellDef="let element"> {{element.EnergyUse}} </td>
-                        <td mat-footer-cell *matFooterCellDef> Total Energy Demand Mwh </td>
-                    </ng-container>
+                <div class="flex-container">
+                    <div class="flex-item" style="width:74%">
+                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-                    <ng-container matColumnDef="Electricity">
-                        <th mat-header-cell *matHeaderCellDef> Electricity </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Electricity"
-                                value="element.Electricity" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalElectricity() }} </td>
-                    </ng-container>
+                            <ng-container matColumnDef="EnergyUse">
+                                <th mat-header-cell *matHeaderCellDef> Energy Use </th>
+                                <td mat-cell *matCellDef="let element"> {{element.EnergyUse}} </td>
+                                <td mat-footer-cell *matFooterCellDef> Total Energy Demand Mwh </td>
+                            </ng-container>
 
-                    <ng-container matColumnDef="Gas">
-                        <th mat-header-cell *matHeaderCellDef> Gas </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Gas" value="element.Gas" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalGas() }} </td>
-                    </ng-container>
+                            <ng-container matColumnDef="Electricity">
+                                <th mat-header-cell *matHeaderCellDef> Electricity </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Electricity"
+                                        value="element.Electricity" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalElectricity() }} </td>
+                            </ng-container>
 
-                    <ng-container matColumnDef="Oil">
-                        <th mat-header-cell *matHeaderCellDef> Oil </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Oil" value="element.Oil" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalOil() }} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Coal">
-                        <th mat-header-cell *matHeaderCellDef> Coal </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Coal" value="element.Coal" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalCoal() }} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Peat">
-                        <th mat-header-cell *matHeaderCellDef> Peat </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Peat" value="element.Peat" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalPeat() }} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Wood">
-                        <th mat-header-cell *matHeaderCellDef> Wood </th>
-                        <td mat-cell *matCellDef="let element;">
-                            <input class="area-input" type="number" [(ngModel)]="element.Wood" value="element.Wood" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalWood() }} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Renewable">
-                        <th mat-header-cell *matHeaderCellDef> Renewable </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Renewable"
-                                value="element.Renewable" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> - </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Heat">
-                        <th mat-header-cell *matHeaderCellDef> Heat </th>
-                        <td mat-cell *matCellDef="let element">
-                            <input class="area-input" type="number" [(ngModel)]="element.Heat" value="element.Heat" />
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalHeat() }} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Total">
-                        <th mat-header-cell *matHeaderCellDef> Total </th>
-                        <td mat-cell *matCellDef="let element; let i = index">
-                            {{getTotalTotal(i) }}
-                        </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getTotalAll() }} </td>
-                    </ng-container>
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                    <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
-                </table>
+                            <ng-container matColumnDef="Gas">
+                                <th mat-header-cell *matHeaderCellDef> Gas </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Gas"
+                                        value="element.Gas" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalGas() }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="Oil">
+                                <th mat-header-cell *matHeaderCellDef> Oil </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Oil"
+                                        value="element.Oil" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalOil() }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Coal">
+                                <th mat-header-cell *matHeaderCellDef> Coal </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Coal"
+                                        value="element.Coal" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalCoal() }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Peat">
+                                <th mat-header-cell *matHeaderCellDef> Peat </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Peat"
+                                        value="element.Peat" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalPeat() }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Wood">
+                                <th mat-header-cell *matHeaderCellDef> Wood </th>
+                                <td mat-cell *matCellDef="let element;">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Wood"
+                                        value="element.Wood" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalWood() }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Renewable">
+                                <th mat-header-cell *matHeaderCellDef> Renewable </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Renewable"
+                                        value="element.Renewable" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> - </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Heat">
+                                <th mat-header-cell *matHeaderCellDef> Heat </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <input class="area-input" type="number" [(ngModel)]="element.Heat"
+                                        value="element.Heat" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalHeat() }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Total">
+                                <th mat-header-cell *matHeaderCellDef> Total </th>
+                                <td mat-cell *matCellDef="let element; let i = index">
+                                    {{getTotalTotal(i) }}
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{getTotalAll() }} </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+                        </table>
+                    </div>
+                    <div class="flex-item">
+                        <div class="">
+                            <h4 style="padding-left: 2rem;">Share of total Residential em by fuel type </h4>
+                            <canvas width="331" height="239" baseChart [data]="pieChartData" [labels]="pieChartLabels"
+                                [chartType]="pieChartType" [options]="pieChartOptions" [plugins]="pieChartPlugins"
+                                [legend]="pieChartLegend">
+                            </canvas>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
         </cdk-accordion-item>
     </cdk-accordion>
 
 </div>
-<div class="float">
-    <h2>Share of total Residential em by fuel type </h2>
-    <canvas width="550" height="450" baseChart [data]="pieChartData" [labels]="pieChartLabels"
-        [chartType]="pieChartType" [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
-    </canvas>
-    <!-- <canvas width="550" height="450" baseChart [datasets]="barChartData" [labels]="barChartLabels"
-        [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
-    </canvas> -->
+<div [ngClass]="{'show': 
+        !ResDemand.expanded || 
+        !resEmmission.expanded  || 
+        !commercialDemand.expanded || 
+        !commercialEmmission.expanded ,
+    'hide': ResDemand.expanded ||
+            resEmmission.expanded  || 
+            commercialDemand.expanded || 
+            commercialEmmission.expanded 
+
+}">
+    <div class="chartContainer">
+        <h4 class="charTitle">Share of total Residential em by fuel type </h4>
+        <canvas width="350" height="250" baseChart [data]="pieChartData" [labels]="pieChartLabels"
+            [chartType]="pieChartType" [options]="pieChartOptions" [plugins]="pieChartPlugins"
+            [legend]="pieChartLegend">
+        </canvas>
+    </div>
 </div>
 <br>

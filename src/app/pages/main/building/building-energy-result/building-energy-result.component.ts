@@ -122,76 +122,18 @@ export class BuildingEnergyResultComponent implements OnInit {
     legend: {
       display: true,
       labels: {
-        fontSize: 15,
+        fontSize: 12,
         fontColor: 'rgb(4,7,31)',
       }
     }
   };
   public pieChartLabels: Label[] = [['Coal'], ['Peat'], ['Wood'], ['Electricity'], ['gas'], ['Oil']];
-  // public pieChartColors: Color[] = [
-  //   { backgroundColor: 'rgb(4,7,31)', borderColor: "white" },
-  //   { backgroundColor: "rgb(0,9,73)", borderColor: "white" },
-  //   { backgroundColor: "rgb(52,94,141)", borderColor: "white" },
-  //   { backgroundColor: "rgb(78,115,190)", borderColor: "white" },
-  //   { backgroundColor: "rgb(165,165,165)", borderColor: "white" },
-  //   { backgroundColor: "rgb(106,154,208)", borderColor: "white" },
-  // ];
   public pieChartData: SingleDataSet = [0.33, 0.09, 3, 26, 25, 46];
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
   public pieChartPlugins = [
 
   ];
-  // barChartOptions: any = {
-  //   responsive: false,
-  //   aspectRatio: 1,
-  //   scales: {
-  //     xAxes: [
-  //       {
-  //         gridLines: {
-  //           display: false,
-  //         },
-  //       },
-  //     ],
-  //     yAxes: [
-  //       {
-  //         gridLines: {
-  //           display: false,
-  //         },
-  //       },
-  //     ],
-  //   },
-  // };
-  // barChartLabels: Label[] = [
-  //   '1',
-  //   '2',
-  //   '3',
-  //   '4',
-  //   '5',
-  //   '6',
-  //   '7',
-  //   '8',
-  //   '9',
-  // ];
-  // barChartType: ChartType = 'bar';
-  // barChartLegend = true;
-  // barChartPlugins = [];
-
-  // barChartData: ChartDataSets[] = [
-  //   {
-  //     data: [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000],
-  //     label: '1.Version',
-  //     barThickness: 8,
-  //     backgroundColor: '#214E9C',
-  //   },
-  //   {
-  //     data: [1000, 1200, 1500, 2200, 6000, 1000, 500, 1700, 1000],
-  //     label: '2.Version',
-  //     barThickness: 8,
-  //     backgroundColor: '#6BAD2B',
-  //   },
-  // ];
-
   ngOnInit(): void {
     this.constactTableDate();
   }
