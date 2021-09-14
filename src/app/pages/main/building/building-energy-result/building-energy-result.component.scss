@@ -1,12 +1,15 @@
+.body-Container{
+  padding-right: 5rem;
+}
 .float{
     float: left;
-    width: 45%;
+    width: 48%;
     color: #3f51b5;
     padding: 10px;
 }
 .expand{
   float: left;
-  width: 90%;
+  width: 97%;
   color: #3f51b5;
   padding: 5px;
 }
@@ -24,9 +27,14 @@ table {
 }
 .example-accordion {
     display: block;
-    // max-width: 500px;
+    //width: 98%;
   }
-  
+.color-brown,
+.color-brown:hover {
+	background-color: #6f2c54;
+}
+
+
   .example-accordion-item {
     display: block;
     border: solid 1px #ccc;
@@ -54,7 +62,6 @@ table {
   
   .example-accordion-item-header:hover {
     cursor: pointer;
-    background-color: #eee;
   }
   
   .example-accordion-item:first-child {
@@ -81,3 +88,77 @@ table {
   .chartContainer{
     padding-left: 5rem;
   }
+  
+  .step-container {
+    margin: auto;
+  }
+  
+  mat-horizontal-stepper {
+    background-color: transparent !important;
+  }
+  
+  .width-200 {
+    width: 200px;
+  }
+  .width-340{
+    width: 340px;
+  }
+  .width-200-form {
+    width: 135px;
+  }
+  .space-between {
+    margin-right: 100px;
+  }
+  
+  .space-between-form {
+    margin-right: 55px;
+  }
+  .btn-group {
+    float: right;
+  }
+  
+  .next-btn {
+    background-color: #1c294e;
+    color: #fff;
+    text-transform: uppercase;
+  }
+  
+  h4 {
+    color: #324191;
+    font-weight: 500;
+    padding-top: 12px;
+    padding-left: 4rem;
+  }
+  
+  mat-horizontal-stepper {
+    background-color: #fafafa;
+    color: #324191;
+  }
+  
+  .previous-btn {
+    background-color: #fbfbfb;
+    color: #1c294e;
+    text-transform: uppercase;
+    margin-right: 20px;
+  }
+  
+  .float {
+    float: left;
+  }
+  
+  .hide {
+    display: none;
+  }
+  
+  .lowerTitle {
+    width: 66%;
+  }
+  
+  .numberInput {
+    width: 40%;
+  }
+  .space-between-title{
+    width: 25%;
+
+  }
+  

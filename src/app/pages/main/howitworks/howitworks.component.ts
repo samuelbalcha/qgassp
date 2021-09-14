@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./howitworks.component.scss'],
 })
 export class HowitworksComponent implements OnInit {
-	constructor() {}
+	constructor() { }
 
-	ngOnInit(): void {}
+	ngOnInit(): void { }
 }

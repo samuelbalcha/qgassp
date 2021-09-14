@@ -1,545 +1,1540 @@
-<div [ngClass]="{'float': 
-        !ResDemand.expanded || 
-        !resEmmission.expanded  || 
-        !commercialDemand.expanded || 
-        !commercialEmmission.expanded ,
-    'expand': ResDemand.expanded ||
-            resEmmission.expanded  || 
-            commercialDemand.expanded || 
-            commercialEmmission.expanded 
+<div class="body-Container">
+    <div [ngClass]="{'float': 
+    !ResDemand.expanded || 
+    !resEmmission.expanded  || 
+    !commercialDemand.expanded || 
+    !commercialEmmission.expanded ,
+'expand': ResDemand.expanded ||
+        resEmmission.expanded  || 
+        commercialDemand.expanded || 
+        commercialEmmission.expanded 
 
 }">
 
-    <!-- <div class="expand"> -->
-    <h2>"Baseline Results" </h2>
-    <i>Baseline / Current Situations</i>
-    <br>
-    <br>
-    <div class="flex-container">
-        <div class="flex-item width-200 space-between">
-            <mat-label>
-                <p class="lableInput">
-                    Emmision / Person
-                </p>
-            </mat-label>
+        <!-- <div class="expand"> -->
+        <h2>"Baseline Results" </h2>
+        <i>Baseline / Current Situations</i>
+        <br>
+        <br>
+        <div class="flex-container">
+            <div class="flex-item width-200 space-between">
+                <mat-label>
+                    <p class="lableInput">
+                        Emmision / Person
+                    </p>
+                </mat-label>
+            </div>
+            <div class="flex-item">
+                <mat-label>
+                    <p class="lableInput">
+                        4,54 tCO2
+                    </p>
+                </mat-label>
+            </div>
         </div>
-        <div class="flex-item">
-            <mat-label>
-                <p class="lableInput">
-                    4,54 tCO2
-                </p>
-            </mat-label>
-        </div>
+
+        <h2>Residential</h2>
+        <cdk-accordion class="example-accordion">
+            <cdk-accordion-item #ResDemand="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="0"
+                [attr.aria-expanded]="ResDemand.expanded">
+
+                <div class="example-accordion-item-header" (click)="ResDemand.toggle()">
+                    <div class="flex-container">
+                        <div class="flex-item width-200 space-between">
+                            TotalResidential Energy MWh
+                        </div>
+                        <div class="flex-item">
+                            {{getTotalAll()}}
+                        </div>
+                    </div>
+                    <span class="example-accordion-item-description">
+                        {{ ResDemand.expanded ? 'close' : 'open' }}
+                    </span>
+                </div>
+                <div class="example-accordion-item-body" role="region"
+                    [style.display]="ResDemand.expanded ? '' : 'none'">
+                    <div class="flex-container">
+                        <div class="flex-item" style="width:74%">
+                            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                                <ng-container matColumnDef="EnergyUse">
+                                    <th mat-header-cell *matHeaderCellDef> Energy Use </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.EnergyUse}} </td>
+                                    <td mat-footer-cell *matFooterCellDef> Total Energy Demand Mwh </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Electricity">
+                                    <th mat-header-cell *matHeaderCellDef> Electricity </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Electricity"
+                                            value="element.Electricity" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalElectricity() }} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Gas">
+                                    <th mat-header-cell *matHeaderCellDef> Gas </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Gas"
+                                            value="element.Gas" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalGas() }} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Oil">
+                                    <th mat-header-cell *matHeaderCellDef> Oil </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Oil"
+                                            value="element.Oil" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalOil() }} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Coal">
+                                    <th mat-header-cell *matHeaderCellDef> Coal </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Coal"
+                                            value="element.Coal" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalCoal() }} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Peat">
+                                    <th mat-header-cell *matHeaderCellDef> Peat </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Peat"
+                                            value="element.Peat" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalPeat() }} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Wood">
+                                    <th mat-header-cell *matHeaderCellDef> Wood </th>
+                                    <td mat-cell *matCellDef="let element;">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Wood"
+                                            value="element.Wood" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalWood() }} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Renewable">
+                                    <th mat-header-cell *matHeaderCellDef> Renewable </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Renewable"
+                                            value="element.Renewable" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> - </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Heat">
+                                    <th mat-header-cell *matHeaderCellDef> Heat </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Heat"
+                                            value="element.Heat" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalHeat() }} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Total">
+                                    <th mat-header-cell *matHeaderCellDef> Total </th>
+                                    <td mat-cell *matCellDef="let element; let i = index">
+                                        {{getTotalTotal(i) }}
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalAll() }} </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+                            </table>
+                        </div>
+                        <div class="flex-item">
+                            <div class="">
+                                <h4 style="padding-left: 2rem;">Share of total Residential em by fuel type </h4>
+                                <canvas width="331" height="239" baseChart [data]="pieChartData"
+                                    [labels]="pieChartLabels" [chartType]="pieChartType" [options]="pieChartOptions"
+                                    [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+                                </canvas>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </cdk-accordion-item>
+        </cdk-accordion>
+        <cdk-accordion class="example-accordion">
+            <cdk-accordion-item #resEmmission="cdkAccordionItem" class="example-accordion-item" role="button"
+                tabindex="0" [attr.aria-expanded]="resEmmission.expanded">
+                <div class="example-accordion-item-header" (click)="resEmmission.toggle()">
+                    <div class="flex-container">
+                        <div class="flex-item width-200 space-between">
+                            TotalResidential Energy MWh
+                        </div>
+                        <div class="flex-item">
+                            {{getTotalAll()}}
+                        </div>
+                    </div>
+                    <span class="example-accordion-item-description">
+                        {{ ResDemand.expanded ? 'close' : 'open' }}
+                    </span>
+                </div>
+                <div class="example-accordion-item-body" role="region"
+                    [style.display]="resEmmission.expanded ? '' : 'none'">
+
+                    <div class="flex-container">
+                        <div class="flex-item" style="width:74%">
+                            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                                <ng-container matColumnDef="EnergyUse">
+                                    <th mat-header-cell *matHeaderCellDef> Energy Use </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.EnergyUse}} </td>
+                                    <td mat-footer-cell *matFooterCellDef> Total Energy Demand Mwh </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Electricity">
+                                    <th mat-header-cell *matHeaderCellDef> Electricity </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Electricity"
+                                            value="element.Electricity" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalElectricity() }} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Gas">
+                                    <th mat-header-cell *matHeaderCellDef> Gas </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Gas"
+                                            value="element.Gas" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalGas() }} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Oil">
+                                    <th mat-header-cell *matHeaderCellDef> Oil </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Oil"
+                                            value="element.Oil" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalOil() }} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Coal">
+                                    <th mat-header-cell *matHeaderCellDef> Coal </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Coal"
+                                            value="element.Coal" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalCoal() }} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Peat">
+                                    <th mat-header-cell *matHeaderCellDef> Peat </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Peat"
+                                            value="element.Peat" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalPeat() }} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Wood">
+                                    <th mat-header-cell *matHeaderCellDef> Wood </th>
+                                    <td mat-cell *matCellDef="let element;">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Wood"
+                                            value="element.Wood" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalWood() }} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Renewable">
+                                    <th mat-header-cell *matHeaderCellDef> Renewable </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Renewable"
+                                            value="element.Renewable" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> - </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Heat">
+                                    <th mat-header-cell *matHeaderCellDef> Heat </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Heat"
+                                            value="element.Heat" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalHeat() }} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Total">
+                                    <th mat-header-cell *matHeaderCellDef> Total </th>
+                                    <td mat-cell *matCellDef="let element; let i = index">
+                                        {{getTotalTotal(i) }}
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalAll() }} </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+                            </table>
+                        </div>
+                        <div class="flex-item">
+                            <div class="">
+                                <h4 style="padding-left: 2rem;">Share of total Residential em by fuel type </h4>
+                                <canvas width="331" height="239" baseChart [data]="pieChartData"
+                                    [labels]="pieChartLabels" [chartType]="pieChartType" [options]="pieChartOptions"
+                                    [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+                                </canvas>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </cdk-accordion-item>
+        </cdk-accordion>
+        <h2>Commercial</h2>
+
+        <cdk-accordion class="example-accordion">
+            <cdk-accordion-item #commercialDemand="cdkAccordionItem" class="example-accordion-item" role="button"
+                tabindex="0" [attr.aria-expanded]="commercialDemand.expanded">
+                <div class="example-accordion-item-header" (click)="commercialDemand.toggle()">
+                    <div class="flex-container">
+                        <div class="flex-item width-200 space-between">
+                            TotalResidential Energy MWh
+                        </div>
+                        <div class="flex-item">
+                            {{getTotalAll()}}
+                        </div>
+                    </div>
+                    <span class="example-accordion-item-description">
+                        {{ ResDemand.expanded ? 'close' : 'open' }}
+                    </span>
+                </div>
+                <div class="example-accordion-item-body" role="region"
+                    [style.display]="commercialDemand.expanded ? '' : 'none'">
+                    <div class="flex-container">
+                        <div class="flex-item" style="width:74%">
+                            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                                <ng-container matColumnDef="EnergyUse">
+                                    <th mat-header-cell *matHeaderCellDef> Energy Use </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.EnergyUse}} </td>
+                                    <td mat-footer-cell *matFooterCellDef> Total Energy Demand Mwh </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Electricity">
+                                    <th mat-header-cell *matHeaderCellDef> Electricity </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Electricity"
+                                            value="element.Electricity" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalElectricity() }} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Gas">
+                                    <th mat-header-cell *matHeaderCellDef> Gas </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Gas"
+                                            value="element.Gas" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalGas() }} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Oil">
+                                    <th mat-header-cell *matHeaderCellDef> Oil </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Oil"
+                                            value="element.Oil" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalOil() }} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Coal">
+                                    <th mat-header-cell *matHeaderCellDef> Coal </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Coal"
+                                            value="element.Coal" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalCoal() }} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Peat">
+                                    <th mat-header-cell *matHeaderCellDef> Peat </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Peat"
+                                            value="element.Peat" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalPeat() }} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Wood">
+                                    <th mat-header-cell *matHeaderCellDef> Wood </th>
+                                    <td mat-cell *matCellDef="let element;">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Wood"
+                                            value="element.Wood" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalWood() }} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Renewable">
+                                    <th mat-header-cell *matHeaderCellDef> Renewable </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Renewable"
+                                            value="element.Renewable" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> - </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Heat">
+                                    <th mat-header-cell *matHeaderCellDef> Heat </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Heat"
+                                            value="element.Heat" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalHeat() }} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Total">
+                                    <th mat-header-cell *matHeaderCellDef> Total </th>
+                                    <td mat-cell *matCellDef="let element; let i = index">
+                                        {{getTotalTotal(i) }}
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalAll() }} </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+                            </table>
+                        </div>
+                        <div class="flex-item">
+                            <div>
+                                <h4 style="padding-left: 2rem;">Share of total Residential em by fuel type </h4>
+                                <canvas width="331" height="239" baseChart [data]="pieChartData"
+                                    [labels]="pieChartLabels" [chartType]="pieChartType" [options]="pieChartOptions"
+                                    [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+                                </canvas>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </cdk-accordion-item>
+        </cdk-accordion>
+        <cdk-accordion class="example-accordion">
+            <cdk-accordion-item #commercialEmmission="cdkAccordionItem" class="example-accordion-item" role="button"
+                tabindex="0" [attr.aria-expanded]="commercialEmmission.expanded">
+                <div class="example-accordion-item-header" (click)="commercialEmmission.toggle()">
+                    <div class="flex-container">
+                        <div class="flex-item width-200 space-between">
+                            TotalResidential Energy MWh
+                        </div>
+                        <div class="flex-item">
+                            {{getTotalAll()}}
+                        </div>
+                    </div>
+                    <span class="example-accordion-item-description">
+                        {{ ResDemand.expanded ? 'close' : 'open' }}
+                    </span>
+                </div>
+                <div class="example-accordion-item-body" role="region"
+                    [style.display]="commercialEmmission.expanded ? '' : 'none'">
+
+                    <div class="flex-container">
+                        <div class="flex-item" style="width:74%">
+                            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                                <ng-container matColumnDef="EnergyUse">
+                                    <th mat-header-cell *matHeaderCellDef> Energy Use </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.EnergyUse}} </td>
+                                    <td mat-footer-cell *matFooterCellDef> Total Energy Demand Mwh </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Electricity">
+                                    <th mat-header-cell *matHeaderCellDef> Electricity </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Electricity"
+                                            value="element.Electricity" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalElectricity() }} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Gas">
+                                    <th mat-header-cell *matHeaderCellDef> Gas </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Gas"
+                                            value="element.Gas" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalGas() }} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Oil">
+                                    <th mat-header-cell *matHeaderCellDef> Oil </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Oil"
+                                            value="element.Oil" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalOil() }} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Coal">
+                                    <th mat-header-cell *matHeaderCellDef> Coal </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Coal"
+                                            value="element.Coal" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalCoal() }} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Peat">
+                                    <th mat-header-cell *matHeaderCellDef> Peat </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Peat"
+                                            value="element.Peat" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalPeat() }} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Wood">
+                                    <th mat-header-cell *matHeaderCellDef> Wood </th>
+                                    <td mat-cell *matCellDef="let element;">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Wood"
+                                            value="element.Wood" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalWood() }} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Renewable">
+                                    <th mat-header-cell *matHeaderCellDef> Renewable </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Renewable"
+                                            value="element.Renewable" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> - </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Heat">
+                                    <th mat-header-cell *matHeaderCellDef> Heat </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="area-input" type="number" [(ngModel)]="element.Heat"
+                                            value="element.Heat" />
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalHeat() }} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Total">
+                                    <th mat-header-cell *matHeaderCellDef> Total </th>
+                                    <td mat-cell *matCellDef="let element; let i = index">
+                                        {{getTotalTotal(i) }}
+                                    </td>
+                                    <td mat-footer-cell *matFooterCellDef> {{getTotalAll() }} </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+                            </table>
+                        </div>
+                        <div class="flex-item">
+                            <div class="">
+                                <h4 style="padding-left: 2rem;">Share of total Residential em by fuel type </h4>
+                                <canvas width="331" height="239" baseChart [data]="pieChartData"
+                                    [labels]="pieChartLabels" [chartType]="pieChartType" [options]="pieChartOptions"
+                                    [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+                                </canvas>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </cdk-accordion-item>
+        </cdk-accordion>
+
     </div>
-
-    <h2>Residential</h2>
-    <cdk-accordion class="example-accordion">
-        <cdk-accordion-item #ResDemand="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="0"
-            [attr.aria-expanded]="ResDemand.expanded">
-
-            <div class="example-accordion-item-header" (click)="ResDemand.toggle()">
-                <div class="flex-container">
-                    <div class="flex-item width-200 space-between">
-                        TotalResidential Energy MWh
-                    </div>
-                    <div class="flex-item">
-                        {{getTotalAll()}}
-                    </div>
-                </div>
-                <span class="example-accordion-item-description">
-                    {{ ResDemand.expanded ? 'close' : 'open' }}
-                </span>
-            </div>
-            <div class="example-accordion-item-body" role="region" [style.display]="ResDemand.expanded ? '' : 'none'">
-                <div class="flex-container">
-                    <div class="flex-item" style="width:74%">
-                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-                            <ng-container matColumnDef="EnergyUse">
-                                <th mat-header-cell *matHeaderCellDef> Energy Use </th>
-                                <td mat-cell *matCellDef="let element"> {{element.EnergyUse}} </td>
-                                <td mat-footer-cell *matFooterCellDef> Total Energy Demand Mwh </td>
-                            </ng-container>
-
-                            <ng-container matColumnDef="Electricity">
-                                <th mat-header-cell *matHeaderCellDef> Electricity </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Electricity"
-                                        value="element.Electricity" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalElectricity() }} </td>
-                            </ng-container>
-
-                            <ng-container matColumnDef="Gas">
-                                <th mat-header-cell *matHeaderCellDef> Gas </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Gas"
-                                        value="element.Gas" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalGas() }} </td>
-                            </ng-container>
-
-                            <ng-container matColumnDef="Oil">
-                                <th mat-header-cell *matHeaderCellDef> Oil </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Oil"
-                                        value="element.Oil" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalOil() }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Coal">
-                                <th mat-header-cell *matHeaderCellDef> Coal </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Coal"
-                                        value="element.Coal" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalCoal() }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Peat">
-                                <th mat-header-cell *matHeaderCellDef> Peat </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Peat"
-                                        value="element.Peat" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalPeat() }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Wood">
-                                <th mat-header-cell *matHeaderCellDef> Wood </th>
-                                <td mat-cell *matCellDef="let element;">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Wood"
-                                        value="element.Wood" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalWood() }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Renewable">
-                                <th mat-header-cell *matHeaderCellDef> Renewable </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Renewable"
-                                        value="element.Renewable" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> - </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Heat">
-                                <th mat-header-cell *matHeaderCellDef> Heat </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Heat"
-                                        value="element.Heat" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalHeat() }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Total">
-                                <th mat-header-cell *matHeaderCellDef> Total </th>
-                                <td mat-cell *matCellDef="let element; let i = index">
-                                    {{getTotalTotal(i) }}
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalAll() }} </td>
-                            </ng-container>
-                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                            <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
-                        </table>
-                    </div>
-                    <div class="flex-item">
-                        <div class="">
-                            <h4 style="padding-left: 2rem;">Share of total Residential em by fuel type </h4>
-                            <canvas width="331" height="239" baseChart [data]="pieChartData" [labels]="pieChartLabels"
-                                [chartType]="pieChartType" [options]="pieChartOptions" [plugins]="pieChartPlugins"
-                                [legend]="pieChartLegend">
-                            </canvas>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-
-        </cdk-accordion-item>
-    </cdk-accordion>
-    <cdk-accordion class="example-accordion">
-        <cdk-accordion-item #resEmmission="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="0"
-            [attr.aria-expanded]="resEmmission.expanded">
-            <div class="example-accordion-item-header" (click)="resEmmission.toggle()">
-                <div class="flex-container">
-                    <div class="flex-item width-200 space-between">
-                        TotalResidential Energy MWh
-                    </div>
-                    <div class="flex-item">
-                        {{getTotalAll()}}
-                    </div>
-                </div>
-                <span class="example-accordion-item-description">
-                    {{ ResDemand.expanded ? 'close' : 'open' }}
-                </span>
-            </div>
-            <div class="example-accordion-item-body" role="region"
-                [style.display]="resEmmission.expanded ? '' : 'none'">
-
-                <div class="flex-container">
-                    <div class="flex-item" style="width:74%">
-                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-                            <ng-container matColumnDef="EnergyUse">
-                                <th mat-header-cell *matHeaderCellDef> Energy Use </th>
-                                <td mat-cell *matCellDef="let element"> {{element.EnergyUse}} </td>
-                                <td mat-footer-cell *matFooterCellDef> Total Energy Demand Mwh </td>
-                            </ng-container>
-
-                            <ng-container matColumnDef="Electricity">
-                                <th mat-header-cell *matHeaderCellDef> Electricity </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Electricity"
-                                        value="element.Electricity" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalElectricity() }} </td>
-                            </ng-container>
-
-                            <ng-container matColumnDef="Gas">
-                                <th mat-header-cell *matHeaderCellDef> Gas </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Gas"
-                                        value="element.Gas" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalGas() }} </td>
-                            </ng-container>
-
-                            <ng-container matColumnDef="Oil">
-                                <th mat-header-cell *matHeaderCellDef> Oil </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Oil"
-                                        value="element.Oil" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalOil() }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Coal">
-                                <th mat-header-cell *matHeaderCellDef> Coal </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Coal"
-                                        value="element.Coal" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalCoal() }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Peat">
-                                <th mat-header-cell *matHeaderCellDef> Peat </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Peat"
-                                        value="element.Peat" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalPeat() }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Wood">
-                                <th mat-header-cell *matHeaderCellDef> Wood </th>
-                                <td mat-cell *matCellDef="let element;">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Wood"
-                                        value="element.Wood" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalWood() }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Renewable">
-                                <th mat-header-cell *matHeaderCellDef> Renewable </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Renewable"
-                                        value="element.Renewable" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> - </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Heat">
-                                <th mat-header-cell *matHeaderCellDef> Heat </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Heat"
-                                        value="element.Heat" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalHeat() }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Total">
-                                <th mat-header-cell *matHeaderCellDef> Total </th>
-                                <td mat-cell *matCellDef="let element; let i = index">
-                                    {{getTotalTotal(i) }}
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalAll() }} </td>
-                            </ng-container>
-                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                            <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
-                        </table>
-                    </div>
-                    <div class="flex-item">
-                        <div class="">
-                            <h4 style="padding-left: 2rem;">Share of total Residential em by fuel type </h4>
-                            <canvas width="331" height="239" baseChart [data]="pieChartData" [labels]="pieChartLabels"
-                                [chartType]="pieChartType" [options]="pieChartOptions" [plugins]="pieChartPlugins"
-                                [legend]="pieChartLegend">
-                            </canvas>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </cdk-accordion-item>
-    </cdk-accordion>
-    <h2>Commercial</h2>
-
-    <cdk-accordion class="example-accordion">
-        <cdk-accordion-item #commercialDemand="cdkAccordionItem" class="example-accordion-item" role="button"
-            tabindex="0" [attr.aria-expanded]="commercialDemand.expanded">
-            <div class="example-accordion-item-header" (click)="commercialDemand.toggle()">
-                <div class="flex-container">
-                    <div class="flex-item width-200 space-between">
-                        TotalResidential Energy MWh
-                    </div>
-                    <div class="flex-item">
-                        {{getTotalAll()}}
-                    </div>
-                </div>
-                <span class="example-accordion-item-description">
-                    {{ ResDemand.expanded ? 'close' : 'open' }}
-                </span>
-            </div>
-            <div class="example-accordion-item-body" role="region"
-                [style.display]="commercialDemand.expanded ? '' : 'none'">
-                <div class="flex-container">
-                    <div class="flex-item" style="width:74%">
-                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-                            <ng-container matColumnDef="EnergyUse">
-                                <th mat-header-cell *matHeaderCellDef> Energy Use </th>
-                                <td mat-cell *matCellDef="let element"> {{element.EnergyUse}} </td>
-                                <td mat-footer-cell *matFooterCellDef> Total Energy Demand Mwh </td>
-                            </ng-container>
-
-                            <ng-container matColumnDef="Electricity">
-                                <th mat-header-cell *matHeaderCellDef> Electricity </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Electricity"
-                                        value="element.Electricity" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalElectricity() }} </td>
-                            </ng-container>
-
-                            <ng-container matColumnDef="Gas">
-                                <th mat-header-cell *matHeaderCellDef> Gas </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Gas"
-                                        value="element.Gas" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalGas() }} </td>
-                            </ng-container>
-
-                            <ng-container matColumnDef="Oil">
-                                <th mat-header-cell *matHeaderCellDef> Oil </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Oil"
-                                        value="element.Oil" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalOil() }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Coal">
-                                <th mat-header-cell *matHeaderCellDef> Coal </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Coal"
-                                        value="element.Coal" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalCoal() }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Peat">
-                                <th mat-header-cell *matHeaderCellDef> Peat </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Peat"
-                                        value="element.Peat" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalPeat() }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Wood">
-                                <th mat-header-cell *matHeaderCellDef> Wood </th>
-                                <td mat-cell *matCellDef="let element;">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Wood"
-                                        value="element.Wood" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalWood() }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Renewable">
-                                <th mat-header-cell *matHeaderCellDef> Renewable </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Renewable"
-                                        value="element.Renewable" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> - </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Heat">
-                                <th mat-header-cell *matHeaderCellDef> Heat </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Heat"
-                                        value="element.Heat" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalHeat() }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Total">
-                                <th mat-header-cell *matHeaderCellDef> Total </th>
-                                <td mat-cell *matCellDef="let element; let i = index">
-                                    {{getTotalTotal(i) }}
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalAll() }} </td>
-                            </ng-container>
-                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                            <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
-                        </table>
-                    </div>
-                    <div class="flex-item">
-                        <div>
-                            <h4 style="padding-left: 2rem;">Share of total Residential em by fuel type </h4>
-                            <canvas width="331" height="239" baseChart [data]="pieChartData" [labels]="pieChartLabels"
-                                [chartType]="pieChartType" [options]="pieChartOptions" [plugins]="pieChartPlugins"
-                                [legend]="pieChartLegend">
-                            </canvas>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </cdk-accordion-item>
-    </cdk-accordion>
-    <cdk-accordion class="example-accordion">
-        <cdk-accordion-item #commercialEmmission="cdkAccordionItem" class="example-accordion-item" role="button"
-            tabindex="0" [attr.aria-expanded]="commercialEmmission.expanded">
-            <div class="example-accordion-item-header" (click)="commercialEmmission.toggle()">
-                <div class="flex-container">
-                    <div class="flex-item width-200 space-between">
-                        TotalResidential Energy MWh
-                    </div>
-                    <div class="flex-item">
-                        {{getTotalAll()}}
-                    </div>
-                </div>
-                <span class="example-accordion-item-description">
-                    {{ ResDemand.expanded ? 'close' : 'open' }}
-                </span>
-            </div>
-            <div class="example-accordion-item-body" role="region"
-                [style.display]="commercialEmmission.expanded ? '' : 'none'">
-
-                <div class="flex-container">
-                    <div class="flex-item" style="width:74%">
-                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-                            <ng-container matColumnDef="EnergyUse">
-                                <th mat-header-cell *matHeaderCellDef> Energy Use </th>
-                                <td mat-cell *matCellDef="let element"> {{element.EnergyUse}} </td>
-                                <td mat-footer-cell *matFooterCellDef> Total Energy Demand Mwh </td>
-                            </ng-container>
-
-                            <ng-container matColumnDef="Electricity">
-                                <th mat-header-cell *matHeaderCellDef> Electricity </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Electricity"
-                                        value="element.Electricity" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalElectricity() }} </td>
-                            </ng-container>
-
-                            <ng-container matColumnDef="Gas">
-                                <th mat-header-cell *matHeaderCellDef> Gas </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Gas"
-                                        value="element.Gas" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalGas() }} </td>
-                            </ng-container>
-
-                            <ng-container matColumnDef="Oil">
-                                <th mat-header-cell *matHeaderCellDef> Oil </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Oil"
-                                        value="element.Oil" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalOil() }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Coal">
-                                <th mat-header-cell *matHeaderCellDef> Coal </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Coal"
-                                        value="element.Coal" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalCoal() }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Peat">
-                                <th mat-header-cell *matHeaderCellDef> Peat </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Peat"
-                                        value="element.Peat" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalPeat() }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Wood">
-                                <th mat-header-cell *matHeaderCellDef> Wood </th>
-                                <td mat-cell *matCellDef="let element;">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Wood"
-                                        value="element.Wood" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalWood() }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Renewable">
-                                <th mat-header-cell *matHeaderCellDef> Renewable </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Renewable"
-                                        value="element.Renewable" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> - </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Heat">
-                                <th mat-header-cell *matHeaderCellDef> Heat </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <input class="area-input" type="number" [(ngModel)]="element.Heat"
-                                        value="element.Heat" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalHeat() }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="Total">
-                                <th mat-header-cell *matHeaderCellDef> Total </th>
-                                <td mat-cell *matCellDef="let element; let i = index">
-                                    {{getTotalTotal(i) }}
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{getTotalAll() }} </td>
-                            </ng-container>
-                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                            <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
-                        </table>
-                    </div>
-                    <div class="flex-item">
-                        <div class="">
-                            <h4 style="padding-left: 2rem;">Share of total Residential em by fuel type </h4>
-                            <canvas width="331" height="239" baseChart [data]="pieChartData" [labels]="pieChartLabels"
-                                [chartType]="pieChartType" [options]="pieChartOptions" [plugins]="pieChartPlugins"
-                                [legend]="pieChartLegend">
-                            </canvas>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </cdk-accordion-item>
-    </cdk-accordion>
-
-</div>
-<div [ngClass]="{'show': 
-        !ResDemand.expanded || 
-        !resEmmission.expanded  || 
-        !commercialDemand.expanded || 
-        !commercialEmmission.expanded ,
-    'hide': ResDemand.expanded ||
-            resEmmission.expanded  || 
-            commercialDemand.expanded || 
-            commercialEmmission.expanded 
+    <div [ngClass]="{'show': 
+    !ResDemand.expanded || 
+    !resEmmission.expanded  || 
+    !commercialDemand.expanded || 
+    !commercialEmmission.expanded ,
+'hide': ResDemand.expanded ||
+        resEmmission.expanded  || 
+        commercialDemand.expanded || 
+        commercialEmmission.expanded 
 
 }">
-    <div class="chartContainer">
-        <h4 class="charTitle">Share of total Residential em by fuel type </h4>
-        <canvas width="350" height="250" baseChart [data]="pieChartData" [labels]="pieChartLabels"
-            [chartType]="pieChartType" [options]="pieChartOptions" [plugins]="pieChartPlugins"
-            [legend]="pieChartLegend">
-        </canvas>
+        <div class="chartContainer">
+            <h4 class="charTitle">Share of total Residential em by fuel type </h4>
+            <canvas width="350" height="250" baseChart [data]="pieChartData" [labels]="pieChartLabels"
+                [chartType]="pieChartType" [options]="pieChartOptions" [plugins]="pieChartPlugins"
+                [legend]="pieChartLegend">
+            </canvas>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div>
+        <cdk-accordion class="example-accordion">
+            <cdk-accordion-item #accordionItem="cdkAccordionItem" class="example-accordion-item" role="button"
+                tabindex="0" [attr.aria-expanded]="accordionItem.expanded">
+                <div class="example-accordion-item-header color-brown" role="presentation"
+                    (click)="accordionItem.toggle()">
+                    1. Policy Plan
+                    <span class="example-accordion-item-description">
+                        <mat-icon style="color: white" *ngIf="accordionItem.expanded">expand_less</mat-icon>
+                        <mat-icon style="color: white" *ngIf="!accordionItem.expanded">expand_more</mat-icon>
+                    </span>
+                </div>
+                <div class="example-accordion-item-body" role="region" [style.display]="
+                accordionItem.expanded ? '' : 'none'
+            ">
+                    <i>Fill in the following information to calculate the results for the policy plan.</i>
+
+                    <mat-horizontal-stepper [linear]="isLinear">
+                        <mat-step>
+                            <ng-template matStepLabel>Residential Buildings</ng-template>
+                            <h2 class="lableInput">
+                                1. Residential Buildings
+                            </h2>
+                            <i> 1.1 Construction of the new building.</i>
+                            <div style="padding-left: 5rem">
+                                <br />
+                                <br />
+                                <div class="flex-container">
+                                    <div class="flex-item width-200-form space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                Building type
+                                            </p>
+                                        </mat-label>
+                                    </div>
+                                    <div class="flex-item space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                Total floor area m2
+                                            </p>
+                                        </mat-label>
+                                    </div>
+                                    <div class="flex-item space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                Number of units
+                                            </p>
+                                        </mat-label>
+                                    </div>
+                                </div>
+                                <div class="flex-container">
+                                    <div class="flex-item width-200-form space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                Apartment
+                                            </p>
+                                        </mat-label>
+                                    </div>
+                                    <div class="flex-item ">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="flex-container">
+                                    <div class="flex-item width-200-form space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                Terraced
+                                            </p>
+                                        </mat-label>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="flex-container">
+                                    <div class="flex-item width-200-form space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                Semi-Detached
+                                            </p>
+                                        </mat-label>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="flex-container">
+                                    <div class="flex-item width-200-form space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                Detached
+                                            </p>
+                                        </mat-label>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="flex-container">
+                                    <div class="flex-item width-340 space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                Floor area of new unts
+                                            </p>
+                                        </mat-label>
+                                    </div>
+
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="flex-container">
+                                    <div class="flex-item width-340 space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                Total number of the new units
+                                            </p>
+                                        </mat-label>
+                                    </div>
+
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <i> Increase in share of renewables for the new Housing Stock</i>
+                                <br>
+                                <div class="flex-container">
+                                    <div class="flex-item width-340 space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                % of electricity coming from RE
+                                            </p>
+                                        </mat-label>
+                                    </div>
+
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <br>
+                                <i> 1.2 Retrofit of buildings.</i>
+                                <br>
+                                <br>
+                                <br>
+                                <div class="flex-container">
+                                    <div class="flex-item width-200-form space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                Building type
+                                            </p>
+                                        </mat-label>
+                                    </div>
+                                    <div class="flex-item space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                Total floor area m2
+                                            </p>
+                                        </mat-label>
+                                    </div>
+                                    <div class="flex-item space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                P(Not clear) efficiency rating
+                                            </p>
+                                        </mat-label>
+                                    </div>
+                                    <div class="flex-item space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                I(Not clear) efficiency rating
+                                            </p>
+                                        </mat-label>
+                                    </div>
+                                </div>
+                                <div class="flex-container">
+                                    <div class="flex-item width-200-form space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                Apartment
+                                            </p>
+                                        </mat-label>
+                                    </div>
+                                    <div class="flex-item ">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="flex-container">
+                                    <div class="flex-item width-200-form space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                Terraced
+                                            </p>
+                                        </mat-label>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="flex-container">
+                                    <div class="flex-item width-200-form space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                Semi-Detached
+                                            </p>
+                                        </mat-label>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="flex-container">
+                                    <div class="flex-item width-200-form space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                Detached
+                                            </p>
+                                        </mat-label>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                                <br>
+                                <i> Floor Area of retrofit buildings supplying space & water heating through low carbon
+                                    heat and electricity </i>
+                                <br />
+                                <br />
+                                <div class="flex-container">
+                                    <div class="flex-item width-200-form space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                Building type
+                                            </p>
+                                        </mat-label>
+                                    </div>
+                                    <div class="flex-item space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                Low carbon heat
+                                            </p>
+                                        </mat-label>
+                                    </div>
+                                    <div class="flex-item space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                Electricity
+                                            </p>
+                                        </mat-label>
+                                    </div>
+                                </div>
+                                <div class="flex-container">
+                                    <div class="flex-item width-200-form space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                Apartment
+                                            </p>
+                                        </mat-label>
+                                    </div>
+                                    <div class="flex-item ">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="flex-container">
+                                    <div class="flex-item width-200-form space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                Terraced
+                                            </p>
+                                        </mat-label>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="flex-container">
+                                    <div class="flex-item width-200-form space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                Semi-Detached
+                                            </p>
+                                        </mat-label>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="flex-container">
+                                    <div class="flex-item width-200-form space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                Detached
+                                            </p>
+                                        </mat-label>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <i> Increase in share of renewables from Housing retrofit</i>
+                                <br>
+                                <br>
+                                <div class="flex-container">
+                                    <div class="flex-item width-340 space-between-form">
+                                        <mat-label>
+                                            <p class="lableInput">
+                                                % of electricity coming from RE
+                                            </p>
+                                        </mat-label>
+                                    </div>
+
+                                    <div class="flex-item">
+                                        <mat-form-field appearance="fill" class="numberInput">
+                                            <input matInput type="number" />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn-group">
+                                <button mat-button mat-raised-button class="next-btn" matStepperNext>
+                                    Next
+                                </button>
+                            </div>
+                        </mat-step>
+
+                        <mat-step [stepControl]="secondFormGroup">
+                            <ng-template matStepLabel>Commercial Buildings</ng-template>
+                            <div class="step-container">
+                                <div>
+                                    <!-- mode of transportation -->
+                                    <h2>
+                                        2 Commercial Building
+                                    </h2>
+
+
+                                    <div class="flex-container">
+
+                                        <div class="flex-item float">
+                                            <i>
+                                                This value comes from the used data set, click to
+                                                edit</i>
+                                            <br />
+                                            <br />
+                                            <div class="flex-container">
+                                                <div class="flex-item width-200-form space-between-form">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            Building type
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                                <div class="flex-item space-between-form">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            Total floor area m2
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                                <div class="flex-item space-between-form">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            Number of units
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                            </div>
+                                            <div class="flex-container">
+                                                <div class="flex-item width-200-form space-between-form">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            Apartment
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                                <div class="flex-item ">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="flex-item">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="flex-container">
+                                                <div class="flex-item width-200-form space-between-form">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            Terraced
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                                <div class="flex-item">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="flex-item">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="flex-container">
+                                                <div class="flex-item width-200-form space-between-form">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            Semi-Detached
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                                <div class="flex-item">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="flex-item">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="flex-container">
+                                                <div class="flex-item width-200-form space-between-form">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            Detached
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                                <div class="flex-item">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="flex-item">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="flex-container">
+                                                <div class="flex-item width-340 space-between-form">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            Floor area of new unts
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+
+                                                <div class="flex-item">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="flex-container">
+                                                <div class="flex-item width-340 space-between-form">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            Total number of the new units
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+
+                                                <div class="flex-item">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <i> Increase in share of renewables for the new Housing Stock</i>
+                                            <br>
+                                            <div class="flex-container">
+                                                <div class="flex-item width-340 space-between-form">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            % of electricity coming from RE
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+
+                                                <div class="flex-item">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <br>
+                                        </div>
+                                        <div class="flex-item float">
+
+                                            <i> 1.2 Retrofit of buildings.</i>
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <div class="flex-container">
+                                                <div class="flex-item space-between-title">
+                                                    <mat-label>
+                                                        <p class="lableInput ">
+                                                            Building type
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                                <div class="flex-item space-between-title">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            Total floor area m2
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                                <div class="flex-item space-between-title">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            P(Not clear) efficiency rating
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                                <div class="flex-item space-between-title">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            I(Not clear) efficiency rating
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                            </div>
+                                            <div class="flex-container">
+                                                <div class="flex-item space-between-title">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            Retail
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                                <div class="flex-item space-between-title">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="flex-item space-between-title">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="flex-item space-between-title">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="flex-container">
+                                                <div class="flex-item space-between-title">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            Healt
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                                <div class="flex-item space-between-title">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="flex-item space-between-title">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="flex-item space-between-title">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="flex-container">
+                                                <div class="flex-item space-between-title">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            Hospitality
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                                <div class="flex-item space-between-title">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="flex-item space-between-title">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="flex-item space-between-title">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="flex-container">
+                                                <div class="flex-item space-between-title">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            Offices
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                                <div class="flex-item space-between-title">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="flex-item space-between-title">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="flex-item space-between-title">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="flex-container">
+                                                <div class="flex-item space-between-title">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            Indistrial
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                                <div class="flex-item space-between-title">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="flex-item space-between-title">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="flex-item space-between-title">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="flex-container">
+                                                <div class="flex-item space-between-title">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            warehouses
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                                <div class="flex-item space-between-title">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="flex-item space-between-title">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="flex-item space-between-title">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                            <br>
+                                            <i> Floor Area of retrofit buildings supplying space & water heating through
+                                                low carbon
+                                                heat and electricity </i>
+                                            <br />
+                                            <br />
+                                            <div class="flex-container">
+                                                <div class="flex-item width-200-form space-between-form">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            Building type
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                                <div class="flex-item space-between-form">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            Low carbon heat
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                                <div class="flex-item space-between-form">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            Electricity
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                            </div>
+                                            <div class="flex-container">
+                                                <div class="flex-item width-200-form space-between-form">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            Apartment
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                                <div class="flex-item ">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="flex-item">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="flex-container">
+                                                <div class="flex-item width-200-form space-between-form">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            Terraced
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                                <div class="flex-item">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="flex-item">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="flex-container">
+                                                <div class="flex-item width-200-form space-between-form">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            Semi-Detached
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                                <div class="flex-item">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="flex-item">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="flex-container">
+                                                <div class="flex-item width-200-form space-between-form">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            Detached
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+                                                <div class="flex-item">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="flex-item">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <i> Increase in share of renewables from Housing retrofit</i>
+                                            <br>
+                                            <br>
+                                            <div class="flex-container">
+                                                <div class="flex-item width-340 space-between-form">
+                                                    <mat-label>
+                                                        <p class="lableInput">
+                                                            % of electricity coming from RE
+                                                        </p>
+                                                    </mat-label>
+                                                </div>
+
+                                                <div class="flex-item">
+                                                    <mat-form-field appearance="fill" class="numberInput">
+                                                        <input matInput type="number" />
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- <div>
+                                        <br />
+                                        <div class="flex-container">
+                                            <div class="flex-item width-200 space-between">
+                                                <mat-label>
+                                                    <p class="lableInput">
+                                                        Public transportation, %
+                                                    </p>
+                                                </mat-label>
+                                            </div>
+                                            <div class="flex-item">
+                                                <mat-form-field appearance="fill" class="numberInput">
+                                                    <input matInput type="number" />
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="flex-container">
+                                            <div class="flex-item width-200 space-between">
+                                                <mat-label>
+                                                    <p class="lableInput">
+                                                        Private cars, %
+                                                    </p>
+                                                </mat-label>
+                                            </div>
+                                            <div class="flex-item">
+                                                <mat-form-field appearance="fill" class="numberInput">
+                                                    <input matInput type="number" />
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+                                </div>
+                            </div>
+
+                            <div class="btn-group">
+                                <button class="previous-btn" mat-button mat-raised-button matStepperPrevious>
+                                    Prev
+                                </button>
+
+                                <button mat-button mat-raised-button class="next-btn" matStepperNext>
+                                    Next
+                                </button>
+                            </div>
+                        </mat-step>
+
+                        <mat-step>
+                            <ng-template matStepLabel icon>Policy result</ng-template>
+                            <div class="step-container">
+                                <div>
+                                    <!-- energy -->
+                                    <div>
+                                        <mat-label>
+                                            <h2 class="lableInput">
+                                                Policy result
+                                            </h2>
+                                        </mat-label>
+                                        <i>1. Policy plan</i>
+                                        <br />
+                                        <br />
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="btn-group">
+                                <button class="previous-btn" mat-button mat-raised-button matStepperPrevious>
+                                    Previous
+                                </button>
+
+                                <button mat-button mat-raised-button class="next-btn">
+                                    save
+                                </button>
+                            </div>
+                        </mat-step>
+                    </mat-horizontal-stepper>
+                </div>
+            </cdk-accordion-item>
+        </cdk-accordion>
     </div>
 </div>
-<br>

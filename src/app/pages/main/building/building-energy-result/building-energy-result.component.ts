@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ChartOptions, ChartType } from 'chart.js';
 import { Label, SingleDataSet } from 'ng2-charts';
 
@@ -49,6 +50,14 @@ const ELEMENT_DATA = [
 })
 export class BuildingEnergyResultComponent implements OnInit {
 
+  public isLinear = false;
+  public firstFormGroup: FormGroup = new FormGroup({
+    firstCtrl: new FormControl('', Validators.required),
+  });
+
+  public secondFormGroup: FormGroup = new FormGroup({
+    firstCtrl: new FormControl('', Validators.required),
+  });
   displayedColumns: string[] = ['EnergyUse', 'Electricity',
     'Gas', 'Oil', 'Coal', 'Peat', 'Wood', 'Renewable', 'Heat', 'Total'];
 
