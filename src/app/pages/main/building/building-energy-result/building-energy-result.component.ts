@@ -128,21 +128,36 @@ export class BuildingEnergyResultComponent implements OnInit {
 
   public pieChartOptions: ChartOptions = {
     responsive: false,
-    legend: {
-      display: true,
-      labels: {
-        fontSize: 12,
-        fontColor: 'rgb(4,7,31)',
-      }
+    title: {
+      text: 'Emission from policy changes',
+      display: true
     }
   };
   public pieChartLabels: Label[] = [['Coal'], ['Peat'], ['Wood'], ['Electricity'], ['gas'], ['Oil']];
   public pieChartData: SingleDataSet = [0.33, 0.09, 3, 26, 25, 46];
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
-  public pieChartPlugins = [
+  public pieChartPlugins = [];
 
-  ];
+  public pieChartOptions1: ChartOptions = {
+    responsive: false,
+    title: {
+      text: 'Emission from policy changes',
+      display: true
+    },
+    legend: {
+      display: true,
+      labels: {
+        fontSize: 12,
+        fontColor: 'rgb(4,7,31)',
+      },
+
+    }
+  };
+  public pieChartLabels1: Label[] = [['Retrofit'], ['Demotion'], ['Construction']];
+  public pieChartData1: SingleDataSet = [50, -200, 150];
+  public pieChartType1: ChartType = 'horizontalBar';
+
   ngOnInit(): void {
     this.constactTableDate();
   }
