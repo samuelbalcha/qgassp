@@ -139,7 +139,7 @@ export class BuildingEnergyResultComponent implements OnInit {
   public pieChartLegend = true;
   public pieChartPlugins = [];
 
-  public pieChartOptions1: ChartOptions = {
+  public horiChartOptions: ChartOptions = {
     responsive: false,
     title: {
       text: 'Emission from policy changes',
@@ -149,9 +149,9 @@ export class BuildingEnergyResultComponent implements OnInit {
       display: false,
     }
   };
-  public pieChartLabels1: Label[] = [['Retrofit'], ['Demotion'], ['Construction']];
-  public pieChartData1: SingleDataSet = [50, -200, 150];
-  public pieChartType1: ChartType = 'horizontalBar';
+  public horiChartLabels: Label[] = [['Retrofit'], ['Demotion'], ['Construction']];
+  public horiChartData: SingleDataSet = [50, -200, 150];
+  public horiChartType: ChartType = 'horizontalBar';
 
   ngOnInit(): void {
     this.constactTableDate();
