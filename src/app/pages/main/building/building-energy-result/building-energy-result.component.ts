@@ -146,12 +146,7 @@ export class BuildingEnergyResultComponent implements OnInit {
       display: true
     },
     legend: {
-      display: true,
-      labels: {
-        fontSize: 12,
-        fontColor: 'rgb(4,7,31)',
-      },
-
+      display: false,
     }
   };
   public pieChartLabels1: Label[] = [['Retrofit'], ['Demotion'], ['Construction']];

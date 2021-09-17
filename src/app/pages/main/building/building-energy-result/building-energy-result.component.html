@@ -1831,20 +1831,15 @@
                                 </div>
                                 <div class="right">
                                     <div class="flex-item">
-                                        <div class="">
-                                            <h4 style="padding-left: 2rem;">Share of total
-                                                Residential em by fuel type </h4>
-                                            <canvas width="331" height="239" baseChart [data]="pieChartData"
-                                                [labels]="pieChartLabels" [chartType]="pieChartType"
-                                                [options]="pieChartOptions" [plugins]="pieChartPlugins"
-                                                [legend]="pieChartLegend">
+                                        <div style="padding-left:3rem; padding-top:3rem;">
+
+                                            <canvas width="331" height="239" baseChart [data]="pieChartData1"
+                                                [labels]="pieChartLabels1" [chartType]="pieChartType1"
+                                                [options]="pieChartOptions1" [plugins]="pieChartPlugins">
                                             </canvas>
                                         </div>
-
                                     </div>
                                 </div>
-                                <br>
-                                <br>
                                 <div class="left">
                                     <h1>COMMERCIAL</h1>
                                     <div class="flex-container">
@@ -2163,25 +2158,20 @@
                                 </div>
                                 <div class="right">
                                     <div class="flex-item">
-                                        <div class="">
+                                        <div style="padding-left:3rem; padding-top:3rem;">
 
                                             <canvas width="331" height="239" baseChart [data]="pieChartData1"
                                                 [labels]="pieChartLabels1" [chartType]="pieChartType1"
                                                 [options]="pieChartOptions1" [plugins]="pieChartPlugins">
                                             </canvas>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
-
-
-
                             <div class="btn-group">
                                 <button class="previous-btn" mat-button mat-raised-button matStepperPrevious>
                                     Previous
                                 </button>
-
                                 <button mat-button mat-raised-button class="next-btn">
                                     save
                                 </button>
