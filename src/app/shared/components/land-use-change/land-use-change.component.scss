@@ -1,18 +1,19 @@
 @import '../../../../mixins.scss';
+@import '../../../../variables.scss';
 
 .summary {
 	margin-bottom: 10px;
 }
 
 .table-title {
-	background-color: #e4e4e8;
+	background-color: $bg-color;
 	padding-left: 18px;
 	padding-top: 23px;
 	padding-bottom: 1px;
 }
 
 table {
-	background-color: #e4e4e8 !important;
+	background-color: $bg-color !important;
 }
 
 tr.mat-footer-row {
@@ -30,18 +31,18 @@ tr.mat-footer-row {
 
 .color-green,
 .color-green:hover {
-	background-color: #6dab36;
+	background-color: $light-green;
 }
 
 .grayLabel {
 	padding-left: 80px;
 	font-weight: 800;
-	color: #cecece;
+	color: $gray;
 }
 
 .panel-content {
 	padding-left: 30px;
-	color: #3f51b5;
+	color: $light-blue;
 }
 
 .infoTextRight {
@@ -51,7 +52,7 @@ tr.mat-footer-row {
 
 .delete-button {
 	margin-left: 41rem;
-	color: #d8d8d8;
+	color: $dark-gray;
 }
 
 .area-input {
@@ -70,7 +71,7 @@ td.mat-cell {
 }
 
 .carbon-stock-table {
-	background-color: #f5f5f5 !important;
+	background-color: $bg-color !important;
 }
 
 @include mat-table-columns(

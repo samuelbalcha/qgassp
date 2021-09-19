@@ -1,13 +1,19 @@
+@import '../../../../variables.scss';
+
 :host {
 	display: block;
 	margin-bottom: 10px;
 	width: 73%;
 }
 
+.card-style {
+	background-color: $bg-color;
+}
+
 .bread-crumb {
 	font-weight: 500;
 	font-size: 16px;
-	color: #3f51b5;
+	color: $light-blue;
 
 	a {
 		text-decoration: none;
@@ -16,7 +22,7 @@
 
 .project-name {
 	float: left;
-	color: #3f51b5;
+	color: $light-blue;
 	font-weight: 400;
 }
 
@@ -28,5 +34,5 @@
 	padding-left: 60px;
 	font-size: medium;
 	font-weight: 600;
-	color: #3f51b5;
+	color: $light-blue;
 }

@@ -7,7 +7,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from '../../shared/shared.module';
 import { MaterialModule } from '../../shared/material.module';
 
-//import { MainPageComponent } from './main.page';
 import { DashboardPageComponent } from './dashboard/dashboard.page';
 import { DatasetComponent } from './dataset/dataset.component';
 import { HowitworksComponent } from './howitworks/howitworks.component';
@@ -20,12 +19,6 @@ const routes: Routes = [
 		path: 'dashboard',
 		component: DashboardPageComponent,
 	},
-	/*
-	{
-		path: 'land-use',
-		component: MainPageComponent,
-	},
-	*/
 	{
 		path: 'dataset',
 		component: DatasetComponent,
@@ -50,7 +43,6 @@ const routes: Routes = [
 
 @NgModule({
 	declarations: [
-		//	MainPageComponent,
 		DatasetComponent,
 		HowitworksComponent,
 		DashboardPageComponent,

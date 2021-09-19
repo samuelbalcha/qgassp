@@ -1,3 +1,5 @@
+@import '../../../../variables.scss';
+
 .table-container[_ngcontent-nud-c276] {
 	width: 97% !important;
 }
@@ -14,12 +16,12 @@
 
 .color-green,
 .color-green:hover {
-	background-color: #6dab36;
+	background-color: $light-green;
 }
 
 .color-purple,
 .color-purple:hover {
-	background-color: #696ee2;
+	background-color: $light-blue;
 }
 
 mat-expansion-panel {
@@ -28,7 +30,7 @@ mat-expansion-panel {
 
 table {
 	width: 20rem;
-	background-color: #e4e4e8 !important;
+	background-color: $bg-color !important;
 }
 
 tr.mat-footer-row {
@@ -43,15 +45,15 @@ tr.mat-footer-row {
 }
 
 .landuse-result {
-	background-color: #f5f5f5;
+	background-color: $light-gray;
 	display: block;
 }
 
 .add-new-version {
-	background-color: #6bac2b;
+	background-color: $light-green;
 	color: #fff;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: $margin;
+	margin-bottom: $margin;
 	text-transform: uppercase;
 }
 
@@ -63,13 +65,13 @@ tr.mat-footer-row {
 .landuse {
 	.mat-tab-label,
 	.mat-tab-link {
-		background-color: #6bac2b !important;
+		background-color: $light-green !important;
 	}
 }
 
 .consumption {
 	.mat-tab-label,
 	.mat-tab-link {
-		background-color: #1c294e !important;
+		background-color: $dark-blue !important;
 	}
 }
