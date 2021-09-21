@@ -1,0 +1,280 @@
+<h1>Transport</h1>
+<i>Fill in the following information to set the baseline</i>
+<br>
+<div class="body-container">
+    <div class="flex-container">
+        <div class="flex-item width-350">
+            <mat-label>
+                <h3>Year</h3>
+            </mat-label>
+        </div>
+        <div class="flex-item">
+            <mat-label>
+                <h3>2021</h3>
+            </mat-label>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item width-350">
+            <mat-label>
+                <h3>Country</h3>
+            </mat-label>
+        </div>
+        <div class="flex-item">
+            <mat-label>
+                <h3>Finland</h3>
+            </mat-label>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item width-350">
+            <mat-label>
+                <h3>Population of the assesment area</h3>
+            </mat-label>
+        </div>
+        <div class="flex-item">
+            <mat-label>
+                <h3>13000</h3>
+            </mat-label>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item width-35">
+            <br>
+            <br>
+            <br>
+            <div class="flex-container">
+                <div class="flex-item">
+                    <h3 class="intensity">Passanger transport in the assesment area</h3>
+                    <i class="intensity">Intensity of</i>
+                    <br>
+                    <br>
+                    <div class="flex-container">
+                        <div class="flex-item width-313">
+                            <i>Transportation on wheels</i>
+                        </div>
+                        <div class="flex-item">
+                            <mat-accordion>
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Equal to national avarage
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <p>No display data for this part!</p>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                    </div>
+                    <div class="flex-container">
+                        <div class="flex-item width-313">
+                            <i>Passanger car transportation</i>
+                        </div>
+                        <div class="flex-item">
+                            <mat-accordion>
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Equal to national avarage
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <p>No display data for this part!</p>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                    </div>
+                    <div class="flex-container">
+                        <div class="flex-item width-313">
+                            <i>Tram and metro transport</i>
+                        </div>
+                        <div class="flex-item">
+                            <mat-accordion>
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Equal to national avarage
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <p>No display data for this part!</p>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                    </div>
+                    <div class="flex-container">
+                        <div class="flex-item width-313">
+                            <i>Public transport on rails</i>
+                        </div>
+                        <div class="flex-item">
+                            <mat-accordion>
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Equal to national avarage
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <p>No display data for this part!</p>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-item">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h3 class="intensity">Freight transport in the assesment area</h3>
+                    <i class="intensity">Intensity of</i>
+                    <br>
+                    <br>
+                    <div class="flex-container">
+                        <div class="flex-item width-313">
+                            <i>Traffic on rails</i>
+                        </div>
+                        <div class="flex-item">
+                            <mat-accordion>
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Equal to national avarage
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <p>No display data for this part!</p>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                    </div>
+                    <div class="flex-container">
+                        <div class="flex-item width-313">
+                            <i>Traffic on wheels</i>
+                        </div>
+                        <div class="flex-item">
+                            <mat-accordion>
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Equal to national avarage
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <p>No display data for this part!</p>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                    </div>
+                    <div class="flex-container">
+                        <div class="flex-item width-313">
+                            <i>Inland waterways freight transport</i>
+                        </div>
+                        <div class="flex-item">
+                            <mat-accordion>
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Equal to national avarage
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <p>No display data for this part!</p>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-item">
+            <table class="trafficTable" mat-table [dataSource]="dataSource">
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef> PASSANGER TRAFFIC Public transportation on roads </th>
+                    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="value">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                    <td mat-cell *matCellDef="let element"> {{element.value}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <table class="trafficTable" mat-table [dataSource]="dataSource">
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef> Private car transort </th>
+                    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="value">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                    <td mat-cell *matCellDef="let element"> {{element.value}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <table class="trafficTable" mat-table [dataSource]="dataSource">
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef> Tram and metro </th>
+                    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="value">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                    <td mat-cell *matCellDef="let element"> {{element.value}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <table class="trafficTable" mat-table [dataSource]="dataSource">
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef> Public transportation on rails </th>
+                    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="value">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                    <td mat-cell *matCellDef="let element"> {{element.value}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <table class="trafficTable" mat-table [dataSource]="dataSource">
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef> Intensity of freight traffic on rails </th>
+                    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="value">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                    <td mat-cell *matCellDef="let element"> {{element.value}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <table class="trafficTable" mat-table [dataSource]="dataSource">
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef> Intensity of freight traffic on wheels </th>
+                    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="value">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                    <td mat-cell *matCellDef="let element"> {{element.value}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <table class="trafficTable" mat-table [dataSource]="dataSource">
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef> Inland waterways </th>
+                    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="value">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                    <td mat-cell *matCellDef="let element"> {{element.value}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+        </div>
+    </div>
+</div>

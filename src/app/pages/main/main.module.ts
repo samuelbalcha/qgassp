@@ -14,6 +14,7 @@ import { HowitworksComponent } from './howitworks/howitworks.component';
 import { SetupComponent } from './setup/setup.component';
 import { ModuleLoaderComponent } from './module-loader/module-loader.component';
 import { ResultAndVersionComponent } from './result-and-version/result-and-version.component';
+import { TrafficComponent } from './traffic/traffic.component';
 
 const routes: Routes = [
 	{
@@ -46,11 +47,16 @@ const routes: Routes = [
 		path: 'result-version',
 		component: ResultAndVersionComponent,
 	},
+	{
+		path: 'traffic-module',
+		component: TrafficComponent,
+	},
 ];
 
 @NgModule({
 	declarations: [
 		//	MainPageComponent,
+		TrafficComponent,
 		DatasetComponent,
 		HowitworksComponent,
 		DashboardPageComponent,
@@ -67,4 +73,4 @@ const routes: Routes = [
 	],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class MainModule {}
+export class MainModule { }
