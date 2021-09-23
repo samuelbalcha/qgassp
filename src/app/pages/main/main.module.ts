@@ -15,7 +15,8 @@ import { SetupComponent } from './setup/setup.component';
 import { ModuleLoaderComponent } from './module-loader/module-loader.component';
 import { ResultAndVersionComponent } from './result-and-version/result-and-version.component';
 import { TrafficComponent } from './traffic/traffic.component';
-
+import { TrafficResultComponent } from './traffic/traffic-result/traffic-result.component';
+import { ChartsModule } from 'ng2-charts';
 const routes: Routes = [
 	{
 		path: 'dashboard',
@@ -48,23 +49,24 @@ const routes: Routes = [
 		component: ResultAndVersionComponent,
 	},
 	{
-		path: 'traffic-module',
-		component: TrafficComponent,
+		path: 'traffic-result',
+		component: TrafficResultComponent,
 	},
 ];
 
 @NgModule({
 	declarations: [
-		//	MainPageComponent,
-		TrafficComponent,
 		DatasetComponent,
 		HowitworksComponent,
 		DashboardPageComponent,
 		SetupComponent,
 		ModuleLoaderComponent,
 		ResultAndVersionComponent,
+		TrafficComponent,
+		TrafficResultComponent
 	],
 	imports: [
+		ChartsModule,
 		FlexLayoutModule,
 		MaterialModule,
 		CommonModule,
