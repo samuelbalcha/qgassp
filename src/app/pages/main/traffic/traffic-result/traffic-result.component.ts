@@ -74,7 +74,6 @@ export class TrafficResultComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
     for (let i = 2021; i < 2051; i++) {
       let row = {
         year: i,

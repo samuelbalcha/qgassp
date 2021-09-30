@@ -34,7 +34,8 @@
         </div>
         <div class="flex-item">
             <mat-label>
-                <h3>13000</h3>
+                <textarea name="" id="" cols="9" rows="1" [value]="1000"></textarea>
+                <!-- <h3>13000</h3> -->
             </mat-label>
         </div>
     </div>
@@ -54,16 +55,14 @@
                             <i>Transportation on wheels</i>
                         </div>
                         <div class="flex-item">
-                            <mat-accordion>
-                                <mat-expansion-panel>
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title>
-                                            Equal to national avarage
-                                        </mat-panel-title>
-                                    </mat-expansion-panel-header>
-                                    <p>No display data for this part!</p>
-                                </mat-expansion-panel>
-                            </mat-accordion>
+                            <mat-form-field appearance="fill">
+                                <mat-label> Equal to national avarage</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let i of intensity" [value]="i.value">
+                                        {{i.type}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
                         </div>
                     </div>
                     <div class="flex-container">
@@ -71,16 +70,19 @@
                             <i>Passanger car transportation</i>
                         </div>
                         <div class="flex-item">
-                            <mat-accordion>
-                                <mat-expansion-panel>
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title>
-                                            Equal to national avarage
-                                        </mat-panel-title>
-                                    </mat-expansion-panel-header>
-                                    <p>No display data for this part!</p>
-                                </mat-expansion-panel>
-                            </mat-accordion>
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>Equal to national avarage</mat-label>
+                                <select matNativeControl>
+                                    <option value="0">Not Available</option>
+                                    <option value="0.25">Very low</option>
+                                    <option value="0.5">Low</option>
+                                    <option value="1">Equal to national avarage</option>
+                                    <option value="2">High</option>
+                                    <option value="4">Very High</option>
+
+                                </select>
+                            </mat-form-field>
                         </div>
                     </div>
                     <div class="flex-container">
@@ -88,16 +90,14 @@
                             <i>Tram and metro transport</i>
                         </div>
                         <div class="flex-item">
-                            <mat-accordion>
-                                <mat-expansion-panel>
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title>
-                                            Equal to national avarage
-                                        </mat-panel-title>
-                                    </mat-expansion-panel-header>
-                                    <p>No display data for this part!</p>
-                                </mat-expansion-panel>
-                            </mat-accordion>
+                            <mat-form-field appearance="fill">
+                                <mat-label> Equal to national avarage</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let i of intensity" [value]="i.value">
+                                        {{i.type}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
                         </div>
                     </div>
                     <div class="flex-container">
@@ -105,16 +105,14 @@
                             <i>Public transport on rails</i>
                         </div>
                         <div class="flex-item">
-                            <mat-accordion>
-                                <mat-expansion-panel>
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title>
-                                            Equal to national avarage
-                                        </mat-panel-title>
-                                    </mat-expansion-panel-header>
-                                    <p>No display data for this part!</p>
-                                </mat-expansion-panel>
-                            </mat-accordion>
+                            <mat-form-field appearance="fill">
+                                <mat-label> Equal to national avarage</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let i of intensity" [value]="i.value">
+                                        {{i.type}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
                         </div>
                     </div>
                 </div>
@@ -132,16 +130,14 @@
                             <i>Traffic on rails</i>
                         </div>
                         <div class="flex-item">
-                            <mat-accordion>
-                                <mat-expansion-panel>
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title>
-                                            Equal to national avarage
-                                        </mat-panel-title>
-                                    </mat-expansion-panel-header>
-                                    <p>No display data for this part!</p>
-                                </mat-expansion-panel>
-                            </mat-accordion>
+                            <mat-form-field appearance="fill">
+                                <mat-label> Equal to national avarage</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let i of intensity" [value]="i.value">
+                                        {{i.type}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
                         </div>
                     </div>
                     <div class="flex-container">
@@ -149,16 +145,14 @@
                             <i>Traffic on wheels</i>
                         </div>
                         <div class="flex-item">
-                            <mat-accordion>
-                                <mat-expansion-panel>
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title>
-                                            Equal to national avarage
-                                        </mat-panel-title>
-                                    </mat-expansion-panel-header>
-                                    <p>No display data for this part!</p>
-                                </mat-expansion-panel>
-                            </mat-accordion>
+                            <mat-form-field appearance="fill">
+                                <mat-label> Equal to national avarage</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let i of intensity" [value]="i.value">
+                                        {{i.type}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
                         </div>
                     </div>
                     <div class="flex-container">
@@ -166,115 +160,18 @@
                             <i>Inland waterways freight transport</i>
                         </div>
                         <div class="flex-item">
-                            <mat-accordion>
-                                <mat-expansion-panel>
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title>
-                                            Equal to national avarage
-                                        </mat-panel-title>
-                                    </mat-expansion-panel-header>
-                                    <p>No display data for this part!</p>
-                                </mat-expansion-panel>
-                            </mat-accordion>
+                            <mat-form-field appearance="fill">
+                                <mat-label> Equal to national avarage</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let i of intensity" [value]="i.value">
+                                        {{i.type}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="flex-item">
-            <table class="trafficTable" mat-table [dataSource]="dataSource">
-                <ng-container matColumnDef="type">
-                    <th mat-header-cell *matHeaderCellDef> PASSANGER TRAFFIC Public transportation on roads </th>
-                    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="value">
-                    <th mat-header-cell *matHeaderCellDef> </th>
-                    <td mat-cell *matCellDef="let element"> {{element.value}} </td>
-                </ng-container>
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-            <table class="trafficTable" mat-table [dataSource]="dataSource">
-                <ng-container matColumnDef="type">
-                    <th mat-header-cell *matHeaderCellDef> Private car transort </th>
-                    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="value">
-                    <th mat-header-cell *matHeaderCellDef> </th>
-                    <td mat-cell *matCellDef="let element"> {{element.value}} </td>
-                </ng-container>
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-            <table class="trafficTable" mat-table [dataSource]="dataSource">
-                <ng-container matColumnDef="type">
-                    <th mat-header-cell *matHeaderCellDef> Tram and metro </th>
-                    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="value">
-                    <th mat-header-cell *matHeaderCellDef> </th>
-                    <td mat-cell *matCellDef="let element"> {{element.value}} </td>
-                </ng-container>
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-            <table class="trafficTable" mat-table [dataSource]="dataSource">
-                <ng-container matColumnDef="type">
-                    <th mat-header-cell *matHeaderCellDef> Public transportation on rails </th>
-                    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="value">
-                    <th mat-header-cell *matHeaderCellDef> </th>
-                    <td mat-cell *matCellDef="let element"> {{element.value}} </td>
-                </ng-container>
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-            <table class="trafficTable" mat-table [dataSource]="dataSource">
-                <ng-container matColumnDef="type">
-                    <th mat-header-cell *matHeaderCellDef> Intensity of freight traffic on rails </th>
-                    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="value">
-                    <th mat-header-cell *matHeaderCellDef> </th>
-                    <td mat-cell *matCellDef="let element"> {{element.value}} </td>
-                </ng-container>
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-            <table class="trafficTable" mat-table [dataSource]="dataSource">
-                <ng-container matColumnDef="type">
-                    <th mat-header-cell *matHeaderCellDef> Intensity of freight traffic on wheels </th>
-                    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="value">
-                    <th mat-header-cell *matHeaderCellDef> </th>
-                    <td mat-cell *matCellDef="let element"> {{element.value}} </td>
-                </ng-container>
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-            <table class="trafficTable" mat-table [dataSource]="dataSource">
-                <ng-container matColumnDef="type">
-                    <th mat-header-cell *matHeaderCellDef> Inland waterways </th>
-                    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="value">
-                    <th mat-header-cell *matHeaderCellDef> </th>
-                    <td mat-cell *matCellDef="let element"> {{element.value}} </td>
-                </ng-container>
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-
         </div>
     </div>
 </div>

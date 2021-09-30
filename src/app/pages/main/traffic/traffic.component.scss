@@ -9,10 +9,10 @@
 	width: 350px;
 }
 .width-313 {
-	width: 16rem;
+	width: 18rem;
 }
 .width-35 {
-	width: 35rem;
+	width: 33rem;
 }
 .mat-expansion-panel{
 	background-color: #E4E4E8;
@@ -26,4 +26,9 @@
 }
 tr.mat-row, tr.mat-footer-row {
     height: 20px;
+}
+textarea{
+    background-color: #e4e4e8!important;
+    color: #3F51B5;
+	font-size: larger;
 }

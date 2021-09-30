@@ -10,6 +10,14 @@ export class TrafficComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  intensity = [
+    { type: 'Not available', value: 0 },
+    { type: 'Very Low', value: 0.25 },
+    { type: 'Low', value: 0.5 },
+    { type: 'Equal to national avarage', value: 1 },
+    { type: 'High', value: 2 },
+    { type: 'Very High', value: 4 }
+  ]
   displayedColumns: string[] = ['type', 'value']
   dataSource = [
     { type: 'Not available', value: 0.00 },
