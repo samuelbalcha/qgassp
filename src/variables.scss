@@ -1,3 +1,10 @@
+@import '~@angular/material/theming';
+$custom-typography: mat-typography-config(
+	$font-family: 'Ubuntu',
+);
+
+@include mat-core($custom-typography);
+
 $bg-color: #e4e4e8;
 
 $gray: #f0f0f0;
