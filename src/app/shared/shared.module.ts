@@ -12,16 +12,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ChartsModule } from 'ng2-charts';
 
 import { HeaderComponent } from './components/header/header.component';
-import { SideNavComponent } from './components/sidenav/sidenav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { EmissionFactorsComponent } from './components/emission-factors-table/emission-factors.component';
 import { Co2EmissionSummaryComponent } from './components/co2-emission-summary/co2-emission-summary.component';
 import { SelectorsComponent } from './components/selectors/selectors.component';
 import { Co2EmissionChartComponent } from './components/co2-emission-chart/co2-emission-chart.component';
-
-import { ResultStepComponent } from './components/steps/result-step/result-step.component';
-import { LocationStepComponent } from './components/steps/location-step/location-step.component';
-import { LandUseStepComponent } from './components/steps/land-use-step/land-use-step.component';
 
 import { LandUseChangeResultComponent } from './components/land-use-change/land-use-change-result/land-use-change-result.component';
 import { LandUseChangeBaselineComponent } from './components/land-use-change/land-use-change-baseline/land-use-change-baseline.component';
@@ -35,12 +30,8 @@ import { ConsumptionResultComponent } from './components/consumption/consumption
 
 const shared = [
 	HeaderComponent,
-	SideNavComponent,
 	FooterComponent,
 	EmissionFactorsComponent,
-	LocationStepComponent,
-	LandUseStepComponent,
-	ResultStepComponent,
 	SelectorsComponent,
 	LandUseChangeBaselineComponent,
 	Co2EmissionSummaryComponent,

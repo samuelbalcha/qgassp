@@ -1,3 +1,5 @@
+@import '../../../../variables.scss';
+
 .baseline {
 	display: block;
 	padding-left: 2%;
@@ -12,10 +14,6 @@ mat-horizontal-stepper {
 	background-color: transparent !important;
 }
 
-.width-200 {
-	width: 200px;
-}
-
 .space-between {
 	margin-right: 100px;
 }
@@ -25,26 +23,26 @@ mat-horizontal-stepper {
 }
 
 .next-btn {
-	background-color: #1c294e;
+	background-color: $dark-blue;
 	color: #fff;
 	text-transform: uppercase;
 }
 
 h4 {
-	color: #324191;
+	color: $light-blue;
 	font-weight: 500;
 	padding-top: 12px;
 	padding-left: 4rem;
 }
 
 mat-horizontal-stepper {
-	background-color: #fafafa;
-	color: #324191;
+	background-color: $light-gray;
+	color: $light-blue;
 }
 
 .previous-btn {
-	background-color: #fbfbfb;
-	color: #1c294e;
+	background-color: $light-gray;
+	color: $light-blue;
 	text-transform: uppercase;
 	margin-right: 20px;
 }

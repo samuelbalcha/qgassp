@@ -1,65 +1,66 @@
 @import '../../../../mixins.scss';
+@import '../../../../variables.scss';
 
 mat-label {
-  display: block;
-  margin-bottom: 10px;
+	display: block;
+	margin-bottom: 10px;
 }
 .area-input {
-  width: 50px;
-  height: 25px;
-  text-align: center;
+	width: 50px;
+	height: 25px;
+	text-align: center;
 }
 th.mat-header-cell,
 td.mat-cell {
-  text-align: center;
-  border: 1px solid #ccc;
-  padding: 0 !important;
+	text-align: center;
+	border: 1px solid $gray;
+	padding: 0 !important;
 }
 
 .similar-cell-width {
-  min-width: 100px;
-  max-width: 100px;
+	min-width: 100px;
+	max-width: 100px;
 }
 
 th.mat-header-cell {
-  background-color: #ccc;
+	background-color: $gray;
 }
 
 .table-container {
-  height: 190px;
+	height: 190px;
 }
 
 @include mat-table-columns(
-  (
-    Transformation: (
-      width: 200px,
-    ),
-    Organic-soil: (
-      width: 80px,
-    ),
-    Mineral-soil: (
-      width: 80px,
-    ),
-    Total: (
-      width: 80px,
-    ),
-    Aboveground: (
-      width: 80px,
-    ),
-    Belowground: (
-      width: 80px,
-    ),
-    Deadwood: (
-      width: 80px,
-    ),
-    Litter: (
-      width: 80px,
-    ),
-    Mineral: (
-      width: 80px,
-    ),
-    Organic: (
-      width: 80px,
-    ),
-  )
+	(
+		Transformation: (
+			width: 200px,
+		),
+		Organic-soil: (
+			width: 80px,
+		),
+		Mineral-soil: (
+			width: 80px,
+		),
+		Total: (
+			width: 80px,
+		),
+		Aboveground: (
+			width: 80px,
+		),
+		Belowground: (
+			width: 80px,
+		),
+		Deadwood: (
+			width: 80px,
+		),
+		Litter: (
+			width: 80px,
+		),
+		Mineral: (
+			width: 80px,
+		),
+		Organic: (
+			width: 80px,
+		),
+	)
 );

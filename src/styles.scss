@@ -1,10 +1,26 @@
-html,
+@import './variables.scss';
+
+$mdc-shape-small-component-radius: 4px;
+$mdc-shape-medium-component-radius: 4px;
+$mdc-shape-large-component-radius: 4px;
+
+$mdc-theme-primary: #286090;
+$mdc-theme-secondary: #184473;
+$mdc-theme-surface: #ffffff;
+$mdc-theme-background: #ffffff;
+$mdc-theme-error: #d9534f;
+
+$mdc-theme-on-primary: #ffffff;
+$mdc-theme-on-secondary: #ffffff;
+$mdc-theme-on-error: #ffffff;
+$mdc-theme-on-surface: #000000;
+
+​html,
 body {
 	height: 100%;
 }
 body {
 	margin: 0;
-	font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
 .flex-container {
@@ -17,7 +33,7 @@ body {
 }
 
 .space-between {
-	margin-right: 16px;
+	margin-right: $margin;
 }
 
 .table-container {
@@ -25,12 +41,12 @@ body {
 }
 
 .module-body {
-	padding-left: 40px;
-	padding-top: 40px;
+	padding-left: $margin * 2;
+	padding-top: $margin * 2;
 }
 
 .module-header {
-	background-color: #e4e4e8;
+	background-color: $bg-color;
 	text-align: center;
 	width: 70%;
 }
@@ -38,25 +54,25 @@ body {
 .headerLink {
 	text-decoration: none;
 	font-size: medium;
-	color: #3f51b5;
+	color: $light-blue;
 	font-size: 16px;
 	font-weight: 500;
 }
 
 h4 {
-	color: #3f51b5;
+	color: $light-blue;
 }
 
 .module-accordion {
 	display: block;
-	margin-top: 15px;
-	margin-bottom: 15px;
+	margin-top: $margin;
+	margin-bottom: $margin;
 	width: 73%;
 }
 
 .module-accordion-item {
 	display: block;
-	border: solid 1px #ccc;
+	border: solid 1px $light-gray;
 }
 
 .module-accordion-item + .module-accordion-item {
@@ -72,7 +88,7 @@ h4 {
 
 .module-accordion-item-description {
 	font-size: 0.85em;
-	color: #999;
+	color: $dark-gray;
 }
 
 .module-accordion-item-header,
@@ -80,12 +96,11 @@ h4 {
 	padding: 16px;
 }
 .module-accordion-item-body {
-	background-color: #e4e4e8;
+	background-color: $bg-color;
 }
 
 .module-accordion-item-header:hover {
 	cursor: pointer;
-	// background-color: #6dab36;
 }
 
 .module-accordion-item:first-child {
@@ -109,7 +124,7 @@ h4 {
 .calculate-controls {
 	width: 100%;
 	height: 40px;
-	margin-top: 35px;
+	margin-top: $margin * 2;
 }
 
 .tab-content {
@@ -122,7 +137,7 @@ h4 {
 
 .add-button {
 	padding-left: 45rem;
-	color: #3f51b5;
+	color: $light-blue;
 	font-size: inherit;
 	font-weight: 500;
 	float: right;
@@ -135,22 +150,22 @@ h4 {
 
 .landuse,
 .landuse:hover {
-	background-color: #6dab36;
+	background-color: $light-green;
 }
 
 .traffic,
 .traffic:hover {
-	background-color: #db7093;
+	background-color: $light-pink;
 }
 
 .buildings,
 .buildings:hover {
-	background-color: #6f2c54;
+	background-color: $dark-pink;
 }
 
 .consumption,
 .consumption:hover {
-	background-color: #696ee2;
+	background-color: $light-blue;
 }
 
 .capitalize {
@@ -159,7 +174,31 @@ h4 {
 
 .verical-text {
 	width: 1px;
-	padding: 13px;
+	padding: $padding + 5;
 	word-wrap: break-word;
 	font-family: monospace; /* this is just for good looks */
+}
+
+.gray-text {
+	color: $dark-gray;
+}
+
+.space-between-60px {
+	margin-left: 60px;
+}
+
+.margin-right-25px {
+	margin-right: 60px;
+}
+
+.module-selector {
+	margin-top: $margin * 2;
+}
+
+.width-200 {
+	width: 200px;
+}
+
+.control-buttons {
+	margin-bottom: $margin * 2;
 }

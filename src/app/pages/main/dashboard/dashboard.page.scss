@@ -1,62 +1,73 @@
+@import '../../../../variables.scss';
+
 .create-project {
-	color: #616161;
+	color: $dark-gray;
 	transition: box-shadow 135ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
 	box-shadow: 0 1px 1px 0 rgb(66 66 66 / 8%),
 		0 1px 3px 1px rgb(66 66 66 / 16%);
 	width: 240px;
 	border-radius: 3px;
-	margin: 16px;
+	margin: $margin;
 	text-align: center;
 	min-height: 100px;
 }
+
 .title {
-	color: #3f51b5;
-	margin: 35px;
+	color: $light-blue;
+	margin: $margin * 2;
 	font-size: 13px;
 }
-.introTitle {
-	color: #324191;
+
+.intro-title {
+	color: $light-blue;
 	text-align: center;
 }
-.introText {
+
+.intro-text {
 	text-align: center;
 	padding-right: 14rem;
 	padding-left: 14rem;
 	font-size: 11px;
 }
-.dashboardBoady {
-	margin-top: 32px;
-	margin-left: 13px;
+
+.dashboard-body {
+	margin-top: $margin * 2;
+	margin-left: $margin;
 }
+
 .full-width {
 	width: 25%;
 	float: right;
 	padding-right: 30px;
 	padding-top: 12px;
 }
-.pageTitle {
-	color: #324191;
-	margin-left: 21px;
+
+.page-title {
+	color: $light-blue;
+	margin-left: $margin + 5;
 }
+
 .cards {
 	width: 75%;
-	background-color: #324191;
+	background-color: $light-blue;
 	height: 8rem;
 	text-align: center;
 	color: white;
 	font-size: 20px;
 }
+
 .ncards {
 	width: 75%;
-	background-color: #f0f0f0;
+	background-color: $gray;
 	height: 8rem;
-	color: #324191;
+	color: $light-blue;
 	font-size: 15px;
 }
-.limitButton {
+
+.limit-button {
 	margin-left: 50%;
-	color: #324191;
-	background-color: #fafafa;
+	color: $light-blue;
+	background-color: $light-gray;
 }
 
 .setup-project {
