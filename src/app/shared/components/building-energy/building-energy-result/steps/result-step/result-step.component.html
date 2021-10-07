@@ -1,0 +1,148 @@
+<div class="result-step margin-bottom">
+	<h4>Residential</h4>
+	<div class="flex-container add-border">
+		<div class="flex-item space-between">
+			<div class="flex-container margin-bottom">
+				<div class="flex-item width-200">
+					<mat-label
+						>Total Reduction in emission in residential sector
+						MWh</mat-label
+					>
+				</div>
+				<div class="flex-item space-between">
+					<mat-label>"-valueToBind-"</mat-label>
+				</div>
+				<div class="flex-item width-200">
+					<mat-label
+						>Total Increase in RE in Residential Sector
+					</mat-label>
+				</div>
+				<div class="flex-item">
+					<mat-label> "--valueToBind-" </mat-label>
+				</div>
+			</div>
+			<div class="flex-container margin-bottom">
+				<div class="flex-item width-200">
+					<mat-label>
+						Increase in Residential Emissions from
+						Construction</mat-label
+					>
+				</div>
+				<div class="flex-item space-between">
+					<mat-label>"-valueToBind-"</mat-label>
+				</div>
+				<div class="flex-item width-200">
+					<mat-label>
+						Increase in RE
+					</mat-label>
+				</div>
+				<div class="flex-item">
+					<mat-label> "--valueToBind-" </mat-label>
+				</div>
+			</div>
+			<div class="flex-container margin-bottom">
+				<div class="flex-item width-200">
+					<mat-label> Reduction in Emissions from Retrofit</mat-label>
+				</div>
+				<div class="flex-item space-between">
+					<mat-label>"-valueToBind-"</mat-label>
+				</div>
+				<div class="flex-item width-200">
+					<mat-label>
+						Increase in RE
+					</mat-label>
+				</div>
+				<div class="flex-item">
+					<mat-label> "--valueToBind-" </mat-label>
+				</div>
+			</div>
+		</div>
+		<div class="flex-item">
+			<canvas
+				width="331"
+				height="239"
+				baseChart
+				[data]="chartData"
+				[labels]="chartLabels"
+				[chartType]="'horizontalBar'"
+				[options]="chartOptions"
+			>
+			</canvas>
+		</div>
+	</div>
+</div>
+
+<div class="result-step margin-bottom">
+	<h4>Commercial</h4>
+	<div class="flex-container add-border">
+		<div class="flex-item space-between">
+			<div class="flex-container margin-bottom">
+				<div class="flex-item width-200">
+					<mat-label>
+						Total Reduction in emission in commercial sector
+						MWh</mat-label
+					>
+				</div>
+				<div class="flex-item space-between">
+					<mat-label> "-valueToBind-" </mat-label>
+				</div>
+				<div class="flex-item width-200">
+					<mat-label>
+						Total Increase in RE in Commercial Sector
+					</mat-label>
+				</div>
+				<div class="flex-item">
+					<mat-label> "--valueToBind-" </mat-label>
+				</div>
+			</div>
+
+			<div class="flex-container margin-bottom">
+				<div class="flex-item width-200">
+					<mat-label>
+						Increase in Commercial Emissions from
+						Construction</mat-label
+					>
+				</div>
+				<div class="flex-item space-between">
+					<mat-label> "-valueToBind-" </mat-label>
+				</div>
+				<div class="flex-item width-200">
+					<mat-label>
+						Increase in RE
+					</mat-label>
+				</div>
+				<div class="flex-item">
+					<mat-label> "--valueToBind-" </mat-label>
+				</div>
+			</div>
+			<div class="flex-container margin-bottom">
+				<div class="flex-item width-200">
+					<mat-label> Reduction in Emissions from Retrofit</mat-label>
+				</div>
+				<div class="flex-item space-between">
+					<mat-label> "-valueToBind-" </mat-label>
+				</div>
+				<div class="flex-item width-200">
+					<mat-label>
+						Increase in RE
+					</mat-label>
+				</div>
+				<div class="flex-item">
+					<mat-label> "--valueToBind-" </mat-label>
+				</div>
+			</div>
+		</div>
+		<div class="flex-item">
+			<canvas
+				width="331"
+				height="239"
+				baseChart
+				[data]="chartData"
+				[labels]="chartLabels"
+				[chartType]="'horizontalBar'"
+				[options]="chartOptions"
+			>
+			</canvas>
+		</div>
+	</div>
+</div>

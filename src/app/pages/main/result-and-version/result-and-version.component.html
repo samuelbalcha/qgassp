@@ -5,9 +5,7 @@
 		class="form-control"
 	>
 	</selectors>
-	<!--
-	<h2 style="color:#3F51B5">2. Baseline results and plan versions</h2>
-	-->
+
 	<mat-tab-group>
 		<mat-tab
 			*ngFor="let selectedModule of selectedModules"
@@ -22,6 +20,12 @@
 			<div class="tab-content" [ngSwitch]="selectedModule">
 				<div *ngSwitchCase="'landuse'" class="landuse-result">
 					<land-use-change-result></land-use-change-result>
+					<button class="add-button add-new-version" mat-button>
+						+ Add another plan version
+					</button>
+				</div>
+				<div *ngSwitchCase="'buildings'" class="buildings-result">
+					<building-energy-result></building-energy-result>
 					<button class="add-button add-new-version" mat-button>
 						+ Add another plan version
 					</button>

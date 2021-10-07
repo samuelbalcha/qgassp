@@ -1,0 +1,103 @@
+@import './../../../../variables.scss';
+
+.number-input {
+	width: 120px;
+}
+
+.margin-bottom {
+	margin-bottom: $margin;
+}
+
+.building-result-container {
+	padding-right: 5rem;
+	color: #000;
+}
+
+.building-type {
+	mat-form-field {
+		max-width: 100px;
+	}
+}
+
+.retrofit {
+	color: #3f51b5;
+}
+
+.building-energy-emission {
+	border: 1px solid $gray;
+}
+
+.emmission-table {
+	table {
+		width: 750px;
+	}
+}
+
+.pie-chart {
+	width: 450px;
+}
+
+.new-construction {
+	width: 490px;
+}
+
+.retrofit-construction {
+	min-width: 500px;
+}
+
+.width-100 {
+	width: 100px;
+}
+
+.add-border {
+	border: 1px solid $gray;
+}
+
+.result-step {
+	h4 {
+		padding-left: 0px;
+		margin-bottom: $margin;
+	}
+}
+
+.area-input {
+	width: 70%;
+}
+
+.color-brown,
+.color-brown:hover {
+	background-color: #6f2c54;
+}
+
+.step-container {
+	margin: auto;
+}
+
+mat-horizontal-stepper {
+	background-color: transparent !important;
+}
+
+.btn-group {
+	float: right;
+}
+
+.next-btn {
+	background-color: #1c294e;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+mat-horizontal-stepper {
+	color: #324191;
+}
+
+.previous-btn {
+	background-color: #fbfbfb;
+	color: #1c294e;
+	text-transform: uppercase;
+	margin-right: 20px;
+}
+
+.numberInput {
+	width: 40%;
+}
