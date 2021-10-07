@@ -27,6 +27,14 @@ import { TransportationConsumptionComponent } from './components/consumption/tra
 import { HeatingConsumptionComponent } from './components/consumption/heating-consumption/heating-consumption.component';
 import { ConsumptionBaselineComponent } from './components/consumption/consumption-baseline/consumption-baseline.component';
 import { ConsumptionResultComponent } from './components/consumption/consumption-result/consumption-result.component';
+import { BuildingEnergyBaselineComponent } from './components/building-energy/building-energy-baseline/building-energy-baseline.component';
+import { ResidentialBuildingsComponent } from './components/building-energy/residential-buildings/residential-buildings.component';
+import { CommercialBuildingsComponent } from './components/building-energy/commercial-buildings/commercial-buildings.component';
+import { BuildingEnergyResultComponent } from './components/building-energy/building-energy-result/building-energy-result.component';
+import { BuildingEnergyEmmissionComponent } from './components/building-energy/building-energy-emmission/building-energy-emmission.component';
+import { ResidentialStepComponent } from './components/building-energy/building-energy-result/steps/residential-step/residential-step.component';
+import { CommercialStepComponent } from './components/building-energy/building-energy-result/steps/commercial-step/commercial-step.component';
+import { ResultStepComponent } from './components/building-energy/building-energy-result/steps/result-step/result-step.component';
 
 const shared = [
 	HeaderComponent,
@@ -43,6 +51,14 @@ const shared = [
 	HeatingConsumptionComponent,
 	ConsumptionBaselineComponent,
 	ConsumptionResultComponent,
+	ResidentialBuildingsComponent,
+	CommercialBuildingsComponent,
+	BuildingEnergyBaselineComponent,
+	BuildingEnergyEmmissionComponent,
+	ResidentialStepComponent,
+	ResultStepComponent,
+	CommercialStepComponent,
+	BuildingEnergyResultComponent,
 ];
 
 @NgModule({

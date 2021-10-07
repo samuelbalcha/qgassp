@@ -6,10 +6,6 @@
 		1. Setting the baseline for each selected module
 	</h2>
 
-	<mat-card class="module-header" *ngIf="territorialModules.length">
-		Territorial
-	</mat-card>
-
 	<cdk-accordion
 		class="module-accordion"
 		*ngFor="let territorialModule of territorialModules"
@@ -60,6 +56,9 @@
 							+ ADD NEW
 						</button>
 					</div>
+					<div *ngSwitchCase="'buildings'">
+						<building-energy-baseline></building-energy-baseline>
+					</div>
 					<div *ngSwitchDefault class="text-warning">
 						<p class="accordion-text">
 							When calculating the land-use change the baseline is
@@ -91,10 +90,6 @@
 			</div>
 		</cdk-accordion-item>
 	</cdk-accordion>
-
-	<mat-card class="module-header" *ngIf="myProject.consumption">
-		Consumption
-	</mat-card>
 
 	<cdk-accordion class="module-accordion">
 		<cdk-accordion-item

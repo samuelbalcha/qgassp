@@ -1,0 +1,109 @@
+<div class="flex-container">
+	<!-- Construction of new building. -->
+	<div class="new-construction flex-item space-between">
+		<mat-label class="margin-bottom">
+			<b>
+				1.1 Construction of the new building
+			</b>
+		</mat-label>
+
+		<commercial-buildings
+			[showTotalFloorArea]="true"
+			[showNumberOfUnits]="true"
+		></commercial-buildings>
+
+		<div class="flex-container">
+			<div class="flex-item space-between">
+				<mat-label>
+					Floor area of new unts
+				</mat-label>
+			</div>
+
+			<div class="flex-item">
+				<mat-form-field appearance="fill" class="numberInput">
+					<input matInput type="number" />
+				</mat-form-field>
+			</div>
+		</div>
+		<div class="flex-container">
+			<div class="flex-item space-between">
+				<mat-label>
+					Total number of the new units
+				</mat-label>
+			</div>
+
+			<div class="flex-item">
+				<mat-form-field appearance="fill" class="numberInput">
+					<input matInput type="number" />
+				</mat-form-field>
+			</div>
+		</div>
+
+		<div>
+			<mat-label>
+				Increase in share of renewables for the new housing stock
+			</mat-label>
+		</div>
+
+		<div class="flex-container">
+			<div class="flex-item space-between">
+				<mat-label>
+					% of electricity coming from RE
+				</mat-label>
+			</div>
+
+			<div class="flex-item">
+				<mat-form-field appearance="fill" class="numberInput">
+					<input matInput type="number" />
+				</mat-form-field>
+			</div>
+		</div>
+	</div>
+	<!-- Retrofit -->
+	<div class="retrofit-construction flex-item">
+		<mat-label class="margin-bottom">
+			<b>
+				1.2 Retrofit of buildings
+			</b>
+		</mat-label>
+
+		<commercial-buildings
+			[showTotalFloorArea]="true"
+			[showEnergyRating]="true"
+			class=" margin-bottom"
+		></commercial-buildings>
+
+		<div class="margin-bottom">
+			<mat-label>
+				Floor Area of retrofit buildings supplying Space & Water Heating
+				through low carbon heat and electricity
+			</mat-label>
+		</div>
+		<div class="margin-bottom">
+			<commercial-buildings
+				[showCarbonHeatAndElectricity]="true"
+				class="margin-bottom"
+			></commercial-buildings>
+		</div>
+
+		<div class="margin-bottom">
+			<mat-label
+				>Increase in share of renewables from housing
+				retrofit</mat-label
+			>
+		</div>
+		<div class="flex-container">
+			<div class="flex-item space-between">
+				<mat-label>
+					% of electricity coming from RE
+				</mat-label>
+			</div>
+
+			<div class="flex-item">
+				<mat-form-field appearance="fill" class="numberInput">
+					<input matInput type="number" />
+				</mat-form-field>
+			</div>
+		</div>
+	</div>
+</div>
