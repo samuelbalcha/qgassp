@@ -1,16 +1,9 @@
 <div class="module-body">
-	<selectors
-		[myProject]="myProject"
-		(selectedValue)="getSelected($event)"
-		class="form-control"
-	>
+	<selectors [myProject]="myProject" (selectedValue)="getSelected($event)" class="form-control">
 	</selectors>
 
 	<mat-tab-group>
-		<mat-tab
-			*ngFor="let selectedModule of selectedModules"
-			label="{{ selectedModule }}"
-		>
+		<mat-tab *ngFor="let selectedModule of selectedModules" label="{{ selectedModule }}">
 			<ng-template mat-tab-label>
 				<div [ngClass]="selectedModule">
 					{{ selectedModule }}
@@ -21,19 +14,19 @@
 				<div *ngSwitchCase="'landuse'" class="landuse-result">
 					<land-use-change-result></land-use-change-result>
 					<button class="add-button add-new-version" mat-button>
-						+ Add another plan version
+						+ Add another plan policy
 					</button>
 				</div>
 				<div *ngSwitchCase="'buildings'" class="buildings-result">
 					<building-energy-result></building-energy-result>
 					<button class="add-button add-new-version" mat-button>
-						+ Add another plan version
+						+ Add another plan policy
 					</button>
 				</div>
 				<div *ngSwitchCase="'consumption'" class="consumption-result">
 					<consumption-result></consumption-result>
 					<button class="add-button add-new-version" mat-button>
-						+ Add another plan version
+						+ Add another plan policy
 					</button>
 				</div>
 				<div *ngSwitchDefault class="text-warning">

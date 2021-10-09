@@ -1,6 +1,6 @@
 <div class="building-type">
 	<div class="flex-container margin-bottom">
-		<div class="flex-item width-250 space-between">
+		<div class="flex-item width-100 space-between">
 			<span *ngIf="isBaseLine"> 2.2.2 </span> Building Type
 		</div>
 		<div class="flex-item space-between number-input" *ngIf="showNumberOfUnits">
@@ -22,8 +22,9 @@
 			Electricity
 		</div>
 	</div>
-	<div *ngFor="let building of commercialBuildingTypes" class="flex-container building-inputs">
-		<div class="flex-item width-200 space-between">
+
+	<div *ngFor="let building of commercialBuildingTypes" class="flex-container">
+		<div class="flex-item width-100 space-between">
 			<mat-label>
 				{{ building.name }}
 			</mat-label>

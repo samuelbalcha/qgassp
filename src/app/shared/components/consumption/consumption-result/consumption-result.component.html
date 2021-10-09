@@ -1,34 +1,18 @@
 <div class="summary flex-container">
 	<div class="flex-item space-between">
-		<co2-emission-summary
-			[isBaseLine]="true"
-			[showHeader]="true"
-			[tableTitle]="'Baseline results'"
-			[tableData]="tableData"
-			[tableDataTotal]="tableDataTotal"
-		></co2-emission-summary>
+		<co2-emission-summary [isBaseLine]="true" [showHeader]="true" [tableTitle]="'Baseline results'"
+			[tableData]="tableData" [tableDataTotal]="tableDataTotal"></co2-emission-summary>
 	</div>
 
 	<div class="flex-item">
-		<div
-			class="chart-wrapper"
-			style="display: inline-flex; padding-left: 20%;"
-		>
+		<div class="chart-wrapper" style="display: inline-flex; padding-left: 20%;">
 			<p class="verical-text">
 				EMISSIONS / KG CO2 eq
 			</p>
 			<div>
-				<canvas
-					width="550"
-					height="450"
-					baseChart
-					[datasets]="barChartData"
-					[labels]="barChartLabels"
-					[options]="barChartOptions"
-					[plugins]="barChartPlugins"
-					[legend]="barChartLegend"
-					[chartType]="barChartType"
-				>
+				<canvas width="550" height="450" baseChart [datasets]="barChartData" [labels]="barChartLabels"
+					[options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
+					[chartType]="barChartType">
 				</canvas>
 				<h5>YEARS 2021-2050</h5>
 			</div>
@@ -36,33 +20,17 @@
 	</div>
 </div>
 <cdk-accordion class="version-accordion">
-	<cdk-accordion-item
-		#accordionItem="cdkAccordionItem"
-		class="module-accordion-item"
-		role="button"
-		tabindex="0"
-		[attr.aria-expanded]="accordionItem.expanded"
-	>
-		<div
-			class="module-accordion-item-header color-purple"
-			(click)="accordionItem.toggle()"
-		>
-			2.VERSION
+	<cdk-accordion-item #accordionItem="cdkAccordionItem" class="module-accordion-item" role="button" tabindex="0"
+		[attr.aria-expanded]="accordionItem.expanded">
+		<div class="module-accordion-item-header color-purple" (click)="accordionItem.toggle()">
+			2.POLICY
 			<span class="module-accordion-item-description">
-				<mat-icon style="color: white" *ngIf="accordionItem.expanded"
-					>expand_less</mat-icon
-				>
-				<mat-icon style="color: white" *ngIf="!accordionItem.expanded"
-					>expand_more</mat-icon
-				>
+				<mat-icon style="color: white" *ngIf="accordionItem.expanded">expand_less</mat-icon>
+				<mat-icon style="color: white" *ngIf="!accordionItem.expanded">expand_more</mat-icon>
 			</span>
 		</div>
-		<div
-			class="version-accordion-item-body"
-			role="region"
-			[style.display]="accordionItem.expanded ? '' : 'none'"
-			id="landuse-accordion-body"
-		>
+		<div class="version-accordion-item-body" role="region" [style.display]="accordionItem.expanded ? '' : 'none'"
+			id="landuse-accordion-body">
 			<div class="flex-container">
 				<div class="flex-item consumption-items">
 					<!-- area and population-->
@@ -75,34 +43,21 @@
 							gross square meters, m2
 						</div>
 						<div class="flex-item">
-							<mat-form-field
-								appearance="fill"
-								class="numberInput"
-							>
-								<input
-									matInput
-									type="number"
-									[(ngModel)]="totalNewBuildArea"
-								/>
+							<mat-form-field appearance="fill" class="numberInput">
+								<input matInput type="number" [(ngModel)]="totalNewBuildArea" />
 							</mat-form-field>
 						</div>
 					</div>
 
 					<!-- transportation consumption -->
-					<transportation-consumption
-						[order]="3"
-					></transportation-consumption>
+					<transportation-consumption [order]="3"></transportation-consumption>
 					<!-- heating consumption -->
 					<heating-consumption [order]="4"></heating-consumption>
 				</div>
 
 				<div class="flex-item version-summary">
-					<co2-emission-summary
-						[tableTitle]="'Version results'"
-						[showHeader]="true"
-						[tableData]="tableData"
-						[tableDataTotal]="tableDataTotal"
-					></co2-emission-summary>
+					<co2-emission-summary [tableTitle]="'Version results'" [showHeader]="true" [tableData]="tableData"
+						[tableDataTotal]="tableDataTotal"></co2-emission-summary>
 				</div>
 			</div>
 		</div>
