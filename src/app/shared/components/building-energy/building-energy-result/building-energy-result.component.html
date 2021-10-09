@@ -53,7 +53,11 @@
 						<mat-step>
 							<ng-template matStepLabel>Residential Buildings</ng-template>
 
-							<residential-step class="step-container"></residential-step>
+							<div class="building-result-form">
+								<residential-step [isBaseLine]="true" [showNumberOfUnits]="true" class="margin-bottom">
+								</residential-step>
+							</div>
+
 
 							<div class="btn-group">
 								<button mat-button mat-raised-button class="next-btn" matStepperNext>

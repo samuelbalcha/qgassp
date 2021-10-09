@@ -4,7 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import _ from 'lodash';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { ICountry } from '../../../../types/ICountry';
+import { ICountry, IRegion } from '../../../../types/ICountry';
 import CountryRegionData from 'country-region-data/data.json';
 
 import { ProjectService } from '../../../core/services/project.service';
@@ -22,7 +22,7 @@ interface IYear {
 export class SetupComponent implements OnInit {
 	public countries: ICountry[];
 	public country: ICountry | undefined;
-	//public region: IRegion | undefined;
+	public region: IRegion | undefined;
 	public population: 0 | undefined;
 	public selectedCountry = '';
 	public selectedRegion = '';
@@ -46,6 +46,7 @@ export class SetupComponent implements OnInit {
 
 	setupForm = new FormGroup({
 		country: new FormControl(0),
+		region: new FormControl(),
 		population: new FormControl(0),
 		startYear: new FormControl(),
 		name: new FormControl(),
@@ -98,9 +99,9 @@ export class SetupComponent implements OnInit {
 	}
 
 	onRegionSelected(): void {
-		// this.region = _.find(this.country?.regions, {
-		// 	name: this.selectedRegion,
-		// });
+		this.region = _.find(this.country?.regions, {
+			name: this.selectedRegion,
+		});
 		/*
 		if (
 			this.selectedCountry === 'Finland' &&

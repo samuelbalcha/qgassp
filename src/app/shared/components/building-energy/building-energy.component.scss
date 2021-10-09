@@ -17,10 +17,12 @@
 }
 .building-inputs{
 	padding-left: 4rem;
-
+}
+.building-result-form{
+	padding-left: 8rem;
 }
 .building-type {
-	padding-left:3rem;
+	// padding-left:3rem;
 	mat-form-field {
 		max-width: 100px;
 	}
@@ -63,7 +65,7 @@
 	width: 250px;
 }
 .width-277{
-	width: 277px;
+	width: 200px;
 }
 .building-next-button{
 	padding-left: 45rem;

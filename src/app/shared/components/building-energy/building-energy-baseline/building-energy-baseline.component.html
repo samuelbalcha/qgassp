@@ -32,15 +32,19 @@
 			</mat-form-field>
 		</div>
 	</div>
+	<div class="label-left">
+		<residential-buildings [isBaseLine]="true" [showNumberOfUnits]="true" class="margin-bottom">
+		</residential-buildings>
+	</div>
 
-	<residential-buildings [isBaseLine]="true" [showNumberOfUnits]="true" class="margin-bottom">
-	</residential-buildings>
 
 	<div class="margin-bottom label-left">
 		<mat-label>2.2 Commercial buildings</mat-label>
 	</div>
 
-	<commercial-buildings [isBaseLine]="true" [showNumberOfUnits]="true" class="label-left"></commercial-buildings>
+	<div class="label-left">
+		<commercial-buildings [isBaseLine]="true" [showNumberOfUnits]="true" class="label-left"></commercial-buildings>
+	</div>
 
 	<div class="calculate-controls building-next-button">
 		<button mat-raised-button color="primary">
