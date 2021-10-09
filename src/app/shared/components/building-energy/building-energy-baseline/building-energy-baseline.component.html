@@ -1,50 +1,43 @@
 <div class="margin-bottom">
 	<h3>Population and building types</h3>
-	<i class="text-muted"
-		>Fill in the folowing information to set the baseline</i
-	>
+	<i class="text-muted">Fill in the folowing information to set the baseline</i>
 </div>
 
-<h3>1. Populations</h3>
-<div>
-	<mat-label>1.1 Number of the populations of the area</mat-label>
-</div>
-<div>
-	<mat-form-field appearance="fill">
-		<mat-label>Number of population</mat-label>
-		<input matInput type="number" />
-	</mat-form-field>
-</div>
-
-<h3>2. Buildings</h3>
-<div class="margin-bottom">
-	<mat-label>2.1 Residential buildings</mat-label>
-</div>
-
-<div class="flex-container">
-	<div class="flex-item width-200">
-		<mat-label>
-			2.1.1 Total number of housing units
-		</mat-label>
+<div class="building-baseline-container">
+	<h3>1. Populations</h3>
+	<div>
+		<mat-label>1.1 Number of the populations of the area</mat-label>
 	</div>
-	<div class="flex-item ">
-		<mat-form-field appearance="fill" class="number-input">
+	<div>
+		<mat-form-field appearance="fill">
+			<mat-label>Number of population</mat-label>
 			<input matInput type="number" />
 		</mat-form-field>
 	</div>
+
+	<h3>2. Buildings</h3>
+	<div class="margin-bottom">
+		<mat-label>2.1 Residential buildings</mat-label>
+	</div>
+
+	<div class="flex-container">
+		<div class="flex-item width-200">
+			<mat-label>
+				2.1.1 Total number of housing units
+			</mat-label>
+		</div>
+		<div class="flex-item ">
+			<mat-form-field appearance="fill" class="number-input">
+				<input matInput type="number" />
+			</mat-form-field>
+		</div>
+	</div>
+
+	<residential-buildings [isBaseLine]="true" [showNumberOfUnits]="true" class="margin-bottom"></residential-buildings>
+
+	<div class="margin-bottom">
+		<mat-label>2.2 Commercial buildings</mat-label>
+	</div>
+
+	<commercial-buildings [isBaseLine]="true" [showNumberOfUnits]="true"></commercial-buildings>
 </div>
-
-<residential-buildings
-	[isBaseLine]="true"
-	[showNumberOfUnits]="true"
-	class="margin-bottom"
-></residential-buildings>
-
-<div class="margin-bottom">
-	<mat-label>2.2 Commercial buildings</mat-label>
-</div>
-
-<commercial-buildings
-	[isBaseLine]="true"
-	[showNumberOfUnits]="true"
-></commercial-buildings>
