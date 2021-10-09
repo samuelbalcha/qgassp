@@ -1,15 +1,13 @@
 <div class="flex-container">
 	<div class="bread-crumb flex-item space-between">
 		<a class="headerLink" routerLink="/dashboard">Dashboard > </a>
-		<a class="headerLink" routerLink="/setup-project"
-			>Setup New Project >
+		<a class="headerLink" routerLink="/setup-project">Setup New Project >
 		</a>
 		<a class="headerLink" routerLink="/module-loader">
 			<b> {{ myProject.name }} </b> set up the baseline >
 		</a>
 
-		<a class="headerLink" routerLink="/result-version"
-			>Result and version >
+		<a class="headerLink" routerLink="/result-version">Result and version >
 		</a>
 	</div>
 
@@ -38,39 +36,20 @@
 </p>
 
 <div style="display:inline-flex">
-	<mat-checkbox
-		color="primary"
-		[checked]="myProject.territorial.landuse"
-		[(ngModel)]="myProject.territorial.landuse"
-		(change)="selected()"
-	>
+	<mat-checkbox color="primary" [checked]="myProject.territorial.landuse" [(ngModel)]="myProject.territorial.landuse"
+		(change)="selected()">
 		Land use change
 	</mat-checkbox>
-	<mat-checkbox
-		color="primary"
-		style="padding-left: 60px"
-		[checked]="myProject.territorial.traffic"
-		[(ngModel)]="myProject.territorial.traffic"
-		(change)="selected()"
-	>
-		Trafic / Infra
+	<mat-checkbox color="primary" style="padding-left: 60px" [checked]="myProject.territorial.traffic"
+		[(ngModel)]="myProject.territorial.traffic" (change)="selected()">
+		Transport / Infra
 	</mat-checkbox>
-	<mat-checkbox
-		color="primary"
-		style="padding-left: 60px"
-		[checked]="myProject.territorial.buildings"
-		[(ngModel)]="myProject.territorial.buildings"
-		(change)="selected()"
-	>
+	<mat-checkbox color="primary" style="padding-left: 60px" [checked]="myProject.territorial.buildings"
+		[(ngModel)]="myProject.territorial.buildings" (change)="selected()">
 		Buildings
 	</mat-checkbox>
-	<mat-checkbox
-		color="primary"
-		style="padding-left: 60px"
-		[checked]="myProject.consumption"
-		[(ngModel)]="myProject.consumption"
-		(change)="selected()"
-	>
+	<mat-checkbox color="primary" style="padding-left: 60px" [checked]="myProject.consumption"
+		[(ngModel)]="myProject.consumption" (change)="selected()">
 		Consumption based
 	</mat-checkbox>
 </div>

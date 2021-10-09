@@ -4,7 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import _ from 'lodash';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { ICountry, IRegion } from '../../../../types/ICountry';
+import { ICountry } from '../../../../types/ICountry';
 import CountryRegionData from 'country-region-data/data.json';
 
 import { ProjectService } from '../../../core/services/project.service';
@@ -22,7 +22,8 @@ interface IYear {
 export class SetupComponent implements OnInit {
 	public countries: ICountry[];
 	public country: ICountry | undefined;
-	public region: IRegion | undefined;
+	//public region: IRegion | undefined;
+	public population: 0 | undefined;
 	public selectedCountry = '';
 	public selectedRegion = '';
 	public selectedYear = 2021;
@@ -45,7 +46,7 @@ export class SetupComponent implements OnInit {
 
 	setupForm = new FormGroup({
 		country: new FormControl(0),
-		region: new FormControl(),
+		population: new FormControl(0),
 		startYear: new FormControl(),
 		name: new FormControl(),
 		localId: new FormControl(),
@@ -59,7 +60,10 @@ export class SetupComponent implements OnInit {
 		private toastSvc: ToastrService,
 		private projectService: ProjectService
 	) {
+		console.log(CountryRegionData)
+
 		this.countries = CountryRegionData as ICountry[];
+
 		for (let i = 2021; i <= 2050; i++) {
 			this.years.push({ id: i, value: i });
 		}
@@ -70,7 +74,7 @@ export class SetupComponent implements OnInit {
 	init() {
 		this.setupForm.patchValue(this.project);
 		this.selectedCountry = this.project.location.country;
-		this.selectedRegion = this.project.location.region;
+		//this.selectedRegion = this.project.location.region;
 	}
 
 	ngOnInit() {
@@ -94,10 +98,9 @@ export class SetupComponent implements OnInit {
 	}
 
 	onRegionSelected(): void {
-		this.region = _.find(this.country?.regions, {
-			name: this.selectedRegion,
-		});
-
+		// this.region = _.find(this.country?.regions, {
+		// 	name: this.selectedRegion,
+		// });
 		/*
 		if (
 			this.selectedCountry === 'Finland' &&
