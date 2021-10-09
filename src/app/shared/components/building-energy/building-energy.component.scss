@@ -12,8 +12,15 @@
 	padding-right: 5rem;
 	color: #000;
 }
+.label-left{
+	padding-left: 3rem;
+}
+.building-inputs{
+	padding-left: 4rem;
 
+}
 .building-type {
+	padding-left:3rem;
 	mat-form-field {
 		max-width: 100px;
 	}
@@ -51,7 +58,16 @@
 .width-100 {
 	width: 100px;
 }
+.width-250{
+	width: 250px;
+}
+.width-277{
+	width: 277px;
+}
+.building-next-button{
+	padding-left: 45rem;
 
+}
 .add-border {
 	border: 1px solid $gray;
 }

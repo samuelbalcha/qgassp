@@ -39,14 +39,22 @@ mat-horizontal-stepper {
 	background-color: $light-gray;
 	color: $light-blue;
 }
-
+.page-header{
+	padding-left: 15rem;
+}
 .previous-btn {
 	background-color: $light-gray;
 	color: $light-blue;
 	text-transform: uppercase;
 	margin-right: 20px;
 }
-
+.area-Input{
+	width: 48%;
+    padding-left: 2rem;
+}
+.input-label{
+	margin: 10px;
+}
 .float {
 	float: left;
 }
@@ -70,11 +78,11 @@ mat-horizontal-stepper {
 }
 
 .transportation-consumption {
+	padding-left: 20rem;
 	.flex-item:first-of-type {
 		min-width: 260px !important;
 	}
 }
-
 .consumption-items {
 	min-width: 70%;
 }

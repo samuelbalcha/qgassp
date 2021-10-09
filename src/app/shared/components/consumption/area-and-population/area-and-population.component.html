@@ -1,66 +1,51 @@
 <div class="area-population">
-	<h2>
+	<h2 class="page-header">
 		1. Area type and Population
 	</h2>
 
-	<!-- area type -->
 	<div class="flex-container">
-		<div class="flex-item">1.1 {{ areaTypeDefinition }}</div>
-		<div class="flex-item">
+		<div class="flex-item area-Input">
+			<!-- area type -->
+			<div class="input-label">1.1 {{ areaTypeDefinition }}</div>
 			<mat-form-field appearance="fill">
 				<mat-label>Area type</mat-label>
 				<mat-select [(ngModel)]="selectedAreaType" name="areaType">
-					<mat-option
-						*ngFor="let areaType of areaTypes"
-						[value]="areaType.aID"
-					>
+					<mat-option *ngFor="let areaType of areaTypes" [value]="areaType.aID">
 						{{ areaType.aName }}
 					</mat-option>
 				</mat-select>
 			</mat-form-field>
 		</div>
-	</div>
-
-	<!-- population size -->
-	<div class="flex-container">
-		<div class="flex-item">1.2 {{ populationDefinition }}</div>
 		<div class="flex-item">
-			<mat-form-field appearance="fill">
-				<mat-label>{{ populationDefinition }}</mat-label>
-				<input matInput type="number" [(ngModel)]="populationSize" />
-			</mat-form-field>
+			<!-- population size -->
+			<div>
+				<div class="input-label">1.2 {{ populationDefinition }}</div>
+				<mat-form-field appearance="fill">
+					<mat-label>{{ populationDefinition }}</mat-label>
+					<input matInput type="number" [(ngModel)]="populationSize" />
+				</mat-form-field>
+			</div>
+
+			<!-- household size -->
+			<div>
+				<div class="input-label">1.3 {{ householdDefinition }}</div>
+				<mat-form-field appearance="fill">
+					<i>This value comes from the used data set, click to edit</i>
+					<input matInput type="number" [(ngModel)]="householdSize" />
+				</mat-form-field>
+			</div>
+
+			<!-- average income -->
+			<div>
+				<div class="input-label">1.4 {{ incomeDefinition }}</div>
+				<mat-form-field appearance="fill">
+					<mat-label>{{ incomeDefinition }}</mat-label>
+					<mat-select [(ngModel)]="selectedIncomeLevel" name="incomeLevel">
+						<mat-option *ngFor="let incomeLevel of incomeLevels" [value]="incomeLevel.id">
+							{{ incomeLevel.name }}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
 		</div>
 	</div>
-
-	<!-- household size -->
-	<div class="flex-container">
-		<div class="flex-item">1.3 {{ householdDefinition }}</div>
-		<div class="flex-item">
-			<mat-form-field appearance="fill">
-				<i>This value comes from the used data set, click to edit</i>
-				<input matInput type="number" [(ngModel)]="householdSize" />
-			</mat-form-field>
-		</div>
-	</div>
-
-	<!-- average income -->
-	<div class="flex-container">
-		<div class="flex-item">1.4 {{ incomeDefinition }}</div>
-		<div class="flex-item">
-			<mat-form-field appearance="fill">
-				<mat-label>{{ incomeDefinition }}</mat-label>
-				<mat-select
-					[(ngModel)]="selectedIncomeLevel"
-					name="incomeLevel"
-				>
-					<mat-option
-						*ngFor="let incomeLevel of incomeLevels"
-						[value]="incomeLevel.id"
-					>
-						{{ incomeLevel.name }}
-					</mat-option>
-				</mat-select>
-			</mat-form-field>
-		</div>
-	</div>
-</div>

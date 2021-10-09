@@ -6,55 +6,31 @@
 		1. Setting the baseline for each selected module
 	</h2>
 
-	<cdk-accordion
-		class="module-accordion"
-		*ngFor="let territorialModule of territorialModules"
-	>
-		<cdk-accordion-item
-			#accordionItem="cdkAccordionItem"
-			class="module-accordion-item"
-			role="button"
-			tabindex="0"
-			id="accordion-body"
-			[attr.aria-expanded]="accordionItem.expanded"
-		>
-			<div
-				[ngClass]="territorialModule"
-				class="module-accordion-item-header capitalize"
-				role="presentation"
-				(click)="accordionItem.toggle()"
-			>
+	<cdk-accordion class="module-accordion" *ngFor="let territorialModule of territorialModules">
+		<cdk-accordion-item #accordionItem="cdkAccordionItem" class="module-accordion-item" role="button" tabindex="0"
+			id="accordion-body" [attr.aria-expanded]="accordionItem.expanded">
+			<div [ngClass]="territorialModule" class="module-accordion-item-header capitalize" role="presentation"
+				(click)="accordionItem.toggle()">
 				<mat-icon>done</mat-icon>
 				{{ territorialModule }}
 				<span class="module-accordion-item-description">
-					<mat-icon
-						style="color: black"
-						*ngIf="accordionItem.expanded"
-						>expand_less</mat-icon
-					>
-					<mat-icon
-						style="color: black"
-						*ngIf="!accordionItem.expanded"
-						>expand_more</mat-icon
-					>
+					<mat-icon style="color: black" *ngIf="accordionItem.expanded">expand_less</mat-icon>
+					<mat-icon style="color: black" *ngIf="!accordionItem.expanded">expand_more</mat-icon>
 				</span>
 			</div>
-			<div
-				class="module-accordion-item-body"
-				role="region"
-				[style.display]="accordionItem.expanded ? '' : 'none'"
-				id="accordion-body"
-			>
+			<div class="module-accordion-item-body" role="region" [style.display]="accordionItem.expanded ? '' : 'none'"
+				id="accordion-body">
 				<div [ngSwitch]="territorialModule">
 					<div *ngSwitchCase="'landuse'">
 						<land-use-change-baseline></land-use-change-baseline>
-						<button
-							class="add-button"
-							mat-button
-							(click)="onAddLandUseChange()"
-						>
+						<button class="add-button" mat-button (click)="onAddLandUseChange()">
 							+ ADD NEW
 						</button>
+						<div class="calculate-controls">
+							<button mat-raised-button class="next-button" color="primary" (click)="calculate()">
+								Next
+							</button>
+						</div>
 					</div>
 					<div *ngSwitchCase="'buildings'">
 						<building-energy-baseline></building-energy-baseline>
@@ -77,7 +53,7 @@
 				</mat-checkbox>
                 -->
 
-				<div class="calculate-controls">
+				<!-- <div class="calculate-controls">
 					<button
 						mat-raised-button
 						class="next-button"
@@ -86,46 +62,24 @@
 					>
 						Next
 					</button>
-				</div>
+				</div> -->
 			</div>
 		</cdk-accordion-item>
 	</cdk-accordion>
 
 	<cdk-accordion class="module-accordion">
-		<cdk-accordion-item
-			#accordionItem="cdkAccordionItem"
-			class="module-accordion-item"
-			role="button"
-			tabindex="0"
-			id="accordion-body"
-			[attr.aria-expanded]="accordionItem.expanded"
-		>
-			<div
-				class="consumption module-accordion-item-header"
-				role="presentation"
-				(click)="accordionItem.toggle()"
-			>
+		<cdk-accordion-item #accordionItem="cdkAccordionItem" class="module-accordion-item" role="button" tabindex="0"
+			id="accordion-body" [attr.aria-expanded]="accordionItem.expanded">
+			<div class="consumption module-accordion-item-header" role="presentation" (click)="accordionItem.toggle()">
 				<mat-icon>done</mat-icon>
 				Consumption
 				<span class="module-accordion-item-description">
-					<mat-icon
-						style="color: black"
-						*ngIf="accordionItem.expanded"
-						>expand_less</mat-icon
-					>
-					<mat-icon
-						style="color: black"
-						*ngIf="!accordionItem.expanded"
-						>expand_more</mat-icon
-					>
+					<mat-icon style="color: black" *ngIf="accordionItem.expanded">expand_less</mat-icon>
+					<mat-icon style="color: black" *ngIf="!accordionItem.expanded">expand_more</mat-icon>
 				</span>
 			</div>
-			<div
-				class="module-accordion-item-body"
-				role="region"
-				[style.display]="accordionItem.expanded ? '' : 'none'"
-				id="accordion-body"
-			>
+			<div class="module-accordion-item-body" role="region" [style.display]="accordionItem.expanded ? '' : 'none'"
+				id="accordion-body">
 				<consumption-baseline></consumption-baseline>
 			</div>
 		</cdk-accordion-item>
