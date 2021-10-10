@@ -9,6 +9,7 @@ import CountryRegionData from 'country-region-data/data.json';
 
 import { ProjectService } from '../../../core/services/project.service';
 import { IProject } from '../../../../../commons/types/IProject';
+import { UtilService } from '../../../core/services/util.service';
 
 interface IYear {
 	id: number;
@@ -59,10 +60,9 @@ export class SetupComponent implements OnInit {
 	constructor(
 		private router: Router,
 		private toastSvc: ToastrService,
-		private projectService: ProjectService
+		private projectService: ProjectService,
+		public utilService: UtilService
 	) {
-		console.log(CountryRegionData)
-
 		this.countries = CountryRegionData as ICountry[];
 
 		for (let i = 2021; i <= 2050; i++) {

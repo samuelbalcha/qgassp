@@ -24,11 +24,11 @@
 		<p>
 			{{ myProject.location.country }}
 		</p>
-		<mat-icon style="padding-left: 60px;"> calendar_today</mat-icon>
+		<mat-icon class="padding-left-60"> calendar_today</mat-icon>
 		<p>&nbsp;{{ myProject.startYear }}</p>
 		<h6 class="datasource">Data source:&nbsp;</h6>
-		<p style="padding-left: 60px;">Default</p>
-		<a href="/setup-project" style="padding-left: 60px;">EDIT</a>
+		<p class="padding-left-60">Default</p>
+		<a class="padding-left-60" href="/setup-project">EDIT</a>
 	</div>
 </mat-card>
 
@@ -43,33 +43,33 @@
 		[(ngModel)]="myProject.territorial.landuse"
 		(change)="selected()"
 	>
-		Land use change
+		{{ utilService.getName('landuse') }}
 	</mat-checkbox>
 	<mat-checkbox
 		color="primary"
-		style="padding-left: 60px"
+		class="padding-left-60"
 		[checked]="myProject.territorial.traffic"
 		[(ngModel)]="myProject.territorial.traffic"
 		(change)="selected()"
 	>
-		Transport
+		{{ utilService.getName('traffic') }}
 	</mat-checkbox>
 	<mat-checkbox
 		color="primary"
-		style="padding-left: 60px"
+		class="padding-left-60"
 		[checked]="myProject.territorial.buildings"
 		[(ngModel)]="myProject.territorial.buildings"
 		(change)="selected()"
 	>
-		Buildings energy use
+		{{ utilService.getName('buildings') }}
 	</mat-checkbox>
 	<mat-checkbox
 		color="primary"
-		style="padding-left: 60px"
+		class="padding-left-60"
 		[checked]="myProject.consumption"
 		[(ngModel)]="myProject.consumption"
 		(change)="selected()"
 	>
-		Consumption based
+		{{ utilService.getName('consumption') }}
 	</mat-checkbox>
 </div>

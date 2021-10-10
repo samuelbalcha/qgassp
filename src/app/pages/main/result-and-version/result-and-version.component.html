@@ -1,12 +1,19 @@
 <div class="module-body">
-	<selectors [myProject]="myProject" (selectedValue)="getSelected($event)" class="form-control">
+	<selectors
+		[myProject]="myProject"
+		(selectedValue)="getSelected($event)"
+		class="form-control"
+	>
 	</selectors>
 
 	<mat-tab-group>
-		<mat-tab *ngFor="let selectedModule of selectedModules" label="{{ selectedModule }}">
+		<mat-tab
+			*ngFor="let selectedModule of selectedModules"
+			label="{{ selectedModule }}"
+		>
 			<ng-template mat-tab-label>
 				<div [ngClass]="selectedModule" class="results-tab">
-					{{ getTabName(selectedModule) }}
+					{{ utilService.getName(selectedModule) }}
 				</div>
 			</ng-template>
 
