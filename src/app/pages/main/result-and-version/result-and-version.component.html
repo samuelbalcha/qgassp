@@ -12,8 +12,8 @@
 			label="{{ selectedModule }}"
 		>
 			<ng-template mat-tab-label>
-				<div [ngClass]="selectedModule">
-					{{ selectedModule }}
+				<div [ngClass]="selectedModule" class="results-tab">
+					{{ getTabName(selectedModule) }}
 				</div>
 			</ng-template>
 
@@ -29,6 +29,9 @@
 					<button class="add-button add-new-version" mat-button>
 						+ Add another plan version
 					</button>
+				</div>
+				<div *ngSwitchCase="'traffic'">
+					<transport-result></transport-result>
 				</div>
 				<div *ngSwitchCase="'consumption'" class="consumption-result">
 					<consumption-result></consumption-result>
