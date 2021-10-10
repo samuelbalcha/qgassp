@@ -12,23 +12,19 @@
 	padding-right: 5rem;
 	color: #000;
 }
-.label-left{
-	padding-left: 3rem;
-}
 .building-inputs{
 	padding-left: 4rem;
 }
 .building-result-form{
-	padding-left: 8rem;
+	padding-left: 21px;
 }
 .building-type {
-	// padding-left:3rem;
 	mat-form-field {
 		max-width: 100px;
 	}
 }
 .building-baseline-container{
-	padding-left: 10rem;
+	padding-left: 1rem;
 	color: #3f51b5;
 }
 .retrofit {
@@ -54,7 +50,7 @@
 }
 
 .retrofit-construction {
-	min-width: 500px;
+	width: 49%;
 }
 
 .width-100 {
@@ -65,16 +61,15 @@
 	width: 250px;
 }
 .width-277{
-	width: 200px;
+	width: 19%;
 }
 .building-next-button{
-	padding-left: 45rem;
+	padding-left: 50rem;
 
 }
 .add-border {
 	border: 1px solid $gray;
 }
-
 .result-step {
 	h4 {
 		padding-left: 0px;
