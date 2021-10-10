@@ -4,10 +4,6 @@
 	width: 120px;
 }
 
-.margin-bottom {
-	margin-bottom: $margin;
-}
-
 .building-result-container {
 	padding-right: 5rem;
 	color: #000;
@@ -47,6 +43,10 @@
 
 .pie-chart {
 	width: 450px;
+
+	h4 {
+		margin-left: $margin * 3;
+	}
 }
 
 .new-construction {
@@ -83,7 +83,10 @@
 }
 
 .area-input {
-	width: 70%;
+	width: 51px;
+	height: 30px;
+	margin-left: 5px;
+	border: 1px solid $light-gray;
 }
 
 .color-brown,

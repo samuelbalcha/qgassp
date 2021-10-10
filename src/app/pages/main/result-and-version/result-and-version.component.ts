@@ -41,7 +41,7 @@ export class ResultAndVersionComponent {
 		}
 	}
 
-	getSelected(newItem: any) {
+	getSelected(newItem: any): void {
 		if (newItem.name == 'landuse') {
 			this.landuse = newItem.value;
 		}
@@ -135,5 +135,16 @@ export class ResultAndVersionComponent {
 		return this.tableData
 			.map((t) => t.col2)
 			.reduce((acc, value) => acc + value, 0);
+	}
+
+	getTabName(selectedModule: string): string {
+		const tabNames: any = {
+			landuse: 'Land use change',
+			buildings: 'Building energy use',
+			traffic: 'Transport',
+			consumption: 'Consumption based',
+		};
+
+		return tabNames[`${selectedModule}`] as string;
 	}
 }
