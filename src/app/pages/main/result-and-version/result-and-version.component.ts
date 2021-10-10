@@ -7,6 +7,7 @@ import { ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 import { IProject } from '../../../../../commons/types/IProject';
 import { ProjectService } from '../../../core/services/project.service';
+import { UtilService } from '../../../core/services/util.service';
 
 @Component({
 	selector: 'result-and-version',
@@ -27,7 +28,8 @@ export class ResultAndVersionComponent {
 
 	constructor(
 		private router: Router,
-		private projectService: ProjectService
+		private projectService: ProjectService,
+		public utilService: UtilService
 	) {
 		const currentProject = this.projectService.getDraftProject();
 		if (!currentProject || !currentProject.name) {
@@ -41,7 +43,7 @@ export class ResultAndVersionComponent {
 		}
 	}
 
-	getSelected(newItem: any) {
+	getSelected(newItem: any): void {
 		if (newItem.name == 'landuse') {
 			this.landuse = newItem.value;
 		}

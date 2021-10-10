@@ -35,6 +35,8 @@ import { BuildingEnergyEmmissionComponent } from './components/building-energy/b
 import { ResidentialStepComponent } from './components/building-energy/building-energy-result/steps/residential-step/residential-step.component';
 import { CommercialStepComponent } from './components/building-energy/building-energy-result/steps/commercial-step/commercial-step.component';
 import { ResultStepComponent } from './components/building-energy/building-energy-result/steps/result-step/result-step.component';
+import { TransportBaselineComponent } from './components/transport/transport-baseline/transport-baseline.component';
+import { TransportResultComponent } from './components/transport/transport-result/transport-result.component';
 
 const shared = [
 	HeaderComponent,
@@ -59,6 +61,8 @@ const shared = [
 	ResultStepComponent,
 	CommercialStepComponent,
 	BuildingEnergyResultComponent,
+	TransportBaselineComponent,
+	TransportResultComponent,
 ];
 
 @NgModule({

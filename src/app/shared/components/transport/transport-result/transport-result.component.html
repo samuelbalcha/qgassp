@@ -1,0 +1,171 @@
+<div class="transport-result">
+	<div class="margin-bottom">
+		<h2>Baseline scenario 2021-2050</h2>
+		<h5>Baseline</h5>
+	</div>
+
+	<div class="flex-container margin-bottom">
+		<div class="flex-item">
+			<div class="flex-container margin-bottom">
+				<div class="flex-item width-300">
+					<mat-label>Transport CO2e Emissions 2021</mat-label>
+				</div>
+				<div class="flex-item ">
+					<mat-label> --valueToBind-- tnCO2e/a </mat-label>
+				</div>
+			</div>
+			<div class="flex-container margin-bottom">
+				<div class="flex-item width-300">
+					<mat-label>Total</mat-label>
+				</div>
+				<div class="flex-item ">
+					<mat-label> --valueToBind-- </mat-label>
+				</div>
+			</div>
+			<div class="flex-container margin-bottom">
+				<div class="flex-item width-300">
+					<mat-label
+						>Motor coaches, buses and trolley buses</mat-label
+					>
+				</div>
+				<div class="flex-item ">
+					<mat-label> --valueToBind-- </mat-label>
+				</div>
+			</div>
+			<div class="flex-container margin-bottom">
+				<div class="flex-item width-300">
+					<mat-label>Passenger cars</mat-label>
+				</div>
+				<div class="flex-item ">
+					<mat-label> --valueToBind-- </mat-label>
+				</div>
+			</div>
+			<div class="flex-container margin-bottom">
+				<div class="flex-item width-300">
+					<mat-label>Tram and metro</mat-label>
+				</div>
+				<div class="flex-item ">
+					<mat-label> --valueToBind-- </mat-label>
+				</div>
+			</div>
+			<div class="flex-container margin-bottom">
+				<div class="flex-item width-300">
+					<mat-label>Passenger trains</mat-label>
+				</div>
+				<div class="flex-item ">
+					<mat-label> --valueToBind-- </mat-label>
+				</div>
+			</div>
+			<div class="flex-container margin-bottom">
+				<div class="flex-item width-300">
+					<mat-label>Rail freight</mat-label>
+				</div>
+				<div class="flex-item ">
+					<mat-label> --valueToBind-- </mat-label>
+				</div>
+			</div>
+			<div class="flex-container margin-bottom">
+				<div class="flex-item width-300">
+					<mat-label>Road freight</mat-label>
+				</div>
+				<div class="flex-item ">
+					<mat-label> --valueToBind-- </mat-label>
+				</div>
+			</div>
+			<div class="flex-container margin-bottom">
+				<div class="flex-item width-300">
+					<mat-label>Inland waterways freight</mat-label>
+				</div>
+				<div class="flex-item ">
+					<mat-label> --valueToBind-- </mat-label>
+				</div>
+			</div>
+
+			<!-- -->
+		</div>
+		<div class="flex-item">
+			<canvas
+				style="height: 30rem; width: 30rem; padding-top: 2rem;"
+				baseChart
+				[data]="pieChartData"
+				[labels]="pieChartLabels"
+				[chartType]="pieChartType"
+				[options]="pieChartOptions"
+			>
+			</canvas>
+		</div>
+	</div>
+
+	<div class="line-chart-container flex-container margin-bottom">
+		<div class="flex-item space-between">
+			<div class="flex-container" *ngFor="let data of dataSorce">
+				<div class="flex-item width-300">
+					<h5>{{ data.source }}</h5>
+				</div>
+				<div class="flex-item">
+					<h5>{{ data.value }}</h5>
+				</div>
+			</div>
+		</div>
+		<div class="flex-item">
+			<canvas
+				style="width: 40rem; padding-top: 2rem;"
+				baseChart
+				[datasets]="lineChartData"
+				[labels]="lineChartLabels"
+				[options]="lineChartOptions"
+				[colors]="lineChartColors"
+				[legend]="lineChartLegend"
+				[chartType]="lineChartType"
+				[plugins]="lineChartPlugins"
+			>
+			</canvas>
+		</div>
+	</div>
+
+	<div>
+		<h4 class="margin-bottom">
+			Commercial Energy use
+		</h4>
+		<table *ngIf="tableDatasource" mat-table [dataSource]="tableDatasource">
+			<ng-container matColumnDef="year">
+				<th mat-header-cell *matHeaderCellDef>Energy use WMh</th>
+				<td mat-cell *matCellDef="let element">{{ element.year }}</td>
+			</ng-container>
+			<ng-container matColumnDef="busses">
+				<th mat-header-cell *matHeaderCellDef>
+					Motor Coaches and trolly buses
+				</th>
+				<td mat-cell *matCellDef="let element">{{ element.busses }}</td>
+			</ng-container>
+			<ng-container matColumnDef="cars">
+				<th mat-header-cell *matHeaderCellDef>Passanger cars</th>
+				<td mat-cell *matCellDef="let element">{{ element.cars }}</td>
+			</ng-container>
+			<ng-container matColumnDef="trams">
+				<th mat-header-cell *matHeaderCellDef>Tram and metro</th>
+				<td mat-cell *matCellDef="let element">{{ element.trams }}</td>
+			</ng-container>
+			<ng-container matColumnDef="trains">
+				<th mat-header-cell *matHeaderCellDef>Passanger Trains</th>
+				<td mat-cell *matCellDef="let element">{{ element.trains }}</td>
+			</ng-container>
+			<ng-container matColumnDef="rail">
+				<th mat-header-cell *matHeaderCellDef>Rail freight</th>
+				<td mat-cell *matCellDef="let element">{{ element.rail }}</td>
+			</ng-container>
+			<ng-container matColumnDef="road">
+				<th mat-header-cell *matHeaderCellDef>Road freight</th>
+				<td mat-cell *matCellDef="let element">{{ element.road }}</td>
+			</ng-container>
+			<ng-container matColumnDef="inland">
+				<th mat-header-cell *matHeaderCellDef>
+					Inland waterways freight
+				</th>
+				<td mat-cell *matCellDef="let element">{{ element.inland }}</td>
+			</ng-container>
+			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+			<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+		</table>
+	</div>
+</div>

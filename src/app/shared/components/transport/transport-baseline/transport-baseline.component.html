@@ -1,0 +1,184 @@
+<div>
+	<h4>Transportation</h4>
+	<i class="text-muted margin-bottom"
+		>Fill in the following information to set the baseline</i
+	>
+
+	<div class="flex-container margin-bottom">
+		<div class="flex-item width-300">
+			<mat-label>
+				Year
+			</mat-label>
+		</div>
+		<div class="flex-item">
+			<mat-label>
+				--valueToBind--
+			</mat-label>
+		</div>
+	</div>
+
+	<div class="flex-container margin-bottom">
+		<div class="flex-item width-300">
+			<mat-label>
+				Country
+			</mat-label>
+		</div>
+		<div class="flex-item">
+			<mat-label>
+				--valueToBind--
+			</mat-label>
+		</div>
+	</div>
+
+	<div class="flex-container margin-bottom">
+		<div class="flex-item width-300">
+			<mat-label>
+				Population of the assesment area
+			</mat-label>
+		</div>
+		<div class="flex-item">
+			<mat-form-field appearance="fill">
+				<input type="number" matInput [(ngModel)]="population" />
+			</mat-form-field>
+		</div>
+	</div>
+
+	<div class="margin-bottom">
+		<mat-label>
+			<h4>Passenger transport in the assesment area</h4>
+		</mat-label>
+		<mat-label>Intensity of</mat-label>
+	</div>
+
+	<div class="flex-container margin-bottom">
+		<div class="flex-item width-300">
+			<mat-label>Transportation on wheels</mat-label>
+		</div>
+		<div class="flex-item">
+			<mat-form-field appearance="fill">
+				<mat-select [(ngModel)]="selectedTransportOnWheels">
+					<mat-option
+						*ngFor="let intensity of publicTransportationIntensity"
+						[value]="intensity.factor"
+					>
+						{{ intensity.type }}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+	</div>
+
+	<div class="flex-container margin-bottom">
+		<div class="flex-item width-300">
+			<mat-label>Passanger car transportation</mat-label>
+		</div>
+		<div class="flex-item">
+			<mat-form-field appearance="fill">
+				<mat-select [(ngModel)]="selectedPrivateCars">
+					<mat-option
+						*ngFor="let intensity of privateCarsIntensity"
+						[value]="intensity.factor"
+					>
+						{{ intensity.type }}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+	</div>
+
+	<div class="flex-container margin-bottom">
+		<div class="flex-item width-300">
+			<mat-label>Tram and metro transport</mat-label>
+		</div>
+		<div class="flex-item">
+			<mat-form-field appearance="fill">
+				<mat-select [(ngModel)]="selectedPrivateCars">
+					<mat-option
+						*ngFor="let intensity of tramsAndMetroIntensity"
+						[value]="intensity.factor"
+					>
+						{{ intensity.type }}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+	</div>
+
+	<div class="flex-container margin-bottom">
+		<div class="flex-item width-300">
+			<mat-label>Public transport on rails</mat-label>
+		</div>
+		<div class="flex-item">
+			<mat-form-field appearance="fill">
+				<mat-select [(ngModel)]="selectedTransportOnRails">
+					<mat-option
+						*ngFor="let intensity of tramsAndMetroIntensity"
+						[value]="intensity.factor"
+					>
+						{{ intensity.type }}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+	</div>
+
+	<div class="margin-bottom">
+		<mat-label>
+			<h4>Freight transport in the assesment area</h4>
+		</mat-label>
+		<mat-label>Intensity of</mat-label>
+	</div>
+
+	<div class="flex-container margin-bottom">
+		<div class="flex-item width-300">
+			<mat-label>Traffic on rails</mat-label>
+		</div>
+		<div class="flex-item">
+			<mat-form-field appearance="fill">
+				<mat-select [(ngModel)]="selectedFreightOnRails">
+					<mat-option
+						*ngFor="let intensity of freightOnRailsIntensity"
+						[value]="intensity.factor"
+					>
+						{{ intensity.type }}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+	</div>
+
+	<div class="flex-container margin-bottom">
+		<div class="flex-item width-300">
+			<mat-label>Traffic on wheels</mat-label>
+		</div>
+		<div class="flex-item">
+			<mat-form-field appearance="fill">
+				<mat-select [(ngModel)]="selectedFreightOnWheels">
+					<mat-option
+						*ngFor="let intensity of freightOnWheelsIntensity"
+						[value]="intensity.factor"
+					>
+						{{ intensity.type }}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+	</div>
+	<div class="flex-container margin-bottom">
+		<div class="flex-item width-300">
+			<mat-label>Inland waterways freight transport</mat-label>
+		</div>
+		<div class="flex-item">
+			<mat-form-field appearance="fill">
+				<mat-select [(ngModel)]="selectedInlandWaterWay">
+					<mat-option
+						*ngFor="let intensity of inlandWaterWaysIntensity"
+						[value]="intensity.factor"
+					>
+						{{ intensity.type }}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+	</div>
+</div>

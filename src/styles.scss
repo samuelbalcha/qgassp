@@ -148,6 +148,13 @@ h4 {
 	margin-right: -90px !important;
 }
 
+.results-tab {
+	padding: $padding * 2;
+	width: 120px;
+	color: white !important;
+	border-radius: 5px;
+}
+
 .landuse,
 .landuse:hover {
 	background-color: $light-green;
@@ -198,6 +205,9 @@ h4 {
 .width-200 {
 	width: 200px;
 }
+.width-300 {
+	width: 300px;
+}
 
 .control-buttons {
 	margin-bottom: $margin * 2;
@@ -205,4 +215,8 @@ h4 {
 
 .text-muted {
 	font-weight: 200;
+}
+
+.margin-bottom {
+	margin-bottom: $margin;
 }
