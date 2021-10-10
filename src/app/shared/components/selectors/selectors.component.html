@@ -18,7 +18,7 @@
 	</h4>
 </div>
 
-<mat-card class="card-style">
+<mat-card class="card-style margin-bottom">
 	<div style="display:inline-flex">
 		<mat-icon> location_on</mat-icon>
 		<p>
@@ -33,9 +33,9 @@
 	</div>
 </mat-card>
 
-<p>
-	Select calculation modes
-</p>
+<h4 class="margin-bottom">
+	Calculation modes
+</h4>
 
 <div style="display:inline-flex">
 	<mat-checkbox
@@ -53,7 +53,7 @@
 		[(ngModel)]="myProject.territorial.traffic"
 		(change)="selected()"
 	>
-		Trafic / Infra
+		Transport
 	</mat-checkbox>
 	<mat-checkbox
 		color="primary"
@@ -62,7 +62,7 @@
 		[(ngModel)]="myProject.territorial.buildings"
 		(change)="selected()"
 	>
-		Buildings
+		Buildings energy use
 	</mat-checkbox>
 	<mat-checkbox
 		color="primary"
