@@ -10,6 +10,33 @@
 		</mat-step>
 
 		<mat-step>
+			<ng-template matStepLabel icon>Household energy</ng-template>
+			<div class="step-container">
+				<heating-consumption></heating-consumption>
+			</div>
+
+			<div class="btn-group">
+				<button
+					class="previous-btn"
+					mat-button
+					mat-raised-button
+					matStepperPrevious
+				>
+					Prev
+				</button>
+
+				<button
+					mat-button
+					mat-raised-button
+					matStepperNext
+					class="next-btn"
+				>
+					Next
+				</button>
+			</div>
+		</mat-step>
+
+		<mat-step>
 			<ng-template matStepLabel>Transportation</ng-template>
 			<div class="step-container">
 				<transportation-consumption></transportation-consumption>
@@ -29,36 +56,9 @@
 					mat-button
 					mat-raised-button
 					class="next-btn"
-					matStepperNext
-				>
-					Next
-				</button>
-			</div>
-		</mat-step>
-
-		<mat-step>
-			<ng-template matStepLabel icon>Energy</ng-template>
-			<div class="step-container">
-				<heating-consumption></heating-consumption>
-			</div>
-
-			<div class="btn-group">
-				<button
-					class="previous-btn"
-					mat-button
-					mat-raised-button
-					matStepperPrevious
-				>
-					Prev
-				</button>
-
-				<button
-					mat-button
-					mat-raised-button
-					class="next-btn"
 					(click)="createBaseline()"
 				>
-					Create a baseline
+					Create baseline
 				</button>
 			</div>
 		</mat-step>
