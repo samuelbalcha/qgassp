@@ -40,9 +40,9 @@ app.use(logRequestStart);
 
 app.use('/api', router);
 
-app.use(express.static(path.join(__dirname, '../dist/app')));
+app.use(express.static(path.join(__dirname, './../app')));
 app.get('*', (_req, res) => {
-	res.sendFile(path.join(__dirname, '../dist/app/index.html'));
+	res.sendFile(path.join(__dirname, './../app/index.html'));
 });
 
 const port = process.env.PORT || 3005;
