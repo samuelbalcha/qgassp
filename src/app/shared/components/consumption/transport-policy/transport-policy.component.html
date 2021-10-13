@@ -1,0 +1,93 @@
+<div class="transport-policy">
+	<h4>Biofuel in transport</h4>
+	<div class="flex-container">
+		<div class="flex-item width-200 space-between">
+			<mat-label
+				>What is the proportion of biofuels in transport?</mat-label
+			>
+		</div>
+		<div class="flex-item">
+			<mat-form-field appearance="fill" class="numberInput">
+				<input
+					matInput
+					type="number"
+					min="0"
+					max="1"
+					[(ngModel)]="biofuelShare"
+				/>
+			</mat-form-field>
+		</div>
+	</div>
+	<h4>Electric Vehicles</h4>
+	<div class="flex-container">
+		<div class="flex-item width-200 space-between">
+			<mat-label
+				>What is the proportion of electric vehicles in private
+				transport?</mat-label
+			>
+		</div>
+		<div class="flex-item">
+			<mat-form-field appearance="fill" class="numberInput">
+				<input
+					matInput
+					type="number"
+					[(ngModel)]="electricVehiclesShare"
+				/>
+			</mat-form-field>
+		</div>
+	</div>
+	<h4>Modal shift</h4>
+	<div class="flex-container">
+		<div class="flex-item width-200 space-between">
+			<mat-label
+				>What is the relative decrease in private transport fuel
+				use?</mat-label
+			>
+		</div>
+		<div class="flex-item">
+			<mat-form-field appearance="fill" class="numberInput">
+				<input
+					matInput
+					type="number"
+					[(ngModel)]="decreaseInPrivateFuelUse"
+				/>
+			</mat-form-field>
+		</div>
+	</div>
+	<div class="flex-container">
+		<div class="flex-item width-200 space-between">
+			<mat-label
+				>What is the relative decrease in private transport
+				ownership?</mat-label
+			>
+		</div>
+		<div class="flex-item">
+			<mat-form-field appearance="fill" class="numberInput">
+				<input
+					matInput
+					type="number"
+					[(ngModel)]="decreaseInPrivateTransportOwnership"
+				/>
+			</mat-form-field>
+		</div>
+	</div>
+	<div class="flex-container margin-bottom">
+		<div class="flex-item width-200 space-between">
+			<mat-label
+				>What is the relative increase in public transport?</mat-label
+			>
+		</div>
+		<div class="flex-item">
+			<mat-form-field appearance="fill" class="numberInput">
+				<input
+					matInput
+					type="number"
+					[(ngModel)]="increaseInPublicTransport"
+				/>
+			</mat-form-field>
+		</div>
+	</div>
+	<transportation-types
+		[title]="'What are the share of public transport modes?'"
+	></transportation-types>
+</div>

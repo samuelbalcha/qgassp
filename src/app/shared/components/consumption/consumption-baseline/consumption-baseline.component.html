@@ -39,7 +39,9 @@
 		<mat-step>
 			<ng-template matStepLabel>Transportation</ng-template>
 			<div class="step-container">
-				<transportation-consumption></transportation-consumption>
+				<transportation-types
+					[title]="'What types of public transport are there?'"
+				></transportation-types>
 			</div>
 
 			<div class="btn-group">
