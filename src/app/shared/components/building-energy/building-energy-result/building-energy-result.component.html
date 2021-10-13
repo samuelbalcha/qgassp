@@ -1,99 +1,188 @@
 <div>
 	<div class="margin-bottom">
 		<h2>"Baseline Results"</h2>
-		<span class="margin-bottom text-muted">Baseline / Current Situations</span>
+		<span class="margin-bottom text-muted"
+			>Baseline / Current Situations</span
+		>
 	</div>
 	<!-- Residential -->
 	<div class="margin-bottom">
 		<h2 class="margin-bottom">Residential</h2>
-		<building-energy-emmission [componentType]="'Energy use'" [title]="'Total Residential Energy Demand MWh'"
-			[emissionValue]="'1 454 326,19'" [emissionUnit]="'MWh'" [isEnergyUse]="true" [isEnergyEmmission]="false"
-			[pieChartTitle]="'Share of Residential Housing'" class="margin-bottom"></building-energy-emmission>
+		<building-energy-emmission
+			[componentType]="'Energy use'"
+			[title]="'Total Residential Energy Demand MWh'"
+			[emissionValue]="'1 454 326,19'"
+			[emissionUnit]="'MWh'"
+			[isEnergyUse]="true"
+			[isEnergyEmmission]="false"
+			[pieChartTitle]="'Share of Residential Housing'"
+			class="margin-bottom"
+		></building-energy-emmission>
 
-		<building-energy-emmission [componentType]="'Residential emissions'" [title]="'Total Residential Emissions'"
-			[emissionValue]="'404 589,58'" [emissionUnit]="'tCO2'" [isEnergyUse]="false" [isEnergyEmmission]="true"
+		<building-energy-emmission
+			[componentType]="'Residential emissions'"
+			[title]="'Total Residential Emissions'"
+			[emissionValue]="'404 589,58'"
+			[emissionUnit]="'tCO2'"
+			[isEnergyUse]="false"
+			[isEnergyEmmission]="true"
 			[pieChartTitle]="
 				'Share of Total Residential Emissions by fuel type'
-			" class="margin-bottom"></building-energy-emmission>
+			"
+			[Data]="residentialData"
+			class="margin-bottom"
+		></building-energy-emmission>
 	</div>
 
 	<!-- Commercial -->
 	<div class="margin-bottom">
 		<h2 class="margin-bottom">Commercial</h2>
-		<building-energy-emmission [componentType]="'Commercial Energy use'"
-			[title]="'Total Commercial Energy Demand MWh'" [emissionValue]="'1 454 326,19'" [emissionUnit]="'MWh'"
-			[isEnergyUse]="true" [isEnergyEmmission]="false" [pieChartTitle]="'Share of Commercial Housing'"
-			class="margin-bottom"></building-energy-emmission>
+		<building-energy-emmission
+			[componentType]="'Commercial Energy use'"
+			[title]="'Total Commercial Energy Demand MWh'"
+			[emissionValue]="'1 454 326,19'"
+			[emissionUnit]="'MWh'"
+			[isEnergyUse]="true"
+			[isEnergyEmmission]="false"
+			[pieChartTitle]="'Share of Commercial Housing'"
+			[Data]="commercialData"
+			class="margin-bottom"
+		></building-energy-emmission>
 
-		<building-energy-emmission [componentType]="'Commercial emissions'" [title]="'Total Commercial Emissions'"
-			[emissionValue]="'404 589,58'" [emissionUnit]="'tCO2'" [isEnergyUse]="false" [isEnergyEmmission]="true"
-			[pieChartTitle]="'Share of Total Commercial Emissions by fuel type'" class="margin-bottom">
+		<building-energy-emmission
+			[componentType]="'Commercial emissions'"
+			[title]="'Total Commercial Emissions'"
+			[emissionValue]="'404 589,58'"
+			[emissionUnit]="'tCO2'"
+			[isEnergyUse]="false"
+			[isEnergyEmmission]="true"
+			[pieChartTitle]="'Share of Total Commercial Emissions by fuel type'"
+			class="margin-bottom"
+		>
 		</building-energy-emmission>
 	</div>
 
 	<div>
 		<cdk-accordion class="version-accordion">
-			<cdk-accordion-item #accordionItem="cdkAccordionItem" class="module-accordion-item" role="button"
-				tabindex="0" [attr.aria-expanded]="accordionItem.expanded">
-				<div class="module-accordion-item-header color-brown" role="presentation"
-					(click)="accordionItem.toggle()">
+			<cdk-accordion-item
+				#accordionItem="cdkAccordionItem"
+				class="module-accordion-item"
+				role="button"
+				tabindex="0"
+				[attr.aria-expanded]="accordionItem.expanded"
+			>
+				<div
+					class="module-accordion-item-header color-brown"
+					role="presentation"
+					(click)="accordionItem.toggle()"
+				>
 					1. Policy Plan
 					<span class="module-accordion-item-description">
-						<mat-icon style="color: white" *ngIf="accordionItem.expanded">expand_less</mat-icon>
-						<mat-icon style="color: white" *ngIf="!accordionItem.expanded">expand_more</mat-icon>
+						<mat-icon
+							style="color: white"
+							*ngIf="accordionItem.expanded"
+							>expand_less</mat-icon
+						>
+						<mat-icon
+							style="color: white"
+							*ngIf="!accordionItem.expanded"
+							>expand_more</mat-icon
+						>
 					</span>
 				</div>
-				<div class="module-accordion-item-body" role="region"
-					[style.display]="accordionItem.expanded ? '' : 'none'">
-					<i>Fill in the following information to calculate the
-						results for the policy plan.</i>
-					<br>
-					<br>
+				<div
+					class="module-accordion-item-body"
+					role="region"
+					[style.display]="accordionItem.expanded ? '' : 'none'"
+				>
+					<i
+						>Fill in the following information to calculate the
+						results for the policy plan.</i
+					>
+					<br />
+					<br />
 					<mat-horizontal-stepper [linear]="false">
 						<mat-step>
-							<ng-template matStepLabel>Residential Buildings</ng-template>
+							<ng-template matStepLabel
+								>Residential Buildings</ng-template
+							>
 
 							<div class="building-result-form">
-								<residential-step [isBaseLine]="true" [showNumberOfUnits]="true" class="margin-bottom">
+								<residential-step
+									[isBaseLine]="true"
+									[showNumberOfUnits]="true"
+									class="margin-bottom"
+								>
 								</residential-step>
 							</div>
 
-
 							<div class="btn-group">
-								<button mat-button mat-raised-button class="next-btn" matStepperNext>
+								<button
+									mat-button
+									mat-raised-button
+									class="next-btn"
+									matStepperNext
+								>
 									Next
 								</button>
 							</div>
 						</mat-step>
 
 						<mat-step>
-							<ng-template matStepLabel>Commercial Buildings</ng-template>
+							<ng-template matStepLabel
+								>Commercial Buildings</ng-template
+							>
 
-							<commercial-step class="step-container"></commercial-step>
+							<commercial-step
+								class="step-container"
+							></commercial-step>
 
 							<div class="btn-group">
-								<button class="previous-btn" mat-button mat-raised-button matStepperPrevious>
+								<button
+									class="previous-btn"
+									mat-button
+									mat-raised-button
+									matStepperPrevious
+								>
 									Prev
 								</button>
 
-								<button mat-button mat-raised-button class="next-btn" matStepperNext>
+								<button
+									mat-button
+									mat-raised-button
+									class="next-btn"
+									matStepperNext
+								>
 									Next
 								</button>
 							</div>
 						</mat-step>
 
 						<mat-step>
-							<ng-template matStepLabel icon>Policy result</ng-template>
+							<ng-template matStepLabel icon
+								>Policy result</ng-template
+							>
 							<div class="step-container">
-								<result-step [chartTitle]="
+								<result-step
+									[chartTitle]="
 										'Emissions from Policy Changes'
-									"></result-step>
+									"
+								></result-step>
 							</div>
 							<div class="btn-group">
-								<button class="previous-btn" mat-button mat-raised-button matStepperPrevious>
+								<button
+									class="previous-btn"
+									mat-button
+									mat-raised-button
+									matStepperPrevious
+								>
 									Previous
 								</button>
-								<button mat-button mat-raised-button class="next-btn">
+								<button
+									mat-button
+									mat-raised-button
+									class="next-btn"
+								>
 									save
 								</button>
 							</div>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
 	selector: 'transportation-consumption',
@@ -6,13 +6,12 @@ import { Component, Input, OnInit } from '@angular/core';
 	styleUrls: ['./../consumption.component.scss'],
 })
 export class TransportationConsumptionComponent implements OnInit {
-	@Input() modeOfTransportationTitle = 'Existing modes of transport';
-	@Input() electricVehicleShareTitle = 'Existing share of electric vehicles';
-	@Input() order = 2;
-
-	public publicTransportation = 10;
-	public privateCars = 30;
-	public electricTransportation = 2;
+	public publicTransportationDistribution = [
+		{ name: 'Bus', value: 0.2 },
+		{ name: 'Ferry', value: 0.2 },
+		{ name: 'Rail', value: 0.2 },
+		{ name: 'River', value: 0.4 },
+	];
 
 	ngOnInit(): void {
 		console.log('transportation -consumption');

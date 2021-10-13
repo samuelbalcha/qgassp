@@ -6,12 +6,12 @@
 
 .version-accordion {
 	display: block;
-	max-width: 72rem;
+	// max-width: 72rem;
 	padding: 10px;
 }
 
 .version-accordion-item-body {
-	padding: 10px;
+	padding: $padding;
 }
 
 .color-green,
@@ -66,20 +66,16 @@ tr.mat-footer-row {
 	color: white;
 	text-transform: capitalize !important;
 }
-/*
-.landuse {
-	.mat-tab-label,
-	.mat-tab-link {
-		background-color: $light-green !important;
-		width: 150px !important;
-		margin-right: 8px !important;
-	}
-}
 
-.consumption {
-	.mat-tab-label,
-	.mat-tab-link {
-		background-color: $dark-blue !important;
+.consumption-result {
+	.emission-summary {
+		width: 500px !important;
+
+		table {
+			width: 100% !important;
+		}
 	}
 }
-*/
+.mat-horizontal-content-container {
+	padding: 0 !important;
+}

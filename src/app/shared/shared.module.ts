@@ -37,6 +37,7 @@ import { CommercialStepComponent } from './components/building-energy/building-e
 import { ResultStepComponent } from './components/building-energy/building-energy-result/steps/result-step/result-step.component';
 import { TransportBaselineComponent } from './components/transport/transport-baseline/transport-baseline.component';
 import { TransportResultComponent } from './components/transport/transport-result/transport-result.component';
+import { ConsumptionPolicyComponent } from './components/consumption/policy/consumption-policy.component';
 
 const shared = [
 	HeaderComponent,
@@ -51,6 +52,7 @@ const shared = [
 	AreaPopulationComponent,
 	TransportationConsumptionComponent,
 	HeatingConsumptionComponent,
+	ConsumptionPolicyComponent,
 	ConsumptionBaselineComponent,
 	ConsumptionResultComponent,
 	ResidentialBuildingsComponent,

@@ -1,34 +1,15 @@
 <div class="transportation-consumption">
-	<h2>{{ order }}. {{ modeOfTransportationTitle }}</h2>
-
-	<!-- public transportation -->
-	<div class="flex-container">
-		<div class="flex-item">{{ order }}. 1 Public transportation, %</div>
-		<div class="flex-item">
-			<mat-form-field appearance="fill" class="numberInput">
-				<input matInput type="number" [(ngModel)]="publicTransportation" />
-			</mat-form-field>
-		</div>
-	</div>
-
-	<!-- private cars -->
-	<div class="flex-container">
-		<div class="flex-item">{{ order }}.2 Private cars, %</div>
-		<div class="flex-item">
-			<mat-form-field appearance="fill" class="numberInput">
-				<input matInput type="number" [(ngModel)]="privateCars" />
-			</mat-form-field>
-		</div>
-	</div>
-
-	<!-- electric transportation -->
-	<div class="flex-container">
-		<div class="flex-item">
-			{{ order }}.3 {{ electricVehicleShareTitle }} %
+	<h4>What types of public transport are there?</h4>
+	<div
+		class="flex-container"
+		*ngFor="let transport of publicTransportationDistribution"
+	>
+		<div class="flex-item width-100 space-between">
+			<mat-label>{{ transport.name }}</mat-label>
 		</div>
 		<div class="flex-item">
 			<mat-form-field appearance="fill" class="numberInput">
-				<input matInput type="number" [(ngModel)]="electricTransportation" />
+				<input matInput type="number" [(ngModel)]="transport.value" />
 			</mat-form-field>
 		</div>
 	</div>

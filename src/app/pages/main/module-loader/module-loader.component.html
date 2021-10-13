@@ -69,6 +69,16 @@
 					</div>
 					<div *ngSwitchCase="'buildings'">
 						<building-energy-baseline></building-energy-baseline>
+						<div class="calculate-controls">
+							<button
+								mat-raised-button
+								class="next-button"
+								color="primary"
+								(click)="calculate()"
+							>
+								Next
+							</button>
+						</div>
 					</div>
 					<div *ngSwitchCase="'traffic'">
 						<transport-baseline></transport-baseline>

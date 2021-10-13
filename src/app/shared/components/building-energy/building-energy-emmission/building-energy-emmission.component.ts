@@ -17,9 +17,10 @@ export class BuildingEnergyEmmissionComponent {
 	@Input() isEnergyEmmission = false;
 	@Input() pieChartTitle = '';
 
+	// change it as in
 	ELEMENT_DATA = [
 		{
-			EnergyUse: 'Appartments',
+			EnergyUse: 'Apartments',
 			Electricity: 124578933,
 			Gas: 1,
 			Oil: 2,

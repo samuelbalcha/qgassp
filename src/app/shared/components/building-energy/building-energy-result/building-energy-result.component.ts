@@ -9,8 +9,6 @@ import { Label, SingleDataSet } from 'ng2-charts';
 	styleUrls: ['./../building-energy.component.scss'],
 })
 export class BuildingEnergyResultComponent {
-	constructor() {}
-
 	public pieChartOptions: ChartOptions = {
 		responsive: false,
 		title: {
@@ -47,4 +45,97 @@ export class BuildingEnergyResultComponent {
 	];
 	public horiChartData: SingleDataSet = [50, -200, 150];
 	public horiChartType: ChartType = 'horizontalBar';
+	public residentialData = [
+		{
+			EnergyUse: 'Apartments',
+			Electricity: 124578933,
+			Gas: 1,
+			Oil: 2,
+			Coal: 12345,
+			Peat: 1234,
+			Wood: 123455,
+			Renewable: 1234,
+			Heat: 1232344,
+		},
+		{
+			EnergyUse: 'Terrace',
+			Electricity: 124578933,
+			Gas: 1,
+			Oil: 2,
+			Coal: 12345,
+			Peat: 1234,
+			Wood: 123455,
+			Renewable: 1234,
+			Heat: 1232344,
+		},
+		{
+			EnergyUse: 'Semi-detached',
+			Electricity: 124578933,
+			Gas: 2,
+			Oil: 2,
+			Coal: 12345,
+			Peat: 1234,
+			Wood: 123455,
+			Renewable: 1234,
+			Heat: 1232344,
+		},
+		{
+			EnergyUse: 'Detached',
+			Electricity: 1,
+			Gas: 1,
+			Oil: 1,
+			Coal: 1,
+			Peat: 1,
+			Wood: 1,
+			Renewable: 1,
+			Heat: 1,
+		},
+	];
+
+	public commercialData = [
+		{
+			EnergyUse: 'Health',
+			Electricity: 124578933,
+			Gas: 1,
+			Oil: 2,
+			Coal: 12345,
+			Peat: 1234,
+			Wood: 123455,
+			Renewable: 1234,
+			Heat: 1232344,
+		},
+		{
+			EnergyUse: 'Hospital',
+			Electricity: 124578933,
+			Gas: 1,
+			Oil: 2,
+			Coal: 12345,
+			Peat: 1234,
+			Wood: 123455,
+			Renewable: 1234,
+			Heat: 1232344,
+		},
+		{
+			EnergyUse: 'Semi-detached',
+			Electricity: 124578933,
+			Gas: 2,
+			Oil: 2,
+			Coal: 12345,
+			Peat: 1234,
+			Wood: 123455,
+			Renewable: 1234,
+			Heat: 1232344,
+		},
+		{
+			EnergyUse: 'Detached',
+			Electricity: 1,
+			Gas: 1,
+			Oil: 1,
+			Coal: 1,
+			Peat: 1,
+			Wood: 1,
+			Renewable: 1,
+			Heat: 1,
+		},
+	];
 }
