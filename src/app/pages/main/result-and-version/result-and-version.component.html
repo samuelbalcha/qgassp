@@ -13,7 +13,7 @@
 		>
 			<ng-template mat-tab-label>
 				<div [ngClass]="selectedModule" class="results-tab">
-					{{ getTabName(selectedModule) }}
+					{{ utilService.getName(selectedModule) }}
 				</div>
 			</ng-template>
 
@@ -21,13 +21,13 @@
 				<div *ngSwitchCase="'landuse'" class="landuse-result">
 					<land-use-change-result></land-use-change-result>
 					<button class="add-button add-new-version" mat-button>
-						+ Add another plan version
+						+ Add another plan policy
 					</button>
 				</div>
 				<div *ngSwitchCase="'buildings'" class="buildings-result">
 					<building-energy-result></building-energy-result>
 					<button class="add-button add-new-version" mat-button>
-						+ Add another plan version
+						+ Add another plan policy
 					</button>
 				</div>
 				<div *ngSwitchCase="'traffic'">
@@ -36,7 +36,7 @@
 				<div *ngSwitchCase="'consumption'" class="consumption-result">
 					<consumption-result></consumption-result>
 					<button class="add-button add-new-version" mat-button>
-						+ Add another plan version
+						+ Add another plan policy
 					</button>
 				</div>
 				<div *ngSwitchDefault class="text-warning">

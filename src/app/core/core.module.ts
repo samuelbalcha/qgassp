@@ -10,9 +10,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AuthService } from './services/auth.service';
 import { StorageService } from './services/storage.service';
 import { ProjectService } from './services/project.service';
+import { UtilService } from './services/util.service';
+
 @NgModule({
 	imports: [BrowserModule, CommonModule],
-	providers: [AuthService, StorageService, ProjectService],
+	providers: [AuthService, StorageService, ProjectService, UtilService],
 })
 export class CoreModule {
 	static forRoot(): ModuleWithProviders<any> {

@@ -1,12 +1,8 @@
 <div class="setup-body">
 	<h4>
 		<a class="header-link" routerLink="/dashboard">
-			QGasSP Dashboard
-			<img
-				class="fwd-arrow"
-				src=".././assets/forward-arrow.png"
-				alt="forward"
-			/>
+			GGIA Dashboard
+			<img class="fwd-arrow" src=".././assets/forward-arrow.png" alt="forward" />
 		</a>
 		Setup New project
 	</h4>
@@ -20,11 +16,7 @@
 	<div class="setup-form">
 		<h2 class="title">Basic info</h2>
 
-		<form
-			class="setup-form"
-			[formGroup]="setupForm"
-			(ngSubmit)="onSubmit()"
-		>
+		<form class="setup-form" [formGroup]="setupForm" (ngSubmit)="onSubmit()">
 			<div class="flex-container">
 				<div class="flex-item space-between-60px">
 					<mat-label>
@@ -32,42 +24,24 @@
 					</mat-label>
 					<mat-form-field appearance="fill">
 						<mat-label>Country</mat-label>
-						<mat-select
-							[(ngModel)]="selectedCountry"
-							name="country"
-							formControlName="country"
-							(selectionChange)="onCountrySelected()"
-						>
-							<mat-option
-								*ngFor="let country of countries"
-								[value]="country.countryName"
-							>
-								{{ country.countryName }}
+						<mat-select [(ngModel)]="selectedCountry" name="country" formControlName="country"
+							(selectionChange)="onCountrySelected()">
+							<mat-option *ngFor="let country of euList" [value]="country.country">
+								{{ country.country }}
 							</mat-option>
 						</mat-select>
 					</mat-form-field>
 				</div>
 				<div class="flex-item space-between-60px margin-right-25px">
 					<mat-label>
-						<p>1.2 Choose the area</p>
+						<p>1.2 Population</p>
 					</mat-label>
 					<mat-form-field appearance="fill">
-						<mat-label>Area</mat-label>
-						<mat-select
-							formControlName="region"
-							[(ngModel)]="selectedRegion"
-							name="region"
-							(selectionChange)="onRegionSelected()"
-						>
-							<mat-option
-								*ngFor="let region of country?.regions"
-								[value]="region.name"
-							>
-								{{ region.name }}
-							</mat-option>
-						</mat-select>
+						<mat-label>Population</mat-label>
+						<input type="number" matInput formControlName="population" />
 					</mat-form-field>
 				</div>
+
 				<div class="flex-item boxed">
 					<mat-label>
 						<p>1.5 Choose the year</p>
@@ -75,15 +49,8 @@
 					<mat-form-field appearance="fill">
 						<mat-label>Choose a date</mat-label>
 
-						<mat-select
-							formControlName="startYear"
-							[(ngModel)]="selectedYear"
-							name="startYear"
-						>
-							<mat-option
-								*ngFor="let year of years"
-								[value]="year.id"
-							>
+						<mat-select formControlName="startYear" [(ngModel)]="selectedYear" name="startYear">
+							<mat-option *ngFor="let year of years" [value]="year.id">
 								{{ year.value }}
 							</mat-option>
 						</mat-select>
@@ -129,18 +96,11 @@
 
 			<div class="flex-container module-selector">
 				<div class="flex-item space-between-60px margin-right-25px">
-					<mat-checkbox
-						[checked]="selectAll"
-						(change)="checkAll($event.checked)"
-						><i> Select all </i>
+					<mat-checkbox [checked]="selectAll" (change)="checkAll($event.checked)"><i> Select all </i>
 					</mat-checkbox>
 				</div>
 				<div class="flex-item">
-					<button
-						mat-stroked-button
-						style="border:green; background-color: green; color: white; "
-						disabled
-					>
+					<button mat-stroked-button style="border:green; background-color: green; color: white; " disabled>
 						There is a location specific dataset available for this
 						location
 					</button>
@@ -167,32 +127,19 @@
 			</div>
 
 			<div class="flex-container module-selector">
-				<div
-					class="flex-item width-200 margin-right-25px space-between-60px"
-				>
+				<div class="flex-item width-200 margin-right-25px space-between-60px">
 					<mat-label>
-						<p>Teritorial</p>
+						<p>Territorial</p>
 					</mat-label>
-					<mat-checkbox
-						[checked]="landuse"
-						(change)="landuse = !landuse"
-					>
-						Land use change
+					<mat-checkbox [checked]="landuse" (change)="landuse = !landuse">
+						{{ utilService.getName('landuse') }}
 					</mat-checkbox>
 				</div>
 				<div class="flex-item">
 					<mat-form-field appearance="fill">
-						<mat-label
-							>Select a location specific dataset</mat-label
-						>
-						<mat-select
-							formControlName="dataset"
-							[disabled]="!landuse"
-						>
-							<mat-option
-								*ngFor="let dataset of dataSets"
-								value="dataset.aID"
-							>
+						<mat-label>Select a location specific dataset</mat-label>
+						<mat-select formControlName="dataset" [disabled]="!landuse">
+							<mat-option *ngFor="let dataset of dataSets" value="dataset.aID">
 								{{ dataset.aName }}
 							</mat-option>
 						</mat-select>
@@ -202,28 +149,16 @@
 			</div>
 
 			<div class="flex-container module-selector">
-				<div
-					class="flex-item width-200 margin-right-25px space-between-60px"
-				>
-					<mat-checkbox
-						[checked]="traffic"
-						(change)="traffic = !traffic"
-						>Traffic / Infra
+				<div class="flex-item width-200 margin-right-25px space-between-60px">
+					<mat-checkbox [checked]="traffic" (change)="traffic = !traffic">
+						{{ utilService.getName('traffic') }}
 					</mat-checkbox>
 				</div>
 				<div class="flex-item">
 					<mat-form-field appearance="fill">
-						<mat-label
-							>Select a location specific dataset</mat-label
-						>
-						<mat-select
-							formControlName="dataset"
-							[disabled]="!traffic"
-						>
-							<mat-option
-								*ngFor="let dataset of dataSets"
-								value="dataset.aID"
-							>
+						<mat-label>Select a location specific dataset</mat-label>
+						<mat-select formControlName="dataset" [disabled]="!traffic">
+							<mat-option *ngFor="let dataset of dataSets" value="dataset.aID">
 								{{ dataset.aName }}
 							</mat-option>
 						</mat-select>
@@ -233,28 +168,16 @@
 			</div>
 
 			<div class="flex-container module-selector">
-				<div
-					class="flex-item width-200 margin-right-25px space-between-60px"
-				>
-					<mat-checkbox
-						[checked]="buildings"
-						(change)="buildings = !buildings"
-						>Buildings
+				<div class="flex-item width-200 margin-right-25px space-between-60px">
+					<mat-checkbox [checked]="buildings" (change)="buildings = !buildings">
+						{{ utilService.getName('buildings') }}
 					</mat-checkbox>
 				</div>
 				<div class="flex-item">
 					<mat-form-field appearance="fill">
-						<mat-label
-							>Select a location specific dataset</mat-label
-						>
-						<mat-select
-							formControlName="dataset"
-							[disabled]="!buildings"
-						>
-							<mat-option
-								*ngFor="let dataset of dataSets"
-								value="dataset.aID"
-							>
+						<mat-label>Select a location specific dataset</mat-label>
+						<mat-select formControlName="dataset" [disabled]="!buildings">
+							<mat-option *ngFor="let dataset of dataSets" value="dataset.aID">
 								{{ dataset.aName }}
 							</mat-option>
 						</mat-select>
@@ -264,32 +187,16 @@
 			</div>
 
 			<div class="flex-container module-selector">
-				<div
-					class="flex-item width-200 margin-right-25px space-between-60px"
-				>
-					<mat-label>
-						<p>Consumptional</p>
-					</mat-label>
-					<mat-checkbox
-						[checked]="consumption"
-						(change)="consumption = !consumption"
-					>
-						Consumption based
+				<div class="flex-item width-200 margin-right-25px space-between-60px">
+					<mat-checkbox [checked]="consumption" (change)="consumption = !consumption">
+						{{ utilService.getName('consumption') }}
 					</mat-checkbox>
 				</div>
 				<div class="flex-item">
 					<mat-form-field appearance="fill">
-						<mat-label
-							>Select a location specific dataset</mat-label
-						>
-						<mat-select
-							formControlName="dataset"
-							[disabled]="!consumption"
-						>
-							<mat-option
-								*ngFor="let dataset of dataSets"
-								value="dataset.aID"
-							>
+						<mat-label>Select a location specific dataset</mat-label>
+						<mat-select formControlName="dataset" [disabled]="!consumption">
+							<mat-option *ngFor="let dataset of dataSets" value="dataset.aID">
 								{{ dataset.aName }}
 							</mat-option>
 						</mat-select>

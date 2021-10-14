@@ -10,15 +10,13 @@ export class CommercialBuildingsComponent {
 	@Input() isBaseLine = false;
 	@Input() showTotalFloorArea = false;
 	@Input() showEnergyRating = false;
-	@Input() showNumberOfUnits = false;
 	@Input() showCarbonHeatAndElectricity = false;
 
 	commercialBuildingTypes = [
 		{
 			name: 'Retal',
 			totalFloorArea: 10000,
-			numberOfUnits: 100,
-			previousEnergyRating: 'RE',
+			previousEnergyRating: 'E',
 			plannedEnergyRating: '160/E',
 			carbonHeat: '90',
 			electricity: '-',
@@ -26,7 +24,6 @@ export class CommercialBuildingsComponent {
 		{
 			name: 'Health',
 			totalFloorArea: 200,
-			numberOfUnits: 40,
 			previousEnergyRating: 'E',
 			plannedEnergyRating: 'P',
 			carbonHeat: '90',
@@ -35,7 +32,6 @@ export class CommercialBuildingsComponent {
 		{
 			name: 'Hospitality',
 			totalFloorArea: 80000,
-			numberOfUnits: 60,
 			previousEnergyRating: 'E',
 			plannedEnergyRating: 'E',
 			carbonHeat: '90',
@@ -44,7 +40,6 @@ export class CommercialBuildingsComponent {
 		{
 			name: 'Offices',
 			totalFloorArea: 900,
-			numberOfUnits: 10,
 			previousEnergyRating: 'E',
 			plannedEnergyRating: 'E',
 			carbonHeat: '90',
@@ -53,7 +48,6 @@ export class CommercialBuildingsComponent {
 		{
 			name: 'Industrial',
 			totalFloorArea: 900,
-			numberOfUnits: 10,
 			previousEnergyRating: 'E',
 			plannedEnergyRating: 'E',
 			carbonHeat: '90',
@@ -62,12 +56,29 @@ export class CommercialBuildingsComponent {
 		{
 			name: 'Warehouses',
 			totalFloorArea: 900,
-			numberOfUnits: 10,
-			previousEnergyRating: '160/E',
+			previousEnergyRating: 'E',
 			plannedEnergyRating: 'E',
 			carbonHeat: '90',
 			electricity: '-',
 		},
+		{
+			name: 'Other',
+			totalFloorArea: 900,
+			previousEnergyRating: 'E',
+			plannedEnergyRating: 'E',
+			carbonHeat: '90',
+			electricity: '-',
+		},
+	];
+
+	public energyRatings = [
+		{ name: 'A', value: '' },
+		{ name: 'B', value: '' },
+		{ name: 'C', value: '' },
+		{ name: 'D', value: '' },
+		{ name: 'E', value: '' },
+		{ name: 'F', value: '' },
+		{ name: 'G', value: '' },
 	];
 
 	@Output() onCommercialBuildingsChange: EventEmitter<any>;

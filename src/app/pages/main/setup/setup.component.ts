@@ -9,6 +9,7 @@ import CountryRegionData from 'country-region-data/data.json';
 
 import { ProjectService } from '../../../core/services/project.service';
 import { IProject } from '../../../../../commons/types/IProject';
+import { UtilService } from '../../../core/services/util.service';
 
 interface IYear {
 	id: number;
@@ -23,12 +24,41 @@ export class SetupComponent implements OnInit {
 	public countries: ICountry[];
 	public country: ICountry | undefined;
 	public region: IRegion | undefined;
+	public population: 0 | undefined;
 	public selectedCountry = '';
-	public selectedRegion = '';
+
 	public selectedYear = 2021;
 	public isDataFound = false;
 	public years: IYear[] = [];
-
+	public euList = [
+		{ country: 'Austria', code: 'AT', vat: 20 },
+		{ country: 'Belgium', code: 'BE', vat: 21 },
+		{ country: 'Bulgaria', code: 'BG', vat: 20 },
+		{ country: 'Croatia', code: 'HR', vat: 25 },
+		{ country: 'Cyprus', code: 'CY', vat: 19 },
+		{ country: 'Czech Republic', code: 'CZ', vat: 21 },
+		{ country: 'Denmark', code: 'DK', vat: 25 },
+		{ country: 'Estonia', code: 'EE', vat: 20 },
+		{ country: 'Finland', code: 'FI', vat: 24 },
+		{ country: 'France', code: 'FR', vat: 20 },
+		{ country: 'Germany', code: 'DE', vat: 19 },
+		{ country: 'Greece', code: 'GR', vat: 24 },
+		{ country: 'Hungary', code: 'HU', vat: 27 },
+		{ country: 'Ireland', code: 'IE', vat: 23 },
+		{ country: 'Italy', code: 'IT', vat: 22 },
+		{ country: 'Latvia', code: 'LV', vat: 21 },
+		{ country: 'Lithuania', code: 'LT', vat: 21 },
+		{ country: 'Luxembourg', code: 'LU', vat: 17 },
+		{ country: 'Malta', code: 'MT', vat: 18 },
+		{ country: 'Netherlands', code: 'NL', vat: 21 },
+		{ country: 'Poland', code: 'PL', vat: 23 },
+		{ country: 'Portugal', code: 'PT', vat: 23 },
+		{ country: 'Romania', code: 'RO', vat: 19 },
+		{ country: 'Slovakia', code: 'SK', vat: 20 },
+		{ country: 'Slovenia', code: 'SI', vat: 22 },
+		{ country: 'Spain', code: 'ES', vat: 21 },
+		{ country: 'Sweden', code: 'SE', vat: 25 },
+	];
 	dataSets = [
 		{ aID: 0, aName: 'Dataset 1' },
 		{ aID: 1, aName: 'Dataset 2' },
@@ -46,6 +76,7 @@ export class SetupComponent implements OnInit {
 	setupForm = new FormGroup({
 		country: new FormControl(0),
 		region: new FormControl(),
+		population: new FormControl(0),
 		startYear: new FormControl(),
 		name: new FormControl(),
 		localId: new FormControl(),
@@ -57,9 +88,11 @@ export class SetupComponent implements OnInit {
 	constructor(
 		private router: Router,
 		private toastSvc: ToastrService,
-		private projectService: ProjectService
+		private projectService: ProjectService,
+		public utilService: UtilService
 	) {
 		this.countries = CountryRegionData as ICountry[];
+
 		for (let i = 2021; i <= 2050; i++) {
 			this.years.push({ id: i, value: i });
 		}
@@ -70,7 +103,6 @@ export class SetupComponent implements OnInit {
 	init() {
 		this.setupForm.patchValue(this.project);
 		this.selectedCountry = this.project.location.country;
-		this.selectedRegion = this.project.location.region;
 	}
 
 	ngOnInit() {
@@ -91,21 +123,6 @@ export class SetupComponent implements OnInit {
 		});
 
 		this.isDataFound = false;
-	}
-
-	onRegionSelected(): void {
-		this.region = _.find(this.country?.regions, {
-			name: this.selectedRegion,
-		});
-
-		/*
-		if (
-			this.selectedCountry === 'Finland' &&
-			this.selectedRegion === 'Lappi'
-		) {
-			this.isDataFound = true;
-		}
-		*/
 	}
 
 	getSelectedModule() {
@@ -164,11 +181,7 @@ export class SetupComponent implements OnInit {
 	}
 
 	setup(): void {
-		if (
-			!this.setupForm.value.name ||
-			!this.selectedCountry ||
-			!this.selectedRegion
-		) {
+		if (!this.setupForm.value.name || !this.selectedCountry) {
 			this.toastSvc.error(
 				'Project error',
 				'Fill in the required fields to continue'
@@ -181,7 +194,7 @@ export class SetupComponent implements OnInit {
 		this.project.localId = this.setupForm.value.localId;
 		this.project.location = {
 			country: this.selectedCountry,
-			region: this.selectedRegion,
+			region: '',
 		};
 
 		this.getSelectedModule();

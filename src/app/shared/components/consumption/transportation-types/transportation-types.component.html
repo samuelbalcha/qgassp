@@ -1,0 +1,16 @@
+<div class="transportation-consumption">
+	<h4>{{ title }}</h4>
+	<div
+		class="flex-container"
+		*ngFor="let transport of publicTransportationDistribution"
+	>
+		<div class="flex-item width-100 space-between">
+			<mat-label>{{ transport.name }}</mat-label>
+		</div>
+		<div class="flex-item">
+			<mat-form-field appearance="fill" class="numberInput">
+				<input matInput type="number" [(ngModel)]="transport.value" />
+			</mat-form-field>
+		</div>
+	</div>
+</div>

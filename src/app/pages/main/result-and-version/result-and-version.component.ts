@@ -7,6 +7,7 @@ import { ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 import { IProject } from '../../../../../commons/types/IProject';
 import { ProjectService } from '../../../core/services/project.service';
+import { UtilService } from '../../../core/services/util.service';
 
 @Component({
 	selector: 'result-and-version',
@@ -27,7 +28,8 @@ export class ResultAndVersionComponent {
 
 	constructor(
 		private router: Router,
-		private projectService: ProjectService
+		private projectService: ProjectService,
+		public utilService: UtilService
 	) {
 		const currentProject = this.projectService.getDraftProject();
 		if (!currentProject || !currentProject.name) {
@@ -135,16 +137,5 @@ export class ResultAndVersionComponent {
 		return this.tableData
 			.map((t) => t.col2)
 			.reduce((acc, value) => acc + value, 0);
-	}
-
-	getTabName(selectedModule: string): string {
-		const tabNames: any = {
-			landuse: 'Land use change',
-			buildings: 'Building energy use',
-			traffic: 'Transport',
-			consumption: 'Consumption based',
-		};
-
-		return tabNames[`${selectedModule}`] as string;
 	}
 }

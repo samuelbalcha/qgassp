@@ -61,6 +61,8 @@ body {
 
 h4 {
 	color: $light-blue;
+	font-weight: 500;
+	padding-top: 12px;
 }
 
 .module-accordion {
@@ -202,9 +204,14 @@ h4 {
 	margin-top: $margin * 2;
 }
 
+.width-100 {
+	width: 100px;
+}
+
 .width-200 {
 	width: 200px;
 }
+
 .width-300 {
 	width: 300px;
 }

@@ -5,6 +5,7 @@ import _ from 'lodash';
 
 import { IProject } from '../../../../../commons/types/IProject';
 import { ProjectService } from '../../../core/services/project.service';
+import { UtilService } from '../../../core/services/util.service';
 
 @Component({
 	selector: 'module-loader',
@@ -13,11 +14,13 @@ import { ProjectService } from '../../../core/services/project.service';
 })
 export class ModuleLoaderComponent implements OnInit {
 	public myProject: IProject;
-	public territorialModules: string[] = [];
+
+	public projectModules: string[] = [];
 
 	constructor(
 		private router: Router,
-		private projectService: ProjectService
+		private projectService: ProjectService,
+		public utilService: UtilService
 	) {
 		const currentProject = this.projectService.getDraftProject();
 		if (!currentProject || !currentProject.name) {
@@ -28,8 +31,10 @@ export class ModuleLoaderComponent implements OnInit {
 	}
 
 	init() {
-		//	this.selectedModules = _.keys(_.pickBy(this.myProject.modules));
-		this.territorialModules = _.keys(this.myProject.territorial);
+		this.projectModules = _.keys(this.myProject.territorial);
+		if (this.myProject.consumption) {
+			this.projectModules.push('consumption');
+		}
 	}
 
 	ngOnInit(): void {

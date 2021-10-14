@@ -23,7 +23,7 @@ import { LandUseChangeBaselineComponent } from './components/land-use-change/lan
 import { CarbonStockChangeComponent } from './components/land-use-change/carbon-stock-change/carbon-stock-change.component';
 
 import { AreaPopulationComponent } from './components/consumption/area-and-population/area-and-population.component';
-import { TransportationConsumptionComponent } from './components/consumption/transportation-consumption/transportation-consumption.component';
+import { TransportationTypesComponent } from './components/consumption/transportation-types/transportation-types.component';
 import { HeatingConsumptionComponent } from './components/consumption/heating-consumption/heating-consumption.component';
 import { ConsumptionBaselineComponent } from './components/consumption/consumption-baseline/consumption-baseline.component';
 import { ConsumptionResultComponent } from './components/consumption/consumption-result/consumption-result.component';
@@ -37,6 +37,8 @@ import { CommercialStepComponent } from './components/building-energy/building-e
 import { ResultStepComponent } from './components/building-energy/building-energy-result/steps/result-step/result-step.component';
 import { TransportBaselineComponent } from './components/transport/transport-baseline/transport-baseline.component';
 import { TransportResultComponent } from './components/transport/transport-result/transport-result.component';
+import { HouseholdPolicyComponent } from './components/consumption/household-policy/household-policy.component';
+import { TransportPolicyComponent } from './components/consumption/transport-policy/transport-policy.component';
 
 const shared = [
 	HeaderComponent,
@@ -49,8 +51,10 @@ const shared = [
 	CarbonStockChangeComponent,
 	LandUseChangeResultComponent,
 	AreaPopulationComponent,
-	TransportationConsumptionComponent,
+	TransportationTypesComponent,
 	HeatingConsumptionComponent,
+	HouseholdPolicyComponent,
+	TransportPolicyComponent,
 	ConsumptionBaselineComponent,
 	ConsumptionResultComponent,
 	ResidentialBuildingsComponent,

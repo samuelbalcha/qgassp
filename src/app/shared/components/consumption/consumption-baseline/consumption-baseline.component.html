@@ -10,9 +10,9 @@
 		</mat-step>
 
 		<mat-step>
-			<ng-template matStepLabel>Transportation</ng-template>
+			<ng-template matStepLabel icon>Household energy</ng-template>
 			<div class="step-container">
-				<transportation-consumption></transportation-consumption>
+				<heating-consumption></heating-consumption>
 			</div>
 
 			<div class="btn-group">
@@ -28,8 +28,8 @@
 				<button
 					mat-button
 					mat-raised-button
-					class="next-btn"
 					matStepperNext
+					class="next-btn"
 				>
 					Next
 				</button>
@@ -37,9 +37,11 @@
 		</mat-step>
 
 		<mat-step>
-			<ng-template matStepLabel icon>Energy</ng-template>
+			<ng-template matStepLabel>Transportation</ng-template>
 			<div class="step-container">
-				<heating-consumption></heating-consumption>
+				<transportation-types
+					[title]="'What types of public transport are there?'"
+				></transportation-types>
 			</div>
 
 			<div class="btn-group">
@@ -58,7 +60,7 @@
 					class="next-btn"
 					(click)="createBaseline()"
 				>
-					Create a baseline
+					Create baseline
 				</button>
 			</div>
 		</mat-step>

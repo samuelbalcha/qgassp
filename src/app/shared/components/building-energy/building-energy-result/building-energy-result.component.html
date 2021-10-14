@@ -29,6 +29,7 @@
 			[pieChartTitle]="
 				'Share of Total Residential Emissions by fuel type'
 			"
+			[Data]="residentialData"
 			class="margin-bottom"
 		></building-energy-emmission>
 	</div>
@@ -44,6 +45,7 @@
 			[isEnergyUse]="true"
 			[isEnergyEmmission]="false"
 			[pieChartTitle]="'Share of Commercial Housing'"
+			[Data]="commercialData"
 			class="margin-bottom"
 		></building-energy-emmission>
 
@@ -56,7 +58,8 @@
 			[isEnergyEmmission]="true"
 			[pieChartTitle]="'Share of Total Commercial Emissions by fuel type'"
 			class="margin-bottom"
-		></building-energy-emmission>
+		>
+		</building-energy-emmission>
 	</div>
 
 	<div>
@@ -96,16 +99,22 @@
 						>Fill in the following information to calculate the
 						results for the policy plan.</i
 					>
-
+					<br />
+					<br />
 					<mat-horizontal-stepper [linear]="false">
 						<mat-step>
 							<ng-template matStepLabel
 								>Residential Buildings</ng-template
 							>
 
-							<residential-step
-								class="step-container"
-							></residential-step>
+							<div class="building-result-form">
+								<residential-step
+									[isBaseLine]="true"
+									[showNumberOfUnits]="true"
+									class="margin-bottom"
+								>
+								</residential-step>
+							</div>
 
 							<div class="btn-group">
 								<button
