@@ -2,11 +2,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-	selector: 'consumption-policy',
-	templateUrl: './consumption-policy.component.html',
+	selector: 'household-policy',
+	templateUrl: './household-policy.component.html',
 	styleUrls: ['./../consumption.component.scss'],
 })
-export class ConsumptionPolicyComponent {
+export class HouseholdPolicyComponent {
 	@Output() onCommercialBuildingsChange: EventEmitter<any>;
 
 	public energyEfficiency = 80;
@@ -19,13 +19,21 @@ export class ConsumptionPolicyComponent {
 		{ name: 'Other', id: 4 },
 	];
 
+	public heatingSources = [
+		{ name: 'District heating', value: 0.1 },
+		{ name: 'Electricity', value: 0.2 },
+		{ name: 'Household fuel combustion', value: 0.7 },
+	];
+	public combustionSources = [
+		{ name: 'Solids', value: 0.1 },
+		{ name: 'Liquids', value: 0.2 },
+		{ name: 'Gases', value: 0.7 },
+	];
+
 	public sourceOfEnergyShare = 80;
+
 	public mixOfEnergySource = 80;
 	public directEmissionFromDistrictHeating = 80;
-	public biofuelShare = 80;
-	public electricVehiclesShare = 80;
-	public privateTransport = 80;
-	public publicTransport = 20;
 
 	constructor() {
 		this.onCommercialBuildingsChange = new EventEmitter<any>();
