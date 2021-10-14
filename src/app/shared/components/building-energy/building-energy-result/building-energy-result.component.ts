@@ -45,6 +45,7 @@ export class BuildingEnergyResultComponent {
 	];
 	public horiChartData: SingleDataSet = [50, -200, 150];
 	public horiChartType: ChartType = 'horizontalBar';
+
 	public residentialData = [
 		{
 			EnergyUse: 'Apartments',
