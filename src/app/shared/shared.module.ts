@@ -41,6 +41,7 @@ import { EndUseOfEnergyComponent } from './components/building-energy/end-use-of
 import { HouseholdPolicyComponent } from './components/consumption/household-policy/household-policy.component';
 import { TransportPolicyComponent } from './components/consumption/transport-policy/transport-policy.component';
 import { ChangeBldgUseComponent } from './components/building-energy/change-bldg-use/change-bldg-use.component';
+import { DensificationTableComponent } from './components/building-energy/densification-table/densification-table.component';
 
 const shared = [
 	HeaderComponent,
@@ -70,7 +71,8 @@ const shared = [
 	TransportBaselineComponent,
 	TransportResultComponent,
 	EndUseOfEnergyComponent,
-	ChangeBldgUseComponent
+	ChangeBldgUseComponent,
+	DensificationTableComponent
 ];
 
 @NgModule({

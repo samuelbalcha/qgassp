@@ -85,6 +85,9 @@
 						<mat-step>
 							<ng-template matStepLabel>Building Changes And Densification</ng-template>
 							<change-bldg-use></change-bldg-use>
+
+							<densification-table></densification-table>
+
 							<div class="btn-group">
 								<button class="previous-btn" mat-button mat-raised-button matStepperPrevious>
 									Prev
@@ -97,7 +100,46 @@
 						</mat-step>
 
 						<mat-step>
-							<ng-template matStepLabel>Detail Stock</ng-template>
+							<ng-template matStepLabel>Detailed Building Stock</ng-template>
+
+							<div class="flex-container">
+								<div class="flex-item  retrofit-construction">
+									<h3>2. Buildings</h3>
+									<div class="margin-bottom label-left">
+										<mat-label>2.1 Residential buildings</mat-label>
+									</div>
+									<div class="flex-container label-left">
+										<div class="flex-item width-250">
+											<mat-label>
+												2.1.1 Total number of housing units
+											</mat-label>
+										</div>
+										<div class="flex-item ">
+											<mat-form-field appearance="fill" class="number-input">
+												<input matInput type="number" />
+											</mat-form-field>
+										</div>
+									</div>
+									<div class="label-left">
+										<residential-buildings [isBaseLine]="true" [showNumberOfUnits]="true"
+											class="margin-bottom">
+										</residential-buildings>
+									</div>
+								</div>
+
+								<div class="flex-item">
+									<div class="margin-bottom label-left">
+										<mat-label>2.2 Commercial buildings</mat-label>
+									</div>
+
+									<div class="label-left">
+										<commercial-buildings [isBaseLine]="true" class="label-left">
+										</commercial-buildings>
+									</div>
+								</div>
+							</div>
+
+							<end-use-of-energy></end-use-of-energy>
 							<div class="btn-group">
 								<button class="previous-btn" mat-button mat-raised-button matStepperPrevious>
 									Prev
