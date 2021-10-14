@@ -15,7 +15,7 @@
     "start": "node dist/server/index.js",
     "dev": "cross-env NODE_ENV=development npm run web",
     "demo": "cross-env NODE_ENV=demo nodemon",
-    "seed": "cross-env NODE_ENV=development node server/seed/init.ts",
+    "seed": "cross-env NODE_ENV=development ts-node server/seed/init.ts",
     "test": "jest --runInBand --detectOpenHandles",
     "lint": "eslint \"src/**/*{.js,.ts,.tsx}\"",
     "heroku-postbuild": "npm run build"
