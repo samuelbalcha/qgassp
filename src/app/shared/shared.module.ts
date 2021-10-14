@@ -38,6 +38,7 @@ import { ResultStepComponent } from './components/building-energy/building-energ
 import { TransportBaselineComponent } from './components/transport/transport-baseline/transport-baseline.component';
 import { TransportResultComponent } from './components/transport/transport-result/transport-result.component';
 import { ConsumptionPolicyComponent } from './components/consumption/policy/consumption-policy.component';
+import { EndUseOfEnergyComponent } from './components/building-energy/end-use-of-energy/end-use-of-energy.component';
 
 const shared = [
 	HeaderComponent,
@@ -65,6 +66,7 @@ const shared = [
 	BuildingEnergyResultComponent,
 	TransportBaselineComponent,
 	TransportResultComponent,
+	EndUseOfEnergyComponent
 ];
 
 @NgModule({
@@ -82,4 +84,4 @@ const shared = [
 	providers: [],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
-export class SharedModule {}
+export class SharedModule { }

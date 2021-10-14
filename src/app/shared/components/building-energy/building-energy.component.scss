@@ -8,10 +8,10 @@
 	padding-right: 5rem;
 	color: #000;
 }
-.building-inputs {
+.building-inputs{
 	padding-left: 4rem;
 }
-.building-result-form {
+.building-result-form{
 	padding-left: 21px;
 }
 .building-type {
@@ -19,8 +19,9 @@
 		max-width: 100px;
 	}
 }
-.building-baseline-container {
+.building-baseline-container{
 	padding-left: 1rem;
+	color: #3f51b5;
 }
 .retrofit {
 	color: #3f51b5;
@@ -49,16 +50,22 @@
 }
 
 .retrofit-construction {
-	width: 49%;
+	width: 50%;
 }
 
-.width-250 {
-	width: 250px;
+.width-100 {
+	width: 100px;
 }
-.width-277 {
+
+.width-250{
+	width: 230px;
+}
+.width-277{
 	width: 19%;
 }
-
+.building-next-button{
+	padding-left: 60rem;
+}
 .add-border {
 	border: 1px solid $gray;
 }
@@ -75,41 +82,33 @@
 	margin-left: 5px;
 	border: 1px solid $light-gray;
 }
-
 .color-brown,
 .color-brown:hover {
 	background-color: #6f2c54;
 }
-
 .step-container {
 	margin: auto;
 }
-
 mat-horizontal-stepper {
 	background-color: transparent !important;
 }
-
 .btn-group {
 	float: right;
 }
-
 .next-btn {
 	background-color: #1c294e;
 	color: #fff;
 	text-transform: uppercase;
 }
-
 mat-horizontal-stepper {
 	color: #324191;
 }
-
 .previous-btn {
 	background-color: #fbfbfb;
 	color: #1c294e;
 	text-transform: uppercase;
 	margin-right: 20px;
 }
-
 .numberInput {
 	width: 40%;
 }
