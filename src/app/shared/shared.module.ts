@@ -39,6 +39,7 @@ import { TransportBaselineComponent } from './components/transport/transport-bas
 import { TransportResultComponent } from './components/transport/transport-result/transport-result.component';
 import { HouseholdPolicyComponent } from './components/consumption/household-policy/household-policy.component';
 import { TransportPolicyComponent } from './components/consumption/transport-policy/transport-policy.component';
+import { TransportBaselineV2Component } from './components/transport/transport-baseline-v2/transport-baseline-v2.component';
 
 const shared = [
 	HeaderComponent,
@@ -66,6 +67,7 @@ const shared = [
 	CommercialStepComponent,
 	BuildingEnergyResultComponent,
 	TransportBaselineComponent,
+	TransportBaselineV2Component,
 	TransportResultComponent,
 ];
 

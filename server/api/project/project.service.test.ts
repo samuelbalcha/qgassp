@@ -25,6 +25,7 @@ describe('create', () => {
 	it('should create a project', async () => {
 		const data: IProject = {
 			startYear: 2022,
+			population: 1000,
 			name: 'My Project',
 			location: {
 				country: 'Finland',

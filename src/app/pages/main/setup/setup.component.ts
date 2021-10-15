@@ -196,6 +196,7 @@ export class SetupComponent implements OnInit {
 
 		this.project.name = this.setupForm.value.name;
 		this.project.startYear = this.setupForm.value.startYear;
+		this.project.population = this.setupForm.value.population;
 		this.project.localId = this.setupForm.value.localId;
 		this.project.location = {
 			country: this.selectedCountry,

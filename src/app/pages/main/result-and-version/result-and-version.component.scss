@@ -11,7 +11,13 @@
 }
 
 .version-accordion-item-body {
-	padding: $padding;
+	padding: 20px 10px 20px 20px;
+	background: #f2f2f2;
+}
+
+.module-accordion-item-body,
+.module-accordion-item-header {
+	padding: 10px;
 }
 
 .color-green,
@@ -45,8 +51,9 @@ tr.mat-footer-row {
 }
 
 .landuse-result {
-	background-color: $light-gray;
+	background-color: #fff;
 	display: block;
+	padding: 2%;
 }
 
 .buildings-result {
@@ -55,11 +62,12 @@ tr.mat-footer-row {
 }
 
 .add-new-version {
-	background-color: $light-green;
+	background-color: #184473;
 	color: #fff;
 	margin-top: $margin;
 	margin-bottom: $margin;
 	text-transform: uppercase;
+	margin-right: 60px;
 }
 
 .mat-tab-link {

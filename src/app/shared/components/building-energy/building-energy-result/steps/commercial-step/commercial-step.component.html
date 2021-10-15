@@ -3,11 +3,15 @@
 	<div class="new-construction flex-item space-between">
 		<mat-label class="margin-bottom">
 			<b>
-				1.1 Construction of the new building
+				Construction of the new building
 			</b>
 		</mat-label>
 
-		<commercial-buildings [showTotalFloorArea]="true" [showNumberOfUnits]="true" class="label-left">
+		<commercial-buildings
+			[showTotalFloorArea]="true"
+			[showNumberOfUnits]="true"
+			class="label-left"
+		>
 		</commercial-buildings>
 
 		<div class="flex-container">
@@ -61,11 +65,15 @@
 	<div class="retrofit-construction flex-item">
 		<mat-label class="margin-bottom">
 			<b>
-				1.2 Retrofit of buildings
+				Retrofit of buildings
 			</b>
 		</mat-label>
 
-		<commercial-buildings [showTotalFloorArea]="true" [showEnergyRating]="true" class=" margin-bottom">
+		<commercial-buildings
+			[showTotalFloorArea]="true"
+			[showEnergyRating]="true"
+			class=" margin-bottom"
+		>
 		</commercial-buildings>
 
 		<div class="margin-bottom">
@@ -75,13 +83,18 @@
 			</mat-label>
 		</div>
 		<div class="margin-bottom">
-			<commercial-buildings [showCarbonHeatAndElectricity]="true" class="margin-bottom">
+			<commercial-buildings
+				[showCarbonHeatAndElectricity]="true"
+				class="margin-bottom"
+			>
 			</commercial-buildings>
 		</div>
 
 		<div class="margin-bottom">
-			<mat-label>Increase in share of renewables from housing
-				retrofit</mat-label>
+			<mat-label
+				>Increase in share of renewables from housing
+				retrofit</mat-label
+			>
 		</div>
 		<div class="flex-container">
 			<div class="flex-item width-250">

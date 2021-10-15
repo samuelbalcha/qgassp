@@ -8,6 +8,9 @@
 
 .card-style {
 	background-color: $bg-color;
+	padding: 10px 10px 4px 10px;
+	border-radius: 2px;
+	box-shadow: none;
 }
 
 .bread-crumb {
@@ -28,13 +31,13 @@
 
 .project-status {
 	text-align: right;
+	font-style: italic;
 }
 
 .datasource {
-	padding-left: 60px;
-	font-size: medium;
-	font-weight: 600;
-	color: $light-blue;
+	font-size: 14px;
+	font-weight: 500;
+	color: #000000de;
 }
 
 .padding-left-60 {
