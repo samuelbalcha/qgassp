@@ -48,6 +48,10 @@
 			>
 				<div [ngSwitch]="calcModule">
 					<div *ngSwitchCase="'landuse'">
+						<i class="text-muted margin-bottom"
+							>Fill in the following information to set the
+							baseline</i
+						>
 						<land-use-change-baseline></land-use-change-baseline>
 						<button
 							class="add-button"
@@ -81,7 +85,7 @@
 						</div>
 					</div>
 					<div *ngSwitchCase="'traffic'">
-						<transport-baseline></transport-baseline>
+						<transport-baseline-v2></transport-baseline-v2>
 					</div>
 					<div *ngSwitchCase="'consumption'">
 						<consumption-baseline></consumption-baseline>

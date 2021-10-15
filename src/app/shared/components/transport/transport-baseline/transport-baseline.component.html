@@ -12,7 +12,7 @@
 		</div>
 		<div class="flex-item">
 			<mat-label>
-				--valueToBind--
+				{{ project?.startYear }}
 			</mat-label>
 		</div>
 	</div>
@@ -25,7 +25,7 @@
 		</div>
 		<div class="flex-item">
 			<mat-label>
-				--valueToBind--
+				{{ project?.location?.country }}
 			</mat-label>
 		</div>
 	</div>
@@ -38,7 +38,11 @@
 		</div>
 		<div class="flex-item">
 			<mat-form-field appearance="fill">
-				<input type="number" matInput [(ngModel)]="population" />
+				<input
+					type="number"
+					matInput
+					[(ngModel)]="project.population"
+				/>
 			</mat-form-field>
 		</div>
 	</div>

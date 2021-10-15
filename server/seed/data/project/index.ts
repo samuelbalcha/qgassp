@@ -11,6 +11,7 @@ const items = {
 	// Territorial
 	territorialA: {
 		name: 'Project Territorial',
+		population: 1000,
 		projectType: 'Territorial',
 		createdBy: Ref('user.adminA._id'),
 		startYear: '2022',
@@ -34,6 +35,7 @@ const items = {
 	// Consumption
 	consumptionA: {
 		name: 'Project Consumption',
+		population: 1500,
 		projectType: 'Consumption',
 		createdBy: Ref('user.adminA._id'),
 		startYear: '2024',
