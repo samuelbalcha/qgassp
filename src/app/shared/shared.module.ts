@@ -37,11 +37,17 @@ import { CommercialStepComponent } from './components/building-energy/building-e
 import { ResultStepComponent } from './components/building-energy/building-energy-result/steps/result-step/result-step.component';
 import { TransportBaselineComponent } from './components/transport/transport-baseline/transport-baseline.component';
 import { TransportResultComponent } from './components/transport/transport-result/transport-result.component';
+
 import { EndUseOfEnergyComponent } from './components/building-energy/end-use-of-energy/end-use-of-energy.component';
 import { HouseholdPolicyComponent } from './components/consumption/household-policy/household-policy.component';
 import { TransportPolicyComponent } from './components/consumption/transport-policy/transport-policy.component';
 import { ChangeBldgUseComponent } from './components/building-energy/change-bldg-use/change-bldg-use.component';
 import { DensificationTableComponent } from './components/building-energy/densification-table/densification-table.component';
+
+import { HouseholdPolicyComponent } from './components/consumption/household-policy/household-policy.component';
+import { TransportPolicyComponent } from './components/consumption/transport-policy/transport-policy.component';
+import { TransportBaselineV2Component } from './components/transport/transport-baseline-v2/transport-baseline-v2.component';
+
 
 const shared = [
 	HeaderComponent,
@@ -69,6 +75,7 @@ const shared = [
 	CommercialStepComponent,
 	BuildingEnergyResultComponent,
 	TransportBaselineComponent,
+	TransportBaselineV2Component,
 	TransportResultComponent,
 	EndUseOfEnergyComponent,
 	ChangeBldgUseComponent,

@@ -2,7 +2,11 @@
 	<h4>
 		<a class="header-link" routerLink="/dashboard">
 			GGIA Dashboard
-			<img class="fwd-arrow" src=".././assets/forward-arrow.png" alt="forward" />
+			<img
+				class="fwd-arrow"
+				src=".././assets/forward-arrow.png"
+				alt="forward"
+			/>
 		</a>
 		Setup New project
 	</h4>
@@ -20,13 +24,20 @@
 			<div class="flex-container">
 				<div class="flex-item space-between-60px">
 					<mat-label>
-						<p>1.1 Choose the country *</p>
+						<p>Choose the country *</p>
 					</mat-label>
 					<mat-form-field appearance="fill">
 						<mat-label>Country</mat-label>
-						<mat-select [(ngModel)]="selectedCountry" name="country" formControlName="country"
-							(selectionChange)="onCountrySelected()">
-							<mat-option *ngFor="let country of euList" [value]="country.country">
+						<mat-select
+							[(ngModel)]="selectedCountry"
+							name="country"
+							formControlName="country"
+							(selectionChange)="onCountrySelected()"
+						>
+							<mat-option
+								*ngFor="let country of euList"
+								[value]="country.country"
+							>
 								{{ country.country }}
 							</mat-option>
 						</mat-select>
@@ -34,17 +45,22 @@
 				</div>
 				<div class="flex-item space-between-60px margin-right-25px">
 					<mat-label>
-						<p>1.2 Population</p>
+						<p>Population</p>
 					</mat-label>
 					<mat-form-field appearance="fill">
 						<mat-label>Population</mat-label>
-						<input type="number" matInput formControlName="population" />
+						<input
+							type="number"
+							[(ngModel)]="population"
+							matInput
+							formControlName="population"
+						/>
 					</mat-form-field>
 				</div>
 
 				<div class="flex-item boxed">
 					<mat-label>
-						<p>1.5 Choose the year</p>
+						<p>Choose the year</p>
 					</mat-label>
 					<mat-form-field appearance="fill">
 						<mat-label>Choose a date</mat-label>
@@ -61,7 +77,7 @@
 			<div class="flex-container">
 				<div class="flex-item space-between-60px">
 					<mat-label>
-						<p>1.3 Name the project</p>
+						<p>Name the project</p>
 					</mat-label>
 					<mat-form-field appearance="fill">
 						<mat-label>Name</mat-label>
@@ -71,7 +87,7 @@
 				<div class="flex-item space-between-60px margin-right-25px">
 					<mat-label>
 						<p>
-							1.4 Project ID (recommended)
+							Project ID (recommended)
 						</p>
 					</mat-label>
 					<mat-form-field appearance="fill">
@@ -85,7 +101,7 @@
 			<div class="flex-container">
 				<div class="flex-item space-between-60px">
 					<p>
-						1.6 Choose the calculation modes and data source
+						Choose the calculation modes and data source
 					</p>
 					<i class="gray-text">
 						Choose which modules you would like to include. These
@@ -131,7 +147,10 @@
 					<mat-label>
 						<p>Territorial</p>
 					</mat-label>
-					<mat-checkbox [checked]="landuse" (change)="landuse = !landuse">
+					<mat-checkbox
+						[checked]="landuse"
+						(change)="landuse = !landuse"
+					>
 						{{ utilService.getName('landuse') }}
 					</mat-checkbox>
 				</div>
@@ -149,8 +168,13 @@
 			</div>
 
 			<div class="flex-container module-selector">
-				<div class="flex-item width-200 margin-right-25px space-between-60px">
-					<mat-checkbox [checked]="traffic" (change)="traffic = !traffic">
+				<div
+					class="flex-item width-200 margin-right-25px space-between-60px"
+				>
+					<mat-checkbox
+						[checked]="traffic"
+						(change)="traffic = !traffic"
+					>
 						{{ utilService.getName('traffic') }}
 					</mat-checkbox>
 				</div>
@@ -168,8 +192,13 @@
 			</div>
 
 			<div class="flex-container module-selector">
-				<div class="flex-item width-200 margin-right-25px space-between-60px">
-					<mat-checkbox [checked]="buildings" (change)="buildings = !buildings">
+				<div
+					class="flex-item width-200 margin-right-25px space-between-60px"
+				>
+					<mat-checkbox
+						[checked]="buildings"
+						(change)="buildings = !buildings"
+					>
 						{{ utilService.getName('buildings') }}
 					</mat-checkbox>
 				</div>
@@ -187,8 +216,13 @@
 			</div>
 
 			<div class="flex-container module-selector">
-				<div class="flex-item width-200 margin-right-25px space-between-60px">
-					<mat-checkbox [checked]="consumption" (change)="consumption = !consumption">
+				<div
+					class="flex-item width-200 margin-right-25px space-between-60px"
+				>
+					<mat-checkbox
+						[checked]="consumption"
+						(change)="consumption = !consumption"
+					>
 						{{ utilService.getName('consumption') }}
 					</mat-checkbox>
 				</div>

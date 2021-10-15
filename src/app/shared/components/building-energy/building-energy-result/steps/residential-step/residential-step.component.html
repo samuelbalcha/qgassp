@@ -3,15 +3,17 @@
 	<div class="new-construction flex-item space-between">
 		<mat-label class="margin-bottom">
 			<b>
-				1.1 Construction of the new building
+				Construction of the new building
 			</b>
 		</mat-label>
 
-		<residential-buildings [showTotalFloorArea]="true" [showNumberOfUnits]="true" class=" margin-bottom">
+		<residential-buildings
+			[showTotalFloorArea]="true"
+			[showNumberOfUnits]="true"
+			class=" margin-bottom"
+		>
 		</residential-buildings>
-		<br>
-		<br>
-		<br>
+    
 		<div class="flex-container">
 			<div class="flex-item  width-250">
 				<mat-label>
@@ -39,7 +41,7 @@
 			</div>
 		</div>
 
-		<div>
+		<div class="margin-bottom">
 			<mat-label>
 				Increase in share of renewables for the new housing stock
 			</mat-label>
@@ -63,11 +65,15 @@
 	<div class="retrofit-construction flex-item">
 		<mat-label class="margin-bottom">
 			<b>
-				1.2 Retrofit of buildings
+				Retrofit of buildings
 			</b>
 		</mat-label>
 
-		<residential-buildings [showTotalFloorArea]="true" [showEnergyRating]="true" class=" margin-bottom">
+		<residential-buildings
+			[showTotalFloorArea]="true"
+			[showEnergyRating]="true"
+			class=" margin-bottom"
+		>
 		</residential-buildings>
 
 		<div class="margin-bottom">

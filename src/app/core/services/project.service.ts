@@ -27,6 +27,7 @@ export class ProjectService {
 		this.project = {
 			status: ProjectStatuses.DRAFT,
 			name: '',
+			population: 0,
 			location: {
 				country: '',
 				region: '',

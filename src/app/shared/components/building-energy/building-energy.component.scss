@@ -8,6 +8,7 @@
 	padding-right: 5rem;
 	color: #000;
 }
+
 .building-inputs{
 	padding-left: 4rem;
 }
@@ -19,9 +20,9 @@
 		max-width: 100px;
 	}
 }
-.building-baseline-container{
+
+.building-baseline-container {
 	padding-left: 1rem;
-	color: #3f51b5;
 }
 .retrofit {
 	color: #3f51b5;
@@ -53,8 +54,11 @@
 	width: 50%;
 }
 
-.width-100 {
-	width: 100px;
+.width-250 {
+	width: 250px;
+}
+.width-277 {
+	width: 19%;
 }
 
 .width-250{
@@ -100,9 +104,7 @@ mat-horizontal-stepper {
 	color: #fff;
 	text-transform: uppercase;
 }
-mat-horizontal-stepper {
-	color: #324191;
-}
+
 .previous-btn {
 	background-color: #fbfbfb;
 	color: #1c294e;

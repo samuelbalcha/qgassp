@@ -21,6 +21,7 @@ export interface IProjectModule {
 
 export interface IProject {
 	name: string;
+	population: number;
 	location: {
 		country: string;
 		region: string;

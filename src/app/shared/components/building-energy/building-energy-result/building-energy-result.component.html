@@ -12,22 +12,37 @@
 
 		<building-energy-emmission [componentType]="'Residential emissions'" [title]="'Total Residential Emissions'"
 			[emissionValue]="'404 589,58'" [emissionUnit]="'tCO2'" [isEnergyUse]="false" [isEnergyEmmission]="true"
-			[pieChartTitle]="
-				'Share of Total Residential Emissions by fuel type'
-			" [Data]="residentialData" class="margin-bottom"></building-energy-emmission>
+			[pieChartTitle]="'Share of Total Residential Emissions by fuel type'"
+			[Data]="residentialData"
+			class="margin-bottom"
+		></building-energy-emmission>
 	</div>
 
 	<!-- Commercial -->
 	<div class="margin-bottom">
 		<h2 class="margin-bottom">Commercial</h2>
-		<building-energy-emmission [componentType]="'Commercial Energy use'"
-			[title]="'Total Commercial Energy Demand MWh'" [emissionValue]="'1 454 326,19'" [emissionUnit]="'MWh'"
-			[isEnergyUse]="true" [isEnergyEmmission]="false" [pieChartTitle]="'Share of Commercial Housing'"
-			[Data]="commercialData" class="margin-bottom"></building-energy-emmission>
+		<building-energy-emmission
+			[componentType]="'Commercial Energy use'"
+			[title]="'Total Commercial Energy Demand MWh'"
+			[emissionValue]="'1 454 326,19'"
+			[emissionUnit]="'MWh'"
+			[isEnergyUse]="true"
+			[isEnergyEmmission]="false"
+			[pieChartTitle]="'Share of Commercial Housing'"
+			[Data]="commercialData"
+			class="margin-bottom"
+		></building-energy-emmission>
 
-		<building-energy-emmission [componentType]="'Commercial emissions'" [title]="'Total Commercial Emissions'"
-			[emissionValue]="'404 589,58'" [emissionUnit]="'tCO2'" [isEnergyUse]="false" [isEnergyEmmission]="true"
-			[pieChartTitle]="'Share of Total Commercial Emissions by fuel type'" class="margin-bottom">
+		<building-energy-emmission
+			[componentType]="'Commercial emissions'"
+			[title]="'Total Commercial Emissions'"
+			[emissionValue]="'404 589,58'"
+			[emissionUnit]="'tCO2'"
+			[isEnergyUse]="false"
+			[isEnergyEmmission]="true"
+			[pieChartTitle]="'Share of Total Commercial Emissions by fuel type'"
+			class="margin-bottom"
+		>
 		</building-energy-emmission>
 	</div>
 
@@ -43,6 +58,7 @@
 						<mat-icon style="color: white" *ngIf="!accordionItem.expanded">expand_more</mat-icon>
 					</span>
 				</div>
+
 				<div class="module-accordion-item-body" role="region"
 					[style.display]="accordionItem.expanded ? '' : 'none'">
 					<i>Fill in the following information to calculate the

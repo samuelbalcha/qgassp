@@ -44,13 +44,16 @@ export class SetupComponent implements OnInit {
 		{ country: 'Germany', code: 'DE', vat: 19 },
 		{ country: 'Greece', code: 'GR', vat: 24 },
 		{ country: 'Hungary', code: 'HU', vat: 27 },
+		{ country: 'Iceland', code: 'IS', vat: 27 },
 		{ country: 'Ireland', code: 'IE', vat: 23 },
 		{ country: 'Italy', code: 'IT', vat: 22 },
 		{ country: 'Latvia', code: 'LV', vat: 21 },
+		{ country: 'Liechtenstein', code: 'LI', vat: 21 },
 		{ country: 'Lithuania', code: 'LT', vat: 21 },
 		{ country: 'Luxembourg', code: 'LU', vat: 17 },
 		{ country: 'Malta', code: 'MT', vat: 18 },
 		{ country: 'Netherlands', code: 'NL', vat: 21 },
+		{ country: 'Norway', code: 'NO', vat: 21 },
 		{ country: 'Poland', code: 'PL', vat: 23 },
 		{ country: 'Portugal', code: 'PT', vat: 23 },
 		{ country: 'Romania', code: 'RO', vat: 19 },
@@ -58,6 +61,8 @@ export class SetupComponent implements OnInit {
 		{ country: 'Slovenia', code: 'SI', vat: 22 },
 		{ country: 'Spain', code: 'ES', vat: 21 },
 		{ country: 'Sweden', code: 'SE', vat: 25 },
+		{ country: 'Switzerland', code: 'CH', vat: 25 },
+		{ country: 'UK', code: 'GB', vat: 25 },
 	];
 	dataSets = [
 		{ aID: 0, aName: 'Dataset 1' },
@@ -191,6 +196,7 @@ export class SetupComponent implements OnInit {
 
 		this.project.name = this.setupForm.value.name;
 		this.project.startYear = this.setupForm.value.startYear;
+		this.project.population = this.setupForm.value.population;
 		this.project.localId = this.setupForm.value.localId;
 		this.project.location = {
 			country: this.selectedCountry,

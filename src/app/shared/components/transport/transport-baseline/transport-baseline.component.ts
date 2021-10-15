@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { IProject } from '../../../../../../commons/types/IProject';
+import { ProjectService } from '../../../../core/services/project.service';
 
 @Component({
 	selector: 'transport-baseline',
@@ -6,7 +8,6 @@ import { Component } from '@angular/core';
 	styleUrls: ['./../transport.component.scss'],
 })
 export class TransportBaselineComponent {
-	public population = 1500;
 	public publicTransportationIntensity = [
 		{ type: 'Not available', factor: 0 },
 		{ type: 'Very Low', factor: 0.25 },
@@ -78,7 +79,10 @@ export class TransportBaselineComponent {
 	public selectedFreightOnWheels = {};
 	public selectedInlandWaterWay = {};
 
-	constructor() {
-		console.log('hi');
+	public project: IProject;
+
+	constructor(private projectService: ProjectService) {
+		this.project = this.projectService.getDraftProject() as IProject;
+		console.log('Project-transport', this.project);
 	}
 }

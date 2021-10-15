@@ -86,7 +86,7 @@ export class LandUseChangeResultComponent {
 	];
 
 	public tableDataTotal = this.getTotal();
-	public tableTitle = 'CO2 emission [t CO2/yr]';
+	public tableTitle = 'CO2 emission (t CO2/yr)';
 
 	toFromdata = [
 		{ to: 'grassLand', from: 'Settelment' },

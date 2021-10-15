@@ -1,0 +1,155 @@
+<div>
+	<div class="margin-bottom">
+		<i class="text-muted margin-bottom"
+			>Fill in the following information to set the baseline</i
+		>
+	</div>
+
+	<div class="flex-container">
+		<div class="flex-item double-space-between">
+			<h4>Transport environment (share of transport activity %)</h4>
+			<div
+				class="flex-container"
+				*ngFor="let transport of transportEnvironments"
+			>
+				<div class="flex-item width-100">
+					<mat-label>{{ transport.name }}</mat-label>
+				</div>
+				<div class="flex-item">
+					<mat-form-field appearance="fill">
+						<input
+							matInput
+							type="number"
+							min="0"
+							max="100"
+							[(ngModel)]="transport.value"
+						/>
+					</mat-form-field>
+				</div>
+			</div>
+			<h4>Size of the area</h4>
+			<div class="flex-container ">
+				<div class="flex-item width-100">
+					<mat-label>
+						N-S diameter (km)
+					</mat-label>
+				</div>
+				<div class="flex-item ">
+					<mat-form-field appearance="fill">
+						<input
+							type="number"
+							matInput
+							[(ngModel)]="northToSouthDiameter"
+						/>
+					</mat-form-field>
+				</div>
+			</div>
+			<div class="flex-container ">
+				<div class="flex-item width-100">
+					<mat-label>
+						E-W diameter (km)
+					</mat-label>
+				</div>
+				<div class="flex-item ">
+					<mat-form-field appearance="fill">
+						<input
+							type="number"
+							matInput
+							[(ngModel)]="eastToWestDiameter"
+						/>
+					</mat-form-field>
+				</div>
+			</div>
+		</div>
+		<!-- transport system -->
+		<div class="flex-item">
+			<h4>Transport systems</h4>
+			<div class="flex-container ">
+				<div class="flex-item width-200">
+					<mat-label>
+						Passanger road transport by non-residents
+					</mat-label>
+				</div>
+				<div class="flex-item ">
+					<mat-form-field appearance="fill">
+						<mat-select
+							[(ngModel)]="selectedPassangerRoadTransport"
+						>
+							<mat-option
+								*ngFor="
+									let passangerTransport of passengerRoadTransport
+								"
+								[value]="passangerTransport.factor"
+							>
+								{{ passangerTransport.type }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+			</div>
+			<div class="flex-container ">
+				<div class="flex-item width-200">
+					<mat-label>
+						Freight transport on road
+					</mat-label>
+				</div>
+				<div class="flex-item ">
+					<mat-form-field appearance="fill">
+						<mat-select [(ngModel)]="selectedFreightRoadTransport">
+							<mat-option
+								*ngFor="let freightRoad of freightRoadTransport"
+								[value]="freightRoad.factor"
+							>
+								{{ freightRoad.type }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+			</div>
+			<div class="flex-container ">
+				<div class="flex-item width-200">
+					<mat-label>
+						Freight transport on rails
+					</mat-label>
+				</div>
+				<div class="flex-item ">
+					<mat-form-field appearance="fill">
+						<mat-select [(ngModel)]="selectedFreightRailsTransport">
+							<mat-option
+								*ngFor="
+									let freightRails of freightRailsTransport
+								"
+								[value]="freightRails.factor"
+							>
+								{{ freightRails.type }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+			</div>
+			<div class="flex-container ">
+				<div class="flex-item width-200">
+					<mat-label>
+						Freight transport on inland waterways
+					</mat-label>
+				</div>
+				<div class="flex-item ">
+					<mat-form-field appearance="fill">
+						<mat-select
+							[(ngModel)]="selectedFreightWaterwaysTransport"
+						>
+							<mat-option
+								*ngFor="
+									let freightWaterways of freightInlandWaterwaysTransport
+								"
+								[value]="freightWaterways.factor"
+							>
+								{{ freightWaterways.type }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

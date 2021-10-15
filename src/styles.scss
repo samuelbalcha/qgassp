@@ -21,6 +21,7 @@ body {
 }
 body {
 	margin: 0;
+	color: #000000;
 }
 
 .flex-container {
@@ -54,15 +55,12 @@ body {
 .headerLink {
 	text-decoration: none;
 	font-size: medium;
-	color: $light-blue;
-	font-size: 16px;
 	font-weight: 500;
 }
 
 h4 {
-	color: $light-blue;
-	font-weight: 500;
-	padding-top: 12px;
+	font-size: 14px;
+	color: #000000;
 }
 
 .module-accordion {
@@ -130,7 +128,7 @@ h4 {
 }
 
 .tab-content {
-	padding: 10px;
+	padding: 0px;
 }
 
 .text-align-center {
@@ -226,4 +224,44 @@ h4 {
 
 .margin-bottom {
 	margin-bottom: $margin;
+}
+
+mat-typography h2 {
+	margin: 0 0 26px;
+}
+
+.mat-typography h4 {
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.mat-form-field-flex {
+	border: 1px #fbfbfb solid !important;
+	border-radius: 2px !important;
+}
+
+.mat-form-field-infix {
+	padding: 0.55em 0.55em 0 0.75em;
+}
+
+.datasource {
+	font-size: 14px;
+	font-weight: 500;
+	color: #000000de;
+}
+.project-status {
+	font-style: italic;
+}
+
+tr.mat-header-row {
+	height: 20px;
+}
+
+tr.mat-row,
+tr.mat-footer-row {
+	height: 35px;
+}
+
+.chart-wrapper {
+	padding: 0% 20% 5% 30%;
 }

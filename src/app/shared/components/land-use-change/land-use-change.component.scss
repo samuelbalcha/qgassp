@@ -71,7 +71,8 @@ td.mat-cell {
 }
 
 .carbon-stock-table {
-	background-color: $bg-color !important;
+	padding: 1%;
+	margin-right: 50px;
 }
 
 @include mat-table-columns(
