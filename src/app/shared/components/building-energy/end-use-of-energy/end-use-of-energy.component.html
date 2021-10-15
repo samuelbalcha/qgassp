@@ -1,0 +1,46 @@
+<div>
+    <div class="flex-container label-left">
+        <div class="flex-container label-left">
+            <div class="flex-item width-250">
+                <b>
+                    End Use Of Energy
+                </b>
+            </div>
+            <div class="flex-item ">
+                <mat-label>
+                    %
+                </mat-label>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div *ngFor="let building of endUseData" class="flex-container label-left">
+        <div class="flex-container label-left">
+            <div class="flex-item width-250">
+                <mat-label>
+                    {{building.useType}}
+                </mat-label>
+            </div>
+            <div class="flex-item ">
+                <mat-form-field appearance="fill" class="number-input">
+                    <input matInput type="number" style="width:80%" [(ngModel)]="building.amount" />
+                    <span matSufix>%&nbsp;</span>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex-container label-left">
+        <div class="flex-container label-left">
+            <div class="flex-item width-250">
+
+            </div>
+            <div class="flex-item ">
+                <mat-label>
+                    {{getTotal() | percent}}
+                </mat-label>
+            </div>
+        </div>
+    </div>
+
+</div>
