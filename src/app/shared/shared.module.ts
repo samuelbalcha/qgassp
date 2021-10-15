@@ -43,11 +43,7 @@ import { HouseholdPolicyComponent } from './components/consumption/household-pol
 import { TransportPolicyComponent } from './components/consumption/transport-policy/transport-policy.component';
 import { ChangeBldgUseComponent } from './components/building-energy/change-bldg-use/change-bldg-use.component';
 import { DensificationTableComponent } from './components/building-energy/densification-table/densification-table.component';
-
-import { HouseholdPolicyComponent } from './components/consumption/household-policy/household-policy.component';
-import { TransportPolicyComponent } from './components/consumption/transport-policy/transport-policy.component';
 import { TransportBaselineV2Component } from './components/transport/transport-baseline-v2/transport-baseline-v2.component';
-
 
 const shared = [
 	HeaderComponent,
@@ -79,7 +75,7 @@ const shared = [
 	TransportResultComponent,
 	EndUseOfEnergyComponent,
 	ChangeBldgUseComponent,
-	DensificationTableComponent
+	DensificationTableComponent,
 ];
 
 @NgModule({
@@ -97,4 +93,4 @@ const shared = [
 	providers: [],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
-export class SharedModule { }
+export class SharedModule {}

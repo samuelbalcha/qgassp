@@ -54,13 +54,11 @@ body {
 
 .headerLink {
 	text-decoration: none;
-	font-size: medium;
 	font-weight: 500;
 }
 
 h4 {
 	font-size: 14px;
-	color: #000000;
 }
 
 .module-accordion {
@@ -87,7 +85,6 @@ h4 {
 }
 
 .module-accordion-item-description {
-	font-size: 0.85em;
 	color: $dark-gray;
 }
 
@@ -138,8 +135,7 @@ h4 {
 .add-button {
 	padding-left: 45rem;
 	color: $light-blue;
-	font-size: inherit;
-	font-weight: 500;
+	font-weight: 400;
 	float: right;
 }
 
@@ -186,10 +182,6 @@ h4 {
 	font-family: monospace; /* this is just for good looks */
 }
 
-.gray-text {
-	color: $dark-gray;
-}
-
 .space-between-60px {
 	margin-left: 60px;
 }
@@ -226,18 +218,18 @@ h4 {
 	margin-bottom: $margin;
 }
 
-mat-typography h2 {
+.mat-typography h2 {
 	margin: 0 0 26px;
 }
 
 .mat-typography h4 {
-	font-size: 16px;
-	font-weight: 500;
+	font-size: 14px;
 }
 
 .mat-form-field-flex {
 	border: 1px #fbfbfb solid !important;
 	border-radius: 2px !important;
+	height: 45px !important;
 }
 
 .mat-form-field-infix {
@@ -245,10 +237,9 @@ mat-typography h2 {
 }
 
 .datasource {
-	font-size: 14px;
 	font-weight: 500;
-	color: #000000de;
 }
+
 .project-status {
 	font-style: italic;
 }
@@ -264,4 +255,19 @@ tr.mat-footer-row {
 
 .chart-wrapper {
 	padding: 0% 20% 5% 30%;
+}
+
+.mat-body,
+.mat-body-1,
+.mat-typography {
+	font-size: 13px !important;
+	font-weight: 200 !important;
+	letter-spacing: normal;
+	line-height: 1.2 !important;
+	color: #000000 !important;
+}
+
+button {
+	font-size: 13px !important;
+	font-weight: 400 !important;
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'building-energy-baseline',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
 	styleUrls: ['./../building-energy.component.scss'],
 })
 export class BuildingEnergyBaselineComponent {
-	constructor() {}
+	constructor(private router: Router) {}
+
+	createBaseline(): void {
+		this.router.navigateByUrl('result-version');
+	}
 }

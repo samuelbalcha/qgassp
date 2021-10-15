@@ -18,22 +18,22 @@
 			</ng-template>
 
 			<div class="tab-content" [ngSwitch]="selectedModule">
-				<div *ngSwitchCase="'landuse'" class="landuse-result">
+				<div *ngSwitchCase="'landuse'" class="baseline-result">
 					<land-use-change-result></land-use-change-result>
 					<button class="add-button add-new-version" mat-button>
 						+ Add another plan policy
 					</button>
 				</div>
-				<div *ngSwitchCase="'buildings'" class="buildings-result">
+				<div *ngSwitchCase="'buildings'" class="baseline-result">
 					<building-energy-result></building-energy-result>
 					<button class="add-button add-new-version" mat-button>
 						+ Add another plan policy
 					</button>
 				</div>
-				<div *ngSwitchCase="'traffic'">
+				<div *ngSwitchCase="'traffic'" class="baseline-result">
 					<transport-result></transport-result>
 				</div>
-				<div *ngSwitchCase="'consumption'" class="consumption-result">
+				<div *ngSwitchCase="'consumption'" class="baseline-result">
 					<consumption-result></consumption-result>
 					<button class="add-button add-new-version" mat-button>
 						+ Add another plan policy

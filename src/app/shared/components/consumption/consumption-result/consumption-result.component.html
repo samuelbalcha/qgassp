@@ -1,209 +1,211 @@
-<div class="summary flex-container">
-	<div class="flex-item space-between">
-		<co2-emission-summary
-			[isBaseLine]="true"
-			[showHeader]="true"
-			[tableTitle]="'Baseline results'"
-			[tableData]="tableData"
-			[tableDataTotal]="tableDataTotal"
-		></co2-emission-summary>
+<div>
+	<div class="margin-bottom">
+		<span class="margin-bottom text-muted">Baseline result</span>
 	</div>
+	<div class="summary flex-container">
+		<div class="flex-item space-between">
+			<co2-emission-summary
+				[isBaseLine]="true"
+				[showHeader]="true"
+				[tableTitle]="''"
+				[tableData]="tableData"
+				[tableDataTotal]="tableDataTotal"
+			></co2-emission-summary>
+		</div>
 
-	<div class="flex-item">
-		<div
-			class="chart-wrapper"
-			style="display: inline-flex; padding-left: 20%;"
-		>
-			<p class="verical-text">
-				EMISSIONS / KG CO2 eq
-			</p>
-			<div>
-				<canvas
-					width="550"
-					height="450"
-					baseChart
-					[datasets]="barChartData"
-					[labels]="barChartLabels"
-					[options]="barChartOptions"
-					[plugins]="barChartPlugins"
-					[legend]="barChartLegend"
-					[chartType]="barChartType"
-				>
-				</canvas>
-				<h5>YEARS 2021-2050</h5>
+		<div class="flex-item">
+			<div
+				class="chart-wrapper"
+				style="display: inline-flex; padding-left: 20%;"
+			>
+				<p class="verical-text">
+					EMISSIONS / KG CO2 eq
+				</p>
+				<div>
+					<canvas
+						width="550"
+						height="450"
+						baseChart
+						[datasets]="barChartData"
+						[labels]="barChartLabels"
+						[options]="barChartOptions"
+						[plugins]="barChartPlugins"
+						[legend]="barChartLegend"
+						[chartType]="barChartType"
+					>
+					</canvas>
+					<h5>YEARS 2021-2050</h5>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<cdk-accordion class="version-accordion">
-	<cdk-accordion-item
-		#accordionItem="cdkAccordionItem"
-		class="module-accordion-item"
-		role="button"
-		tabindex="0"
-		[attr.aria-expanded]="accordionItem.expanded"
-	>
-		<div
-			class="module-accordion-item-header color-purple"
-			(click)="accordionItem.toggle()"
+	<cdk-accordion class="version-accordion">
+		<cdk-accordion-item
+			#accordionItem="cdkAccordionItem"
+			class="module-accordion-item"
+			role="button"
+			tabindex="0"
+			[attr.aria-expanded]="accordionItem.expanded"
 		>
-			2.POLICY
-			<span class="module-accordion-item-description">
-				<mat-icon style="color: white" *ngIf="accordionItem.expanded"
-					>expand_less</mat-icon
-				>
-				<mat-icon style="color: white" *ngIf="!accordionItem.expanded"
-					>expand_more</mat-icon
-				>
-			</span>
-		</div>
-		<div
-			class="version-accordion-item-body"
-			role="region"
-			[style.display]="accordionItem.expanded ? '' : 'none'"
-			id="consumption-accordion-body"
-		>
-			<mat-horizontal-stepper [linear]="false">
-				<mat-step>
-					<ng-template matStepLabel
-						>Area type and Population</ng-template
+			<div
+				class="module-accordion-item-header color-purple"
+				(click)="accordionItem.toggle()"
+			>
+				2.POLICY
+				<span class="module-accordion-item-description">
+					<mat-icon
+						style="color: white"
+						*ngIf="accordionItem.expanded"
+						>expand_less</mat-icon
 					>
-					<div class="flex-container">
-						<div class="flex-item space-between">
-							<h4>Area type</h4>
-							<area-and-population
-								[areaTypeDefinition]="
-									'Define the planned new area type'
-								"
-								[populationDefinition]="
-									'Number of new population moving in'
-								"
-								[householdDefinition]="
-									'Average size of the household of the new population in the area'
-								"
-								[incomeDefinition]="
-									'Average income level of the new population in the area'
-								"
-							></area-and-population>
-						</div>
-						<div class="flex-item">
-							<h4>Construction</h4>
-							<div class="flex-container">
-								<div class="flex-item construction">
-									New planned residential buildings in total
-									gross sqm, m2
-								</div>
-								<div class="flex-item">
-									<mat-form-field
-										appearance="fill"
-										class="numberInput"
-									>
-										<input
-											matInput
-											type="number"
-											[(ngModel)]="totalNewBuildArea"
-										/>
-									</mat-form-field>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="btn-group">
-						<button class="next-btn" mat-button matStepperNext>
-							Next
-						</button>
-					</div>
-				</mat-step>
-
-				<mat-step>
-					<ng-template matStepLabel icon
-						>Household energy</ng-template
+					<mat-icon
+						style="color: white"
+						*ngIf="!accordionItem.expanded"
+						>expand_more</mat-icon
 					>
-					<div class="step-container">
-						<household-policy></household-policy>
-						<!--
+				</span>
+			</div>
+			<div
+				class="version-accordion-item-body"
+				role="region"
+				[style.display]="accordionItem.expanded ? '' : 'none'"
+				id="consumption-accordion-body"
+			>
+				<mat-horizontal-stepper [linear]="false">
+					<mat-step>
+						<ng-template matStepLabel
+							>Area type and Population</ng-template
+						>
 						<div class="flex-container">
+							<div class="flex-item space-between">
+								<h4>Area type</h4>
+								<area-and-population
+									[areaTypeDefinition]="
+										'Define the planned new area type'
+									"
+									[populationDefinition]="
+										'Number of new population moving in'
+									"
+									[householdDefinition]="
+										'Average size of the household of the new population in the area'
+									"
+									[incomeDefinition]="
+										'Average income level of the new population in the area'
+									"
+								></area-and-population>
+							</div>
 							<div class="flex-item">
-								<heating-consumption></heating-consumption>
+								<h4>Construction</h4>
+								<div class="flex-container">
+									<div class="flex-item construction">
+										New planned residential buildings in
+										total gross sqm, m2
+									</div>
+									<div class="flex-item">
+										<mat-form-field
+											appearance="fill"
+											class="numberInput"
+										>
+											<input
+												matInput
+												type="number"
+												[(ngModel)]="totalNewBuildArea"
+											/>
+										</mat-form-field>
+									</div>
+								</div>
 							</div>
 						</div>
-						-->
-					</div>
 
-					<div class="btn-group">
-						<button
-							class="previous-btn"
-							mat-button
-							mat-raised-button
-							matStepperPrevious
-						>
-							Prev
-						</button>
-
-						<button
-							mat-button
-							mat-raised-button
-							class="next-btn"
-							matStepperNext
-						>
-							Next
-						</button>
-					</div>
-				</mat-step>
-
-				<mat-step>
-					<ng-template matStepLabel>Transportation</ng-template>
-					<div class="step-container">
-						<transport-policy></transport-policy>
-					</div>
-
-					<div class="btn-group">
-						<button
-							class="previous-btn"
-							mat-button
-							mat-raised-button
-							matStepperPrevious
-						>
-							Prev
-						</button>
-						<button
-							mat-button
-							mat-raised-button
-							class="next-btn"
-							matStepperNext
-						>
-							Next
-						</button>
-					</div>
-				</mat-step>
-				<mat-step>
-					<ng-template matStepLabel>Result</ng-template>
-					<div class="step-container">
-						<div class="version-summary">
-							<co2-emission-summary
-								[tableTitle]="'Version results'"
-								[showHeader]="true"
-								[tableData]="tableData"
-								[tableDataTotal]="tableDataTotal"
-							></co2-emission-summary>
+						<div class="btn-group">
+							<button class="next-btn" mat-button matStepperNext>
+								Next
+							</button>
 						</div>
-					</div>
+					</mat-step>
 
-					<div class="btn-group">
-						<button
-							class="previous-btn"
-							mat-button
-							mat-raised-button
-							matStepperPrevious
+					<mat-step>
+						<ng-template matStepLabel icon
+							>Household energy</ng-template
 						>
-							Prev
-						</button>
-					</div>
-				</mat-step>
-			</mat-horizontal-stepper>
+						<div class="step-container">
+							<household-policy></household-policy>
+						</div>
 
-			<!--	<consumption-policy></consumption-policy> -->
-		</div>
-	</cdk-accordion-item>
-</cdk-accordion>
+						<div class="btn-group">
+							<button
+								class="previous-btn"
+								mat-button
+								mat-raised-button
+								matStepperPrevious
+							>
+								Prev
+							</button>
+
+							<button
+								mat-button
+								mat-raised-button
+								class="next-btn"
+								matStepperNext
+							>
+								Next
+							</button>
+						</div>
+					</mat-step>
+
+					<mat-step>
+						<ng-template matStepLabel>Transportation</ng-template>
+						<div class="step-container">
+							<transport-policy></transport-policy>
+						</div>
+
+						<div class="btn-group">
+							<button
+								class="previous-btn"
+								mat-button
+								mat-raised-button
+								matStepperPrevious
+							>
+								Prev
+							</button>
+							<button
+								mat-button
+								mat-raised-button
+								class="next-btn"
+								matStepperNext
+							>
+								Next
+							</button>
+						</div>
+					</mat-step>
+					<mat-step>
+						<ng-template matStepLabel>Result</ng-template>
+						<div class="step-container">
+							<div class="version-summary">
+								<co2-emission-summary
+									[tableTitle]="'Version results'"
+									[showHeader]="true"
+									[tableData]="tableData"
+									[tableDataTotal]="tableDataTotal"
+								></co2-emission-summary>
+							</div>
+						</div>
+
+						<div class="btn-group">
+							<button
+								class="previous-btn"
+								mat-button
+								mat-raised-button
+								matStepperPrevious
+							>
+								Prev
+							</button>
+						</div>
+					</mat-step>
+				</mat-horizontal-stepper>
+
+				<!--	<consumption-policy></consumption-policy> -->
+			</div>
+		</cdk-accordion-item>
+	</cdk-accordion>
+</div>

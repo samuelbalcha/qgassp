@@ -15,7 +15,6 @@
 .title {
 	color: $light-blue;
 	margin: $margin * 2;
-	font-size: 13px;
 }
 
 .intro-title {
@@ -27,24 +26,24 @@
 	text-align: center;
 	padding-right: 14rem;
 	padding-left: 14rem;
-	font-size: 11px;
 }
 
 .dashboard-body {
-	 margin-top: $margin * 2;
-	 margin-left: $margin;
+	margin-top: $margin * 2;
+	margin-left: $margin;
 }
 
 .full-width {
 	width: 25%;
 	float: right;
 	padding-right: 30px;
-	padding-top: 12px;
+	padding-top: 30px;
 }
 
 .page-title {
 	color: $light-blue;
 	margin-left: $margin + 5;
+	font-weight: 500;
 }
 
 .cards {

@@ -6,7 +6,7 @@
 		</h5>
 	</div>
 
-	<table mat-table [dataSource]="dataSource">
+	<table id="{{ tableId }}" mat-table [dataSource]="dataSource">
 		<ng-container
 			*ngFor="let column of columns"
 			[matColumnDef]="column.columnDef"

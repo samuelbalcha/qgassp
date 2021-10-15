@@ -6,7 +6,6 @@
 		1. Setting the baseline for each selected module
 	</h2>
 
-
 	<cdk-accordion
 		class="module-accordion"
 		*ngFor="let calcModule of projectModules"
@@ -25,13 +24,20 @@
 				role="presentation"
 				(click)="accordionItem.toggle()"
 			>
-
 				<mat-icon>done</mat-icon>
 				{{ utilService.getName(calcModule) }}
 
 				<span class="module-accordion-item-description">
-					<mat-icon style="color: black" *ngIf="accordionItem.expanded">expand_less</mat-icon>
-					<mat-icon style="color: black" *ngIf="!accordionItem.expanded">expand_more</mat-icon>
+					<mat-icon
+						style="color: white"
+						*ngIf="accordionItem.expanded"
+						>expand_less</mat-icon
+					>
+					<mat-icon
+						style="color: white"
+						*ngIf="!accordionItem.expanded"
+						>expand_more</mat-icon
+					>
 				</span>
 			</div>
 
@@ -41,50 +47,39 @@
 				[style.display]="accordionItem.expanded ? '' : 'none'"
 				id="accordion-body"
 			>
-
 				<div [ngSwitch]="calcModule">
 					<div *ngSwitchCase="'landuse'">
-						<i class="text-muted margin-bottom"
-							>Fill in the following information to set the
-							baseline</i
-						>
+						<div class=" margin-bottom">
+							<i class="text-muted"
+								>Fill in the following information to set the
+								baseline</i
+							>
+						</div>
+
 						<land-use-change-baseline></land-use-change-baseline>
-						<button class="add-button" mat-button (click)="onAddLandUseChange()">
+						<button
+							class="add-button"
+							mat-button
+							(click)="onAddLandUseChange()"
+						>
 							+ ADD NEW
 						</button>
 						<div class="calculate-controls">
-
 							<button
 								mat-raised-button
 								class="next-button"
 								color="primary"
 								(click)="calculate()"
 							>
-
 								Next
 							</button>
 						</div>
 					</div>
 					<div *ngSwitchCase="'buildings'">
 						<building-energy-baseline></building-energy-baseline>
-
-						<div class="calculate-controls">
-							<button
-								mat-raised-button
-								class="next-button"
-								color="primary"
-								(click)="calculate()"
-							>
-								Next
-							</button>
-						</div>
-
 					</div>
 					<div *ngSwitchCase="'traffic'">
 						<transport-baseline-v2></transport-baseline-v2>
-					</div>
-					<div *ngSwitchCase="'consumption'">
-						<consumption-baseline></consumption-baseline>
 					</div>
 					<div *ngSwitchCase="'consumption'">
 						<consumption-baseline></consumption-baseline>
@@ -95,27 +90,6 @@
 						</p>
 					</div>
 				</div>
-
-				<!--
-				<mat-checkbox
-					style="padding-left: 45rem;"
-					color="primary"
-					[checked]="true"
-				>
-					Mark as ready
-				</mat-checkbox>
-                -->
-
-				<!-- <div class="calculate-controls">
-					<button
-						mat-raised-button
-						class="next-button"
-						color="primary"
-						(click)="calculate()"
-					>
-						Next
-					</button>
-				</div> -->
 			</div>
 		</cdk-accordion-item>
 	</cdk-accordion>

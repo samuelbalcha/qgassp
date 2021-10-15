@@ -14,6 +14,7 @@ export class Co2EmissionSummaryComponent implements OnInit {
 	@Input() showHeader = false;
 	@Input() tableData: any;
 	@Input() tableDataTotal = 0;
+	@Input() tableId = 'baseline-result';
 
 	columns: any[] = [];
 	displayedColumns: any[] = [];

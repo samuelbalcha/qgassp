@@ -5,13 +5,6 @@
 	margin-bottom: 10px;
 }
 
-.table-title {
-	background-color: $bg-color;
-	padding-left: 18px;
-	padding-top: 23px;
-	padding-bottom: 1px;
-}
-
 table {
 	background-color: $bg-color !important;
 }
@@ -67,12 +60,19 @@ td.mat-cell {
 }
 
 .version-summary {
-	width: 230px;
+	width: 250px;
+	display: block;
+	margin-left: 10px;
+	margin-top: -24px;
+
+	table {
+		width: 225px;
+	}
 }
 
-.carbon-stock-table {
-	padding: 1%;
-	margin-right: 50px;
+#carbon-stock-change {
+	width: 850px;
+	margin-left: -5px;
 }
 
 @include mat-table-columns(
