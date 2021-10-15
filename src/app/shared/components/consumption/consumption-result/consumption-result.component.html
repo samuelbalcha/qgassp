@@ -1,10 +1,11 @@
 <div>
 	<div class="margin-bottom">
-		<span class="margin-bottom text-muted">Baseline result</span>
+		<span class="margin-bottom text-muted">Baseline scenario</span>
 	</div>
 	<div class="summary flex-container">
 		<div class="flex-item space-between">
 			<co2-emission-summary
+				class="consumption-emission-summary"
 				[isBaseLine]="true"
 				[showHeader]="true"
 				[tableTitle]="''"
@@ -48,7 +49,7 @@
 			[attr.aria-expanded]="accordionItem.expanded"
 		>
 			<div
-				class="module-accordion-item-header color-purple"
+				class="module-accordion-item-header consumption"
 				(click)="accordionItem.toggle()"
 			>
 				2.POLICY
@@ -183,6 +184,7 @@
 						<div class="step-container">
 							<div class="version-summary">
 								<co2-emission-summary
+									class="consumption-emission-summary"
 									[tableTitle]="'Version results'"
 									[showHeader]="true"
 									[tableData]="tableData"

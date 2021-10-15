@@ -20,16 +20,6 @@
 	padding: 10px;
 }
 
-.color-green,
-.color-green:hover {
-	background-color: $light-green;
-}
-
-.color-purple,
-.color-purple:hover {
-	background-color: $light-blue;
-}
-
 mat-expansion-panel {
 	max-width: 50rem;
 }
@@ -70,15 +60,14 @@ tr.mat-footer-row {
 	text-transform: capitalize !important;
 }
 
-.consumption-result {
-	.emission-summary {
-		width: 500px !important;
-
-		table {
-			width: 100% !important;
-		}
-	}
-}
 .mat-horizontal-content-container {
 	padding: 0 !important;
+}
+
+.consumption-emission-summary {
+	width: 450px !important;
+
+	table {
+		width: 430px;
+	}
 }

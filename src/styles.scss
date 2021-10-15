@@ -151,22 +151,22 @@ h4 {
 
 .landuse,
 .landuse:hover {
-	background-color: $light-green;
+	background-color: #6bac2b;
 }
 
 .traffic,
 .traffic:hover {
-	background-color: $light-pink;
+	background-color: #e8b158;
 }
 
 .buildings,
 .buildings:hover {
-	background-color: $dark-pink;
+	background-color: #5e3775;
 }
 
 .consumption,
 .consumption:hover {
-	background-color: $light-blue;
+	background-color: #4dacd1;
 }
 
 .capitalize {
@@ -228,6 +228,7 @@ h4 {
 	border: 1px #fbfbfb solid !important;
 	border-radius: 2px !important;
 	height: 45px !important;
+	background-color: #fff !important;
 }
 
 .mat-form-field-infix {
@@ -292,4 +293,30 @@ button {
 	font-size: 13px !important;
 	font-weight: 200 !important;
 	padding-left: 5px !important;
+}
+
+h5 {
+	font-size: 13px !important;
+	font-family: 500 !important;
+}
+
+.mat-form-field-flex {
+	border-radius: 4px 4px 0 0;
+	padding: 0 0 0 0.55em;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+	-moz-appearance: textfield;
+}
+
+.mat-tab-label {
+	padding: 0 !important;
 }
