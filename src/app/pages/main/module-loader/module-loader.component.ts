@@ -52,6 +52,6 @@ export class ModuleLoaderComponent implements OnInit {
 	}
 
 	calculate() {
-		console.log('calculate');
+		this.router.navigateByUrl('result-version');
 	}
 }

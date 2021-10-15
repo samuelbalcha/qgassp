@@ -2,9 +2,9 @@
 	<selectors [myProject]="myProject" (selectedValue)="getSelected($event)">
 	</selectors>
 
-	<h2 style="color:#3F51B5">
+	<h4 class="blue-text bold">
 		1. Setting the baseline for each selected module
-	</h2>
+	</h4>
 
 	<cdk-accordion
 		class="module-accordion"
@@ -20,7 +20,7 @@
 		>
 			<div
 				[ngClass]="calcModule"
-				class="module-accordion-item-header capitalize"
+				class="module-accordion-item-header capitalize bold"
 				role="presentation"
 				(click)="accordionItem.toggle()"
 			>
@@ -57,13 +57,16 @@
 						</div>
 
 						<land-use-change-baseline></land-use-change-baseline>
-						<button
-							class="add-button"
-							mat-button
-							(click)="onAddLandUseChange()"
-						>
-							+ ADD NEW
-						</button>
+
+						<div>
+							<button
+								class="add-button"
+								mat-button
+								(click)="onAddLandUseChange()"
+							>
+								+ Add New
+							</button>
+						</div>
 						<div class="calculate-controls">
 							<button
 								mat-raised-button
@@ -80,6 +83,16 @@
 					</div>
 					<div *ngSwitchCase="'traffic'">
 						<transport-baseline-v2></transport-baseline-v2>
+						<div class="calculate-controls">
+							<button
+								mat-raised-button
+								class="next-button"
+								color="primary"
+								(click)="calculate()"
+							>
+								Next
+							</button>
+						</div>
 					</div>
 					<div *ngSwitchCase="'consumption'">
 						<consumption-baseline></consumption-baseline>

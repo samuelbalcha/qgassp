@@ -1,62 +1,119 @@
 <div class="building-type">
 	<div class="flex-container margin-bottom">
-		<div class="flex-item width-277 space-between">
-			<span *ngIf="isBaseLine"> 2.1.2 </span> Building Type
+		<div class="flex-item width-100">
+			<h4>Building Type</h4>
 		</div>
-		<div *ngIf="showNumberOfUnits" class="flex-item space-between number-input">
-			Number of units
+		<div
+			*ngIf="showNumberOfUnits"
+			class="flex-item space-between width-100"
+		>
+			<h4>Number of units</h4>
 		</div>
-		<div class="flex-item space-between number-input" *ngIf="showTotalFloorArea">
-			Total floor area (sqm)
+		<div
+			class="flex-item space-between number-input"
+			*ngIf="showTotalFloorArea"
+		>
+			<h4>Total floor area (sqm)</h4>
 		</div>
-		<div class="flex-item space-between number-input" *ngIf="showEnergyRating">
-			Prev. indicative energy efficiency rating
+		<div
+			class="flex-item space-between number-input"
+			*ngIf="showEnergyRating"
+		>
+			<h4>Prev. indicative energy efficiency rating</h4>
 		</div>
 		<div class="flex-item number-input" *ngIf="showEnergyRating">
-			Indicative energy efficiency rating
+			<h4>Indicative energy efficiency rating</h4>
 		</div>
-		<div class="flex-item number-input" *ngIf="showCarbonHeatAndElectricity">
-			Low carbon heat
+		<div
+			class="flex-item number-input"
+			*ngIf="showCarbonHeatAndElectricity"
+		>
+			<h4>Low carbon heat</h4>
 		</div>
-		<div class="flex-item number-input" *ngIf="showCarbonHeatAndElectricity">
-			Electricity
+		<div
+			class="flex-item number-input"
+			*ngIf="showCarbonHeatAndElectricity"
+		>
+			<h4>Electricity</h4>
 		</div>
 	</div>
-  
-	<div *ngFor="let building of residentialBuildingTypes" class="flex-container">
-		<div class="flex-item width-250 space-between">
+
+	<div
+		*ngFor="let building of residentialBuildingTypes"
+		class="flex-container"
+	>
+		<div class="flex-item width-100 padding-left-10">
 			<mat-label>
 				{{ building.name }}
 			</mat-label>
 		</div>
-		<div class="flex-item space-between number-input" *ngIf="showNumberOfUnits">
+		<div
+			class="flex-item space-between width-100"
+			*ngIf="showNumberOfUnits"
+		>
 			<mat-form-field appearance="fill">
-				<input matInput type="number" [(ngModel)]="building.numberOfUnits" (change)="onModelChange()" />
+				<input
+					matInput
+					type="number"
+					[(ngModel)]="building.numberOfUnits"
+					(change)="onModelChange()"
+				/>
 			</mat-form-field>
 		</div>
-		<div class="flex-item space-between number-input" *ngIf="showTotalFloorArea">
+		<div
+			class="flex-item space-between width-100"
+			*ngIf="showTotalFloorArea"
+		>
 			<mat-form-field appearance="fill">
-				<input matInput type="number" [(ngModel)]="building.totalFloorArea" (change)="onModelChange()" />
+				<input
+					matInput
+					type="number"
+					[(ngModel)]="building.totalFloorArea"
+					(change)="onModelChange()"
+				/>
 			</mat-form-field>
 		</div>
-		<div class="flex-item space-between number-input" *ngIf="showEnergyRating">
+		<div class="flex-item space-between width-100" *ngIf="showEnergyRating">
 			<mat-form-field appearance="fill">
-				<input matInput type="text" [(ngModel)]="building.previousEnergyRating" (change)="onModelChange()" />
+				<input
+					matInput
+					type="text"
+					[(ngModel)]="building.previousEnergyRating"
+					(change)="onModelChange()"
+				/>
 			</mat-form-field>
 		</div>
-		<div class="flex-item number-input" *ngIf="showEnergyRating">
+		<div class="flex-item width-100" *ngIf="showEnergyRating">
 			<mat-form-field appearance="fill">
-				<input matInput type="text" [(ngModel)]="building.plannedEnergyRating" (change)="onModelChange()" />
+				<input
+					matInput
+					type="text"
+					[(ngModel)]="building.plannedEnergyRating"
+					(change)="onModelChange()"
+				/>
 			</mat-form-field>
 		</div>
-		<div class="flex-item number-input" *ngIf="showCarbonHeatAndElectricity">
+		<div
+			class="flex-item width-100 space-between padding-left-10"
+			*ngIf="showCarbonHeatAndElectricity"
+		>
 			<mat-form-field appearance="fill">
-				<input matInput type="text" [(ngModel)]="building.carbonHeat" (change)="onModelChange()" />
+				<input
+					matInput
+					type="text"
+					[(ngModel)]="building.carbonHeat"
+					(change)="onModelChange()"
+				/>
 			</mat-form-field>
 		</div>
-		<div class="flex-item number-input" *ngIf="showCarbonHeatAndElectricity">
+		<div class="flex-item width-100" *ngIf="showCarbonHeatAndElectricity">
 			<mat-form-field appearance="fill">
-				<input matInput type="text" [(ngModel)]="building.electricity" (change)="onModelChange()" />
+				<input
+					matInput
+					type="text"
+					[(ngModel)]="building.electricity"
+					(change)="onModelChange()"
+				/>
 			</mat-form-field>
 		</div>
 	</div>

@@ -54,7 +54,7 @@ body {
 
 .headerLink {
 	text-decoration: none;
-	font-weight: 500;
+	font-weight: 400;
 }
 
 h4 {
@@ -121,7 +121,7 @@ h4 {
 .calculate-controls {
 	width: 100%;
 	height: 40px;
-	margin-top: $margin * 2;
+	margin-top: 35px;
 }
 
 .tab-content {
@@ -136,12 +136,10 @@ h4 {
 	padding-left: 45rem;
 	color: $light-blue;
 	font-weight: 400;
-	float: right;
 }
 
 .next-button {
 	float: right;
-	margin-right: -90px !important;
 }
 
 .results-tab {
@@ -270,4 +268,28 @@ tr.mat-footer-row {
 button {
 	font-size: 13px !important;
 	font-weight: 400 !important;
+}
+
+.blue-text {
+	color: $eu-blue;
+}
+.bold {
+	font-weight: 500 !important;
+}
+
+.padding-left-10 {
+	padding-left: 10px !important;
+}
+
+.mat-header-cell {
+	font-size: 13px !important;
+	font-weight: 400 !important;
+	padding: 5px !important;
+}
+
+.mat-cell,
+.mat-footer-cell {
+	font-size: 13px !important;
+	font-weight: 200 !important;
+	padding-left: 5px !important;
 }

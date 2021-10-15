@@ -11,15 +11,22 @@
 	padding: 10px 10px 4px 10px;
 	border-radius: 2px;
 	box-shadow: none;
+
+	mat-label {
+		display: inline-block !important;
+		margin-left: 5px !important;
+		padding-top: 3px !important;
+	}
 }
 
 .bread-crumb {
-	font-weight: 500;
-	font-size: 16px;
-	color: $light-blue;
+	font-weight: 400;
+	font-size: 15px;
 
 	a {
-		text-decoration: none;
+		display: inline-block !important;
+		margin-right: 10px !important;
+		text-decoration: none !important;
 	}
 }
 
