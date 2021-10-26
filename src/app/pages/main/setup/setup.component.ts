@@ -72,7 +72,7 @@ export class SetupComponent implements OnInit {
 	];
 
 	landuse = false;
-	traffic = false;
+	transport = false;
 	buildings = false;
 	consumption = false;
 	territorial = true;
@@ -119,7 +119,7 @@ export class SetupComponent implements OnInit {
 		this.landuse = checked;
 		this.buildings = checked;
 		this.consumption = checked;
-		this.traffic = checked;
+		this.transport = checked;
 	}
 
 	onCountrySelected(): void {
@@ -157,10 +157,10 @@ export class SetupComponent implements OnInit {
 				},
 			};
 		}
-		if (this.traffic) {
+		if (this.transport) {
 			this.project.territorial = {
 				...this.project.territorial,
-				traffic: {
+				transport: {
 					dataSet: {
 						default: [],
 						custom: [],

@@ -41,6 +41,21 @@
 						<h4 class="bold">Commercial buildings</h4>
 					</div>
 
+					<div class="flex-container label-left">
+						<div class="flex-item width-100 space-between">
+							<mat-label>
+								Total floor area
+							</mat-label>
+						</div>
+						<div class="flex-item ">
+							<mat-form-field
+								appearance="fill"
+								class="number-input"
+							>
+								<input matInput type="number" />
+							</mat-form-field>
+						</div>
+					</div>
 					<div class="label-left">
 						<commercial-buildings
 							[isBaseLine]="true"
@@ -64,6 +79,13 @@
 
 		<mat-step>
 			<ng-template matStepLabel icon>Detailed Building Stock</ng-template>
+			<div class="margin-bottom">
+				<i class="text-muted"
+					>This section is for <b>expert users</b>. You can leave the
+					values blank if you are not certain.
+				</i>
+			</div>
+			<!--
 			<div class="flex-container">
 				<div class="flex-item  retrofit-construction">
 					<h4 class="margin-bottom bold">Residential buildings</h4>
@@ -102,10 +124,37 @@
 					</div>
 				</div>
 			</div>
+-->
 
-			<end-use-of-energy></end-use-of-energy>
+			<div class="margin-bottom">
+				<h4 class="margin-bottom bold">Residential buildings</h4>
+				<building-energy-use
+					[componentType]="'Energy use'"
+					[title]="'Total Residential Energy Use'"
+					[emissionValue]="'1000'"
+					[emissionUnit]="'MWh'"
+					[isEnergyUse]="true"
+					[isEnergyEmmission]="false"
+					class="margin-bottom"
+				>
+				</building-energy-use>
 
-			<div class="btn-group">
+				<end-use-of-energy></end-use-of-energy>
+			</div>
+			<div class="margin-bottom">
+				<h4 class="margin-bottom bold">Commercial buildings</h4>
+				<building-energy-use
+					[componentType]="'Commercial Energy use'"
+					[title]="'Total Commercial Energy Use'"
+					[emissionValue]="'2000'"
+					[emissionUnit]="'MWh'"
+					[isEnergyUse]="true"
+					[isEnergyEmmission]="false"
+				>
+				</building-energy-use>
+			</div>
+
+			<div class="btn-group margin-bottom">
 				<button
 					class="previous-btn"
 					mat-button
