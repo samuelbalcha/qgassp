@@ -5,7 +5,7 @@ import { IUser } from './IUser';
 
 export interface ICalModules {
 	landuse?: boolean;
-	traffic?: boolean;
+	transport?: boolean;
 	buildings?: boolean;
 	consumption?: boolean;
 }
@@ -24,7 +24,7 @@ export interface IProject {
 	population: number;
 	location: {
 		country: string;
-		region: string;
+		region?: string;
 	};
 	status: ProjectStatuses;
 	startYear: number;
@@ -35,7 +35,7 @@ export interface IProject {
 	createdAt?: string;
 	territorial?: {
 		landuse?: IProjectModule;
-		traffic?: IProjectModule;
+		transport?: IProjectModule;
 		buildings?: IProjectModule;
 	};
 	consumption?: IProjectModule;

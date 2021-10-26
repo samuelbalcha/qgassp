@@ -200,10 +200,10 @@
 				>
 					<mat-checkbox
 						class="padding-left-10"
-						[checked]="traffic"
-						(change)="traffic = !traffic"
+						[checked]="transport"
+						(change)="transport = !transport"
 					>
-						{{ utilService.getName('traffic') }}
+						{{ utilService.getName('transport') }}
 					</mat-checkbox>
 				</div>
 				<div class="flex-item">
@@ -213,7 +213,7 @@
 						>
 						<mat-select
 							formControlName="dataset"
-							[disabled]="!traffic"
+							[disabled]="!transport"
 						>
 							<mat-option
 								*ngFor="let dataset of dataSets"

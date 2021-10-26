@@ -24,8 +24,8 @@ export class ResultStepComponent {
 	};
 	public chartLabels: Label[] = [
 		['Retrofit'],
-		['Demolition'],
-		['Construction'],
+		['Densification'],
+		['Building change'],
 	];
 	public chartData: SingleDataSet = [50, -200, 150];
 }

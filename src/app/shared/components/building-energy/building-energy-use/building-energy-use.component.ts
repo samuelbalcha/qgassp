@@ -1,70 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, Input } from '@angular/core';
-import { ChartOptions, ChartType } from 'chart.js';
-import { Label, SingleDataSet } from 'ng2-charts';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-	selector: 'building-energy-emmission',
-	templateUrl: './building-energy-emmission.component.html',
+	selector: 'building-energy-use',
+	templateUrl: './building-energy-use.component.html',
 	styleUrls: ['./../building-energy.component.scss'],
 })
-export class BuildingEnergyEmmissionComponent {
+export class BuildingEnergyUseComponent implements OnInit {
 	@Input() componentType = '';
 	@Input() title = '';
 	@Input() emissionValue = '';
 	@Input() emissionUnit = '';
 	@Input() isEnergyUse = false;
 	@Input() isEnergyEmmission = false;
-	@Input() pieChartTitle = '';
 	@Input() tableData: any;
-
-	// change it as in
-	ELEMENT_DATA = [
-		{
-			EnergyUse: 'Apartments',
-			Electricity: 124578933,
-			Gas: 1,
-			Oil: 2,
-			Coal: 12345,
-			Peat: 1234,
-			Wood: 123455,
-			Renewable: 1234,
-			Heat: 1232344,
-		},
-		{
-			EnergyUse: 'Terrace',
-			Electricity: 124578933,
-			Gas: 1,
-			Oil: 2,
-			Coal: 12345,
-			Peat: 1234,
-			Wood: 123455,
-			Renewable: 1234,
-			Heat: 1232344,
-		},
-		{
-			EnergyUse: 'Semi-detached',
-			Electricity: 124578933,
-			Gas: 2,
-			Oil: 2,
-			Coal: 12345,
-			Peat: 1234,
-			Wood: 123455,
-			Renewable: 1234,
-			Heat: 1232344,
-		},
-		{
-			EnergyUse: 'Detached',
-			Electricity: 1,
-			Gas: 1,
-			Oil: 1,
-			Coal: 1,
-			Peat: 1,
-			Wood: 1,
-			Renewable: 1,
-			Heat: 1,
-		},
-	];
 
 	public displayedColumns: string[] = [
 		'EnergyUse',
@@ -79,53 +28,13 @@ export class BuildingEnergyEmmissionComponent {
 		'Total',
 	];
 
-	public dataSource;
+	public dataSource: any;
 
-	public pieChartOptions: ChartOptions = {
-		responsive: false,
-		title: {
-			text: '',
-			display: true,
-		},
-	};
-	public pieChartLabels: Label[] = [
-		['Coal'],
-		['Peat'],
-		['Wood'],
-		['Electricity'],
-		['gas'],
-		['Oil'],
-	];
-	public pieChartData: SingleDataSet = [0.33, 0.09, 3, 26, 25, 46];
-	public pieChartType: ChartType = 'pie';
-	public pieChartLegend = true;
-	public pieChartPlugins = [];
+	// eslint-disable-next-line @typescript-eslint/no-empty-function
+	constructor() {}
 
-	constructor() {
+	ngOnInit(): void {
 		this.dataSource = this.tableData;
-	}
-
-	constactTableData(): any[] {
-		const tableData = [];
-
-		for (let i = 0; i < this.ELEMENT_DATA.length; i++) {
-			let sum = 0;
-			const obj: { [k: string]: any } = this.ELEMENT_DATA[i];
-			sum =
-				sum +
-				this.ELEMENT_DATA[i].Electricity +
-				this.ELEMENT_DATA[i].Gas +
-				this.ELEMENT_DATA[i].Oil +
-				this.ELEMENT_DATA[i].Coal +
-				this.ELEMENT_DATA[i].Peat +
-				this.ELEMENT_DATA[i].Wood +
-				this.ELEMENT_DATA[i].Heat;
-
-			obj.Total = sum;
-			tableData.push(obj);
-		}
-
-		return tableData;
 	}
 
 	getTotalElectricity(): number {

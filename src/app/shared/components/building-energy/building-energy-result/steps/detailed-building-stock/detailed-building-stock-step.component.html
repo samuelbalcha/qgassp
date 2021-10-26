@@ -1,0 +1,30 @@
+<div>
+	<div class="margin-bottom">
+		<h4 class="margin-bottom bold">Residential buildings</h4>
+		<building-energy-use
+			[componentType]="'Energy use'"
+			[title]="'Total Residential Energy Use'"
+			[emissionValue]="'1000'"
+			[emissionUnit]="'MWh'"
+			[isEnergyUse]="true"
+			[isEnergyEmmission]="false"
+			class="margin-bottom"
+		>
+		</building-energy-use>
+
+		<end-use-of-energy></end-use-of-energy>
+	</div>
+
+	<div class="margin-bottom">
+		<h4 class="margin-bottom bold">Commercial buildings</h4>
+		<building-energy-use
+			[componentType]="'Commercial Energy use'"
+			[title]="'Total Commercial Energy Use'"
+			[emissionValue]="'2000'"
+			[emissionUnit]="'MWh'"
+			[isEnergyUse]="true"
+			[isEnergyEmmission]="false"
+		>
+		</building-energy-use>
+	</div>
+</div>

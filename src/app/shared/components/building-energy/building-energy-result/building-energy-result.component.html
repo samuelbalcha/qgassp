@@ -5,58 +5,137 @@
 	<!-- Residential -->
 	<div class="margin-bottom">
 		<h4 class="margin-bottom">Residential</h4>
-		<building-energy-emmission
-			[componentType]="'Energy use'"
-			[title]="'Total Residential Energy Demand MWh'"
-			[emissionValue]="'1 454 326,19'"
-			[emissionUnit]="'MWh'"
-			[isEnergyUse]="true"
-			[isEnergyEmmission]="false"
-			[pieChartTitle]="'Share of Residential Housing'"
-			class="margin-bottom"
-		></building-energy-emmission>
+		<div class="flex-container margin-bottom">
+			<div class="flex-item space-between">
+				<building-energy-use
+					[componentType]="'Energy use'"
+					[title]="'Total Residential Energy Demand MWh'"
+					[emissionValue]="'1000'"
+					[emissionUnit]="'MWh'"
+					[isEnergyUse]="true"
+					[isEnergyEmmission]="false"
+					[tableData]="residentialData"
+				>
+				</building-energy-use>
+			</div>
+			<div class="flex-item pie-chart">
+				<mat-label>
+					Share of Residential Housing
+				</mat-label>
+				<canvas
+					width="331"
+					height="239"
+					baseChart
+					[data]="pieChartData"
+					[labels]="pieChartLabels"
+					[chartType]="pieChartType"
+					[options]="pieChartOptions"
+					[plugins]="pieChartPlugins"
+					[legend]="pieChartLegend"
+				>
+				</canvas>
+			</div>
+		</div>
 
-		<building-energy-emmission
-			[componentType]="'Residential emissions'"
-			[title]="'Total Residential Emissions'"
-			[emissionValue]="'404 589,58'"
-			[emissionUnit]="'tCO2'"
-			[isEnergyUse]="false"
-			[isEnergyEmmission]="true"
-			[pieChartTitle]="
-				'Share of Total Residential Emissions by fuel type'
-			"
-			[Data]="residentialData"
-			class="margin-bottom"
-		></building-energy-emmission>
+		<div class="flex-container margin-bottom">
+			<div class="flex-item space-between">
+				<building-energy-use
+					[componentType]="'Residential emissions'"
+					[title]="'Total Residential Emissions'"
+					[emissionValue]="'404 589,58'"
+					[emissionUnit]="'tCO2'"
+					[isEnergyUse]="false"
+					[isEnergyEmmission]="true"
+					[tableData]="residentialData"
+				>
+				</building-energy-use>
+			</div>
+			<div class="flex-item pie-chart">
+				<mat-label>
+					Share of Total Residential Emissions by fuel type
+				</mat-label>
+				<canvas
+					width="331"
+					height="239"
+					baseChart
+					[data]="pieChartData"
+					[labels]="pieChartLabels"
+					[chartType]="pieChartType"
+					[options]="pieChartOptions"
+					[plugins]="pieChartPlugins"
+					[legend]="pieChartLegend"
+				>
+				</canvas>
+			</div>
+		</div>
 	</div>
 
 	<!-- Commercial -->
 	<div class="margin-bottom">
 		<h4 class="margin-bottom">Commercial</h4>
-		<building-energy-emmission
-			[componentType]="'Commercial Energy use'"
-			[title]="'Total Commercial Energy Demand MWh'"
-			[emissionValue]="'1 454 326,19'"
-			[emissionUnit]="'MWh'"
-			[isEnergyUse]="true"
-			[isEnergyEmmission]="false"
-			[pieChartTitle]="'Share of Commercial Housing'"
-			[Data]="commercialData"
-			class="margin-bottom"
-		></building-energy-emmission>
+		<div class="flex-container margin-bottom">
+			<div class="flex-item space-between">
+				<building-energy-use
+					[componentType]="'Commercial Energy use'"
+					[title]="'Total Commercial Energy Demand MWh'"
+					[emissionValue]="'2000'"
+					[emissionUnit]="'MWh'"
+					[isEnergyUse]="true"
+					[isEnergyEmmission]="false"
+					[tableData]="commercialData"
+				>
+				</building-energy-use>
+			</div>
 
-		<building-energy-emmission
-			[componentType]="'Commercial emissions'"
-			[title]="'Total Commercial Emissions'"
-			[emissionValue]="'404 589,58'"
-			[emissionUnit]="'tCO2'"
-			[isEnergyUse]="false"
-			[isEnergyEmmission]="true"
-			[pieChartTitle]="'Share of Total Commercial Emissions by fuel type'"
-			class="margin-bottom"
-		>
-		</building-energy-emmission>
+			<div class="flex-item pie-chart">
+				<mat-label>
+					Share of Commercial Housing
+				</mat-label>
+				<canvas
+					width="331"
+					height="239"
+					baseChart
+					[data]="pieChartData"
+					[labels]="pieChartLabels"
+					[chartType]="pieChartType"
+					[options]="pieChartOptions"
+					[plugins]="pieChartPlugins"
+					[legend]="pieChartLegend"
+				>
+				</canvas>
+			</div>
+		</div>
+		<div class="flex-container margin-bottom">
+			<div class="flex-item space-between">
+				<building-energy-use
+					[componentType]="'Commercial emissions'"
+					[title]="'Total Commercial Emissions'"
+					[emissionValue]="'3000'"
+					[emissionUnit]="'tCO2'"
+					[isEnergyUse]="false"
+					[isEnergyEmmission]="true"
+					[tableData]="commercialData"
+				>
+				</building-energy-use>
+			</div>
+			<div class="flex-item pie-chart">
+				<mat-label>
+					Share of Total Commercial Emissions by fuel type
+				</mat-label>
+				<canvas
+					width="331"
+					height="239"
+					baseChart
+					[data]="pieChartData"
+					[labels]="pieChartLabels"
+					[chartType]="pieChartType"
+					[options]="pieChartOptions"
+					[plugins]="pieChartPlugins"
+					[legend]="pieChartLegend"
+				>
+				</canvas>
+			</div>
+		</div>
 	</div>
 
 	<div>
@@ -189,55 +268,11 @@
 							<ng-template matStepLabel
 								>Detailed building stock</ng-template
 							>
+							<detailed-building-stock-step
+								class="margin-bottom"
+							></detailed-building-stock-step>
 
-							<div class="flex-container">
-								<div class="flex-item  retrofit-construction">
-									<h4 class="margin-bottom bold">
-										Residential buildings
-									</h4>
-
-									<div class="flex-container label-left">
-										<div class="flex-item width-250">
-											<mat-label>
-												Total number of housing units
-											</mat-label>
-										</div>
-										<div class="flex-item ">
-											<mat-form-field
-												appearance="fill"
-												class="number-input"
-											>
-												<input matInput type="number" />
-											</mat-form-field>
-										</div>
-									</div>
-									<div class="label-left">
-										<residential-buildings
-											[isBaseLine]="true"
-											[showNumberOfUnits]="true"
-											class="margin-bottom"
-										>
-										</residential-buildings>
-									</div>
-								</div>
-
-								<div class="flex-item">
-									<h4 class="margin-bottom bold">
-										Commercial buildings
-									</h4>
-
-									<div class="label-left">
-										<commercial-buildings
-											[isBaseLine]="true"
-											class="label-left"
-										>
-										</commercial-buildings>
-									</div>
-								</div>
-							</div>
-
-							<end-use-of-energy></end-use-of-energy>
-							<div class="btn-group">
+							<div class="btn-group margin-bottom">
 								<button
 									class="previous-btn"
 									mat-button
