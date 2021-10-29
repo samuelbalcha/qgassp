@@ -37,8 +37,6 @@ describe('create', () => {
 						default: [],
 						custom: [],
 					},
-					baseline: {},
-					versions: [],
 				},
 			},
 			status: ProjectStatuses.ACTIVE,
@@ -72,7 +70,9 @@ describe('get', () => {
 				default: [],
 				custom: [],
 			},
-			versions: [],
+			baseline: {},
+			baselineResult: {},
+			policyVersions: [],
 		});
 		expect(consumptionA).toHaveProperty('projectType', 'Consumption');
 		expect(consumptionA).toHaveProperty('status', 'Draft');

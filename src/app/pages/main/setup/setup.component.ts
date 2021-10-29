@@ -132,13 +132,26 @@ export class SetupComponent implements OnInit {
 
 	getSelectedModule() {
 		if (this.consumption) {
-			this.project['consumption'] = {
+			this.project.consumption = {
 				dataSet: {
 					default: [],
 					custom: [],
 				},
-				baseline: {},
-				versions: [],
+				baseline: {
+					areaAndPopulation: {
+						existingEnvironment: {
+							population: this.population || 1000,
+							targetArea: '',
+							typeOfUrbanEnvironment: '',
+							averageHouseholdSize: 100,
+							averageIncomeLevel: '40% - 60%',
+							expectedRateOfGlobalDecarbonisation: 20,
+							sizeOfPlannedResidentialBuildings: 50,
+						},
+					},
+				},
+				baselineResult: {},
+				policyVersions: [],
 			};
 		}
 
@@ -152,8 +165,6 @@ export class SetupComponent implements OnInit {
 						default: [],
 						custom: [],
 					},
-					baseline: {},
-					versions: [],
 				},
 			};
 		}
@@ -165,8 +176,6 @@ export class SetupComponent implements OnInit {
 						default: [],
 						custom: [],
 					},
-					baseline: {},
-					versions: [],
 				},
 			};
 		}
@@ -178,8 +187,6 @@ export class SetupComponent implements OnInit {
 						default: [],
 						custom: [],
 					},
-					baseline: {},
-					versions: [],
 				},
 			};
 		}

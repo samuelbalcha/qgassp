@@ -1,5 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, Input, OnInit } from '@angular/core';
+import { IConsumption } from '../../../../../../commons/types/IConsumptionModule';
+import { IProject } from '../../../../../../commons/types/IProject';
+import { ProjectService } from '../../../../core/services/project.service';
 
 @Component({
 	selector: 'area-and-population',
@@ -45,6 +48,14 @@ export class AreaPopulationComponent implements OnInit {
 
 	public globalDecarbonization = 10;
 
+	public project: IProject;
+	consumption: IConsumption;
+
+	constructor(private projectService: ProjectService) {
+		this.project = this.projectService.getDraftProject() as IProject;
+		this.consumption = this.project.consumption as IConsumption;
+	}
+
 	ngOnInit(): void {
 		this.selectedAreaType = this.areaTypes[0];
 		this.selectedIncomeLevel = this.incomeLevels[0];
@@ -58,5 +69,7 @@ export class AreaPopulationComponent implements OnInit {
 		} else {
 			this.showPolicyQuestions = false;
 		}
+
+		this.consumption!.baseline!.areaAndPopulation!.existingEnvironment.targetArea = this.selectedTargetArea.aName;
 	}
 }
