@@ -142,6 +142,19 @@ h4 {
 	float: right;
 }
 
+.next-btn {
+	background-color: #1c294e;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.previous-btn {
+	background-color: #fbfbfb;
+	color: #1c294e;
+	text-transform: uppercase;
+	margin-right: 20px !important;
+}
+
 .results-tab {
 	padding: $padding * 2;
 	width: 120px;

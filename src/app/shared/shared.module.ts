@@ -46,6 +46,10 @@ import { DensificationTableComponent } from './components/building-energy/densif
 import { TransportBaselineV2Component } from './components/transport/transport-baseline-v2/transport-baseline-v2.component';
 import { BuildingEnergyUseComponent } from './components/building-energy/building-energy-use/building-energy-use.component';
 import { DetailedBuildingStockStepComponent } from './components/building-energy/building-energy-result/steps/detailed-building-stock/detailed-building-stock-step.component';
+import { TransportActivityStepComponent } from './components/transport/transport-result/steps/transport-activity-step/transport-activity-step.component';
+import { ShareOfFuelTypesStepComponent } from './components/transport/transport-result/steps/share-of-fuel-types-step/share-of-fuel-types-step.component';
+import { ElectricityStepComponent } from './components/transport/transport-result/steps/electricity-step/electricity-step.component';
+import { TransportResultStepComponent } from './components/transport/transport-result/steps/transport-result-step/transport-result-step.component';
 
 const shared = [
 	HeaderComponent,
@@ -80,6 +84,10 @@ const shared = [
 	ChangeBldgUseComponent,
 	DensificationTableComponent,
 	DetailedBuildingStockStepComponent,
+	TransportActivityStepComponent,
+	ShareOfFuelTypesStepComponent,
+	ElectricityStepComponent,
+	TransportResultStepComponent,
 ];
 
 @NgModule({

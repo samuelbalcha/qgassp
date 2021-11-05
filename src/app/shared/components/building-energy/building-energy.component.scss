@@ -12,9 +12,11 @@
 .building-inputs {
 	padding-left: 4rem;
 }
+
 .building-result-form {
 	padding-left: 21px;
 }
+
 .building-type {
 	mat-form-field {
 		max-width: 100px;
@@ -90,21 +92,11 @@
 mat-horizontal-stepper {
 	background-color: transparent !important;
 }
+
 .btn-group {
 	float: right;
 }
-.next-btn {
-	background-color: #1c294e;
-	color: #fff;
-	text-transform: uppercase;
-}
 
-.previous-btn {
-	background-color: #fbfbfb;
-	color: #1c294e;
-	text-transform: uppercase;
-	margin-right: 20px;
-}
 .numberInput {
 	width: 40%;
 }

@@ -11,3 +11,7 @@ table {
 .double-space-between {
 	margin-right: $margin * 2;
 }
+
+mat-horizontal-stepper {
+	background-color: transparent !important;
+}
