@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
 	selector: 'howitworks',
@@ -6,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./howitworks.component.scss'],
 })
 export class HowitworksComponent implements OnInit {
-	constructor() {}
+	public safeURL;
+
+	constructor(private _sanitizer: DomSanitizer) {
+		this.safeURL = this._sanitizer.bypassSecurityTrustResourceUrl(
+			'https://www.youtube.com/embed/BcMUDxOC5Tg'
+		);
+	}
 
 	ngOnInit(): void {}
 }
