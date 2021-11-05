@@ -1,12 +1,21 @@
 <mat-drawer-container class="example-container" color="primary">
 	<mat-drawer-content>
 		<mat-toolbar class="header">
-			<img
-				src=".././assets/logo/ESPON-EGTC-logo.jpg"
-				alt="ESPON-EGTC-logo"
-				class="logoImg"
-			/>
-			<span>ESPON GGIA TOOL</span>
+			<div class="flex-container">
+				<div class="flex-item">
+					<a routerLink="/dashboard">
+						<img
+							src=".././assets/logo/ESPON-EGTC-logo.jpg"
+							alt="ESPON-EGTC-logo"
+							class="logo-img"
+						/>
+					</a>
+				</div>
+				<div class="flex-item">
+					<span class="logo-text">ESPON GGIA TOOL</span>
+				</div>
+			</div>
+
 			<div class="container bottomLogo"></div>
 		</mat-toolbar>
 		<div>
