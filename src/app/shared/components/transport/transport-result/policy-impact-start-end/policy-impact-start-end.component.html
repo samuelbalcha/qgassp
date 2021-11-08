@@ -1,0 +1,49 @@
+<div class="flex-container">
+	<div class="flex-item width-200">
+		Policy impact
+	</div>
+	<div class="flex-item">
+		<div class="flex-container">
+			<div class="flex-item year-selector  space-between">
+				<mat-form-field appearance="fill">
+					<mat-label>
+						Starting
+					</mat-label>
+					<mat-select
+						formControlName="startYear"
+						[(ngModel)]="startYear"
+						(selectionChange)="onModelChange()"
+						name="startYear"
+					>
+						<mat-option
+							*ngFor="let year of years"
+							[value]="year.id"
+						>
+							{{ year.value }}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+			<div class="flex-item year-selector">
+				<mat-form-field appearance="fill">
+					<mat-label>
+						Ending
+					</mat-label>
+					<mat-select
+						formControlName="endYear"
+						[(ngModel)]="endYear"
+						name="endYear"
+						(selectionChange)="onModelChange()"
+					>
+						<mat-option
+							*ngFor="let year of years"
+							[value]="year.id"
+						>
+							{{ year.value }}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+		</div>
+	</div>
+</div>

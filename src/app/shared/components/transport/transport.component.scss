@@ -12,6 +12,20 @@ table {
 	margin-right: $margin * 2;
 }
 
+.wide-space-between {
+	margin-right: $margin * 4;
+}
+
 mat-horizontal-stepper {
 	background-color: transparent !important;
+}
+
+.version-accordion {
+	width: 98% !important;
+}
+
+.year-selector {
+	mat-form-field {
+		width: 100px !important;
+	}
 }

@@ -50,6 +50,7 @@ import { TransportActivityStepComponent } from './components/transport/transport
 import { ShareOfFuelTypesStepComponent } from './components/transport/transport-result/steps/share-of-fuel-types-step/share-of-fuel-types-step.component';
 import { ElectricityStepComponent } from './components/transport/transport-result/steps/electricity-step/electricity-step.component';
 import { TransportResultStepComponent } from './components/transport/transport-result/steps/transport-result-step/transport-result-step.component';
+import { PolicyImpactStartEndComponent } from './components/transport/transport-result/policy-impact-start-end/policy-impact-start-end.component';
 
 const shared = [
 	HeaderComponent,
@@ -88,6 +89,7 @@ const shared = [
 	ShareOfFuelTypesStepComponent,
 	ElectricityStepComponent,
 	TransportResultStepComponent,
+	PolicyImpactStartEndComponent,
 ];
 
 @NgModule({

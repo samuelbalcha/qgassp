@@ -97,7 +97,7 @@
 
 	<div class="line-chart-container margin-bottom">
 		<canvas
-			style="width: 750px; height: 300px; padding-top: 2rem;"
+			style="width: 20rem; height:450px !important;"
 			baseChart
 			[datasets]="lineChartData"
 			[labels]="lineChartLabels"
@@ -155,13 +155,12 @@
 							<ng-template matStepLabel
 								>Transport activity</ng-template
 							>
-
-							<transport-activity-step></transport-activity-step>
-
-							<div class="btn-group">
+							<div class="step-container">
+								<transport-activity-step></transport-activity-step>
+							</div>
+							<div class="btn-group margin-bottom">
 								<button
 									mat-button
-									mat-raised-button
 									class="next-btn"
 									matStepperNext
 								>
@@ -171,13 +170,13 @@
 						</mat-step>
 
 						<mat-step>
-							<ng-template matStepLabel
+							<ng-template matStepLabel icon
 								>Share of Fuel types</ng-template
 							>
-
-							<share-of-fuel-types-step></share-of-fuel-types-step>
-
-							<div class="btn-group">
+							<div class="step-container">
+								<share-of-fuel-types-step></share-of-fuel-types-step>
+							</div>
+							<div class="btn-group margin-bottom">
 								<button
 									class="previous-btn"
 									mat-button
@@ -200,9 +199,10 @@
 
 						<mat-step>
 							<ng-template matStepLabel>Electricity</ng-template>
-							<electricity-step></electricity-step>
-
-							<div class="btn-group">
+							<div class="step-container">
+								<electricity-step></electricity-step>
+							</div>
+							<div class="btn-group margin-bottom">
 								<button
 									class="previous-btn"
 									mat-button

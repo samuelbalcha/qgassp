@@ -10,11 +10,8 @@ import CountryRegionData from 'country-region-data/data.json';
 import { ProjectService } from '../../../core/services/project.service';
 import { IProject } from '../../../../../commons/types/IProject';
 import { UtilService } from '../../../core/services/util.service';
+import { IYear } from '../../../../../commons/types/IYear';
 
-interface IYear {
-	id: number;
-	value: number;
-}
 @Component({
 	selector: 'setup',
 	templateUrl: './setup.component.html',
