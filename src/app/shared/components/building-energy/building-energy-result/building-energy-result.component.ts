@@ -21,7 +21,7 @@ export class BuildingEnergyResultComponent implements OnInit {
 		['Peat'],
 		['Wood'],
 		['Electricity'],
-		['gas'],
+		['Gas'],
 		['Oil'],
 	];
 	public pieChartData: SingleDataSet = [0.33, 0.09, 3, 26, 25, 46];

@@ -11,65 +11,10 @@ export class CommercialBuildingsComponent {
 	@Input() showTotalFloorArea = false;
 	@Input() showEnergyRating = false;
 	@Input() showCarbonHeatAndElectricity = false;
-
-	commercialBuildingTypes = [
-		{
-			name: 'Retal',
-			totalFloorArea: 10000,
-			previousEnergyRating: 'E',
-			plannedEnergyRating: '160/E',
-			carbonHeat: '90',
-			electricity: '-',
-		},
-		{
-			name: 'Health',
-			totalFloorArea: 200,
-			previousEnergyRating: 'E',
-			plannedEnergyRating: 'P',
-			carbonHeat: '90',
-			electricity: '-',
-		},
-		{
-			name: 'Hospitality',
-			totalFloorArea: 80000,
-			previousEnergyRating: 'E',
-			plannedEnergyRating: 'E',
-			carbonHeat: '90',
-			electricity: '-',
-		},
-		{
-			name: 'Offices',
-			totalFloorArea: 900,
-			previousEnergyRating: 'E',
-			plannedEnergyRating: 'E',
-			carbonHeat: '90',
-			electricity: '-',
-		},
-		{
-			name: 'Industrial',
-			totalFloorArea: 900,
-			previousEnergyRating: 'E',
-			plannedEnergyRating: 'E',
-			carbonHeat: '90',
-			electricity: '-',
-		},
-		{
-			name: 'Warehouses',
-			totalFloorArea: 900,
-			previousEnergyRating: 'E',
-			plannedEnergyRating: 'E',
-			carbonHeat: '90',
-			electricity: '-',
-		},
-		{
-			name: 'Other',
-			totalFloorArea: 900,
-			previousEnergyRating: 'E',
-			plannedEnergyRating: 'E',
-			carbonHeat: '90',
-			electricity: '-',
-		},
-	];
+	@Input() commercialBuildingTypes: any;
+	@Output() onCommercialBuildingsChange: EventEmitter<any> = new EventEmitter<
+		any
+	>();
 
 	public energyRatings = [
 		{ name: 'A', value: '' },
@@ -81,13 +26,8 @@ export class CommercialBuildingsComponent {
 		{ name: 'G', value: '' },
 	];
 
-	@Output() onCommercialBuildingsChange: EventEmitter<any>;
-
-	constructor() {
-		this.onCommercialBuildingsChange = new EventEmitter<any>();
-	}
-
-	onModelChange(): void {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	onModelChange(_event: any): void {
 		this.onCommercialBuildingsChange.emit(this.commercialBuildingTypes);
 	}
 }
