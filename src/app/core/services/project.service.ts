@@ -40,13 +40,21 @@ export class ProjectService {
 
 	getDraftProject(): IProject | null {
 		const localProject = this.storage.get(DRAFT_PROJECT);
-		console.log('local', localProject);
 
 		if (localProject) {
 			this.project = localProject;
 		}
 
 		return this.project;
+	}
+
+	updateDraftProject(updatedProject: IProject): void {
+		const localProject = this.storage.get(DRAFT_PROJECT);
+
+		if (localProject) {
+			this.project = updatedProject;
+			this.storage.set(DRAFT_PROJECT, this.project);
+		}
 	}
 
 	initializeProject(draftProject: IProject): void {

@@ -178,7 +178,20 @@ export class SetupComponent implements OnInit {
 						default: [],
 						custom: [],
 					},
-					baseline: {},
+					baseline: {
+						residentialBuildings: {},
+						commercialBuildings: {},
+						endUseOfEnergy: [],
+					},
+					baselineResult: {
+						residentialBuildings: {
+							totalEnergyDemand: 0,
+						},
+						commercialBuildings: {
+							totalEnergyDemand: 0,
+						},
+						endUseOfEnergy: [],
+					},
 					versions: [],
 				},
 			};
@@ -205,7 +218,6 @@ export class SetupComponent implements OnInit {
 
 		this.getSelectedModule();
 
-		console.log('setup-project', this.project);
 		this.projectService.initializeProject(this.project);
 		this.router.navigateByUrl('module-loader');
 	}

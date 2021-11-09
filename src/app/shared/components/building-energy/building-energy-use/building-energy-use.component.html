@@ -1,12 +1,15 @@
 <div class="building-energy-emission margin-bottom">
-	<div class="flex-container margin-bottom">
+	<div class="flex-container margin-bottom" *ngIf="showTotal">
 		<div class="flex-item space-between">
 			<mat-label>
 				{{ title }}
 			</mat-label>
 		</div>
 		<div class="flex-item">
-			<mat-label> {{ emissionValue }} {{ emissionUnit }} </mat-label>
+			<mat-label>
+				{{ totalResidentialEnergyDemand | number: '1.2' }}
+				{{ emissionUnit }}
+			</mat-label>
 		</div>
 	</div>
 	<div class="margin-bottom">
@@ -15,16 +18,19 @@
 
 	<div class="emmission-table">
 		<table mat-table [dataSource]="dataSource">
-			<ng-container *ngIf="isEnergyUse" matColumnDef="EnergyUse">
+			<ng-container *ngIf="isEnergyUse" matColumnDef="name">
 				<th mat-header-cell *matHeaderCellDef>
-					Average Energy Use
+					<span *ngIf="!isResult"> Average Energy Use </span>
+					<span *ngIf="isResult">Energy Use MWh</span>
 				</th>
 				<td mat-cell *matCellDef="let element">
-					{{ element.EnergyUse }}
+					{{ element.name }}
 				</td>
+				<!--
 				<td mat-footer-cell *matFooterCellDef>
 					Emmission factor for District Heating
 				</td>
+				-->
 			</ng-container>
 			<ng-container *ngIf="isEnergyEmmission" matColumnDef="EnergyUse">
 				<th mat-header-cell *matHeaderCellDef>
@@ -39,14 +45,28 @@
 			</ng-container>
 			<ng-container matColumnDef="Total">
 				<th mat-header-cell *matHeaderCellDef>
-					kWh/m2
+					<span *ngIf="!isResult">{{ emissionUnit }}</span>
+					<span *ngIf="isResult"> Total</span>
 				</th>
 				<td mat-cell *matCellDef="let element; let i = index">
-					{{ getTotalTotal(i) }}
+					<span *ngIf="!isResult">
+						{{
+							getAverageEnergyUsePerBuilding(element)
+								| number: '1.2'
+						}}
+					</span>
+					<span *ngIf="isResult">
+						{{
+							getTotalEnergyUsePerBuilding(element)
+								| number: '1.2'
+						}}
+					</span>
 				</td>
+				<!--
 				<td mat-footer-cell *matFooterCellDef>
-					{{ getTotalAll() }}
+					get total all
 				</td>
+				-->
 			</ng-container>
 			<ng-container matColumnDef="Electricity">
 				<th mat-header-cell *matHeaderCellDef>
@@ -54,15 +74,26 @@
 				</th>
 				<td mat-cell *matCellDef="let element">
 					<input
+						*ngIf="!isResult"
 						class="area-input"
 						type="number"
-						[(ngModel)]="element.Electricity"
-						value="element.Electricity"
+						[(ngModel)]="element.energyUse.Electricity"
+						value="element.energyUse.Electricity"
+					/>
+					<input
+						*ngIf="isResult"
+						class="area-input"
+						type="number"
+						[(ngModel)]="element.energyUseResult.Electricity"
+						value="element.energyUseResult.Electricity"
+						readonly
 					/>
 				</td>
+				<!--
 				<td mat-footer-cell *matFooterCellDef>
-					{{ getTotalElectricity() }}
+					electricity total here
 				</td>
+				-->
 			</ng-container>
 
 			<ng-container matColumnDef="Gas">
@@ -71,15 +102,26 @@
 				</th>
 				<td mat-cell *matCellDef="let element">
 					<input
+						*ngIf="!isResult"
 						class="area-input"
 						type="number"
-						[(ngModel)]="element.Gas"
-						value="element.Gas"
+						[(ngModel)]="element.energyUse.Gas"
+						value="element.energyUse.Gas"
+					/>
+					<input
+						*ngIf="isResult"
+						class="area-input"
+						type="number"
+						[(ngModel)]="element.energyUseResult.Gas"
+						value="element.energyUseResult.Gas"
+						readonly
 					/>
 				</td>
+				<!--
 				<td mat-footer-cell *matFooterCellDef>
-					{{ getTotalGas() }}
+					gas total here
 				</td>
+				-->
 			</ng-container>
 
 			<ng-container matColumnDef="Oil">
@@ -88,15 +130,26 @@
 				</th>
 				<td mat-cell *matCellDef="let element">
 					<input
+						*ngIf="!isResult"
 						class="area-input"
 						type="number"
-						[(ngModel)]="element.Oil"
-						value="element.Oil"
+						[(ngModel)]="element.energyUse.Oil"
+						value="element.energyUse.Oil"
+					/>
+					<input
+						*ngIf="isResult"
+						class="area-input"
+						type="number"
+						[(ngModel)]="element.energyUseResult.Oil"
+						value="element.energyUseResult.Oil"
+						readonly
 					/>
 				</td>
+				<!--
 				<td mat-footer-cell *matFooterCellDef>
-					{{ getTotalOil() }}
+					oil total here
 				</td>
+				-->
 			</ng-container>
 			<ng-container matColumnDef="Coal">
 				<th mat-header-cell *matHeaderCellDef>
@@ -104,15 +157,26 @@
 				</th>
 				<td mat-cell *matCellDef="let element">
 					<input
+						*ngIf="!isResult"
 						class="area-input"
 						type="number"
-						[(ngModel)]="element.Coal"
-						value="element.Coal"
+						[(ngModel)]="element.energyUse.Coal"
+						value="element.energyUse.Coal"
+					/>
+					<input
+						*ngIf="isResult"
+						class="area-input"
+						type="number"
+						[(ngModel)]="element.energyUseResult.Coal"
+						value="element.energyUseResult.Coal"
+						readonly
 					/>
 				</td>
+				<!--
 				<td mat-footer-cell *matFooterCellDef>
-					{{ getTotalCoal() }}
+					coal toal here
 				</td>
+				-->
 			</ng-container>
 			<ng-container matColumnDef="Peat">
 				<th mat-header-cell *matHeaderCellDef>
@@ -120,15 +184,26 @@
 				</th>
 				<td mat-cell *matCellDef="let element">
 					<input
+						*ngIf="!isResult"
 						class="area-input"
 						type="number"
-						[(ngModel)]="element.Peat"
-						value="element.Peat"
+						[(ngModel)]="element.energyUse.Peat"
+						value="element.energyUse.Peat"
+					/>
+					<input
+						*ngIf="isResult"
+						class="area-input"
+						type="number"
+						[(ngModel)]="element.energyUseResult.Peat"
+						value="element.energyUseResult.Peat"
+						readonly
 					/>
 				</td>
+				<!--
 				<td mat-footer-cell *matFooterCellDef>
-					{{ getTotalPeat() }}
+					peat total here
 				</td>
+				-->
 			</ng-container>
 			<ng-container matColumnDef="Wood">
 				<th mat-header-cell *matHeaderCellDef>
@@ -136,15 +211,26 @@
 				</th>
 				<td mat-cell *matCellDef="let element">
 					<input
+						*ngIf="!isResult"
 						class="area-input"
 						type="number"
-						[(ngModel)]="element.Wood"
-						value="element.Wood"
+						[(ngModel)]="element.energyUse.Wood"
+						value="element.energyUse.Wood"
+					/>
+					<input
+						*ngIf="isResult"
+						class="area-input"
+						type="number"
+						[(ngModel)]="element.energyUseResult.Wood"
+						value="element.energyUseResult.Wood"
+						readonly
 					/>
 				</td>
+				<!--
 				<td mat-footer-cell *matFooterCellDef>
-					{{ getTotalWood() }}
+					wood total here
 				</td>
+				-->
 			</ng-container>
 			<ng-container matColumnDef="Renewable">
 				<th mat-header-cell *matHeaderCellDef>
@@ -152,15 +238,26 @@
 				</th>
 				<td mat-cell *matCellDef="let element">
 					<input
+						*ngIf="!isResult"
 						class="area-input"
 						type="number"
-						[(ngModel)]="element.Renewable"
-						value="element.Renewable"
+						[(ngModel)]="element.energyUse.Renewable"
+						value="element.energyUse.Renewable"
+					/>
+					<input
+						*ngIf="isResult"
+						class="area-input"
+						type="number"
+						[(ngModel)]="element.energyUseResult.Renewable"
+						value="element.energyUseResult.Renewable"
+						readonly
 					/>
 				</td>
+				<!--
 				<td mat-footer-cell *matFooterCellDef>
 					-
 				</td>
+				-->
 			</ng-container>
 			<ng-container matColumnDef="Heat">
 				<th mat-header-cell *matHeaderCellDef>
@@ -168,20 +265,33 @@
 				</th>
 				<td mat-cell *matCellDef="let element">
 					<input
+						*ngIf="!isResult"
 						class="area-input"
 						type="number"
-						[(ngModel)]="element.Heat"
-						value="element.Heat"
+						[(ngModel)]="element.energyUse.Heat"
+						value="element.energyUse.Heat"
+					/>
+					<input
+						*ngIf="isResult"
+						class="area-input"
+						type="number"
+						[(ngModel)]="element.energyUseResult.Heat"
+						value="element.energyUseResult.Heat"
+						readonly
 					/>
 				</td>
+				<!--
 				<td mat-footer-cell *matFooterCellDef>
-					{{ getTotalHeat() }}
+					heat total here
 				</td>
+				-->
 			</ng-container>
 
 			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 			<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+			<!--
 			<tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+	-->
 		</table>
 	</div>
 </div>
