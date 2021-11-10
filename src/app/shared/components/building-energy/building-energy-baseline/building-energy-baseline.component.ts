@@ -16,7 +16,7 @@ export class BuildingEnergyBaselineComponent {
 	public residentialBuildingTypes = [
 		{
 			name: 'Apartment',
-			numberOfUnits: 4442,
+			numberOfUnits: 0,
 			previousEnergyRating: 'RE',
 			plannedEnergyRating: 'E',
 			carbonHeat: '78',
@@ -58,7 +58,7 @@ export class BuildingEnergyBaselineComponent {
 		},
 		{
 			name: 'Terraced',
-			numberOfUnits: 6222,
+			numberOfUnits: 0,
 			previousEnergyRating: 'E',
 			plannedEnergyRating: 'P',
 			carbonHeat: '78',
@@ -100,7 +100,7 @@ export class BuildingEnergyBaselineComponent {
 		},
 		{
 			name: 'Semi-detached',
-			numberOfUnits: 18631,
+			numberOfUnits: 0,
 			previousEnergyRating: 'E',
 			plannedEnergyRating: 'E',
 			carbonHeat: '78',
@@ -142,7 +142,7 @@ export class BuildingEnergyBaselineComponent {
 		},
 		{
 			name: 'Detached',
-			numberOfUnits: 34566,
+			numberOfUnits: 0,
 			previousEnergyRating: 'E',
 			plannedEnergyRating: 'E',
 			carbonHeat: '78',
@@ -187,7 +187,7 @@ export class BuildingEnergyBaselineComponent {
 	public commercialBuildingTypes = [
 		{
 			name: 'Retal',
-			totalFloorArea: 262714.36,
+			totalFloorArea: 0,
 			previousEnergyRating: 'E',
 			plannedEnergyRating: '160/E',
 			carbonHeat: '90',
@@ -229,7 +229,7 @@ export class BuildingEnergyBaselineComponent {
 		},
 		{
 			name: 'Health',
-			totalFloorArea: 31619.08,
+			totalFloorArea: 0,
 			previousEnergyRating: 'E',
 			plannedEnergyRating: 'P',
 			carbonHeat: '90',
@@ -271,7 +271,7 @@ export class BuildingEnergyBaselineComponent {
 		},
 		{
 			name: 'Hospitality',
-			totalFloorArea: 317908.15,
+			totalFloorArea: 0,
 			previousEnergyRating: 'E',
 			plannedEnergyRating: 'E',
 			carbonHeat: '90',
@@ -313,7 +313,7 @@ export class BuildingEnergyBaselineComponent {
 		},
 		{
 			name: 'Offices',
-			totalFloorArea: 136769.88,
+			totalFloorArea: 0,
 			previousEnergyRating: 'E',
 			plannedEnergyRating: 'E',
 			carbonHeat: '90',
@@ -355,7 +355,7 @@ export class BuildingEnergyBaselineComponent {
 		},
 		{
 			name: 'Industrial',
-			totalFloorArea: 1508421.92,
+			totalFloorArea: 0,
 			previousEnergyRating: 'E',
 			plannedEnergyRating: 'E',
 			carbonHeat: '90',
@@ -397,7 +397,7 @@ export class BuildingEnergyBaselineComponent {
 		},
 		{
 			name: 'Warehouses',
-			totalFloorArea: 61142.6,
+			totalFloorArea: 0,
 			previousEnergyRating: 'E',
 			plannedEnergyRating: 'E',
 			carbonHeat: '90',
