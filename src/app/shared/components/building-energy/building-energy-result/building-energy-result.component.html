@@ -8,13 +8,15 @@
 		<div class="flex-container margin-bottom">
 			<div class="flex-item space-between">
 				<building-energy-use
-					[componentType]="'Energy use'"
+					[componentType]="'Energy use MWh'"
 					[title]="'Total Residential Energy Demand MWh'"
-					[emissionValue]="'1000'"
-					[emissionUnit]="'MWh'"
-					[isEnergyUse]="true"
-					[isEnergyEmmission]="false"
-					[tableData]="residentialData"
+					[emissionUnit]="'kWh'"
+					[isResult]="true"
+					[showTotal]="true"
+					[tableData]="
+						project.territorial?.buildings?.baseline
+							?.residentialBuildings
+					"
 				>
 				</building-energy-use>
 			</div>
@@ -26,8 +28,8 @@
 					width="331"
 					height="239"
 					baseChart
-					[data]="pieChartData"
-					[labels]="pieChartLabels"
+					[data]="shareOfResidentialHousingData"
+					[labels]="residentialHousingLabel"
 					[chartType]="pieChartType"
 					[options]="pieChartOptions"
 					[plugins]="pieChartPlugins"
@@ -39,27 +41,29 @@
 
 		<div class="flex-container margin-bottom">
 			<div class="flex-item space-between">
-				<building-energy-use
+				<building-energy-emmission
 					[componentType]="'Residential emissions'"
-					[title]="'Total residential GHG emissions​'"
-					[emissionValue]="'404 589,58'"
-					[emissionUnit]="'tCO2e​'"
-					[isEnergyUse]="false"
-					[isEnergyEmmission]="true"
-					[tableData]="residentialData"
+					[title]="'Total residential emissions​'"
+					[emissionUnit]="'tCO2​'"
+					[showTotal]="true"
+					[tableData]="
+						project.territorial?.buildings?.baseline
+							?.residentialBuildings
+					"
 				>
-				</building-energy-use>
+				</building-energy-emmission>
 			</div>
 			<div class="flex-item pie-chart">
 				<mat-label>
 					Share of Total Residential Emissions by fuel type
 				</mat-label>
+
 				<canvas
 					width="331"
 					height="239"
 					baseChart
-					[data]="pieChartData"
-					[labels]="pieChartLabels"
+					[data]="shareOfResidentialEmissionByFuelTypeData"
+					[labels]="fuelTypesLabel"
 					[chartType]="pieChartType"
 					[options]="pieChartOptions"
 					[plugins]="pieChartPlugins"
@@ -78,25 +82,27 @@
 				<building-energy-use
 					[componentType]="'Commercial Energy use'"
 					[title]="'Total Commercial Energy Demand MWh'"
-					[emissionValue]="'2000'"
 					[emissionUnit]="'MWh'"
-					[isEnergyUse]="true"
-					[isEnergyEmmission]="false"
-					[tableData]="commercialData"
+					[isResult]="true"
+					[showTotal]="true"
+					[tableData]="
+						project.territorial?.buildings?.baseline
+							?.commercialBuildings
+					"
 				>
 				</building-energy-use>
 			</div>
 
 			<div class="flex-item pie-chart">
 				<mat-label>
-					Share of Commercial Housing
+					Share of Commercial Floor area
 				</mat-label>
 				<canvas
 					width="331"
 					height="239"
 					baseChart
-					[data]="pieChartData"
-					[labels]="pieChartLabels"
+					[data]="shareOfCommercialHousingData"
+					[labels]="commercialHousingLabel"
 					[chartType]="pieChartType"
 					[options]="pieChartOptions"
 					[plugins]="pieChartPlugins"
@@ -107,27 +113,29 @@
 		</div>
 		<div class="flex-container margin-bottom">
 			<div class="flex-item space-between">
-				<building-energy-use
+				<building-energy-emmission
 					[componentType]="'Commercial emissions'"
 					[title]="'Total Commercial Emissions'"
-					[emissionValue]="'3000'"
-					[emissionUnit]="'tCO2e'"
-					[isEnergyUse]="false"
-					[isEnergyEmmission]="true"
-					[tableData]="commercialData"
+					[emissionUnit]="'tCO2​'"
+					[showTotal]="true"
+					[tableData]="
+						project.territorial?.buildings?.baseline
+							?.commercialBuildings
+					"
 				>
-				</building-energy-use>
+				</building-energy-emmission>
 			</div>
 			<div class="flex-item pie-chart">
 				<mat-label>
 					Share of Total Commercial Emissions by fuel type
 				</mat-label>
+
 				<canvas
 					width="331"
 					height="239"
 					baseChart
-					[data]="pieChartData"
-					[labels]="pieChartLabels"
+					[data]="shareOfCommercialEmissionByFuelTypeData"
+					[labels]="fuelTypesLabel"
 					[chartType]="pieChartType"
 					[options]="pieChartOptions"
 					[plugins]="pieChartPlugins"
