@@ -24,7 +24,7 @@ export class SetupComponent implements OnInit {
 	public countries: ICountry[];
 	public country: ICountry | undefined;
 	public region: IRegion | undefined;
-	public population: 0 | undefined;
+	public population = 0;
 	public selectedCountry = '';
 
 	public selectedYear = 2021;
@@ -79,9 +79,9 @@ export class SetupComponent implements OnInit {
 	selectAll = false;
 
 	setupForm = new FormGroup({
-		country: new FormControl(0),
+		country: new FormControl(),
 		region: new FormControl(),
-		population: new FormControl(0),
+		population: new FormControl(),
 		startYear: new FormControl(),
 		name: new FormControl(),
 		localId: new FormControl(),
@@ -108,6 +108,7 @@ export class SetupComponent implements OnInit {
 	init() {
 		this.setupForm.patchValue(this.project);
 		this.selectedCountry = this.project.location.country;
+		this.population = this.project.population;
 	}
 
 	ngOnInit() {
