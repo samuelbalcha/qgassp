@@ -7,7 +7,7 @@
 		</div>
 		<div class="flex-item">
 			<mat-label>
-				{{ totalResidentialEnergyDemand | number: '1.2' }}
+				{{ totalEnergyDemand | number: '1.2' }}
 				{{ emissionUnit }}
 			</mat-label>
 		</div>
@@ -18,7 +18,7 @@
 
 	<div class="emmission-table">
 		<table mat-table [dataSource]="dataSource">
-			<ng-container *ngIf="isEnergyUse" matColumnDef="name">
+			<ng-container matColumnDef="name">
 				<th mat-header-cell *matHeaderCellDef>
 					<span *ngIf="!isResult"> Average Energy Use </span>
 					<span *ngIf="isResult">Energy Use MWh</span>
@@ -32,17 +32,7 @@
 				</td>
 				-->
 			</ng-container>
-			<ng-container *ngIf="isEnergyEmmission" matColumnDef="EnergyUse">
-				<th mat-header-cell *matHeaderCellDef>
-					Emissions tCO2
-				</th>
-				<td mat-cell *matCellDef="let element">
-					{{ element.EnergyUse }}
-				</td>
-				<td mat-footer-cell *matFooterCellDef>
-					Total Energy Emmissions tCO2
-				</td>
-			</ng-container>
+
 			<ng-container matColumnDef="Total">
 				<th mat-header-cell *matHeaderCellDef>
 					<span *ngIf="!isResult">{{ emissionUnit }}</span>

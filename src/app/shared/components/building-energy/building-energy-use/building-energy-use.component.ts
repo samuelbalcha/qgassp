@@ -10,10 +10,8 @@ export class BuildingEnergyUseComponent implements OnInit {
 	@Input() componentType = '';
 	@Input() title = '';
 	@Input() emissionUnit = '';
-	@Input() isEnergyUse = false;
 	@Input() showTotal = false;
 	@Input() isResult = false;
-	@Input() isEnergyEmmission = false;
 	@Input() tableData: any;
 
 	public displayedColumns: string[] = [
@@ -29,18 +27,14 @@ export class BuildingEnergyUseComponent implements OnInit {
 		'Total',
 	];
 
-	public totalEmissions = 0;
-	public totalResidentialEnergyDemand = 0;
+	public totalEnergyDemand = 0;
 	public dataSource: any;
 	// eslint-disable-next-line @typescript-eslint/no-empty-function
 	constructor() {}
 
 	ngOnInit(): void {
 		this.dataSource = this.tableData;
-		this.totalResidentialEnergyDemand = _.sumBy(
-			this.tableData,
-			'totalEnergyUse'
-		);
+		this.totalEnergyDemand = _.sumBy(this.tableData, 'totalEnergyUse');
 	}
 
 	getAverageEnergyUsePerBuilding(buildingType: any): number {
