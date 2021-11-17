@@ -1,6 +1,7 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import _ from 'lodash';
 
 import { ChartType, ChartDataSets } from 'chart.js';
@@ -8,6 +9,7 @@ import { Label } from 'ng2-charts';
 import { IProject } from '../../../../../commons/types/IProject';
 import { ProjectService } from '../../../core/services/project.service';
 import { UtilService } from '../../../core/services/util.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
 	selector: 'result-and-version',
@@ -15,8 +17,17 @@ import { UtilService } from '../../../core/services/util.service';
 	styleUrls: ['./result-and-version.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 })
-export class ResultAndVersionComponent {
+export class ResultAndVersionComponent implements OnInit {
 	@Input() backgroundColor: ThemePalette;
+
+	selectedTab = new FormControl(0);
+
+	tabs: any = {
+		landuse: 0,
+		transport: 1,
+		buildings: 2,
+		consumption: 3,
+	};
 
 	public myProject: IProject;
 	public selectedModules: string[] = [];
@@ -29,7 +40,8 @@ export class ResultAndVersionComponent {
 	constructor(
 		private router: Router,
 		private projectService: ProjectService,
-		public utilService: UtilService
+		public utilService: UtilService,
+		private route: ActivatedRoute
 	) {
 		const currentProject = this.projectService.getDraftProject();
 		if (!currentProject || !currentProject.name) {
@@ -133,9 +145,14 @@ export class ResultAndVersionComponent {
 		{ to: 'Settelment', from: 'Settelment' },
 	];
 
-	getTotal() {
-		return this.tableData
-			.map((t) => t.col2)
-			.reduce((acc, value) => acc + value, 0);
+	tabName: any = {};
+
+	ngOnInit(): void {
+		this.route.params.forEach((params: Params) => {
+			this.tabName = params;
+		});
+
+		const tabIndex = this.tabs[this.tabName.tabName];
+		this.selectedTab.setValue(tabIndex);
 	}
 }

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ProjectStatuses } from '../enums/projectStatuses';
 import { ProjectTypes } from '../enums/projectTypes';
+import { IConsumption } from './IConsumptionModule';
 import { IUser } from './IUser';
 
 export interface ICalModules {
@@ -15,8 +16,6 @@ export interface IProjectModule {
 		default: [];
 		custom: [];
 	};
-	baseline: {};
-	versions: [];
 }
 export interface IBuildingsModule {
 	dataSet: {
@@ -55,5 +54,5 @@ export interface IProject {
 		transport?: IProjectModule;
 		buildings?: IBuildingsModule;
 	};
-	consumption?: IProjectModule;
+	consumption?: IConsumption;
 }
