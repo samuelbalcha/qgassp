@@ -36,7 +36,7 @@ const routes: Routes = [
 		component: ModuleLoaderComponent,
 	},
 	{
-		path: 'result-version',
+		path: 'result-version/:tabName',
 		component: ResultAndVersionComponent,
 	},
 ];

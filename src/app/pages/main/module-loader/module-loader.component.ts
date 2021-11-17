@@ -51,7 +51,7 @@ export class ModuleLoaderComponent implements OnInit {
 		console.log('onAddLandUseChange');
 	}
 
-	calculate() {
-		this.router.navigateByUrl('result-version');
+	calculate(tabName: string) {
+		this.router.navigateByUrl(`result-version/${tabName}`);
 	}
 }

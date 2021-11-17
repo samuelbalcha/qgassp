@@ -551,6 +551,6 @@ export class BuildingEnergyBaselineComponent {
 			this.projectService.updateDraftProject(this.project);
 		}
 
-		this.router.navigateByUrl('result-version');
+		this.router.navigateByUrl('result-version/buildings');
 	}
 }

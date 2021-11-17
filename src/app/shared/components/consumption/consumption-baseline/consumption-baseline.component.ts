@@ -19,6 +19,6 @@ export class ConsumptionBaselineComponent {
 
 	createBaseline(): void {
 		console.log(this.projectService.project);
-		this.router.navigateByUrl('result-version');
+		this.router.navigateByUrl('result-version/consumption');
 	}
 }
