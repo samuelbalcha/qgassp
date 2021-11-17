@@ -24,7 +24,7 @@ export class SetupComponent implements OnInit {
 	public countries: ICountry[];
 	public country: ICountry | undefined;
 	public region: IRegion | undefined;
-	public population: 0 | undefined;
+	public population = 0;
 	public selectedCountry = '';
 
 	public selectedYear = 2021;
@@ -79,9 +79,9 @@ export class SetupComponent implements OnInit {
 	selectAll = false;
 
 	setupForm = new FormGroup({
-		country: new FormControl(0),
+		country: new FormControl(),
 		region: new FormControl(),
-		population: new FormControl(0),
+		population: new FormControl(),
 		startYear: new FormControl(),
 		name: new FormControl(),
 		localId: new FormControl(),
@@ -108,6 +108,7 @@ export class SetupComponent implements OnInit {
 	init() {
 		this.setupForm.patchValue(this.project);
 		this.selectedCountry = this.project.location.country;
+		this.population = this.project.population;
 	}
 
 	ngOnInit() {
@@ -141,8 +142,8 @@ export class SetupComponent implements OnInit {
 					areaAndPopulation: {
 						existingEnvironment: {
 							population: this.population || 1000,
-							targetArea: '',
-							typeOfUrbanEnvironment: '',
+							targetArea: 'New area',
+							typeOfUrbanEnvironment: 'City',
 							averageHouseholdSize: 100,
 							averageIncomeLevel: '40% - 60%',
 							expectedRateOfGlobalDecarbonisation: 20,
@@ -187,6 +188,21 @@ export class SetupComponent implements OnInit {
 						default: [],
 						custom: [],
 					},
+					baseline: {
+						residentialBuildings: {},
+						commercialBuildings: {},
+						endUseOfEnergy: [],
+					},
+					baselineResult: {
+						residentialBuildings: {
+							totalEnergyDemand: 0,
+						},
+						commercialBuildings: {
+							totalEnergyDemand: 0,
+						},
+						endUseOfEnergy: [],
+					},
+					versions: [],
 				},
 			};
 		}
@@ -212,7 +228,6 @@ export class SetupComponent implements OnInit {
 
 		this.getSelectedModule();
 
-		console.log('setup-project', this.project);
 		this.projectService.initializeProject(this.project);
 		this.router.navigateByUrl('module-loader');
 	}

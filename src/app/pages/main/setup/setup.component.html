@@ -121,14 +121,8 @@
 				</div>
 			</div>
 
-			<div class="flex-container module-selector">
-				<div class="flex-item space-between-60px margin-right-25px">
-					<mat-checkbox
-						[checked]="selectAll"
-						(change)="checkAll($event.checked)"
-						><i> Select all </i>
-					</mat-checkbox>
-				</div>
+			<div class="flex-container">
+				<!--
 				<div class="flex-item">
 					<button
 						mat-stroked-button
@@ -139,32 +133,37 @@
 						location
 					</button>
 				</div>
+				-->
 			</div>
 
-			<div class="flex-container module-selector">
-				<div class="flex-item space-between-60px width-200">
-					Module type
-				</div>
+			<div class="flex-container module-selector margin-bottom">
 				<div class="flex-item space-between-60px">
-					<b>Use data source</b>
 					<mat-label>
 						<i>
-							The calculations are done defaultly based on country
-							specific default dataset. Unless specific location
-							specific dataset is available and uploaded.
-							(previously or currently) to the database. More
-							about the dataset can be found
+							The calculations are done by default based on
+							country specific default dataset. When the
+							calculation is carried out without a local dataset,
+							GGIA applies down-scaled country-level default
+							values from European datasets, and the results are
+							indicative. More about the dataset can be found
+							<a style="color: white;" href="/dataset">here</a>
 						</i>
-						<a style="color: white;" href="/dataset">here</a>
 					</mat-label>
 				</div>
 			</div>
-
+			<div class="flex-item space-between-60px width-200">
+				<div class="margin-bottom">Module type</div>
+				<mat-checkbox
+					[checked]="selectAll"
+					(change)="checkAll($event.checked)"
+					><i> Select all </i>
+				</mat-checkbox>
+			</div>
 			<div class="flex-container module-selector">
 				<div
 					class="flex-item width-200 margin-right-25px space-between-60px"
 				>
-					<h5>Territorial</h5>
+					<h5>Territorial Mode</h5>
 					<mat-checkbox
 						class="padding-left-10"
 						[checked]="landuse"
@@ -264,7 +263,9 @@
 				<div
 					class="flex-item width-200 margin-right-25px space-between-60px"
 				>
+					<h5>Consumption based Mode</h5>
 					<mat-checkbox
+						class="padding-left-10"
 						[checked]="consumption"
 						(change)="consumption = !consumption"
 					>

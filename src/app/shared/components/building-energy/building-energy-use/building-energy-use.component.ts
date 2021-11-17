@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, Input, OnInit } from '@angular/core';
-
+import _ from 'lodash';
 @Component({
 	selector: 'building-energy-use',
 	templateUrl: './building-energy-use.component.html',
@@ -9,14 +9,13 @@ import { Component, Input, OnInit } from '@angular/core';
 export class BuildingEnergyUseComponent implements OnInit {
 	@Input() componentType = '';
 	@Input() title = '';
-	@Input() emissionValue = '';
 	@Input() emissionUnit = '';
-	@Input() isEnergyUse = false;
-	@Input() isEnergyEmmission = false;
+	@Input() showTotal = false;
+	@Input() isResult = false;
 	@Input() tableData: any;
 
 	public displayedColumns: string[] = [
-		'EnergyUse',
+		'name',
 		'Electricity',
 		'Gas',
 		'Oil',
@@ -28,98 +27,21 @@ export class BuildingEnergyUseComponent implements OnInit {
 		'Total',
 	];
 
+	public totalEnergyDemand = 0;
 	public dataSource: any;
-
 	// eslint-disable-next-line @typescript-eslint/no-empty-function
 	constructor() {}
 
 	ngOnInit(): void {
 		this.dataSource = this.tableData;
+		this.totalEnergyDemand = _.sumBy(this.tableData, 'totalEnergyUse');
 	}
 
-	getTotalElectricity(): number {
-		return 5;
-	}
-	getTotalGas(): number {
-		return 5;
-	}
-	getTotalOil(): number {
-		return 5;
-	}
-	getTotalCoal(): number {
-		return 5;
-	}
-	getTotalPeat(): number {
-		return 5;
-	}
-	getTotalWood(): number {
-		return 5;
-	}
-	getTotalHeat(): number {
-		return 5;
-	}
-	getTotalTotal(index: number): number {
-		return 5 * index;
-	}
-	getTotalAll(): number {
-		return 5;
+	getAverageEnergyUsePerBuilding(buildingType: any): number {
+		return buildingType.averageEnergyUse;
 	}
 
-	/*
-	getTotalElectricity(): number {
-		return this.dataSource
-			.map((t) => t.Electricity)
-			.reduce((acc, value) => acc + value, 0);
+	getTotalEnergyUsePerBuilding(buildingType: any): number {
+		return buildingType.totalEnergyUse;
 	}
-	getTotalGas(): number {
-		return this.dataSource
-			.map((t) => t.Gas)
-			.reduce((acc, value) => acc + value, 0);
-	}
-	getTotalOil(): number {
-		return this.dataSource
-			.map((t) => t.Oil)
-			.reduce((acc, value) => acc + value, 0);
-	}
-	getTotalCoal(): number {
-		return this.dataSource
-			.map((t) => t.Coal)
-			.reduce((acc, value) => acc + value, 0);
-	}
-	getTotalPeat(): number {
-		return this.dataSource
-			.map((t) => t.Peat)
-			.reduce((acc, value) => acc + value, 0);
-	}
-	getTotalWood(): number {
-		return this.dataSource
-			.map((t) => t.Wood)
-			.reduce((acc, value) => acc + value, 0);
-	}
-	getTotalHeat(): number {
-		return this.dataSource
-			.map((t) => t.Heat)
-			.reduce((acc, value) => acc + value, 0);
-	}
-
-	getTotalAll(): number {
-		return this.dataSource
-			.map((t) => t.Total)
-			.reduce((acc, value) => acc + value, 0);
-	}
-	getTotalTotal(i: any): number {
-		let sum = 0;
-		sum =
-			sum +
-			this.dataSource[i].Electricity +
-			this.dataSource[i].Gas +
-			this.dataSource[i].Oil +
-			this.dataSource[i].Coal +
-			this.dataSource[i].Peat +
-			this.dataSource[i].Wood +
-			this.dataSource[i].Heat;
-
-		return sum;
-	}
-	*/
 }

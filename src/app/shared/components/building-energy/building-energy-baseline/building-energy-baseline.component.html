@@ -22,7 +22,13 @@
 								appearance="fill"
 								class="number-input"
 							>
-								<input matInput type="number" />
+								<input
+									matInput
+									type="number"
+									[(ngModel)]="
+										resindetialTotalNumberOfHousingUnits
+									"
+								/>
 							</mat-form-field>
 						</div>
 					</div>
@@ -30,6 +36,12 @@
 						<residential-buildings
 							[isBaseLine]="true"
 							[showNumberOfUnits]="true"
+							[residentialBuildingTypes]="
+								residentialBuildingTypes
+							"
+							(onResidentialBuildingsChange)="
+								onModelChange($event)
+							"
 							class="margin-bottom"
 						>
 						</residential-buildings>
@@ -52,13 +64,21 @@
 								appearance="fill"
 								class="number-input"
 							>
-								<input matInput type="number" />
+								<input
+									matInput
+									type="number"
+									[(ngModel)]="commercialTotalFloorArea"
+								/>
 							</mat-form-field>
 						</div>
 					</div>
 					<div class="label-left">
 						<commercial-buildings
 							[isBaseLine]="true"
+							[commercialBuildingTypes]="commercialBuildingTypes"
+							(onCommercialBuildingsChange)="
+								onModelChange($event)
+							"
 							class="label-left"
 						></commercial-buildings>
 					</div>
@@ -66,6 +86,7 @@
 			</div>
 
 			<div class="btn-group">
+				<!--
 				<button
 					mat-button
 					mat-raised-button
@@ -74,9 +95,20 @@
 				>
 					Next
 				</button>
+				-->
+
+				<button
+					mat-button
+					mat-raised-button
+					class="next-btn"
+					(click)="createBaseline()"
+				>
+					Create baseline
+				</button>
 			</div>
 		</mat-step>
 
+		<!--
 		<mat-step>
 			<ng-template matStepLabel icon>Detailed Building Stock</ng-template>
 			<div class="margin-bottom">
@@ -85,70 +117,32 @@
 					values blank if you are not certain.
 				</i>
 			</div>
-			<!--
-			<div class="flex-container">
-				<div class="flex-item  retrofit-construction">
-					<h4 class="margin-bottom bold">Residential buildings</h4>
-					<div class="flex-container label-left">
-						<div class="flex-item width-250">
-							<mat-label>
-								Total number of housing units
-							</mat-label>
-						</div>
-						<div class="flex-item ">
-							<mat-form-field
-								appearance="fill"
-								class="number-input"
-							>
-								<input matInput type="number" />
-							</mat-form-field>
-						</div>
-					</div>
-					<div class="label-left">
-						<residential-buildings
-							[isBaseLine]="true"
-							[showNumberOfUnits]="true"
-							class="margin-bottom"
-						>
-						</residential-buildings>
-					</div>
-				</div>
-
-				<div class="flex-item">
-					<h4 class="margin-bottom bold">Commercial buildings</h4>
-					<div class="label-left">
-						<commercial-buildings
-							[isBaseLine]="true"
-							class="label-left"
-						></commercial-buildings>
-					</div>
-				</div>
-			</div>
--->
 
 			<div class="margin-bottom">
 				<h4 class="margin-bottom bold">Residential buildings</h4>
 				<building-energy-use
 					[componentType]="'Energy use'"
 					[title]="'Total Residential Energy Use'"
-					[emissionValue]="'1000'"
-					[emissionUnit]="'MWh'"
+					[emissionUnit]="'kWh'"
 					[isEnergyUse]="true"
 					[isEnergyEmmission]="false"
+					[tableData]="residentialBuildingTypes"
 					class="margin-bottom"
 				>
 				</building-energy-use>
 
-				<end-use-of-energy></end-use-of-energy>
+				<end-use-of-energy
+					[endUseOfEnergy]="baseline.endUseOfEnergy"
+				></end-use-of-energy>
 			</div>
 			<div class="margin-bottom">
 				<h4 class="margin-bottom bold">Commercial buildings</h4>
 				<building-energy-use
 					[componentType]="'Commercial Energy use'"
 					[title]="'Total Commercial Energy Use'"
-					[emissionValue]="'2000'"
-					[emissionUnit]="'MWh'"
+					[emissionUnit]="'kWh / m2'"
 					[isEnergyUse]="true"
+					[tableData]="commercialBuildingTypes"
 					[isEnergyEmmission]="false"
 				>
 				</building-energy-use>
@@ -173,5 +167,6 @@
 				</button>
 			</div>
 		</mat-step>
+		-->
 	</mat-horizontal-stepper>
 </div>

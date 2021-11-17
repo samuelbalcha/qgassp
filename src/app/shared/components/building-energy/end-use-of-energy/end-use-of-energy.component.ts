@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
 	selector: 'end-use-of-energy',
@@ -6,27 +6,10 @@ import { Component } from '@angular/core';
 	styleUrls: ['./../building-energy.component.scss'],
 })
 export class EndUseOfEnergyComponent {
-	endUseData = [
-		{
-			useType: 'Space Heating',
-			amount: 25,
-		},
-		{
-			useType: 'Water Heating',
-			amount: 20,
-		},
-		{
-			useType: 'Light & Appliance',
-			amount: 30,
-		},
-		{
-			useType: 'Pumps & Fans',
-			amount: 25,
-		},
-	];
+	@Input() endUseOfEnergy: any[] = [];
 
 	public getTotal(): number {
-		const sumall = this.endUseData
+		const sumall = this.endUseOfEnergy
 			.map((item) => item.amount)
 			.reduce((prev, curr) => prev + curr, 0);
 		return sumall / 100;

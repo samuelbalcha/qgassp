@@ -8,11 +8,11 @@
 				<p style="color:#3F51B5;">1. Land-use change</p>
 				<p *ngIf="!panelOpenState" class="grayLabel">From</p>
 				<p *ngIf="!panelOpenState" style="color:#CECECE;">
-					&nbsp;Forestlands
+					&nbsp; {{ fromSelectedLandType }}
 				</p>
 				<p *ngIf="!panelOpenState" class="grayLabel">To</p>
 				<p *ngIf="!panelOpenState" style="color:#CECECE;">
-					&nbsp;Settlements
+					&nbsp; {{ toSelectedLandType }}
 				</p>
 				<p *ngIf="!panelOpenState" class="grayLabel">Total Area</p>
 				<p *ngIf="!panelOpenState" style="color:#CECECE;">&nbsp;6 ha</p>
@@ -88,7 +88,7 @@
 			<div style="display:inline-flex">
 				<p style="width:47%">
 					2.2.3 Conversion factor from carbon stock change to CO2
-					emmision/removals (ratio of the moleular weight)
+					emmision/removals (ratio of the molecular weight)
 				</p>
 				<p style="color:black; padding-left: 10rem;">-3,667</p>
 			</div>

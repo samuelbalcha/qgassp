@@ -17,6 +17,23 @@ export interface IProjectModule {
 		custom: [];
 	};
 }
+export interface IBuildingsModule {
+	dataSet: {
+		default: [];
+		custom: [];
+	};
+	baseline: {
+		residentialBuildings: any;
+		commercialBuildings: any;
+		endUseOfEnergy: any[];
+	};
+	baselineResult: {
+		residentialBuildings: any;
+		commercialBuildings: any;
+		endUseOfEnergy: any[];
+	};
+	versions: [];
+}
 
 export interface IProject {
 	name: string;
@@ -35,7 +52,7 @@ export interface IProject {
 	territorial?: {
 		landuse?: IProjectModule;
 		transport?: IProjectModule;
-		buildings?: IProjectModule;
+		buildings?: IBuildingsModule;
 	};
 	consumption?: IConsumption;
 }

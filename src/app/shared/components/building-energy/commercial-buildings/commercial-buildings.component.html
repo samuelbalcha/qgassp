@@ -43,7 +43,7 @@
 					matInput
 					type="number"
 					[(ngModel)]="building.totalFloorArea"
-					(change)="onModelChange()"
+					(change)="onModelChange($event)"
 				/>
 			</mat-form-field>
 		</div>
@@ -53,7 +53,7 @@
 					matInput
 					type="text"
 					[(ngModel)]="building.previousEnergyRating"
-					(change)="onModelChange()"
+					(change)="onModelChange($event)"
 				/>
 			</mat-form-field>
 		</div>
@@ -63,7 +63,7 @@
 					matInput
 					type="text"
 					[(ngModel)]="building.plannedEnergyRating"
-					(change)="onModelChange()"
+					(change)="onModelChange($event)"
 				/>
 			</mat-form-field>
 		</div>
@@ -76,7 +76,7 @@
 					matInput
 					type="text"
 					[(ngModel)]="building.carbonHeat"
-					(change)="onModelChange()"
+					(change)="onModelChange($event)"
 				/>
 			</mat-form-field>
 		</div>
@@ -86,7 +86,7 @@
 					matInput
 					type="text"
 					[(ngModel)]="building.electricity"
-					(change)="onModelChange()"
+					(change)="onModelChange($event)"
 				/>
 			</mat-form-field>
 		</div>
