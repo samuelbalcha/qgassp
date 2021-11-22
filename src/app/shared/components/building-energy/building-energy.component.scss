@@ -43,11 +43,11 @@
 }
 
 .new-construction {
-	width: 520px;
+	width: 40%;
 }
 
 .retrofit-construction {
-	width: 50%;
+	min-width: 55%;
 }
 
 .width-250 {
@@ -116,4 +116,8 @@ mat-horizontal-stepper {
 }
 .hide {
 	display: none;
+}
+
+.energy-ratings {
+	max-width: 90px !important;
 }

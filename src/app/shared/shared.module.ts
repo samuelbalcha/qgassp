@@ -32,9 +32,6 @@ import { ResidentialBuildingsComponent } from './components/building-energy/resi
 import { CommercialBuildingsComponent } from './components/building-energy/commercial-buildings/commercial-buildings.component';
 import { BuildingEnergyResultComponent } from './components/building-energy/building-energy-result/building-energy-result.component';
 import { BuildingEnergyEmmissionComponent } from './components/building-energy/building-energy-emmission/building-energy-emmission.component';
-import { ResidentialStepComponent } from './components/building-energy/building-energy-result/steps/residential-step/residential-step.component';
-import { CommercialStepComponent } from './components/building-energy/building-energy-result/steps/commercial-step/commercial-step.component';
-import { ResultStepComponent } from './components/building-energy/building-energy-result/steps/result-step/result-step.component';
 import { TransportBaselineComponent } from './components/transport/transport-baseline/transport-baseline.component';
 import { TransportResultComponent } from './components/transport/transport-result/transport-result.component';
 
@@ -45,7 +42,13 @@ import { ChangeBldgUseComponent } from './components/building-energy/change-bldg
 import { DensificationTableComponent } from './components/building-energy/densification-table/densification-table.component';
 import { TransportBaselineV2Component } from './components/transport/transport-baseline-v2/transport-baseline-v2.component';
 import { BuildingEnergyUseComponent } from './components/building-energy/building-energy-use/building-energy-use.component';
-import { DetailedBuildingStockStepComponent } from './components/building-energy/building-energy-result/steps/detailed-building-stock/detailed-building-stock-step.component';
+import { TotalBuildingEnergyEmissionComponent } from './components/building-energy/total-building-energy-emission/total-building-energy-emission.component';
+import { BuildingEnergyPolicyVersionComponent } from './components/building-energy/building-energy-policy-version/building-energy-policy-version.component';
+import { ResidentialStepComponent } from './components/building-energy/building-energy-policy-version/steps/residential-step/residential-step.component';
+import { ResultStepComponent } from './components/building-energy/building-energy-policy-version/steps/result-step/result-step.component';
+import { CommercialStepComponent } from './components/building-energy/building-energy-policy-version/steps/commercial-step/commercial-step.component';
+import { DetailedBuildingStockStepComponent } from './components/building-energy/building-energy-policy-version/steps/detailed-building-stock/detailed-building-stock-step.component';
+import { EnergyRatingsComponent } from './components/building-energy/energy-ratings/energy-ratings.component';
 
 const shared = [
 	HeaderComponent,
@@ -80,6 +83,9 @@ const shared = [
 	ChangeBldgUseComponent,
 	DensificationTableComponent,
 	DetailedBuildingStockStepComponent,
+	TotalBuildingEnergyEmissionComponent,
+	BuildingEnergyPolicyVersionComponent,
+	EnergyRatingsComponent,
 ];
 
 @NgModule({

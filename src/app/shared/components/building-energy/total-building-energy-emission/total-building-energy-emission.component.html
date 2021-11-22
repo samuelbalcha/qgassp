@@ -1,0 +1,161 @@
+<div class="building-energy-emission margin-bottom">
+	<div class="flex-container margin-bottom">
+		<div class="flex-item space-between">
+			<mat-label>
+				{{ title }}
+			</mat-label>
+		</div>
+		<div class="flex-item">
+			<mat-label>
+				{{ totalEnergyDemand | number: '1.2' }}
+				{{ emissionUnit }}
+			</mat-label>
+		</div>
+	</div>
+
+	<div class="emmission-table">
+		<table mat-table [dataSource]="dataSource">
+			<ng-container matColumnDef="name">
+				<th mat-header-cell *matHeaderCellDef>
+					<span>Emissions tCO2</span>
+				</th>
+				<td mat-cell *matCellDef="let element">
+					{{ element.name }}
+				</td>
+			</ng-container>
+
+			<ng-container matColumnDef="Total">
+				<th mat-header-cell *matHeaderCellDef>
+					<span> Total Emissions tCO2</span>
+				</th>
+				<td mat-cell *matCellDef="let element; let i = index">
+					<!--
+					<span>
+						{{
+							getTotalEnergyUsePerBuilding(element)
+								| number: '1.2'
+						}}
+					</span>
+					-->
+					123456789
+				</td>
+			</ng-container>
+
+			<ng-container matColumnDef="Electricity">
+				<th mat-header-cell *matHeaderCellDef>
+					Electricity
+				</th>
+				<td mat-cell *matCellDef="let element">
+					<input
+						class="area-input"
+						type="number"
+						[(ngModel)]="element.energyUseResult.Electricity"
+						value="element.energyUseResult.Electricity"
+						readonly
+					/>
+				</td>
+			</ng-container>
+			<ng-container matColumnDef="Gas">
+				<th mat-header-cell *matHeaderCellDef>
+					Gas
+				</th>
+				<td mat-cell *matCellDef="let element">
+					<input
+						class="area-input"
+						type="number"
+						[(ngModel)]="element.energyUseResult.Gas"
+						value="element.energyUseResult.Gas"
+						readonly
+					/>
+				</td>
+			</ng-container>
+			<ng-container matColumnDef="Oil">
+				<th mat-header-cell *matHeaderCellDef>
+					Oil
+				</th>
+				<td mat-cell *matCellDef="let element">
+					<input
+						class="area-input"
+						type="number"
+						[(ngModel)]="element.energyUseResult.Oil"
+						value="element.energyUseResult.Oil"
+						readonly
+					/>
+				</td>
+			</ng-container>
+			<ng-container matColumnDef="Coal">
+				<th mat-header-cell *matHeaderCellDef>
+					Coal
+				</th>
+				<td mat-cell *matCellDef="let element">
+					<input
+						class="area-input"
+						type="number"
+						[(ngModel)]="element.energyUseResult.Coal"
+						value="element.energyUseResult.Coal"
+						readonly
+					/>
+				</td>
+			</ng-container>
+			<ng-container matColumnDef="Peat">
+				<th mat-header-cell *matHeaderCellDef>
+					Peat
+				</th>
+				<td mat-cell *matCellDef="let element">
+					<input
+						class="area-input"
+						type="number"
+						[(ngModel)]="element.energyUseResult.Peat"
+						value="element.energyUseResult.Peat"
+						readonly
+					/>
+				</td>
+			</ng-container>
+			<ng-container matColumnDef="Wood">
+				<th mat-header-cell *matHeaderCellDef>
+					Wood
+				</th>
+				<td mat-cell *matCellDef="let element">
+					<input
+						class="area-input"
+						type="number"
+						[(ngModel)]="element.energyUseResult.Wood"
+						value="element.energyUseResult.Wood"
+						readonly
+					/>
+				</td>
+			</ng-container>
+			<ng-container matColumnDef="Renewable">
+				<th mat-header-cell *matHeaderCellDef>
+					Renewable
+				</th>
+				<td mat-cell *matCellDef="let element">
+					<input
+						class="area-input"
+						type="number"
+						[(ngModel)]="element.energyUseResult.Renewable"
+						value="element.energyUseResult.Renewable"
+						readonly
+					/>
+				</td>
+			</ng-container>
+			<ng-container matColumnDef="Heat">
+				<th mat-header-cell *matHeaderCellDef>
+					Heat
+				</th>
+				<td mat-cell *matCellDef="let element">
+					<input
+						class="area-input"
+						type="number"
+						[(ngModel)]="element.energyUseResult.Heat"
+						value="element.energyUseResult.Heat"
+						readonly
+					/>
+				</td>
+			</ng-container>
+
+			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+			<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+		</table>
+	</div>
+</div>

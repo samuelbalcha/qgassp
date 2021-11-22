@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { IResult } from '../../../types/IResult';
 
 @Injectable()
-export class CalculatorService {
+export class LandUseChangeCalculatorService {
 	result: IResult;
 
 	constructor() {

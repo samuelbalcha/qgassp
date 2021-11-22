@@ -1,0 +1,11 @@
+<mat-form-field class="energy-ratings">
+	<mat-select
+		[(ngModel)]="selectedRating"
+		(selectionChange)="onChange($event)"
+		name="energyRating"
+	>
+		<mat-option *ngFor="let rating of energyRatings" [value]="rating.value"
+			>{{ rating.name }}
+		</mat-option>
+	</mat-select>
+</mat-form-field>

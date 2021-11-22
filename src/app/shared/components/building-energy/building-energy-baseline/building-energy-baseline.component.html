@@ -11,6 +11,7 @@
 					<div class="margin-bottom label-left">
 						<h4 class="bold">Residential buildings</h4>
 					</div>
+					<!--
 					<div class="flex-container label-left">
 						<div class="flex-item width-200">
 							<mat-label>
@@ -32,12 +33,14 @@
 							</mat-form-field>
 						</div>
 					</div>
+				-->
 					<div class="label-left">
 						<residential-buildings
 							[isBaseLine]="true"
 							[showNumberOfUnits]="true"
 							[residentialBuildingTypes]="
-								residentialBuildingTypes
+								project.territorial?.buildings?.baseline
+									?.residentialBuildings
 							"
 							(onResidentialBuildingsChange)="
 								onModelChange($event)
@@ -52,7 +55,7 @@
 					<div class="margin-bottom label-left">
 						<h4 class="bold">Commercial buildings</h4>
 					</div>
-
+					<!--
 					<div class="flex-container label-left">
 						<div class="flex-item width-100 space-between">
 							<mat-label>
@@ -72,10 +75,14 @@
 							</mat-form-field>
 						</div>
 					</div>
+				-->
 					<div class="label-left">
 						<commercial-buildings
 							[isBaseLine]="true"
-							[commercialBuildingTypes]="commercialBuildingTypes"
+							[commercialBuildingTypes]="
+								project.territorial?.buildings?.baseline
+									?.commercialBuildings
+							"
 							(onCommercialBuildingsChange)="
 								onModelChange($event)
 							"

@@ -11,10 +11,17 @@ import { AuthService } from './services/auth.service';
 import { StorageService } from './services/storage.service';
 import { ProjectService } from './services/project.service';
 import { UtilService } from './services/util.service';
+import { BuildingEnergyCalculatorService } from './services/building-energy-calculator.service';
 
 @NgModule({
 	imports: [BrowserModule, CommonModule],
-	providers: [AuthService, StorageService, ProjectService, UtilService],
+	providers: [
+		AuthService,
+		StorageService,
+		ProjectService,
+		UtilService,
+		BuildingEnergyCalculatorService,
+	],
 })
 export class CoreModule {
 	static forRoot(): ModuleWithProviders<any> {

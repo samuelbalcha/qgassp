@@ -201,6 +201,10 @@ export class SetupComponent implements OnInit {
 							totalEnergyDemand: 0,
 						},
 						endUseOfEnergy: [],
+						totalEmissions: {
+							residentialBuildings: {},
+							commercialBuildings: {},
+						},
 					},
 					versions: [],
 				},

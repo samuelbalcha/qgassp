@@ -31,6 +31,7 @@ export interface IBuildingsModule {
 		residentialBuildings: any;
 		commercialBuildings: any;
 		endUseOfEnergy: any[];
+		totalEmissions: any;
 	};
 	versions: [];
 }

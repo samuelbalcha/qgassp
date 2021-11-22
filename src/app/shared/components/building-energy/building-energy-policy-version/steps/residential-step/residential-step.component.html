@@ -2,39 +2,13 @@
 	<!-- Construction of new building. -->
 	<div class="new-construction flex-item space-between">
 		<h4 class="margin-bottom bold">Construction of the new building</h4>
+
 		<residential-buildings
-			[showTotalFloorArea]="true"
 			[showNumberOfUnits]="true"
-			class=" margin-bottom"
+			[residentialBuildingTypes]="residentialBuildingTypes"
+			class="margin-bottom"
 		>
 		</residential-buildings>
-
-		<div class="flex-container">
-			<div class="flex-item  width-250">
-				<mat-label>
-					Floor area of new unts
-				</mat-label>
-			</div>
-
-			<div class="flex-item">
-				<mat-form-field appearance="fill" class="numberInput">
-					<input matInput type="number" />
-				</mat-form-field>
-			</div>
-		</div>
-		<div class="flex-container">
-			<div class="flex-item width-250">
-				<mat-label>
-					Total number of the new units
-				</mat-label>
-			</div>
-
-			<div class="flex-item">
-				<mat-form-field appearance="fill" class="numberInput">
-					<input matInput type="number" />
-				</mat-form-field>
-			</div>
-		</div>
 
 		<div class="margin-bottom">
 			<mat-label>
@@ -43,9 +17,9 @@
 		</div>
 
 		<div class="flex-container">
-			<div class="flex-item width-250">
+			<div class="flex-item width-100 space-between">
 				<mat-label>
-					% of electricity coming from RE
+					% of energy from RE
 				</mat-label>
 			</div>
 
@@ -61,20 +35,23 @@
 		<h4 class="margin-bottom bold">Retrofit of buildings</h4>
 
 		<residential-buildings
-			[showTotalFloorArea]="true"
+			[showNumberOfUnits]="true"
 			[showEnergyRating]="true"
+			[residentialBuildingTypes]="residentialBuildingTypes"
 			class=" margin-bottom"
 		>
 		</residential-buildings>
 
 		<div class="margin-bottom">
 			<mat-label>
-				Floor Area of retrofit buildings supplying Space & Water Heating
+				Number of retrofit buildings supplying Space & Water Heating
 				through low carbon heat and electricity
 			</mat-label>
 		</div>
 		<div class="margin-bottom">
 			<residential-buildings
+				[showNumberOfUnits]="true"
+				[residentialBuildingTypes]="residentialBuildingTypes"
 				[showCarbonHeatAndElectricity]="true"
 				class="margin-bottom"
 			></residential-buildings>
@@ -87,9 +64,9 @@
 			>
 		</div>
 		<div class="flex-container">
-			<div class="flex-item width-250">
+			<div class="flex-item width-100 space-between">
 				<mat-label>
-					% of electricity coming from RE
+					% of energy from RE
 				</mat-label>
 			</div>
 

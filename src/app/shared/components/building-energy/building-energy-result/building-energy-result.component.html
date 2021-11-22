@@ -146,175 +146,49 @@
 		</div>
 	</div>
 
-	<div>
-		<cdk-accordion class="version-accordion">
-			<cdk-accordion-item
-				#accordionItem="cdkAccordionItem"
-				class="module-accordion-item"
-				role="button"
-				tabindex="0"
-				[attr.aria-expanded]="accordionItem.expanded"
-			>
-				<div
-					class="module-accordion-item-header buildings"
-					role="presentation"
-					(click)="accordionItem.toggle()"
+	<!-- Total -->
+	<div class="margin-bottom">
+		<h4 class="margin-bottom">Total building emmissions</h4>
+		<div class="flex-container margin-bottom">
+			<div class="flex-item space-between">
+				<total-building-energy-emission
+					[title]="'Total building emmissions'"
+					[emissionUnit]="'tCO2'"
+					[tableData]="totalEmissions"
+				></total-building-energy-emission>
+			</div>
+
+			<div class="flex-item pie-chart">
+				<mat-label>
+					Share of total Emissions by fuel type
+				</mat-label>
+				<canvas
+					width="331"
+					height="239"
+					baseChart
+					[data]="shareOfCommercialHousingData"
+					[labels]="commercialHousingLabel"
+					[chartType]="pieChartType"
+					[options]="pieChartOptions"
+					[plugins]="pieChartPlugins"
+					[legend]="pieChartLegend"
 				>
-					1. Policy Plan
-					<span class="module-accordion-item-description">
-						<mat-icon
-							style="color: white"
-							*ngIf="accordionItem.expanded"
-							>expand_less</mat-icon
-						>
-						<mat-icon
-							style="color: white"
-							*ngIf="!accordionItem.expanded"
-							>expand_more</mat-icon
-						>
-					</span>
-				</div>
+				</canvas>
+			</div>
+		</div>
+	</div>
 
-				<div
-					class="module-accordion-item-body"
-					role="region"
-					[style.display]="accordionItem.expanded ? '' : 'none'"
-				>
-					<i
-						>Fill in the following information to calculate the
-						results for the policy plan.</i
-					>
-					<br />
-					<br />
-					<mat-horizontal-stepper [linear]="false">
-						<mat-step>
-							<ng-template matStepLabel
-								>Residential Buildings</ng-template
-							>
-
-							<div class="building-result-form">
-								<residential-step
-									[isBaseLine]="true"
-									[showNumberOfUnits]="true"
-									class="margin-bottom"
-								>
-								</residential-step>
-							</div>
-
-							<div class="btn-group">
-								<button
-									mat-button
-									mat-raised-button
-									class="next-btn"
-									matStepperNext
-								>
-									Next
-								</button>
-							</div>
-						</mat-step>
-
-						<mat-step>
-							<ng-template matStepLabel
-								>Commercial Buildings</ng-template
-							>
-
-							<commercial-step
-								class="step-container"
-							></commercial-step>
-
-							<div class="btn-group">
-								<button
-									class="previous-btn"
-									mat-button
-									mat-raised-button
-									matStepperPrevious
-								>
-									Prev
-								</button>
-
-								<button
-									mat-button
-									mat-raised-button
-									class="next-btn"
-									matStepperNext
-								>
-									Next
-								</button>
-							</div>
-						</mat-step>
-
-						<mat-step>
-							<ng-template matStepLabel
-								>Building changes and Densification</ng-template
-							>
-							<change-bldg-use></change-bldg-use>
-
-							<densification-table></densification-table>
-
-							<div class="btn-group">
-								<button
-									class="previous-btn"
-									mat-button
-									mat-raised-button
-									matStepperPrevious
-								>
-									Prev
-								</button>
-
-								<button
-									mat-button
-									mat-raised-button
-									class="next-btn"
-									matStepperNext
-								>
-									Next
-								</button>
-							</div>
-						</mat-step>
-						<!--
-						<mat-step>
-							<ng-template matStepLabel
-								>Detailed building stock</ng-template
-							>
-							<detailed-building-stock-step
-								class="margin-bottom"
-							></detailed-building-stock-step>
-
-							<div class="btn-group margin-bottom">
-								<button
-									class="previous-btn"
-									mat-button
-									mat-raised-button
-									matStepperPrevious
-								>
-									Prev
-								</button>
-
-								<button
-									mat-button
-									mat-raised-button
-									class="next-btn"
-									matStepperNext
-								>
-									Next
-								</button>
-							</div>
-						</mat-step>
-
-						<mat-step>
-							<ng-template matStepLabel icon>Result</ng-template>
-							<div class="step-container">
-								<result-step
-									[chartTitle]="
-										'Emissions from Policy Changes'
-									"
-								></result-step>
-							</div>
-						</mat-step>
-						-->
-					</mat-horizontal-stepper>
-				</div>
-			</cdk-accordion-item>
-		</cdk-accordion>
+	<div
+		class="margin-bottom"
+		*ngFor="let version of project.territorial.buildings.versions"
+	>
+		<building-energy-policy-version
+			[version]="version"
+		></building-energy-policy-version>
+	</div>
+	<div class="margin-bottom">
+		<button class="add-button add-new-version" mat-button>
+			+ Add another plan policy
+		</button>
 	</div>
 </div>

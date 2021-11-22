@@ -8,7 +8,7 @@ interface IResidentialBuildings {
 
 interface ICommercialBuildings {
 	totalFloorArea: number;
-	retal: number;
+	retail: number;
 	health: number;
 	hospitality: number;
 	offices: number;

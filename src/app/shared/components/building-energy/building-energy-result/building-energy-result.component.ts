@@ -6,7 +6,7 @@ import _ from 'lodash';
 
 import { IProject } from '../../../../../../commons/types/IProject';
 import { ProjectService } from '../../../../core/services/project.service';
-import { UtilService } from '../../../../core/services/util.service';
+import { BuildingEnergyCalculatorService } from '../../../../core/services/building-energy-calculator.service';
 
 @Component({
 	selector: 'building-energy-result',
@@ -30,7 +30,7 @@ export class BuildingEnergyResultComponent implements OnInit {
 	];
 
 	public commercialHousingLabel: Label[] = [
-		['Retal'],
+		['Retail'],
 		['Health'],
 		['Hospitality'],
 		['Offices'],
@@ -77,18 +77,60 @@ export class BuildingEnergyResultComponent implements OnInit {
 
 	public project: any;
 
+	public totalEmissions: any;
+
 	constructor(
 		private projectService: ProjectService,
-		private utilService: UtilService
+		private buildingEnergyCalculatorService: BuildingEnergyCalculatorService
 	) {}
 
 	ngOnInit(): void {
 		this.project = this.projectService.getDraftProject() as IProject;
-		this.project = this.utilService.getBuildingEnergyBaselineResult(
+
+		this.project = this.buildingEnergyCalculatorService.getBuildingEnergyBaselineResult(
 			this.project
 		);
+
+		console.log('Project', this.project);
+
+		const firstVersion = {
+			baseline: this.project.territorial.buildings.baseline,
+			baselineResult: this.project.territorial.buildings.baselineResult,
+		};
+
+		this.project.territorial.buildings.versions = [firstVersion];
 		this.projectService.updateDraftProject(this.project);
+
 		this.initPieCharts();
+
+		this.totalEmissions = [
+			{
+				name: 'Residential',
+				energyUseResult: {
+					Electricity: 4158,
+					Gas: 5147.4,
+					Oil: 375,
+					Coal: 3.6,
+					Peat: 1.4,
+					Wood: 15.8,
+					Renewable: 0,
+					Heat: 0,
+				},
+			},
+			{
+				name: 'Commercial',
+				energyUseResult: {
+					Electricity: 4158,
+					Gas: 5147.4,
+					Oil: 375,
+					Coal: 3.6,
+					Peat: 1.4,
+					Wood: 15.8,
+					Renewable: 0,
+					Heat: 0,
+				},
+			},
+		];
 	}
 
 	initPieCharts(): void {
@@ -121,7 +163,7 @@ export class BuildingEnergyResultComponent implements OnInit {
 		);
 
 		this.shareOfResidentialEmissionByFuelTypeData = _.map(
-			this.calculateResidentialEnergyEmissionShare(
+			this.buildingEnergyCalculatorService.calculateResidentialEnergyEmissionShare(
 				this.project.territorial.buildings.baseline.residentialBuildings
 			),
 			(item) => {
@@ -130,46 +172,12 @@ export class BuildingEnergyResultComponent implements OnInit {
 		);
 
 		this.shareOfCommercialEmissionByFuelTypeData = _.map(
-			this.calculateResidentialEnergyEmissionShare(
+			this.buildingEnergyCalculatorService.calculateResidentialEnergyEmissionShare(
 				this.project.territorial.buildings.baseline.commercialBuildings
 			),
 			(item) => {
 				return item * 100;
 			}
 		);
-	}
-
-	calculateResidentialEnergyEmissionShare(buildingType: any): number[] {
-		const totalEnergyEmission = _.sumBy(
-			buildingType,
-			'totalEnergyEmission'
-		);
-
-		const electricityShare = _.sumBy(
-			buildingType,
-			'emissionResult.Electricity'
-		);
-
-		const gasShare = _.sumBy(buildingType, 'emissionResult.Gas');
-		const oilShare = _.sumBy(buildingType, 'emissionResult.Oil');
-		const coalShare = _.sumBy(buildingType, 'emissionResult.Coal');
-		const peatShare = _.sumBy(buildingType, 'emissionResult.Peat');
-		const woodShare = _.sumBy(buildingType, 'emissionResult.Wood');
-		const renewableShare = _.sumBy(
-			buildingType,
-			'emissionResult.Renewable'
-		);
-		const heatShare = _.sumBy(buildingType, 'emissionResult.Heat');
-
-		return [
-			Math.round((electricityShare / totalEnergyEmission) * 100) / 100,
-			Math.round((gasShare / totalEnergyEmission) * 100) / 100,
-			Math.round((oilShare / totalEnergyEmission) * 100) / 100,
-			Math.round((coalShare / totalEnergyEmission) * 100) / 100,
-			Math.round((peatShare / totalEnergyEmission) * 100) / 100,
-			Math.round((woodShare / totalEnergyEmission) * 100) / 100,
-			Math.round((renewableShare / totalEnergyEmission) * 100) / 100,
-			Math.round((heatShare / totalEnergyEmission) * 100) / 100,
-		];
 	}
 }
