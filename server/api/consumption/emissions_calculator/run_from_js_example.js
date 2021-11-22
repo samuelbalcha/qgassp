@@ -33,5 +33,5 @@ util.log('running python script')
 process.stdout.on('data',function(chunk){
 
     var textChunk = chunk.toString('utf8'); // buffer to string
-    util.log(textChunk);
+    console.log(textChunk);
 });

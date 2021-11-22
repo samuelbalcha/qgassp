@@ -15,16 +15,17 @@ import pathlib
 def calculations_wrapper(input_data):
     logging.debug("begin calculations")
     emissions = {}
+    
     for policy in input_data['policy_label']:
-        emissions[policy], _ = baseline_calculations(input_data, policy)
+        emissions[policy] = baseline_calculations(input_data, policy).to_dict()
     if input_data['partially_new_area'] and "BL" in emissions and "NA" in emissions:
         policy_year = 2025
         pop_size_new = 10000
         pop_size_old = 10000
-        Emissions_PN = emissions['BL'].copy()
-        Emissions_PN.loc[policy_year:2050] = ((emissions['NA'] * pop_size_new) + (emissions['BL'] * pop_size_old)) / (pop_size_new + pop_size_old)
-        return Emissions_PN # previously Berlin_Emissions_PN
-    return emissions['BL']
+        Emissions_PN = pd.DataFrame(emissions['BL']).copy()
+        Emissions_PN.loc[policy_year:2050] = ((pd.DataFrame(emissions['NA']) * pop_size_new) + (pd.DataFrame(emissions['BL']) * pop_size_old)) / (pop_size_new + pop_size_old)
+        emissions["PN"] = Emissions_PN.to_dict() #previously Berlin_Emissions_PN
+    return json.dumps(emissions)
     
     
 def baseline_calculations(input_data, policy):
@@ -595,7 +596,7 @@ def baseline_calculations(input_data, policy):
     #End of Construction Emissions part!
     #############################################################################################################
 
-    return DF, DF_tot
+    return DF#, DF_tot
     #F_tot.columns = Exio_products
     #locals()[Region + "_Emissions_" + policy_label] = DF
     #locals()[Region+ "_Emissions_tot_" + policy_label] = DF_tot
@@ -802,8 +803,8 @@ def main():
     logging.basicConfig(level=level, format=fmt)
     
     logging.debug(f'Argument List: {str(sys.argv)}')
+    input_data=json.loads(sys.argv[1])
     #for testing purposes
-
     # input_data = json.loads('{"year": 2020, "region": "Berlin", \
     #     "policy_label":["BL", "RF", "NA"], "country": "Germany", "ab": "DE", \
     #     "target_area":"some_val", "U_type":"city", \
@@ -823,10 +824,8 @@ def main():
     #     "MS_fuel_scaler":0.5, "MS_pt_scaler":0.2, "MS_veh_scaler":0.5, \
     #     "new_floor_area":0, "income_scaler":1, "electricity_prop":0.75, \
     #     "partially_new_area":true}')
-    input_data=json.loads(sys.argv[1])
     emissions = calculations_wrapper(input_data)
-    print(emissions.to_json())
-    #sys.stdout.flush()
+    print(emissions)
 
 if __name__ == "__main__":
     start = time.perf_counter()
