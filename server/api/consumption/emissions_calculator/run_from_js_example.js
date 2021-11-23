@@ -20,7 +20,7 @@ var calculations_input = '{"year": 2020, "region": "Berlin", \
 "EV_takeup":true, "EV_scaler":0.5, "Modal_Shift":false, \
 "MS_fuel_scaler":0.5, "MS_pt_scaler":0.2, "MS_veh_scaler":0.5, \
 "new_floor_area":0, "income_scaler":1, "electricity_prop":0.75, \
-"partially_new_area":true}'
+"partially_new_area":true, "return_total_data":false}'
 
 var python_script_path = path.join(__dirname,'main.py');
 

@@ -15,9 +15,11 @@ import pathlib
 def calculations_wrapper(input_data):
     logging.debug("begin calculations")
     emissions = {}
-    
     for policy in input_data['policy_label']:
-        emissions[policy] = baseline_calculations(input_data, policy).to_dict()
+        emission_df, emission_total_df = policy_calculations(input_data, policy)
+        emissions[policy] = emission_df.to_dict()
+        if input_data['return_total_data']:
+            emissions[policy+'_total'] = emission_total_df.to_dict()
     if input_data['partially_new_area'] and "BL" in emissions and "NA" in emissions:
         policy_year = 2025
         pop_size_new = 10000
@@ -28,9 +30,9 @@ def calculations_wrapper(input_data):
     return json.dumps(emissions)
     
     
-def baseline_calculations(input_data, policy):
+def policy_calculations(input_data, policy):
     """
-    #Baseline calculation here - policies is essentially the same calcualtion
+    #Same function is used for BL, RF, NA calculations
     ###########Explanation#######################
     #The calculations work by describing the economy as being composed of 200 products, given by 'products'. 
     #For each product there is an emission intensity and they are collected together in ab_M. There are seperate emission
@@ -345,18 +347,16 @@ def baseline_calculations(input_data, policy):
     #PART 1 - The user selects the heating proportions from district heating, electricity and household combustion
     #########################
 
-
-    #Default values are given by:
-    district_prop = ab_Y[district] / Total_Fuel
-    electricity_heat_prop = electricity_heat / Total_Fuel
-    combustable_fuels_prop = (ab_Y[solids].sum() + ab_Y[liquids].sum() + ab_Y[gases].sum()) / Total_Fuel
-
-    ###THE USER CAN ALTER THESE BY::
-
-    #THESE NUMBERS NEED TO SUM TO 1
-    #district_prop = 0.0#district_prop#1##USER_INPUT
-    #electricity_heat_prop = 1.0#electricity_heat_prop##USER_INPUT
-    #combustable_fuels_prop = 0.0#combustable_fuels_prop##USER_INPUT
+    try:
+        district_prop = input_data['district_prop'] # maintaining correct ratio should be done in front-end
+        electricity_heat_prop = input_data['electricity_heat_prop']
+        combustable_fuels_prop = input_data['combustable_fuels_prop']
+    except Exception as e:
+        logging.debug(f'district_prop/electricity_heat_prop/combustable_fuels_prop was missing. Used default vals. {e}')
+        #Default values are given by:
+        district_prop = ab_Y[district] / Total_Fuel
+        electricity_heat_prop = electricity_heat / Total_Fuel
+        combustable_fuels_prop = (ab_Y[solids].sum() + ab_Y[liquids].sum() + ab_Y[gases].sum()) / Total_Fuel
 
     ######################################
     ##Part 2 - Determine final values
@@ -383,7 +383,8 @@ def baseline_calculations(input_data, policy):
         liquids_prop = input_data['liquids_prop']
         solids_prop = input_data['solids_prop']
         gases_prop = input_data['gases_prop']
-    except:
+    except Exception as e:
+        logging.debug(f'liquids_prop/solids_prop/gases_prop was missing. Used default vals. {e}')
         liquids_prop = ab_Y[liquids].sum()/ (ab_Y[liquids].sum() + ab_Y[solids].sum() + ab_Y[gases].sum())
         solids_prop = ab_Y[solids].sum()/ (ab_Y[liquids].sum() + ab_Y[solids].sum() + ab_Y[gases].sum())
         gases_prop = ab_Y[gases].sum()/ (ab_Y[liquids].sum() + ab_Y[solids].sum() + ab_Y[gases].sum())
@@ -422,8 +423,12 @@ def baseline_calculations(input_data, policy):
         #The 'direct_ab' value should be changed to the value the user wants. 
         #The user needs to convert the value into kg CO2e / Euro 
     if (policy_label == "BL"):
-        direct_district_emissions = ab_M.loc[direct_ab,district]#1.0475#USER_INPUT
-        ab_M.loc[direct_ab,district] = direct_district_emissions
+        try:
+            direct_district_emissions = input_data['direct_district_emissions'] #1.0475#USER_INPUT
+        except Exception as e:
+            logging.debug(f'direct_district_emissions was missing. Used default val. {e}')
+            direct_district_emissions = ab_M.loc[direct_ab,district]
+            ab_M.loc[direct_ab,district] = direct_district_emissions
     ################################################################
 
 
@@ -484,7 +489,7 @@ def baseline_calculations(input_data, policy):
 
     ##############Sustainable_Heating######################################################################################
 
-            S_heating = input_data['s_heating'] #USER_INPUT
+            s_heating = input_data['s_heating'] #USER_INPUT
             district_prop = input_data['district_prop'] #USER_INPUT
             Electricity_prop = input_data['electricity_prop'] #USER_INPUT
             combustable_fuels_prop = input_data['combustable_fuels_prop'] #USER_INPUT
@@ -498,9 +503,9 @@ def baseline_calculations(input_data, policy):
             #solids_prop = 0.0 #USER_INPUT
             #gases_prop = 0.0 #USER_INPUT
             #liquids_prop = 0.0 #USER_INPUT
-            District_value = ab_M.loc[direct_ab,district].sum()# ab_M   0.0 # USER_INPUT
+            District_value = ab_M.loc[direct_ab,district].sum()# ab_M   0.0 # USER_INPUT #TODO if this is user input, what is the name of the parameter?
 
-            if S_heating:
+            if s_heating:
                 ab_M, ab_Y = local_heating(district, Total_Fuel, electricity, elec_total, direct_ab, ad, electricity_heat_prop, elec_price, liquids, solids, gases, ab_M, ab_Y, district_prop, Electricity_prop, 
                               combustable_fuels_prop, liquids_prop, gases_prop, solids_prop, District_value)
                 #This is just a repeat of the baseline part
@@ -537,19 +542,14 @@ def baseline_calculations(input_data, policy):
     ###########################################################################################################################            
 
         if year > 2020 and year <= 2030:
-
             income_mult = income_scaling['2020-2030']   #Select the income multiplier for this decade
             house_mult = house_scaling['2020-2030']     #Select the house multiplier for this decade
             eff_factor = eff_scaling
-
-        if  year > 2030 and year <= 2040: 
-
+        elif  year > 2030 and year <= 2040: 
             income_mult = income_scaling['2030-2040']   #Seclectthe income multiplier for this decade
             house_mult = house_scaling['2030-2040']     #select the house multiplier for this decade
             eff_factor = eff_scaling
-
-        if year > 2040 and year <=2050:
-
+        elif year > 2040 and year <=2050:
             income_mult = income_scaling['2040-2050']   #Seclectthe income multiplier for this decade
             house_mult = house_scaling['2040-2050']     #select the house multiplier for this decade
             eff_factor = eff_scaling
@@ -596,7 +596,7 @@ def baseline_calculations(input_data, policy):
     #End of Construction Emissions part!
     #############################################################################################################
 
-    return DF#, DF_tot
+    return DF, DF_tot
     #F_tot.columns = Exio_products
     #locals()[Region + "_Emissions_" + policy_label] = DF
     #locals()[Region+ "_Emissions_tot_" + policy_label] = DF_tot
@@ -823,7 +823,7 @@ def main():
     #     "EV_takeup":true, "EV_scaler":0.5, "Modal_Shift":false, \
     #     "MS_fuel_scaler":0.5, "MS_pt_scaler":0.2, "MS_veh_scaler":0.5, \
     #     "new_floor_area":0, "income_scaler":1, "electricity_prop":0.75, \
-    #     "partially_new_area":true}')
+    #     "partially_new_area":true, "return_total_data":false}')
     emissions = calculations_wrapper(input_data)
     print(emissions)
 
