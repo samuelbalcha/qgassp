@@ -8,15 +8,14 @@ import logging
 import json
 import pandas as pd
 import numpy as np
-import dataclasses as dc
 
 import pathlib
 
-def calculations_wrapper(input_data):
+def manage_policy_calculations(input_data):
     logging.debug("begin calculations")
     emissions = {}
     for policy in input_data['policy_label']:
-        emission_df, emission_total_df = policy_calculations(input_data, policy)
+        emission_df, emission_total_df = calculate_policy_emissions(input_data, policy)
         emissions[policy] = emission_df.to_dict()
         if input_data['return_total_data']:
             emissions[policy+'_total'] = emission_total_df.to_dict()
@@ -29,8 +28,8 @@ def calculations_wrapper(input_data):
         emissions["PN"] = Emissions_PN.to_dict() #previously Berlin_Emissions_PN
     return json.dumps(emissions)
     
-    
-def policy_calculations(input_data, policy):
+
+def calculate_policy_emissions(input_data, policy:str) -> (pd.DataFrame, pd.DataFrame):
     """
     #Same function is used for BL, RF, NA calculations
     ###########Explanation#######################
@@ -79,10 +78,11 @@ def policy_calculations(input_data, policy):
     #The user selects which one
     #to use based on the urban density of the region (or the
     #average one for mixed regions or if they are unsure)
-    Y_average = pd.read_csv("Demand_Vectors/Average_2020_Exio_elec_trans_en_Euro.csv", index_col = 0)
+    # TODO commented out creating unused dataframes
+    #Y_average = pd.read_csv("Demand_Vectors/Average_2020_Exio_elec_trans_en_Euro.csv", index_col = 0)
     Y_city = pd.read_csv("Demand_Vectors/City_2020_Exio_elec_trans_en_Euro.csv", index_col = 0)
-    Y_rural = pd.read_csv("Demand_Vectors/Rural_2020_Exio_elec_trans_en_Euro.csv", index_col = 0)
-    Y_town = pd.read_csv("Demand_Vectors/Town_2020_Exio_elec_trans_en_Euro.csv", index_col = 0)
+    #Y_rural = pd.read_csv("Demand_Vectors/Rural_2020_Exio_elec_trans_en_Euro.csv", index_col = 0)
+    #Y_town = pd.read_csv("Demand_Vectors/Town_2020_Exio_elec_trans_en_Euro.csv", index_col = 0)
     
     #Load the Use phase and tail pipe emissions. 
 
@@ -131,14 +131,15 @@ def policy_calculations(input_data, policy):
     
     #Load the Income scaler. This describes how much each household spends depending on their income.
 
-    Income_scaling = pd.read_csv("Data/mean_expenditure_by_quint.csv", index_col = 0)
+    # TODO this dataframe is unused, so commentef out
+    #Income_scaling = pd.read_csv("Data/mean_expenditure_by_quint.csv", index_col = 0)
     
     ##################################################################################################################
     #Determine Emissions for all years
     ################Question 2##########################################
     year = input_data['year'] #TODO is this supposed to be an input?
     policy_year = input_data['policy_year'] #USER_INPUT
-    Region = input_data['region'] #User_input
+    Region = input_data['region'] #User_input # not used atm
     policy_label = policy  #This is just a label for the policy
     #########Question 3#########################################
     country = input_data['country']  #This is to choose the country - USER_INPUT
@@ -149,9 +150,6 @@ def policy_calculations(input_data, policy):
     U_type = input_data['U_type'] #'average', 'town', 'city', 'rural' , This is to select the demand vector - the user should choose
     #################################################################
 
-
-
-
     #Forming data for the calculations
 
     #These are needed for holding the results
@@ -161,21 +159,15 @@ def policy_calculations(input_data, policy):
     DF_tot = pd.DataFrame(np.zeros((30,200)),index = list(range(2020,2050))
                                                           ,columns = products) #holds final data in products (200)
 
-
     direct_ab = "direct_"+ab
     indirect_ab = "indirect_"+ab
     M_countries.loc[direct_ab:indirect_ab,:].copy()
 
-    #TODO this had a dynamically assigned variable that had to be changed, the second variable
     #  is still here until certain that it's not needed.
-    ab_M = DE_M = M_countries.loc[direct_ab:indirect_ab,:].copy()  #Here the emission intensities                                                 
-                                                                                   #are selected
+    ab_M = M_countries.loc[direct_ab:indirect_ab,:].copy()  #Here the emission intensities are selected
 
     #Extract 
     ab_Y = Y_city[country].copy()  ##Here the demand vector is selected
-    #for index, val in ab_Y.iteritems(): #TODO remove testing lines
-    #    print(index, val)
-
 
     #These are needed for the use phase emissions
 
@@ -207,8 +199,7 @@ def policy_calculations(input_data, policy):
     #Income_scaler
 
     Income_scaler = input_data['income_scaler']   #USER_INPUT#This is the default and should be used if the user doesn't know the income type
-    Elasticity = 1 
-
+    Elasticity = 1
 
     #Otherwise,  the user selects the income level of the household (they choose by quntiles)
 
@@ -219,7 +210,6 @@ def policy_calculations(input_data, policy):
     ##############################################################################################
 
     ##This is the end of the mandatory questions
-
 
     ##Optional questions
     #################################################################################################
@@ -232,7 +222,6 @@ def policy_calculations(input_data, policy):
     public_transport = ['Railway transportation services', 'Other land transportation services', 
                         'Sea and coastal water transportation services', 'Inland water transportation services']
 
-
     Public_transport_sum = ab_Y[public_transport].sum()    ###This describes the total use of public transport
 
     #These 'prop' values can be adjustable by the user. 
@@ -240,7 +229,6 @@ def policy_calculations(input_data, policy):
     #but then the other values should be increased so that total proportions sum to equal to 1
 
     #In such a case, the code to do this would be
-
     try:
         river_prop = input_data['river_prop'] # maintaining correct ratio should be done in front-end
         ferry_prop = input_data['ferry_prop']
@@ -263,13 +251,10 @@ def policy_calculations(input_data, policy):
         ferry_prop = ferry_prop / (bus_prop + ferry_prop+ rail_prop)
 
     #The values that should be adjusted are:
-
     ab_Y['Railway transportation services'] = rail_prop * Public_transport_sum
     ab_Y['Other land transportation services'] = bus_prop * Public_transport_sum
     ab_Y['Sea and coastal water transportation services'] = ferry_prop * Public_transport_sum
     ab_Y['Inland water transportation services'] = river_prop * Public_transport_sum
-
-    ##############################################################################
 
     #Otherwise, if there is no rail travel or river/sea travel then it should be:
 
@@ -277,9 +262,6 @@ def policy_calculations(input_data, policy):
     #river_prop = 0
     #ferry_prop = 0
     #bus_prop = 1
-
-    ######################################################################################################
-
 
     #########Question 9##################################################################################
         #Electricity _ mix
@@ -318,11 +300,9 @@ def policy_calculations(input_data, policy):
     #ab_Y['Electricity by solar photovoltaic'] = solar_pvc_prop * elec_total
     #ab_Y['Electricity by hydro'] = hydro_prop * elec_total
 
-
     #if the user specifies the mix, then the electricity values change to the LCA values:
 
     #for elec in electricity:
-
         #ab_M.loc[direct_ab:indirect_ab,electricity] = M_countries_LCA.loc[direct_ab:indirect_ab,electricity] 
 
     #IT SHOULD BE SUGGESTED THAT THE USER DOES NOT ALTER THE ELECTRICITY MIX
@@ -330,8 +310,7 @@ def policy_calculations(input_data, policy):
 
     #######Question 10#####################################################################################
 
-
-        #Supply of household heating
+    #Supply of household heating
 
     liquids = ['Natural Gas Liquids', 'Kerosene', 'Heavy Fuel Oil', 'Other Liquid Biofuels']
     solids = ['Wood and products of wood and cork (except furniture); articles of straw and plaiting materials (20)',
@@ -374,7 +353,6 @@ def policy_calculations(input_data, policy):
         ab_Y[elec] = prop * electricity_heat_prop * Total_Fuel / elec_price #Scale based on electricity use in heat and elec mix
         ab_Y[elec] += elec_hold #Add on the parts to do with appliances
 
-
     #COMBUSTABLE FUELS
 
     #Here, the user can also alter the mix of the combustable fuels.
@@ -395,9 +373,7 @@ def policy_calculations(input_data, policy):
     #solids_prop = 0 ##USER_INPUT
     #gases_prop = 1 # #USER_INPUT
 
-
     #Then
-
     for liquid in liquids:
         if ab_Y[liquids].sum() != 0:
             prop = ab_Y[liquid] / ab_Y[liquids].sum()  #Amount of each liquid in total liquid expenditure
@@ -429,19 +405,14 @@ def policy_calculations(input_data, policy):
             logging.debug(f'direct_district_emissions was missing. Used default val. {e}')
             direct_district_emissions = ab_M.loc[direct_ab,district]
             ab_M.loc[direct_ab,district] = direct_district_emissions
-    ################################################################
-
 
     ######### Question 12########################################
     #This is the expected global reduction in product emissions
     eff_scaling = input_data['EFF_scaling'] #USER_INPUT
-    ##############################################################
-
 
     ###############################################################
     #############The actual calculation starts here################
     #################################################################
-
 
     income_scaling = Income_proj.loc[country]    #Scale factor applied to income - unique value for each decade
     house_scaling = House_proj.loc[country]      #Scale factor applied to household size - unique value for each decade
@@ -455,7 +426,6 @@ def policy_calculations(input_data, policy):
 
     ###########Policies are from here################################################################
         if year == policy_year:
-            ###########################################
     #     NEW PART FOR THE CONSTRUCTION EMISSIONS!
     #######################################################       
     ##Construction emissions#############################################################################################
@@ -467,15 +437,13 @@ def policy_calculations(input_data, policy):
 
     ###############################################################################################################
 
-            #Questions should be asked in this order! Some depend on the results of others
+    #Questions should be asked in this order! Some depend on the results of others
     ##############Household Efficiency###################################################        
             EFF_gain = input_data['EFF_gain'] #USER_INPUT
             EFF_scaler = input_data['EFF_scaler'] #USER_INPUT
 
             if EFF_gain:
-                Eff_improvements(ab_Y, EFF_scaler, liquids, solids, gases, electricity, ad, district)
-
-    ########################################################################################################################
+                ab_Y = eff_improvements(ab_Y, EFF_scaler, liquids, solids, gases, electricity, ad, district)
 
     ##############Local_Electricity########################################################################################
 
@@ -483,52 +451,34 @@ def policy_calculations(input_data, policy):
             EL_scaler = input_data['EL_scaler']
 
             if input_data['local_electricity']:
-                ab_Y, ab_M = Local_generation(ab_M,ab_Y, EL_scaler, EL_Type, electricity, M_countries_LCA, direct_ab, indirect_ab)
-
-    #########################################################################################################################
+                ab_Y, ab_M = local_generation(ab_M,ab_Y, EL_scaler, EL_Type, electricity, M_countries_LCA, direct_ab, indirect_ab)
 
     ##############Sustainable_Heating######################################################################################
 
             s_heating = input_data['s_heating'] #USER_INPUT
             district_prop = input_data['district_prop'] #USER_INPUT
-            Electricity_prop = input_data['electricity_prop'] #USER_INPUT
+            electricity_prop = input_data['electricity_prop'] #USER_INPUT
             combustable_fuels_prop = input_data['combustable_fuels_prop'] #USER_INPUT
             solids_prop = input_data['solids_prop'] #USER_INPUT
             gases_prop = input_data['gases_prop'] #USER_INPUT
             liquids_prop = input_data['liquids_prop'] #USER_INPUT
-            
-            #district_prop = 0.25 #USER_INPUT
-            #Electricity_prop = 0.75 #USER_INPUT
-            #combustable_fuels_prop = 0.25 #USER_INPUT
-            #solids_prop = 0.0 #USER_INPUT
-            #gases_prop = 0.0 #USER_INPUT
-            #liquids_prop = 0.0 #USER_INPUT
-            District_value = ab_M.loc[direct_ab,district].sum()# ab_M   0.0 # USER_INPUT #TODO if this is user input, what is the name of the parameter?
+
+            district_value = ab_M.loc[direct_ab,district].sum()# ab_M   0.0 # USER_INPUT #TODO this was not mentioned in the user inputs list.
 
             if s_heating:
-                ab_M, ab_Y = local_heating(district, Total_Fuel, electricity, elec_total, direct_ab, ad, electricity_heat_prop, elec_price, liquids, solids, gases, ab_M, ab_Y, district_prop, Electricity_prop, 
-                              combustable_fuels_prop, liquids_prop, gases_prop, solids_prop, District_value)
+                ab_M, ab_Y = local_heating(district, Total_Fuel, electricity, elec_total, direct_ab, ad, electricity_heat_prop, elec_price, liquids, solids, gases, ab_M, ab_Y, district_prop, electricity_prop, 
+                              combustable_fuels_prop, liquids_prop, gases_prop, solids_prop, district_value)
                 #This is just a repeat of the baseline part
 
-    #########################################################################################################################
-
     ###########Biofuel_in_transport########################################################################################
-            Biofuel_takeup = input_data['biofuel_takeup'] #USER_INPUT
             bio_scaler = input_data['bio_scaler'] #USER_INPUT
-
-            if Biofuel_takeup:
-                BioFuels(ab_Y, bio_scaler)
-
-    ##########################################################################################################################
+            if input_data['biofuel_takeup']: #USER_INPUT
+                ab_Y = bioFuels(ab_Y, bio_scaler)
 
     ########Electric_Vehicles##################################################################################################
-            EV_takeup = input_data['EV_takeup'] #USER_INPUT
-            EV_scaler = 0.5
-
-            if EV_takeup:
-                Electric_Vehicles(ab_Y, EV_scaler, Fuel_prices, country, electricity)
-
-    ############################################################################################################################
+            EV_scaler = input_data['EV_scaler'] #USER_INPUT
+            if input_data['EV_takeup']: #USER_INPUT
+                ab_Y = electric_vehicles(ab_Y, EV_scaler, Fuel_prices, country, electricity)
 
     #########Modal_Shift#######################################################################################################
             Modal_Shift = input_data['Modal_Shift'] #USER_INPUT
@@ -537,27 +487,25 @@ def policy_calculations(input_data, policy):
             MS_pt_scaler = input_data['MS_pt_scaler'] #USER_INPUT
 
             if Modal_Shift:
-                Transport_Modal_Shift(ab_Y, MS_fuel_scaler, MS_pt_scaler, MS_veh_scaler, public_transport)
+                ab_Y = transport_modal_shift(ab_Y, MS_fuel_scaler, MS_pt_scaler, MS_veh_scaler, public_transport)
 
     ###########################################################################################################################            
 
         if year > 2020 and year <= 2030:
             income_mult = income_scaling['2020-2030']   #Select the income multiplier for this decade
             house_mult = house_scaling['2020-2030']     #Select the house multiplier for this decade
-            eff_factor = eff_scaling
         elif  year > 2030 and year <= 2040: 
             income_mult = income_scaling['2030-2040']   #Seclectthe income multiplier for this decade
             house_mult = house_scaling['2030-2040']     #select the house multiplier for this decade
-            eff_factor = eff_scaling
         elif year > 2040 and year <=2050:
             income_mult = income_scaling['2040-2050']   #Seclectthe income multiplier for this decade
             house_mult = house_scaling['2040-2050']     #select the house multiplier for this decade
-            eff_factor = eff_scaling
+        eff_factor = eff_scaling
 
         ab_Y *= income_mult
-        ab_M *=eff_factor
-        Use_phase_ab *=eff_factor
-        Tail_pipe_ab *=eff_factor
+        ab_M *= eff_factor
+        Use_phase_ab *= eff_factor
+        Tail_pipe_ab *= eff_factor
 
         #Then we have to recalculate
         GWP_ab = pd.DataFrame(ab_M.to_numpy().dot(np.diag(ab_Y.to_numpy()))) # This is the basic calculation
@@ -591,7 +539,6 @@ def policy_calculations(input_data, policy):
         Building_Emissions = 580 * New_floor_area/pop_size
     DF.loc[policy_year, 'Total_Emissions'] += Building_Emissions
 
-
     ##############################################################################################################
     #End of Construction Emissions part!
     #############################################################################################################
@@ -602,12 +549,14 @@ def policy_calculations(input_data, policy):
     #locals()[Region+ "_Emissions_tot_" + policy_label] = DF_tot
 
 
-def BioFuels(ab_Y,scaler):
-    """        ##Explanation/Description
+def bioFuels(ab_Y, scaler:float) -> pd.DataFrame:
+    """ 
+        ##Explanation/Description
         This sort of policy acts only on the Expenditure (Intensities don't change)
         Similar polices could exist for houseing fuel types, ...
         Similar adjustments to this could also be needed to correct the baselines if the user knows the 
-        results to be different"""
+        results to be different
+    """
     
     ## Step 1. Determine current expenditure on fuels and the proportions of each type
     
@@ -615,34 +564,36 @@ def BioFuels(ab_Y,scaler):
     Diesel = (ab_Y['Biodiesels'] + ab_Y['Gas/Diesel Oil'])
     Petrol = (ab_Y['Motor Gasoline'] + ab_Y['Biogasoline'])
         
-        #Step 2. Increase the biofuel to the designated amount
+    #Step 2. Increase the biofuel to the designated amount
         
     ab_Y['Biogasoline'] = scaler * Total_fuel * (Petrol/ (Diesel + Petrol))
     ab_Y['Biodiesels'] =  scaler * Total_fuel * (Diesel / (Diesel + Petrol))
         
-                #Step 3. Decrease the others by the correct amount, taking into account their initial values
+    #Step 3. Decrease the others by the correct amount, taking into account their initial values
         
-        #The formula to do this is :
-        #New Value = Remaining_expenditure * Old_proportion (once the previous categories are removed)
+    #The formula to do this is :
+    #New Value = Remaining_expenditure * Old_proportion (once the previous categories are removed)
         
     Sum_changed = ab_Y['Biogasoline'] + ab_Y['Biodiesels'] #This can't be more than the total!
         
     ab_Y['Motor Gasoline'] = (Total_fuel - Sum_changed) * (Petrol / (Diesel + Petrol))
     ab_Y['Gas/Diesel Oil'] = (Total_fuel - Sum_changed) * (Diesel / (Diesel + Petrol))
+
+    return ab_Y
     
-def Electric_Vehicles(ab_Y, scaler, Fuel_prices, country, electricity):
+def electric_vehicles(ab_Y, scaler:float, Fuel_prices, country:str, electricity) -> pd.DataFrame:
     """
-                 ##Policy explanation
-        xx% of vehicles are ev
-        First we reduce the expenditure on all forms of transport fuels by 20 %
-        Then, we need to add something onto the electricity
-        
-        For this we need to: calculate how much fuel is saved and convert it back into Litres (and then kwh)
-        Take into account the difference in efficiency between the two types
-        Add the Kwh evenly onto the electricity sectors
-        
-        Explanation/Description
-        This sort of policy acts only on the Expenditure 
+    ##Policy explanation
+    xx% of vehicles are ev
+    First we reduce the expenditure on all forms of transport fuels by 20 %
+    Then, we need to add something onto the electricity
+    
+    For this we need to: calculate how much fuel is saved and convert it back into Litres (and then kwh)
+    Take into account the difference in efficiency between the two types
+    Add the Kwh evenly onto the electricity sectors
+    
+    Explanation/Description
+    This sort of policy acts only on the Expenditure 
     """
         
     #step 1 Assign a proportion of the fuels to be converted and reduce the fuels by the correct amount 
@@ -664,14 +615,15 @@ def Electric_Vehicles(ab_Y, scaler, Fuel_prices, country, electricity):
     Petrol /=4.54          #Efficiency saving
         
     #step 4. Assign this to increased electricity demand
+    #Proportions MUST always sum to 1!!!!!!!!!!!
     Elec_vehicles = Diesel + Petrol       
     elec_total = ab_Y[electricity].sum()
     elec_scaler = (Elec_vehicles + elec_total) / elec_total
     ab_Y[electricity] *= elec_scaler
-      
-        #Proportions MUST always sum to 1!!!!!!!!!!!
-
-def Eff_improvements(ab_Y, scaler, liquids, solids, gases, electricity, ad, district):
+    return ab_Y
+        
+        
+def eff_improvements(ab_Y, scaler:float, liquids, solids, gases, electricity, ad, district:str) -> pd.DataFrame:
     """
     Policy Explanation
     Retrofitting reduces energy expenditure on heating by xx %
@@ -680,9 +632,9 @@ def Eff_improvements(ab_Y, scaler, liquids, solids, gases, electricity, ad, dist
     Take the expenditure on household fuels and reduce it by a scale factor defined by the user
     """
     
-        #Step 1. This can be done as a single stage. 
-        #Just reduce the parts that can be reduced by the amount in the scaler
-            
+    #Step 1. This can be done as a single stage. 
+    #Just reduce the parts that can be reduced by the amount in the scaler     
+    
     for liquid in liquids:    
         ab_Y[liquid] = (ab_Y[liquid]*(1-scaler))
             
@@ -697,10 +649,12 @@ def Eff_improvements(ab_Y, scaler, liquids, solids, gases, electricity, ad, dist
         ab_Y[elec] = (ab_Y[elec]*(ad["elec_water"] +ad["elec_heat"] + ad["elec_cool"])*(1-scaler)) 
         ab_Y[elec] +=elec_hold
             
+    #Proportions MUST always sum to 1!!!!!!!!!!!
     ab_Y[district] = ab_Y[district]*(1-scaler)                                        
-        #Proportions MUST always sum to 1!!!!!!!!!!!
+    return ab_Y
+  
         
-def Transport_Modal_Shift(ab_Y,scaler, scaler_2, scaler_3, public_transport):
+def transport_modal_shift(ab_Y,scaler:float, scaler_2:float, scaler_3:float, public_transport) -> pd.DataFrame:
     """
     Policy explanation
     Modal share - decrease in private transport and increase in public transport
@@ -725,34 +679,34 @@ def Transport_Modal_Shift(ab_Y,scaler, scaler_2, scaler_3, public_transport):
         
     for transport in public_transport:  #Public transport was defined above
         ab_Y[transport] *=(1+scaler_2)
-        
-        #Proportions MUST always sum to 1!!!!!!!!!!!
-        
-def Local_generation(ab_M, ab_Y, scaler, type_electricity, electricity, M_countries_LCA, direct_ab, indirect_ab):
+    #Proportions MUST always sum to 1!!!!!!!!!!!
+    return ab_Y
+
+
+def local_generation(ab_M, ab_Y, scaler:float, type_electricity, electricity, M_countries_LCA, direct_ab, indirect_ab) -> (pd.DataFrame, pd.DataFrame):
     """
     ##Policy explanation
-        Local electricity is produced by (usually) rooftop solar and it utilised only in that area
-        
-        #Reduce current electricity by xx %
-        #Introduce a new electricity emission intensity (based on PV in the LCA emission intensities) 
-        ##that accounts for the missing xx %
+    Local electricity is produced by (usually) rooftop solar and it utilised only in that area
+    
+    #Reduce current electricity by xx %
+    #Introduce a new electricity emission intensity (based on PV in the LCA emission intensities) 
+    ##that accounts for the missing xx %
     """
-    #print(ab_Y.columns)
+
     elec_total = ab_Y[electricity].sum()
     
     for elec in electricity:        
         ab_Y[elec] = (ab_Y[elec] * (1 - scaler))
         
     #Assign the remaning amount to the spare category (electricity nec)
-    
     ab_Y['Electricity nec'] = elec_total * scaler
     
     #Set the emission intensity of this based on LCA values
-    
     ab_M.loc[direct_ab:indirect_ab,'Electricity nec'] = M_countries_LCA.loc[direct_ab:indirect_ab,type_electricity]
     return ab_Y, ab_M
-    
-def local_heating(district, Total_Fuel, electricity, elec_total, direct_ab, ad, electricity_heat_prop, elec_price, liquids, solids, gases, ab_M, ab_Y, district_prop, elec_heat_prop, combustable_fuels_prop, liquids_prop, gases_prop, solids_prop, district_val):
+
+
+def local_heating(district:str, Total_Fuel, electricity, elec_total, direct_ab, ad, electricity_heat_prop, elec_price, liquids, solids, gases, ab_M, ab_Y, district_prop, elec_heat_prop, combustable_fuels_prop, liquids_prop, gases_prop, solids_prop, district_val) -> (pd.DataFrame, pd.DataFrame):
     """
     THIS JUST REPEATS BASELINE QUESTIONS 9 - 10.
     ALLOWING THE USER TO CHANGE THE VALUES
@@ -793,7 +747,7 @@ def local_heating(district, Total_Fuel, electricity, elec_total, direct_ab, ad, 
     #The user needs to convert the value into kg CO2e / Euro 
     ab_M.loc[direct_ab,district] = district_val ####1.0475#USER_INPUT
     return ab_M, ab_Y
-    ################################################################
+
 
 def main():
     project_root = pathlib.Path(__file__).parent.resolve()
@@ -804,6 +758,7 @@ def main():
     
     logging.debug(f'Argument List: {str(sys.argv)}')
     input_data=json.loads(sys.argv[1])
+    # TODO find out what target area is for
     #for testing purposes
     # input_data = json.loads('{"year": 2020, "region": "Berlin", \
     #     "policy_label":["BL", "RF", "NA"], "country": "Germany", "ab": "DE", \
@@ -824,7 +779,7 @@ def main():
     #     "MS_fuel_scaler":0.5, "MS_pt_scaler":0.2, "MS_veh_scaler":0.5, \
     #     "new_floor_area":0, "income_scaler":1, "electricity_prop":0.75, \
     #     "partially_new_area":true, "return_total_data":false}')
-    emissions = calculations_wrapper(input_data)
+    emissions = manage_policy_calculations(input_data)
     print(emissions)
 
 if __name__ == "__main__":
