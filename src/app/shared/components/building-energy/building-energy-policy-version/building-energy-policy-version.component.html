@@ -47,7 +47,7 @@
 						<div class="building-result-form">
 							<residential-step
 								[residentialBuildingTypes]="
-									version.baseline.residentialBuildings
+									version.residentialBuildings
 								"
 								class="margin-bottom"
 							>
@@ -73,7 +73,7 @@
 
 						<commercial-step
 							[commercialBuildingTypes]="
-								version.baseline.commercialBuildings
+								version.commercialBuildings
 							"
 							class="margin-bottom"
 						></commercial-step>
@@ -164,9 +164,25 @@
 					<mat-step>
 						<ng-template matStepLabel icon>Result</ng-template>
 						<div class="step-container">
+							<!--
 							<result-step
 								[chartTitle]="'Emissions from Policy Changes'"
+								[residentialBuildingTypes]="
+									version.residentialBuildings
+								"
+								[commercialBuildingTypes]="
+									version.commercialBuildings
+								"
 							></result-step>
+							-->
+							<button
+								mat-button
+								mat-raised-button
+								class="next-btn"
+								(click)="show()"
+							>
+								Next
+							</button>
 						</div>
 					</mat-step>
 				</mat-horizontal-stepper>

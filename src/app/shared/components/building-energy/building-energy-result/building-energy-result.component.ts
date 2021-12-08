@@ -91,14 +91,10 @@ export class BuildingEnergyResultComponent implements OnInit {
 			this.project
 		);
 
-		console.log('Project', this.project);
+		const version = this.buildingEnergyCalculatorService.initPolicyVersion();
+		console.log('version', version);
 
-		const firstVersion = {
-			baseline: this.project.territorial.buildings.baseline,
-			baselineResult: this.project.territorial.buildings.baselineResult,
-		};
-
-		this.project.territorial.buildings.versions = [firstVersion];
+		this.project.territorial.buildings.versions = [version];
 		this.projectService.updateDraftProject(this.project);
 
 		this.initPieCharts();

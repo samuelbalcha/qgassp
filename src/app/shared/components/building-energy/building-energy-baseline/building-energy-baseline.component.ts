@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import _ from 'lodash';
@@ -12,7 +13,6 @@ import { ProjectService } from '../../../../core/services/project.service';
 })
 export class BuildingEnergyBaselineComponent {
 	project: IProject;
-
 	baseline: any;
 
 	constructor(
@@ -42,12 +42,9 @@ export class BuildingEnergyBaselineComponent {
 			this.project.territorial.buildings
 		) {
 			console.log(
-				'model changed',
+				'model changed-baseline',
 				this.project.territorial.buildings.baseline
 			);
-
-			//	this.project.territorial.buildings.baseline = this.baseline;
-			//	this.projectService.updateDraftProject(this.project);
 		}
 	}
 
@@ -57,7 +54,6 @@ export class BuildingEnergyBaselineComponent {
 			this.project.territorial &&
 			this.project.territorial.buildings
 		) {
-			console.log('baseline created', this.baseline);
 			this.project.territorial.buildings.baseline = this.baseline;
 			this.projectService.updateDraftProject(this.project);
 		}
@@ -65,67 +61,27 @@ export class BuildingEnergyBaselineComponent {
 		this.router.navigateByUrl('result-version/buildings');
 	}
 
-	initProperties(buildingType: string): object {
-		return {
-			name: buildingType,
-			numberOfUnits: 0,
-			previousEnergyRating: 'G',
-			plannedEnergyRating: 'E',
-			carbonHeat: '78',
-			electricity: '-',
-			energyUse: {
-				Electricity: 4158,
-				Gas: 5147.4,
-				Oil: 375,
-				Coal: 3.6,
-				Peat: 1.4,
-				Wood: 15.8,
-				Renewable: 0,
-				Heat: 0,
-			},
-			energyUseResult: {
-				Electricity: 0,
-				Gas: 0,
-				Oil: 0,
-				Coal: 0,
-				Peat: 0,
-				Wood: 0,
-				Renewable: 0,
-				Heat: 0,
-			},
-			emissionResult: {
-				Electricity: 0,
-				Gas: 0,
-				Oil: 0,
-				Coal: 0,
-				Peat: 0,
-				Wood: 0,
-				Renewable: 0,
-				Heat: 0,
-			},
-			averageEnergyUse: 0,
-			totalEnergyUse: 0,
-			totalEnergyEmission: 0,
-			weightedAverageEnergyUse: 0,
-		};
-	}
-
 	initBaseline(): void {
 		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 		const residentialBuildings = _.map(
 			this.buildingEnergyCalculatorService.getResidentialBuildingTypes(),
 			(building) => {
-				return this.initProperties(building);
+				return this.buildingEnergyCalculatorService.initProperties(
+					building
+				);
 			}
 		);
 
 		const commercialBuildings = _.map(
 			this.buildingEnergyCalculatorService.getCommercialBuildingTypes(),
 			(building) => {
-				return this.initProperties(building);
+				return this.buildingEnergyCalculatorService.initProperties(
+					building
+				);
 			}
 		);
 
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 		this.project!.territorial!.buildings!.baseline = {
 			residentialBuildings: residentialBuildings,
 			commercialBuildings: commercialBuildings,

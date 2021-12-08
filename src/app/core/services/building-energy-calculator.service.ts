@@ -8,6 +8,105 @@ import { IProject } from '../../../../commons/types/IProject';
 export class BuildingEnergyCalculatorService {
 	constructor() {}
 
+	initProperties(buildingType: string): object {
+		return {
+			name: buildingType,
+			numberOfUnits: 0,
+			totalFloorArea: 0,
+			previousEnergyRating: 'G',
+			plannedEnergyRating: 'E',
+			carbonHeat: '78',
+			electricity: '-',
+			energyUse: {
+				Electricity: 4158,
+				Gas: 5147.4,
+				Oil: 375,
+				Coal: 3.6,
+				Peat: 1.4,
+				Wood: 15.8,
+				Renewable: 0,
+				Heat: 0,
+			},
+			energyUseResult: {
+				Electricity: 0,
+				Gas: 0,
+				Oil: 0,
+				Coal: 0,
+				Peat: 0,
+				Wood: 0,
+				Renewable: 0,
+				Heat: 0,
+			},
+			emissionResult: {
+				Electricity: 0,
+				Gas: 0,
+				Oil: 0,
+				Coal: 0,
+				Peat: 0,
+				Wood: 0,
+				Renewable: 0,
+				Heat: 0,
+			},
+			averageEnergyUse: 0,
+			totalEnergyUse: 0,
+			totalEnergyEmission: 0,
+			weightedAverageEnergyUse: 0,
+		};
+	}
+
+	initPolicyVersion(): object {
+		const version = {
+			residentialBuildings: {
+				newConstruction: _.map(
+					this.getResidentialBuildingTypes(),
+					(building) => {
+						return this.initProperties(building);
+					}
+				),
+				retrofit: _.map(
+					this.getResidentialBuildingTypes(),
+					(building) => {
+						return this.initProperties(building);
+					}
+				),
+			},
+			commercialBuildings: {
+				newConstruction: _.map(
+					this.getCommercialBuildingTypes(),
+					(building) => {
+						return this.initProperties(building);
+					}
+				),
+				retrofit: _.map(
+					this.getCommercialBuildingTypes(),
+					(building) => {
+						return this.initProperties(building);
+					}
+				),
+			},
+			densification: {
+				changeInBuildings: {
+					residentialToCommecial: [],
+					commercialToResidential: [],
+				},
+				changeInDensity: {
+					totalNumberOfBuildings: 0,
+					totalFloorArea: 0,
+					currentDensity: 0,
+					currentShareOfResidentialUnits: 0,
+					currentShareOfCommercialUnits: 0,
+					increaseDensityTo: 0,
+					shareOfUnitsByType: {
+						residential: 50,
+						commercial: 50,
+					},
+				},
+			},
+		};
+
+		return version;
+	}
+
 	getResidentialBuildingTypes(): string[] {
 		return ['Apartment', 'Terraced', 'Semi-detached', 'Detached'];
 	}

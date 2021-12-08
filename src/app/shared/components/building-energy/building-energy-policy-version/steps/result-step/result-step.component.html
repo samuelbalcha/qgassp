@@ -1,148 +1,231 @@
 <div class="result-step margin-bottom">
-	<h4>Residential</h4>
-	<div class="flex-container add-border">
-		<div class="flex-item space-between">
-			<div class="flex-container margin-bottom">
-				<div class="flex-item width-200">
-					<mat-label
-						>Total Reduction in emission in residential sector
-						MWh</mat-label
-					>
-				</div>
-				<div class="flex-item space-between">
-					<mat-label>"-valueToBind-"</mat-label>
-				</div>
-				<div class="flex-item width-200">
-					<mat-label
-						>Total Increase in RE in Residential Sector
-					</mat-label>
-				</div>
-				<div class="flex-item">
-					<mat-label> "--valueToBind-" </mat-label>
-				</div>
-			</div>
-			<div class="flex-container margin-bottom">
-				<div class="flex-item width-200">
-					<mat-label>
-						Increase in Residential Emissions from
-						Construction</mat-label
-					>
-				</div>
-				<div class="flex-item space-between">
-					<mat-label>"-valueToBind-"</mat-label>
-				</div>
-				<div class="flex-item width-200">
-					<mat-label>
-						Increase in RE
-					</mat-label>
-				</div>
-				<div class="flex-item">
-					<mat-label> "--valueToBind-" </mat-label>
+	<div class="margin-bottom">
+		<h4 class="margin-bottom">Residential</h4>
+		<div class="flex-container margin-bottom">
+			<div class="flex-item space-between">
+				<building-energy-emmission
+					class="margin-bottom"
+					[title]="'Additional emissions from new construction'"
+					[emissionUnit]="'tCO2'"
+					[tableData]="residentialBuildingTypes"
+					[showTotal]="true"
+				></building-energy-emmission>
+
+				<div class="flex-container margin-bottom">
+					<div class="flex-item space-between">
+						<div class="flex-container">
+							<div class="flex-item space-between">
+								<mat-label>
+									Increase in residential emissions from
+									construction</mat-label
+								>
+							</div>
+							<div class="flex-item">{{ 'result' }} tCO2</div>
+						</div>
+					</div>
+					<div class="flex-item">
+						<div class="flex-container margin-bottom">
+							<div class="flex-item space-between">
+								<mat-label> Increase in RE</mat-label>
+							</div>
+							<div class="flex-item">{{ 'result ' }} MWh</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="flex-container margin-bottom">
-				<div class="flex-item width-200">
-					<mat-label> Reduction in Emissions from Retrofit</mat-label>
-				</div>
-				<div class="flex-item space-between">
-					<mat-label>"-valueToBind-"</mat-label>
-				</div>
-				<div class="flex-item width-200">
-					<mat-label>
-						Increase in RE
-					</mat-label>
-				</div>
-				<div class="flex-item">
-					<mat-label> "--valueToBind-" </mat-label>
-				</div>
+			<div class="flex-item">
+				<h5 class="text-center">
+					Emissions from Policy changes
+				</h5>
+				<canvas
+					width="331"
+					height="239"
+					baseChart
+					[data]="chartData"
+					[labels]="chartLabels"
+					[chartType]="'horizontalBar'"
+					[options]="chartOptions"
+				>
+				</canvas>
 			</div>
 		</div>
-		<div class="flex-item">
-			<canvas
-				width="331"
-				height="239"
-				baseChart
-				[data]="chartData"
-				[labels]="chartLabels"
-				[chartType]="'horizontalBar'"
-				[options]="chartOptions"
-			>
-			</canvas>
+
+		<div class="flex-container margin-bottom">
+			<div class="flex-item space-between">
+				<building-energy-emmission
+					class="margin-bottom"
+					[title]="'Reduction in emissions from retrofit '"
+					[emissionUnit]="'tCO2'"
+					[tableData]="residentialBuildingTypes"
+					[showTotal]="true"
+				></building-energy-emmission>
+
+				<div class="flex-container margin-bottom">
+					<div class="flex-item space-between">
+						<div class="flex-container">
+							<div class="flex-item space-between">
+								<mat-label>
+									Reduction in emissions from
+									retrofit</mat-label
+								>
+							</div>
+							<div class="flex-item">{{ 'result' }} tCO2</div>
+						</div>
+					</div>
+					<div class="flex-item">
+						<div class="flex-container margin-bottom">
+							<div class="flex-item space-between">
+								<mat-label>
+									Increase in RE from retrofit</mat-label
+								>
+							</div>
+							<div class="flex-item">{{ 'result ' }} MWh</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="flex-item">
+				<div class="flex-container margin-bottom">
+					<div class="flex-item space-between">
+						<div class="flex-container">
+							<div class="flex-item space-between">
+								<mat-label>
+									Reduction in emissions in residential
+									sector</mat-label
+								>
+							</div>
+							<div class="flex-item">{{ 'result' }} tCO2</div>
+						</div>
+					</div>
+					<div class="flex-item">
+						<div class="flex-container margin-bottom">
+							<div class="flex-item space-between">
+								<mat-label>
+									Total Increase in RE in residential
+									sector</mat-label
+								>
+							</div>
+							<div class="flex-item">{{ 'result ' }} MWh</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
 
-<div class="result-step margin-bottom">
-	<h4>Commercial</h4>
-	<div class="flex-container add-border">
-		<div class="flex-item space-between">
-			<div class="flex-container margin-bottom">
-				<div class="flex-item width-200">
-					<mat-label>
-						Total Reduction in emission in commercial sector
-						MWh</mat-label
-					>
-				</div>
-				<div class="flex-item space-between">
-					<mat-label> "-valueToBind-" </mat-label>
-				</div>
-				<div class="flex-item width-200">
-					<mat-label>
-						Total Increase in RE in Commercial Sector
-					</mat-label>
-				</div>
-				<div class="flex-item">
-					<mat-label> "--valueToBind-" </mat-label>
+	<!-- commercial -->
+	<div class="margin-bottom">
+		<h4 class="margin-bottom">Commercial</h4>
+
+		<div class="flex-container margin-bottom">
+			<div class="flex-item space-between">
+				<building-energy-emmission
+					class="margin-bottom"
+					[title]="'Additional emissions from new construction'"
+					[emissionUnit]="'tCO2'"
+					[tableData]="commercialBuildingTypes"
+					[showTotal]="true"
+				></building-energy-emmission>
+
+				<div class="flex-container margin-bottom">
+					<div class="flex-item space-between">
+						<div class="flex-container">
+							<div class="flex-item space-between">
+								<mat-label>
+									Increase in commercial emissions from
+									construction</mat-label
+								>
+							</div>
+							<div class="flex-item">{{ 'result' }} tCO2</div>
+						</div>
+					</div>
+					<div class="flex-item">
+						<div class="flex-container margin-bottom">
+							<div class="flex-item space-between">
+								<mat-label> Increase in RE</mat-label>
+							</div>
+							<div class="flex-item">{{ 'result ' }} MWh</div>
+						</div>
+					</div>
 				</div>
 			</div>
-
-			<div class="flex-container margin-bottom">
-				<div class="flex-item width-200">
-					<mat-label>
-						Increase in Commercial Emissions from
-						Construction</mat-label
-					>
-				</div>
-				<div class="flex-item space-between">
-					<mat-label> "-valueToBind-" </mat-label>
-				</div>
-				<div class="flex-item width-200">
-					<mat-label>
-						Increase in RE
-					</mat-label>
-				</div>
-				<div class="flex-item">
-					<mat-label> "--valueToBind-" </mat-label>
-				</div>
-			</div>
-			<div class="flex-container margin-bottom">
-				<div class="flex-item width-200">
-					<mat-label> Reduction in Emissions from Retrofit</mat-label>
-				</div>
-				<div class="flex-item space-between">
-					<mat-label> "-valueToBind-" </mat-label>
-				</div>
-				<div class="flex-item width-200">
-					<mat-label>
-						Increase in RE
-					</mat-label>
-				</div>
-				<div class="flex-item">
-					<mat-label> "--valueToBind-" </mat-label>
-				</div>
+			<div class="flex-item">
+				<h5 class="text-center">
+					Emissions from Policy changes
+				</h5>
+				<canvas
+					width="331"
+					height="239"
+					baseChart
+					[data]="chartData"
+					[labels]="chartLabels"
+					[chartType]="'horizontalBar'"
+					[options]="chartOptions"
+				>
+				</canvas>
 			</div>
 		</div>
-		<div class="flex-item">
-			<canvas
-				width="331"
-				height="239"
-				baseChart
-				[data]="chartData"
-				[labels]="chartLabels"
-				[chartType]="'horizontalBar'"
-				[options]="chartOptions"
-			>
-			</canvas>
+
+		<div class="flex-container margin-bottom">
+			<div class="flex-item space-between">
+				<building-energy-emmission
+					class="margin-bottom"
+					[title]="'Reduction in emissions from retrofit '"
+					[emissionUnit]="'tCO2'"
+					[tableData]="commercialBuildingTypes"
+					[showTotal]="true"
+				></building-energy-emmission>
+
+				<div class="flex-container margin-bottom">
+					<div class="flex-item space-between">
+						<div class="flex-container">
+							<div class="flex-item space-between">
+								<mat-label>
+									Reduction in emissions from
+									retrofit</mat-label
+								>
+							</div>
+							<div class="flex-item">{{ 'result' }} tCO2</div>
+						</div>
+					</div>
+					<div class="flex-item">
+						<div class="flex-container margin-bottom">
+							<div class="flex-item space-between">
+								<mat-label>
+									Increase in RE from retrofit</mat-label
+								>
+							</div>
+							<div class="flex-item">{{ 'result ' }} MWh</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="flex-item">
+				<div class="flex-container margin-bottom">
+					<div class="flex-item space-between">
+						<div class="flex-container">
+							<div class="flex-item space-between">
+								<mat-label>
+									Reduction in emissions in commercial
+									sector</mat-label
+								>
+							</div>
+							<div class="flex-item">{{ 'result' }} tCO2</div>
+						</div>
+					</div>
+					<div class="flex-item">
+						<div class="flex-container margin-bottom">
+							<div class="flex-item space-between">
+								<mat-label>
+									Total Increase in RE in commercial
+									sector</mat-label
+								>
+							</div>
+							<div class="flex-item">{{ 'result ' }} MWh</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

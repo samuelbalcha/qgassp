@@ -52,12 +52,12 @@
 			*ngIf="showEnergyRating"
 		>
 			<energy-ratings
-				[selectedRating]="building.previousEnergyRating"
+				[(selectedRating)]="building.previousEnergyRating"
 			></energy-ratings>
 		</div>
 		<div class="flex-item width-100 space-between" *ngIf="showEnergyRating">
 			<energy-ratings
-				[selectedRating]="building.plannedEnergyRating"
+				[(selectedRating)]="building.plannedEnergyRating"
 			></energy-ratings>
 		</div>
 		<div

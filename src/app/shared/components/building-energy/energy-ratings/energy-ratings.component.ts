@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, Input, OnInit } from '@angular/core';
-import _ from 'lodash';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
 	selector: 'energy-ratings',
@@ -9,9 +8,9 @@ import _ from 'lodash';
 })
 export class EnergyRatingsComponent implements OnInit {
 	@Input() selectedRating: any;
-	//	@Input() previousEnergyRating: any;
-
-	//selectedRating = { name: 'A', value: 'A' };
+	@Output() selectedRatingChange: EventEmitter<number> = new EventEmitter<
+		number
+	>();
 
 	public energyRatings = [
 		{ name: 'A', value: 'A' },
@@ -23,11 +22,9 @@ export class EnergyRatingsComponent implements OnInit {
 		{ name: 'G', value: 'G' },
 	];
 
-	ngOnInit(): void {
-		console.log('selectedRating', this.selectedRating);
-	}
+	ngOnInit(): void {}
 
 	onChange(_event: any): void {
-		console.log('selectedRating-change', this.selectedRating);
+		this.selectedRatingChange.emit(this.selectedRating);
 	}
 }

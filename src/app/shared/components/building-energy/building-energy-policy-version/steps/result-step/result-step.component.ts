@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ChartOptions } from 'chart.js';
 import { Label, SingleDataSet } from 'ng2-charts';
 
@@ -7,8 +7,10 @@ import { Label, SingleDataSet } from 'ng2-charts';
 	templateUrl: './result-step.component.html',
 	styleUrls: ['./../../../building-energy.component.scss'],
 })
-export class ResultStepComponent {
+export class ResultStepComponent implements OnInit {
 	@Input() chartTitle = '';
+	@Input() residentialBuildingTypes: any;
+	@Input() commercialBuildingTypes: any;
 
 	constructor() {}
 
@@ -22,10 +24,14 @@ export class ResultStepComponent {
 			display: false,
 		},
 	};
+
 	public chartLabels: Label[] = [
-		['Retrofit'],
-		['Densification'],
-		['Building change'],
+		['Emission from retrofit'],
+		['Emission from demolition'],
+		['Emission from  construction'],
 	];
+
 	public chartData: SingleDataSet = [50, -200, 150];
+
+	ngOnInit(): void {}
 }

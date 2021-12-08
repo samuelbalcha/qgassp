@@ -17,6 +17,21 @@ export interface IProjectModule {
 		custom: [];
 	};
 }
+
+export interface IBuildingsModuleVersion {
+	residentialBuildings: {
+		newConstruction: [];
+		retrofit: [];
+	};
+	commercialBuildings: {
+		newConstruction: [];
+		retrofit: [];
+	};
+	densification: {
+		changeInBuildings: any;
+		changeInDensity: any;
+	};
+}
 export interface IBuildingsModule {
 	dataSet: {
 		default: [];
@@ -33,7 +48,7 @@ export interface IBuildingsModule {
 		endUseOfEnergy: any[];
 		totalEmissions: any;
 	};
-	versions: [];
+	versions: IBuildingsModuleVersion[];
 }
 
 export interface IProject {

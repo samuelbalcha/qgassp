@@ -5,7 +5,10 @@
 
 		<residential-buildings
 			[showNumberOfUnits]="true"
-			[residentialBuildingTypes]="residentialBuildingTypes"
+			[residentialBuildingTypes]="
+				residentialBuildingTypes.newConstruction
+			"
+			(onResidentialBuildingsChange)="onNewConstructionChange($event)"
 			class="margin-bottom"
 		>
 		</residential-buildings>
@@ -17,14 +20,14 @@
 		</div>
 
 		<div class="flex-container">
-			<div class="flex-item width-100 space-between">
+			<div class="flex-item number-input space-between">
 				<mat-label>
 					% of energy from RE
 				</mat-label>
 			</div>
 
 			<div class="flex-item">
-				<mat-form-field appearance="fill" class="numberInput">
+				<mat-form-field appearance="fill" class="width-100">
 					<input matInput type="number" />
 				</mat-form-field>
 			</div>
@@ -37,7 +40,8 @@
 		<residential-buildings
 			[showNumberOfUnits]="true"
 			[showEnergyRating]="true"
-			[residentialBuildingTypes]="residentialBuildingTypes"
+			[residentialBuildingTypes]="residentialBuildingTypes.retrofit"
+			(onResidentialBuildingsChange)="onRetrofitChange($event)"
 			class=" margin-bottom"
 		>
 		</residential-buildings>
@@ -51,8 +55,9 @@
 		<div class="margin-bottom">
 			<residential-buildings
 				[showNumberOfUnits]="true"
-				[residentialBuildingTypes]="residentialBuildingTypes"
+				[residentialBuildingTypes]="residentialBuildingTypes.retrofit"
 				[showCarbonHeatAndElectricity]="true"
+				(onResidentialBuildingsChange)="onRetrofitChange($event)"
 				class="margin-bottom"
 			></residential-buildings>
 		</div>
@@ -64,14 +69,14 @@
 			>
 		</div>
 		<div class="flex-container">
-			<div class="flex-item width-100 space-between">
+			<div class="flex-item number-input space-between">
 				<mat-label>
 					% of energy from RE
 				</mat-label>
 			</div>
 
 			<div class="flex-item">
-				<mat-form-field appearance="fill" class="numberInput">
+				<mat-form-field appearance="fill" class="width-100">
 					<input matInput type="number" />
 				</mat-form-field>
 			</div>

@@ -13,6 +13,7 @@ export class ResidentialBuildingsComponent implements OnInit {
 	@Input() showEnergyRating = false;
 	@Input() showCarbonHeatAndElectricity = false;
 	@Input() residentialBuildingTypes: any;
+
 	@Output() onResidentialBuildingsChange: EventEmitter<
 		any
 	> = new EventEmitter<any>();

@@ -5,7 +5,7 @@
 
 		<commercial-buildings
 			[showTotalFloorArea]="true"
-			[commercialBuildingTypes]="commercialBuildingTypes"
+			[commercialBuildingTypes]="commercialBuildingTypes.newConstruction"
 			class="label-left"
 		>
 		</commercial-buildings>
@@ -17,14 +17,14 @@
 		</div>
 
 		<div class="flex-container">
-			<div class="flex-item width-100 space-between">
+			<div class="flex-item number-input space-between">
 				<mat-label>
-					% of energy coming from RE
+					% of energy from RE
 				</mat-label>
 			</div>
 
 			<div class="flex-item">
-				<mat-form-field appearance="fill" class="numberInput">
+				<mat-form-field appearance="fill" class="width-100">
 					<input matInput type="number" />
 				</mat-form-field>
 			</div>
@@ -37,7 +37,7 @@
 		<commercial-buildings
 			[showTotalFloorArea]="true"
 			[showEnergyRating]="true"
-			[commercialBuildingTypes]="commercialBuildingTypes"
+			[commercialBuildingTypes]="commercialBuildingTypes.retrofit"
 			class=" margin-bottom"
 		>
 		</commercial-buildings>
@@ -52,7 +52,7 @@
 			<commercial-buildings
 				[showTotalFloorArea]="true"
 				[showCarbonHeatAndElectricity]="true"
-				[commercialBuildingTypes]="commercialBuildingTypes"
+				[commercialBuildingTypes]="commercialBuildingTypes.retrofit"
 				class="margin-bottom"
 			>
 			</commercial-buildings>
@@ -65,14 +65,14 @@
 			>
 		</div>
 		<div class="flex-container">
-			<div class="flex-item width-100 space-between">
+			<div class="flex-item number-input space-between">
 				<mat-label>
-					% of energy coming from RE
+					% of energy from RE
 				</mat-label>
 			</div>
 
 			<div class="flex-item">
-				<mat-form-field appearance="fill" class="numberInput">
+				<mat-form-field appearance="fill" class="width-100">
 					<input matInput type="number" />
 				</mat-form-field>
 			</div>

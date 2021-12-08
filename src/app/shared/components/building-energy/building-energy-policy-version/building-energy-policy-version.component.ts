@@ -13,4 +13,8 @@ export class BuildingEnergyPolicyVersionComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit(): void {}
+
+	show(): void {
+		console.log('version', this.version);
+	}
 }

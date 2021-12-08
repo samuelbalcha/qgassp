@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import _ from 'lodash';
 
 @Component({
@@ -6,15 +6,16 @@ import _ from 'lodash';
 	templateUrl: './residential-step.component.html',
 	styleUrls: ['./../../../building-energy.component.scss'],
 })
-export class ResidentialStepComponent {
+export class ResidentialStepComponent implements OnInit {
 	@Input() residentialBuildingTypes: any;
 
-	resindetialTotalNumberOfHousingUnits = 0;
+	ngOnInit(): void {}
 
-	addTotal(): void {
-		this.resindetialTotalNumberOfHousingUnits = _.sumBy(
-			this.residentialBuildingTypes,
-			'numberOfUnits'
-		);
+	onNewConstructionChange(_event: any): void {
+		console.log('updated new construction', _event);
+	}
+
+	onRetrofitChange(_event: any): void {
+		console.log('updated retrofit', _event);
 	}
 }
